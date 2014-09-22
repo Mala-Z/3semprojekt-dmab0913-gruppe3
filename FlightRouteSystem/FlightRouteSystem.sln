@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUILayer", "FlightRouteSystem\GUILayer.csproj", "{37612ADF-3883-4E94-B0AF-B2A6E2890E0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "FlightRouteSystem\Client.csproj", "{37612ADF-3883-4E94-B0AF-B2A6E2890E0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLayer", "ModelLayer\ModelLayer.csproj", "{3D6967B9-B47B-4998-ABD2-3E13E9262658}"
 EndProject
