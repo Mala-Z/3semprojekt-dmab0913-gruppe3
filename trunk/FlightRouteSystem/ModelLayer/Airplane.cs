@@ -8,6 +8,7 @@ namespace ModelLayer
 {
     public class Airplane
     {
+        private int airplaneID;
         private string name;
         private int seats;
 
@@ -27,6 +28,12 @@ namespace ModelLayer
         {
             get { return seats; }
             set { seats = value; }
+        }
+
+        public int AirplaneID
+        {
+            get { return airplaneID; }
+            set { airplaneID = value; }
         }
     }
 }

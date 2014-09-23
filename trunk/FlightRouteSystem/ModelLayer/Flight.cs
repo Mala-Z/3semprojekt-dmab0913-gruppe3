@@ -8,6 +8,7 @@ namespace ModelLayer
 {
     public class Flight
     {
+        private int flightID;
         private string timeOfDeparture;
         private string timeOfArrival;
         private double travelTime;
@@ -75,6 +76,12 @@ namespace ModelLayer
         {
             get { return to; }
             set { to = value; }
+        }
+
+        public int FlightID
+        {
+            get { return flightID; }
+            set { flightID = value; }
         }
     }
 }

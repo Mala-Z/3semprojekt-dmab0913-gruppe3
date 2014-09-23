@@ -8,6 +8,7 @@ namespace ModelLayer
 {
     public class Booking
     {
+        private int bookingID;
         private double totalPrice;
         private double totalTime;
         private List<Person> passengerList;
@@ -52,6 +53,12 @@ namespace ModelLayer
         public List<Person> PassengerList
         {
             get { return passengerList; }
+        }
+
+        public int BookingID
+        {
+            get { return bookingID; }
+            set { bookingID = value; }
         }
 
         public void AddPassenger(Person person)
