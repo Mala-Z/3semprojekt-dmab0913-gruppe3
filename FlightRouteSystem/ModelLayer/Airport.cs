@@ -8,6 +8,7 @@ namespace ModelLayer
 {
     public class Airport
     {
+        private int airportID;
         private string name;
         private string location;
 
@@ -27,6 +28,12 @@ namespace ModelLayer
         {
             get { return location; }
             set { location = value; }
+        }
+
+        public int AirportID
+        {
+            get { return airportID; }
+            set { airportID = value; }
         }
     }
 }

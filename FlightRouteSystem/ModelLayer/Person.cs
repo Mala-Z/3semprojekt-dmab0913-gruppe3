@@ -8,6 +8,7 @@ namespace ModelLayer
 {
     public class Person
     {
+        private int personID;
         private string fName;
         private string lName;
         private string gender;
@@ -102,6 +103,12 @@ namespace ModelLayer
         {
             get { return isEmployee; }
             set { isEmployee = value; }
+        }
+
+        public int PersonID
+        {
+            get { return personID; }
+            set { personID = value; }
         }
     }
 }
