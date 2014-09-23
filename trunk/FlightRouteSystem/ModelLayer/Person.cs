@@ -23,15 +23,15 @@ namespace ModelLayer
         /// </summary>
         public Person(string fName, string lName, string gender, string address, string phoneNo, string birthdate, string email, string password, bool isEmployee)
         {
-            this.fName = fName;
-            this.lName = lName;
-            this.gender = gender;
-            this.address = address;
-            this.phoneNo = phoneNo;
-            this.birthdate = birthdate;
-            this.email = email;
-            this.password = password;
-            this.isEmployee = isEmployee;
+            this.FName = fName;
+            this.LName = lName;
+            this.Gender = gender;
+            this.Address = address;
+            this.PhoneNo = phoneNo;
+            this.Birthdate = birthdate;
+            this.Email = email;
+            this.Password = password;
+            this.IsEmployee = isEmployee;
         }
 
         /// <summary>
@@ -39,15 +39,69 @@ namespace ModelLayer
         /// </summary>
         public Person(string fName, string lName, string gender, string address, string phoneNo, string birthdate, string email)
         {
-            this.fName = fName;
-            this.lName = lName;
-            this.gender = gender;
-            this.address = address;
-            this.phoneNo = phoneNo;
-            this.birthdate = birthdate;
-            this.email = email;
-            this.isEmployee = false;
+            this.FName = fName;
+            this.LName = lName;
+            this.Gender = gender;
+            this.Address = address;
+            this.PhoneNo = phoneNo;
+            this.Birthdate = birthdate;
+            this.Email = email;
+            this.IsEmployee = false;
         }
 
+
+        public string FName
+        {
+            get { return fName; }
+            set { fName = value; }
+        }
+
+        public string LName
+        {
+            get { return lName; }
+            set { lName = value; }
+        }
+
+        public string Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+
+        public string PhoneNo
+        {
+            get { return phoneNo; }
+            set { phoneNo = value; }
+        }
+
+        public string Birthdate
+        {
+            get { return birthdate; }
+            set { birthdate = value; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public bool IsEmployee
+        {
+            get { return isEmployee; }
+            set { isEmployee = value; }
+        }
     }
 }
