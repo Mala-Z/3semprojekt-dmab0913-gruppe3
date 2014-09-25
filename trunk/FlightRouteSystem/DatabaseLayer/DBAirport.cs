@@ -10,12 +10,11 @@ namespace DatabaseLayer
 {
     public class DBAirport
     {
-        private DBConnection conn;
+        private SqlConnection conn;
 
         public DBAirport()
         {
-            conn = DBConnection.GetInstance();
-            conn.GetConnection();
+            conn = DBConnection.GetInstance().GetConnection();
         }
 
         public Airport getAirport(int airportID)
