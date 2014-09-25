@@ -17,7 +17,7 @@ namespace DatabaseLayer
             conn = DBConnection.GetInstance().GetConnection();
         }
 
-        public Airport getAirport(int airportID)
+        public Airport getAirportByID(int airportID)
         {
             SqlDataReader reader = null;
             Airport airportObj = null;
