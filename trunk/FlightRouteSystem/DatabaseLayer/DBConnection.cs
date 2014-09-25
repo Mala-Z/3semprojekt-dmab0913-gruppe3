@@ -10,14 +10,14 @@ namespace DatabaseLayer
     public class DBConnection
     {
         private static DBConnection instance = null;
-        private static SqlConnection con;
+        private static SqlConnection conn;
 
         private DBConnection()
         {
             string connectionString = @"Data Source=balder.ucn.dk;Initial Catalog=dmab0913_3;User ID=dmab0913_3;Password=MaaGodt"; 
             try
             {
-                con = new SqlConnection(connectionString);
+                conn = new SqlConnection(connectionString);
             }
             catch(SqlException sqlException)
             {
@@ -40,7 +40,7 @@ namespace DatabaseLayer
 
         public SqlConnection GetConnection()
         {
-            return con;
+            return conn;
         }
 
         
