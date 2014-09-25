@@ -20,13 +20,15 @@ namespace DatabaseLayer
         public Airport getAirport(int airportID)
         {
             SqlDataReader reader = null;
-            string query = "SELECT * FROM Airport WHERE airportID = " + "'" + airportID + "'";
             Airport airportObj = null;
 
             try
             {
                 conn.Open();
+                string query = "SELECT * FROM Airport WHERE airportID = @airportID";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                SqlParameter idParam = new SqlParameter("@airportID", airportID);
+                cmd.Parameters.Add(idParam);
                 reader = cmd.ExecuteReader();
 
                 while (reader.Read())
