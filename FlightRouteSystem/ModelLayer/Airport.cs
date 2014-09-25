@@ -18,6 +18,11 @@ namespace ModelLayer
             this.Location = location;
         }
 
+        public Airport()
+        {
+
+        }
+
         public string Name
         {
             get { return name; }
