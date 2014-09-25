@@ -18,10 +18,10 @@ namespace DatabaseLayer
             conn.GetConnection();
         }
 
-        public Airport getSelectedAirport(int idairport)
+        public Airport getAirport(int airportID)
         {
             SqlDataReader reader = null;
-            string query = "SELECT * FROM Airport WHERE idairport = " + "'" + idairport + "'";
+            string query = "SELECT * FROM Airport WHERE airportID = " + "'" + airportID + "'";
             Airport airportObj = null;
 
             try
