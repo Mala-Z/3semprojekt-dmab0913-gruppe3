@@ -46,12 +46,6 @@
     <Compile Include="PersonCtr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
-      <Project>{3d6967b9-b47b-4998-abd2-3e13e9262658}</Project>
-      <Name>ModelLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
