@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +14,16 @@ namespace DatabaseLayer
 
         private DBConnection()
         {
-            string connectionString = @"Data Source=balder.ucn.dk;Initial Catalog=dmab0913_3;User ID=dmab0913_3;Password=MaaGodt"; 
+            string connectionString = @"Data Source=balder.ucn.dk;Initial Catalog=dmab0913_3;User ID=dmab0913_3;Password=MaaGodt";
             try
             {
                 conn = new SqlConnection(connectionString);
             }
-            catch(SqlException sqlException)
+            catch (SqlException sqlException)
             {
                 throw sqlException;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 throw new Exception(exception.Message);
             }
@@ -43,6 +43,6 @@ namespace DatabaseLayer
             return conn;
         }
 
-        
+
     }
 }
