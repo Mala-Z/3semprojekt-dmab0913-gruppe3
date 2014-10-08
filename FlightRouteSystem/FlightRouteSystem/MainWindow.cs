@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+//using System.Data.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,8 +24,8 @@ namespace FlightRouteSystem
             dmab0913_3DataContext db = DBConnection.GetInstance().GetConnection();
 
             var result = from p in db.Persons
-                         where p.Gender == "m"
-                         orderby p.Fname
+                         where p.gender == "m"
+                         orderby p.fname
                          select p;
                          //select new { Navn = c.Name, c.Email, Adresse = c.Address, Postnr = c.ZipCode };
 

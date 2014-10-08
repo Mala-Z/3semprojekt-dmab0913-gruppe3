@@ -49,11 +49,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dmab0913_3.dbml</DependentUpon>
     </Compile>
-    <Compile Include="jimmi.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>jimmi.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -68,11 +63,6 @@
       <LastGenOutput>dmab0913_3.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="jimmi.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>jimmi.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,11 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="jimmi.dbml.layout">
-      <DependentUpon>jimmi.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="dmab0913_3.dbml.layout">
