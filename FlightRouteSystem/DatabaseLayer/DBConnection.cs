@@ -10,23 +10,11 @@ namespace DatabaseLayer
     public class DBConnection
     {
         private static DBConnection instance = null;
-        private static SqlConnection conn;
+        private static dmab0913_3DataContext conn;
 
         private DBConnection()
         {
-            string connectionString = @"Data Source=balder.ucn.dk;Initial Catalog=dmab0913_3;User ID=dmab0913_3;Password=MaaGodt";
-            try
-            {
-                conn = new SqlConnection(connectionString);
-            }
-            catch (SqlException sqlException)
-            {
-                throw sqlException;
-            }
-            catch (Exception exception)
-            {
-                throw new Exception(exception.Message);
-            }
+            conn = new dmab0913_3DataContext();
         }
 
         public static DBConnection GetInstance()
@@ -38,7 +26,7 @@ namespace DatabaseLayer
             return instance;
         }
 
-        public SqlConnection GetConnection()
+        public dmab0913_3DataContext GetConnection()
         {
             return conn;
         }

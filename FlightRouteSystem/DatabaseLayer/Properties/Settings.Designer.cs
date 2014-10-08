@@ -32,5 +32,16 @@ namespace DatabaseLayer.Properties {
                 return ((string)(this["_3semprojektConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=balder.ucn.dk;Initial Catalog=dmab0913_3;User ID=dmab0913_3;Password=" +
+            "MaaGodt")]
+        public string dmab0913_3ConnectionString {
+            get {
+                return ((string)(this["dmab0913_3ConnectionString"]));
+            }
+        }
     }
 }
