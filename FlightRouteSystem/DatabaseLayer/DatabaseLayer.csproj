@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBAirport.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="jimmi.designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,12 +55,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
-      <Project>{3d6967b9-b47b-4998-abd2-3e13e9262658}</Project>
-      <Name>ModelLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
