@@ -19,11 +19,7 @@ namespace DatabaseLayer
 
         public static DBConnection GetInstance()
         {
-            if (instance == null)
-            {
-                instance = new DBConnection();
-            }
-            return instance;
+            return instance ?? (instance = new DBConnection());
         }
 
         public dmab0913_3DataContext GetConnection()
