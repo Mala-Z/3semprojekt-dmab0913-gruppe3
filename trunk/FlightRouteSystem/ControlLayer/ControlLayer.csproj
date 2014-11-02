@@ -42,6 +42,7 @@
     <Compile Include="AirplaneCtr.cs" />
     <Compile Include="AirportCtr.cs" />
     <Compile Include="BookingCtr.cs" />
+    <Compile Include="Dijkstra.cs" />
     <Compile Include="FlightCtr.cs" />
     <Compile Include="PersonCtr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
