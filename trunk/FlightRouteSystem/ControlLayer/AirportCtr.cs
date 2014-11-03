@@ -10,6 +10,10 @@ namespace ControlLayer
 {
     public class AirportCtr
     {
+        /// <summary>
+        /// Get all Airports
+        /// </summary>
+        /// <returns>Returns a list of all Airport objects</returns>
         public List<Airport> GetAllAirports()
         {
             var db = DBConnection.GetInstance().GetConnection();
