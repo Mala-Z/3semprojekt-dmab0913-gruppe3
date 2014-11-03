@@ -16,10 +16,12 @@ namespace ControlLayer
         {
             dmab0913_3DataContext db = DBConnection.GetInstance().GetConnection();
 
-            var result = from p in db.Persons
-                         where p.gender == "m"
-                         orderby p.fname
-                         select p;
+            var flights = db.Flights();
+
+            foreach (var order in flights)
+            {
+                //Do something
+            }
         }
 
     }
