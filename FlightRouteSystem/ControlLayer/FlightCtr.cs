@@ -16,7 +16,7 @@ namespace ControlLayer
         {
             dmab0913_3DataContext db = DBConnection.GetInstance().GetConnection();
 
-            var result = from f in db.Flight
+            var result = from p in db.Persons
                          where p.gender == "m"
                          orderby p.fname
                          select p;
