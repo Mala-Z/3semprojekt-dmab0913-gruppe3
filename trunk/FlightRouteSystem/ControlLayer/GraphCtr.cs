@@ -40,19 +40,20 @@ namespace ControlLayer
             //}
         }
 
-        public double HasEdge(Airport from, Airport to)
+        public double Cost(Airport from, Airport to)
         {
-            double result = 0;
+            double cost = 0;
             foreach (Airport[] key in edges.Keys)
             {
-                //if (key[0].airportID.Equals(from.airportID) && key[1].airportID.Equals(to.airportID))
-                //    return edges[key];
-
-                result = Convert.ToDouble(edges[key]);
+                if (key[0].airportID.Equals(from.airportID) && key[1].airportID.Equals(to.airportID))
+                {
+                    cost = edges[key];
+                    //Console.WriteLine(key[0].name + " til " + key[1].name + " time: " + cost);
+                }
             }
             //throw new Exception("Edge not found");
 
-            return result;
+            return cost;
 
         }
     }

@@ -35,12 +35,6 @@ namespace ControlLayer
         {
             graphCtr = new GraphCtr(airportCtr.GetAllAirports());
 
-            //Add edges
-            foreach (Flight flight in flightCtr.GetFlightsByDate(date))
-            {
-                graphCtr.Add(flight.Airport, flight.Airport1, Convert.ToDouble(flight.traveltime));
-            }
-
             // Set distance to all vertices to infinity
             for (int i = 0; i < airportCtr.GetAllAirports().Count; i++)
             {
@@ -92,6 +86,11 @@ namespace ControlLayer
             this.startAirport = startAirport;
 
             Initialize(startAirport, date);
+            //Add edges
+            foreach (Flight flight in flightCtr.GetFlightsByDate(date))
+            {
+                graphCtr.Add(flight.Airport, flight.Airport1, Convert.ToDouble(flight.traveltime));
+            }
 
             while (airportQueue.Count > 0)
             {
@@ -102,18 +101,18 @@ namespace ControlLayer
                 {
                     Airport to = graphCtr.airports[vi];
                     /* Checks for edges with negative weight */
-                    if (graphCtr.HasEdge(from, to) < 0)
+                    if (graphCtr.Cost(from, to) < 0)
                     {
                         throw new ArgumentException("Graph contains negative edge(s)");
                     }
 
                     /* Check for an edge between u and v */
-                    if (graphCtr.HasEdge(from, to) > 0)
+                    if (graphCtr.Cost(from, to) > 0)
                     {
                         /* Edge exists, relax the edge */
-                        if (dist[to] > dist[from] + graphCtr.HasEdge(from, to))
+                        if (dist[to] > dist[from] + graphCtr.Cost(from, to))
                         {
-                            dist[to] = dist[from] + graphCtr.HasEdge(from, to);
+                            dist[to] = dist[from] + graphCtr.Cost(from, to);
                             path[to] = from;
                         }
                     }
@@ -121,14 +120,14 @@ namespace ControlLayer
             }
         }
 
-        public ObservableCollection<Airport> ShortestPath(Airport from)
+        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to1)
         {
             if (!IsNullable(from))
             {
                 Debug.WriteLine("Warning, type <" + typeof(Airport).ToString() + "> is not nullable");
             }
             var result = new ObservableCollection<Airport>();
-            Airport to = from;
+            Airport to = to1;
             var shortest_path = new List<Airport>();
             
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
