@@ -9,7 +9,7 @@ namespace ControlLayer
     class Dijkstra
     {
 
-
+         
 
         //metode til at finde den korteste rejsetid
         
