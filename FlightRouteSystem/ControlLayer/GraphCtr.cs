@@ -18,7 +18,7 @@ namespace ControlLayer
         //public int Length { get { return airports.Count; } }
 
         /// <summary>
-        /// 
+        /// Opretter grafen med alle Airport objekter
         /// </summary>
         /// <param name="airports">List of all Airports</param>
         public GraphCtr(List<Airport> airports)
@@ -27,19 +27,26 @@ namespace ControlLayer
             this.airports = airports;
         }
 
-
+        /// <summary>
+        /// Tilføjer edges til grafen
+        /// </summary>
+        /// <param name="from">Airport object vi flyver fra</param>
+        /// <param name="to">Airport object vi flyver til</param>
+        /// <param name="cost">Prisen mellem de to vertices (her travelTime)</param>
         public void Add(Airport from, Airport to, double cost)
         {
             if (!airports.Contains(from) || !airports.Contains(to))
                 throw new Exception("Invalid node");
 
             edges.Add(new[] { from, to }, cost);
-            //foreach (Flight flight in flightCtr.GetFlightsFrom(startAirport))
-            //{
-            //    edges.Add(new[] {flight.Airport, flight.Airport1}, Convert.ToDouble(flight.traveltime));
-            //}
         }
 
+        /// <summary>
+        /// Hvis der er en edge mellem lufthavn from til lufthavn to, returner prisen (her travlTime)
+        /// </summary>
+        /// <param name="from">Airport object vi flyver fra</param>
+        /// <param name="to">Airport object vi flyver til</param>
+        /// <returns>Prisen (her travelTime)</returns>
         public double Cost(Airport from, Airport to)
         {
             double cost = 0;
