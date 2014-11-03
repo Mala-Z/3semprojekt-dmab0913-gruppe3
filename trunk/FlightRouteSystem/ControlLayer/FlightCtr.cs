@@ -8,20 +8,24 @@ using DatabaseLayer;
 namespace ControlLayer
 {
     public class FlightCtr
-    {
-        //private DBConnection dbConn = DBConnection.GetInstance();
-        
+    {     
 
-        public List<Flight> getFlights()
+        public List<Flight> GetAllFlights()
         {
-            dmab0913_3DataContext db = DBConnection.GetInstance().GetConnection();
+            var db = DBConnection.GetInstance().GetConnection();
 
-            var flights = db.Flights();
+            var flights = db.Flights.OrderBy(x => x.flightID);
 
-            foreach (var order in flights)
-            {
-                //Do something
-            }
+            return flights.ToList();
+        }
+
+        public List<Flight> GetFlightsByDate(string depTime)
+        {
+            var db = DBConnection.GetInstance().GetConnection();
+
+            var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(depTime)).OrderBy(x => x.flightID);
+
+            return flights.ToList();
         }
 
     }
