@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DatabaseLayer;
 namespace ControlLayer
 {
     class Dijkstra
     {
+        private DBConnection db = DBConnection.GetInstance();
 
-         
+        
 
         //metode til at finde den korteste rejsetid
-        
+
         //metode til at finde dne billigste rejse
 
 
