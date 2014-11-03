@@ -31,9 +31,15 @@ namespace ControlLayer
         /// </summary>
         /// <param name="s"></param>
         /// <param name="len"></param>
-        private void Initialize(Airport start)
+        private void Initialize(Airport start, string date)
         {
             graphCtr = new GraphCtr(airportCtr.GetAllAirports());
+
+            //Add edges
+            foreach (Flight flight in flightCtr.GetFlightsByDate(date))
+            {
+                graphCtr.Add(flight.Airport, flight.Airport1, Convert.ToDouble(flight.traveltime));
+            }
 
             // Set distance to all vertices to infinity
             for (int i = 0; i < airportCtr.GetAllAirports().Count; i++)
@@ -47,11 +53,7 @@ namespace ControlLayer
             dist[start] = 0;
             path[start] = default(Airport);
 
-            //Add edges
-            foreach (Flight flight in flightCtr.GetFlightsFrom(start))
-            {
-                graphCtr.Add(flight.Airport, flight.Airport1, Convert.ToDouble(flight.traveltime));
-            }
+            
 
         }
 
@@ -84,12 +86,12 @@ namespace ControlLayer
         /// Constructor
         /// </summary>
         /// <param name="startAirport"></param>
-        public Dijkstra(GraphCtr graphCtr, Airport startAirport)
+        public Dijkstra(GraphCtr graphCtr, Airport startAirport, string date)
         {
             this.graphCtr = graphCtr;
             this.startAirport = startAirport;
 
-            Initialize(startAirport);
+            Initialize(startAirport, date);
 
             while (airportQueue.Count > 0)
             {

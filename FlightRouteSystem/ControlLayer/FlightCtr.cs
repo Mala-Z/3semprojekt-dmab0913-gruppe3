@@ -27,11 +27,11 @@ namespace ControlLayer
         /// Get all Flights flying from a specific date
         /// </summary>
         /// <returns>Returns a list of all Flight objects who contains depTime</returns>
-        public List<Flight> GetFlightsByDate(Airport start, string date)
+        public List<Flight> GetFlightsByDate(string date)
         {
             var db = DBConnection.GetInstance().GetConnection();
 
-            var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(date) && x.Airport.Equals(start)).OrderBy(x => x.flightID);
+            var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID);
 
             return flights.ToList();
         }
@@ -47,6 +47,32 @@ namespace ControlLayer
             var flights = db.Flights.Where(x => x.Airport.Equals(start)).OrderBy(x => x.flightID);
 
             return flights.ToList();
+        }
+
+        public void AddFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+            int to, int airplaneID, int takenSeats)
+        {
+            Flight flight = new Flight();
+            flight.timeOfDeparture = timeOfDepature;
+            flight.timeOfArrival = timeOfArrival;
+            flight.traveltime = travelTime;
+            flight.price = price;
+            flight.from = from;
+            flight.to = to;
+            flight.airplaneID = airplaneID;
+            flight.takenSeats = takenSeats;
+
+            var db = DBConnection.GetInstance().GetConnection();
+            db.Flights.InsertOnSubmit(flight);
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fejl! : " + e);
+            }
+
         }
 
     }
