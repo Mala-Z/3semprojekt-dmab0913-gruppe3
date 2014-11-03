@@ -9,5 +9,6 @@ namespace ControlLayer
 {
     public class AirplaneCtr
     {
+
     }
 }
