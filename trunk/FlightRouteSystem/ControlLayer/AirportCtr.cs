@@ -23,5 +23,19 @@ namespace ControlLayer
             return airports.ToList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Airport GetAirportByID(int id)
+        {
+            var db = DBConnection.GetInstance().GetConnection();
+
+            var airport = db.Airports.SingleOrDefault(a => a.airportID == id);
+
+            return airport;
+        }
+
     }
 }

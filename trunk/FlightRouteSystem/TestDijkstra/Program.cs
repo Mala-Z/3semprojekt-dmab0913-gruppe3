@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ControlLayer;
+using DatabaseLayer;
+
 
 namespace TestDijkstra
 {
     class Program
     {
         static FlightCtr flightCtr = new FlightCtr();
+        static AirportCtr airportCtr = new AirportCtr();
 
         private static void createTestFlight()
         {
@@ -22,7 +26,17 @@ namespace TestDijkstra
 
         static void Main(string[] args)
         {
-            createTestFlight();
+            var startAirport = airportCtr.GetAirportByID(1);
+            //createTestFlight();
+            var dijkstra = new Dijkstra(new GraphCtr(airportCtr.GetAllAirports()), startAirport, "03/11/2014");
+
+            ObservableCollection<Airport> shortestPath = dijkstra.ShortestPath(startAirport);
+
+            foreach (var airport in shortestPath)
+            {
+                Console.WriteLine(airport.name);
+            }
+
             Console.ReadLine();
         }
     }

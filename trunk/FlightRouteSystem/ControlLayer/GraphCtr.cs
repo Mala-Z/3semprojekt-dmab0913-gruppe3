@@ -7,7 +7,7 @@ using DatabaseLayer;
 
 namespace ControlLayer
 {
-    class GraphCtr
+    public class GraphCtr
     {
         private AirportCtr airportCtr = new AirportCtr(); // vertices
         private FlightCtr flightCtr = new FlightCtr(); //edges
@@ -42,12 +42,17 @@ namespace ControlLayer
 
         public double HasEdge(Airport from, Airport to)
         {
+            double result = 0;
             foreach (Airport[] key in edges.Keys)
             {
-                if (key[0].Equals(from) && key[1].Equals(to))
-                    return edges[key];
+                //if (key[0].airportID.Equals(from.airportID) && key[1].airportID.Equals(to.airportID))
+                //    return edges[key];
+
+                result = Convert.ToDouble(edges[key]);
             }
-            throw new Exception("Edge not found");
+            //throw new Exception("Edge not found");
+
+            return result;
 
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using DatabaseLayer;
 namespace ControlLayer
 {
-    class Dijkstra
+    public class Dijkstra
     {
         private AirportCtr airportCtr = new AirportCtr(); // vertices
         private FlightCtr flightCtr = new FlightCtr();
