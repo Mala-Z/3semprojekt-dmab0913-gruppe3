@@ -119,7 +119,7 @@ namespace ControlLayer
         /// Finder den korteste ved mellem to Airport objekter. Bruger travelTime som cost
         /// </summary>
         /// <param name="from"></param>
-        /// <param name="to1"></param>
+        /// <param name="to"></param>
         /// <returns></returns>
         public ObservableCollection<Airport> ShortestPath(Airport from, Airport to)
         {
