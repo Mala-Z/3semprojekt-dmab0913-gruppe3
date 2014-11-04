@@ -130,16 +130,15 @@ namespace ControlLayer
         {
             var result = new ObservableCollection<Airport>();
             Airport to = to1;
-            var shortest_path = new List<Airport>();
             
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
             {
-                shortest_path.Add(to);
+                shortestPath.Add(to);
                 to = path[to];
             }
-            shortest_path.Reverse();
+            shortestPath.Reverse();
 
-            shortest_path.ForEach(x => result.Add(x));
+            shortestPath.ForEach(result.Add);
 
             return result;
         }
