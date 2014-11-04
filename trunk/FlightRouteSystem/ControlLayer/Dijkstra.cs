@@ -134,7 +134,7 @@ namespace ControlLayer
             }
             shortest_path.Reverse();
 
-            shortest_path.ForEach(x => result.Add(x));
+            shortest_path.ForEach(result.Add);
 
             return result;
         }

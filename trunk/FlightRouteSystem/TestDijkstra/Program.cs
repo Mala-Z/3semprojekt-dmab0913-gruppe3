@@ -36,12 +36,12 @@ namespace TestDijkstra
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 2.5, 400, 2, 8, 3, 0); //Fra Billund til Rom
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 0.4, 180, 2, 1, 6, 0); //Fra Billund til Aalborg
 
-                flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 1.5, 300, 3, 4, 5, 0); //Fra KBH til London
+                flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 1.5, 300, 3, 4, 4, 0); //Fra KBH til London
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 2.7, 390, 3, 8, 3, 0); //Fra KBH til Rom
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 0.5, 200, 3, 1, 1, 0); //Fra KBH til Aalborg
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 1.0, 325, 3, 6, 4, 0); //Fra KBH til HAM
 
-                flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 1.2, 330, 4, 2, 5, 0); //Fra London til Billund
+                flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 1.2, 330, 4, 2, 4, 0); //Fra London til Billund
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 1.5, 300, 4, 3, 4, 0); //Fra London til KBH
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 8.5, 880, 4, 7, 6, 0); //Fra London til Washington
                 flightCtr.AddFlight(day + "/" + monthNo + "/" + year +" 12:00", day + "/" + monthNo + "/" + year +" 12:30", 0.75, 275, 4, 6, 2, 0); //Fra London til HAM
@@ -73,7 +73,7 @@ namespace TestDijkstra
         static void Main(string[] args)
         {
             var startAirport = airportCtr.GetAirportByID(1);
-            var endAirport = airportCtr.GetAirportByID(4); //Fejl ved forsøg på id 5, 6, 7 og 8
+            var endAirport = airportCtr.GetAirportByID(8); //Fejl ved forsøg på id 5, 6, 7 og 8
 
             //createTestFlight(11,2014);
             //createTestFlight(12,2014);
