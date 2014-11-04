@@ -57,7 +57,7 @@ namespace ControlLayer
                     cost = edges[key];
                     //Console.WriteLine(key[0].name + " til " + key[1].name + " time: " + cost);
                 }
-            } 
+            }
 
             return cost;
 
