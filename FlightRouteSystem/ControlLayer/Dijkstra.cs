@@ -128,10 +128,6 @@ namespace ControlLayer
         /// <returns></returns>
         public ObservableCollection<Airport> ShortestPath(Airport from, Airport to1)
         {
-            if (!IsNullable(from))
-            {
-                Debug.WriteLine("Warning, type <" + typeof(Airport).ToString() + "> is not nullable");
-            }
             var result = new ObservableCollection<Airport>();
             Airport to = to1;
             var shortest_path = new List<Airport>();
@@ -148,13 +144,5 @@ namespace ControlLayer
             return result;
         }
 
-        static bool IsNullable(Airport obj)
-        {
-            if (obj == null) return true; // obvious
-            Type type = typeof(Airport);
-            if (!type.IsValueType) return true; // ref-type
-            if (Nullable.GetUnderlyingType(type) != null) return true; // Nullable<T>
-            return false; // value-type
-        }
     }
 }
