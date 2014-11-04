@@ -46,6 +46,7 @@
     <Compile Include="Dijkstra.cs" />
     <Compile Include="FlightCtr.cs" />
     <Compile Include="GraphCtr.cs" />
+    <Compile Include="Pair.cs" />
     <Compile Include="PersonCtr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
