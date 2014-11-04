@@ -23,15 +23,13 @@ namespace ControlLayer
         //Queue for the vertices to beevaluated
         private List<Airport> airportQueue = new List<Airport>();
 
-        //Start airport
         private Airport startAirport;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="len"></param>
-        private void Initialize(Airport start, string date)
+        /// <param name="start"></param>
+        private void Initialize(Airport start)
         {
             graphCtr = new GraphCtr(airportCtr.GetAllAirports());
 
@@ -43,12 +41,9 @@ namespace ControlLayer
                 airportQueue.Add(graphCtr.airports[i]);
             }
 
-            /* Set distance to 0 for starting point and the previous node to null (-1) */
+            // Set distance to 0 for starting point and the previous node to null (-1) 
             dist[start] = 0;
-            path[start] = default(Airport);
-
-            
-
+            path[start] = default(Airport);  
         }
 
         /// <summary>
@@ -60,7 +55,7 @@ namespace ControlLayer
             double min = Double.PositiveInfinity;
             Airport Vertex = default(Airport);
 
-            /* Search through queue to find the next node having the smallest distance */
+            // Search through queue to find the next node having the smallest distance 
             foreach (Airport airport in airportQueue)
             {
                 if (dist[airport] <= min)
@@ -85,7 +80,7 @@ namespace ControlLayer
             this.graphCtr = graphCtr;
             this.startAirport = startAirport;
 
-            Initialize(startAirport, date);
+            Initialize(startAirport);
             //Add edges
             foreach (Flight flight in flightCtr.GetFlightsByDate(date))
             {
@@ -126,10 +121,9 @@ namespace ControlLayer
         /// <param name="from"></param>
         /// <param name="to1"></param>
         /// <returns></returns>
-        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to1)
+        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to)
         {
             var result = new ObservableCollection<Airport>();
-            Airport to = to1;
             
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
             {
