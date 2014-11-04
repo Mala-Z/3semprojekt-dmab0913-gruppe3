@@ -55,7 +55,7 @@ namespace ControlLayer
                 if (key[0].airportID.Equals(from.airportID) && key[1].airportID.Equals(to.airportID))
                 {
                     cost = edges[key];
-                    //Console.WriteLine(key[0].name + " til " + key[1].name + " time: " + cost);
+                    Console.WriteLine(key[0].name + " til " + key[1].name + " time: " + cost);
                 }
             }
 
