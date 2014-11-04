@@ -43,7 +43,7 @@ namespace ControlLayer
 
             // Set distance to 0 for starting point and the previous node to null (-1) 
             dist[start] = 0;
-            path[start] = default(Airport);  
+            path[start] = default(Airport);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace ControlLayer
         public ObservableCollection<Airport> ShortestPath(Airport from, Airport to)
         {
             var result = new ObservableCollection<Airport>();
-            
+
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
             {
                 shortestPath.Add(to);
