@@ -121,19 +121,20 @@ namespace ControlLayer
         /// <param name="from"></param>
         /// <param name="to1"></param>
         /// <returns></returns>
-        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to)
+        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to1)
         {
             var result = new ObservableCollection<Airport>();
+            Airport to = to1;
+            var shortest_path = new List<Airport>();
 
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
             {
-                ///get flight from; from, to and date
-                shortestPath.Add(to);
+                shortest_path.Add(to);
                 to = path[to];
             }
-            shortestPath.Reverse();
+            shortest_path.Reverse();
 
-            shortestPath.ForEach(result.Add);
+            shortest_path.ForEach(x => result.Add(x));
 
             return result;
         }
