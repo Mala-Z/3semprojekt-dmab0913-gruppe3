@@ -20,7 +20,7 @@ namespace ControlLayer
         //the final path
         private List<Airport> shortestPath = new List<Airport>();
 
-        //Queue for the vertices to beevaluated
+        //Queue for the vertices to be evaluated
         private List<Airport> airportQueue = new List<Airport>();
 
         private Airport startAirport;
@@ -127,6 +127,7 @@ namespace ControlLayer
 
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
             {
+                ///get flight from; from, to and date
                 shortestPath.Add(to);
                 to = path[to];
             }
