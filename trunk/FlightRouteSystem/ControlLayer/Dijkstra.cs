@@ -119,22 +119,21 @@ namespace ControlLayer
         /// Finder den korteste ved mellem to Airport objekter. Bruger travelTime som cost
         /// </summary>
         /// <param name="from"></param>
-        /// <param name="to1"></param>
+        /// <param name="to"></param>
         /// <returns></returns>
-        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to1)
+        public ObservableCollection<Airport> ShortestPath(Airport from, Airport to)
         {
             var result = new ObservableCollection<Airport>();
-            Airport to = to1;
-            var shortest_path = new List<Airport>();
+            var shortestPath = new List<Airport>();
 
             while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
             {
-                shortest_path.Add(to);
+                shortestPath.Add(to);
                 to = path[to];
             }
-            shortest_path.Reverse();
+            shortestPath.Reverse();
 
-            shortest_path.ForEach(result.Add);
+            shortestPath.ForEach(result.Add);
 
             return result;
         }
