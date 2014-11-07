@@ -81,7 +81,7 @@ namespace TestDijkstra
             //createTestFlight(02,2015);
             //createTestFlight(03,2015);
 
-            var dijkstra = new Dijkstra(new GraphCtr(airportCtr.GetAllAirports()), startAirport, "16/11/2014");
+            var dijkstra = new Dijkstra(new GraphCtr(airportCtr.GetAllAirports()), startAirport, "01/01/2015");
 
             ObservableCollection<Airport> shortestPath = dijkstra.ShortestPath(startAirport, endAirport);
 
