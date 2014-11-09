@@ -154,8 +154,6 @@ namespace UnitTest
         public void Test_flight_to_path()
         {
             //var db = DBConnection.GetInstance().GetConnection();
-            //var asd = from f in db.Flights where f.
-            //Path<Flight>[] p = db.Flights.ToArray(false => )
         }
 
 
