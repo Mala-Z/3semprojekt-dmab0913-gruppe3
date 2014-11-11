@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EEC37E63-9A3A-478D-AC42-C6998CD8DA92}</ProjectGuid>
+    <ProjectGuid>{99CC89EF-4706-4E39-80A8-ED5CABCE8242}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ControlLayer</RootNamespace>
-    <AssemblyName>ControlLayer</AssemblyName>
+    <RootNamespace>Dijkstra</RootNamespace>
+    <AssemblyName>Dijkstra</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,20 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirplaneCtr.cs" />
-    <Compile Include="AirportCtr.cs" />
-    <Compile Include="BookingCtr.cs" />
-    <Compile Include="Dijkstra.cs" />
-    <Compile Include="FlightCtr.cs" />
-    <Compile Include="GraphCtr.cs" />
-    <Compile Include="PersonCtr.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj">
-      <Project>{7d93996f-93b4-4da0-ba08-4fb6b86b3e7d}</Project>
-      <Name>DatabaseLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
