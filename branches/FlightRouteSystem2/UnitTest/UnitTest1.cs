@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Data.Linq;
+using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using Dijkstra;
@@ -153,7 +155,23 @@ namespace UnitTest
         [TestMethod]
         public void Test_flight_to_path()
         {
-            //var db = DBConnection.GetInstance().GetConnection();
+            var db = DBConnection.GetInstance().GetConnection();
+            var flights = db.Flights.Select(f => f).Where(f => f.timeOfArrival.Contains("11/11/2014")).ToList();
+            List<Path<Airport>> paths = new List<Path<Airport>>();
+            var airports = db.Airports.OrderBy(x => x.airportID).ToDictionary(x => x.name);
+
+            foreach (Flight flight in flights)
+            {
+                paths.Add( new Path<Airport>()
+                {
+                    Source = flight.Airport,
+                    Destination = flight.Airport1,
+                    Cost = Convert.ToDouble(flight.traveltime)
+                } );
+            }
+
+            var results = Engine.CalculateShortestPathBetween(airports["BLL"], airports["JFK"], paths);
+            
         }
 
 
