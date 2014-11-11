@@ -30,7 +30,7 @@ namespace GraphLayer
         ///adds an edge to the (unweighted) graph
         ///PRE (startVertex,endVertex) is not contained in the graph
         ///</summary>
-        void AddEdge(Vertex startVertex, Vertex endVertex);
+        void AddAllEdges();
 
         ///<summary>
         ///determines whether a vertex is in the graph
