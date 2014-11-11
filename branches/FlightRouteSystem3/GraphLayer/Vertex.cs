@@ -44,6 +44,7 @@ namespace GraphLayer
             {
                 var v = db.Airports.Where(a => a.airportID == f.to).Select(a => a);
                 listEdges.Add();
+               // fdgf
             }
             return listEdges;
         }
