@@ -46,15 +46,25 @@ namespace GraphLayer
 
         }
 
-        public void AddEdge(Vertex startVertex, Vertex endVertex)
+        public void AddAllEdges()
         {
-            int startIndex = _vertices.IndexOf(startVertex);
-            _adjList[startIndex].AddFirst(endVertex);
-            //if undirected also:
-            //int endIndex = _vertices.IndexOf(endVertex);
-            //_adjList[endIndex].AddFirst(startVertex);
+            
+            foreach (Vertex vertex in _vertices)
+            {
+                Vertex startIndex = vertex;
+                foreach (Vertex v in vertex.getFlights())
+                {
+                    
+                }
+            }
         }
 
+            
+            //_adjList[startIndex].AddFirst(endVertex);
+            ////if undirected also:
+            ////int endIndex = _vertices.IndexOf(endVertex);
+            ////_adjList[endIndex].AddFirst(startVertex);
+            /// 
         public bool ContainsVertex(Vertex vertex)
         {
             return _vertices.Contains(vertex);
@@ -114,10 +124,13 @@ namespace GraphLayer
         {
             Init();
         }
+        }
+
+       
 
      
 
   
     
     }
-}
+
