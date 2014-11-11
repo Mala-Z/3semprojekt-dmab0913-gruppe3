@@ -14,18 +14,27 @@ namespace GraphLayer
     {
         private Airport airport;
         private List<Flight> flights;
+        private Dictionary<Vertex, Edge> edges;
+
 
 
         public Vertex(Airport airport)
         {
             this.airport = airport;
             flights = AddFlights();
+            edges = new Dictionary<Vertex, Edge>();
         }
 
         public override bool Equals(object obj)
         {
             Vertex other = (Vertex)obj;
             return airport.Equals(other.airport);
+        }
+
+
+        public void setEdge(Dictionary<Vertex, Edge> edge)
+        {
+            edges = edge;
         }
 
         public List<Flight> AddFlights()
@@ -35,23 +44,20 @@ namespace GraphLayer
             return list;
         }
 
-        public List<Vertex> AddEdges()
+        public void setFlights(List<Flight> flights)
         {
-            var db = DBConnection.GetInstance().GetConnection();
-            var list = db.Flights.Where(f => f.from == airport.airportID).Select(f => f).ToList();
-            var listEdges = new List<Vertex>();
-            foreach (Flight f in list)
-            {
-                var v = db.Airports.Where(a => a.airportID == f.to).Select(a => a);
-                listEdges.Add();
-               // fdgf
-            }
-            return listEdges;
+            this.flights = flights;
         }
+
 
         public List<Flight> getFlights()
         {
             return flights;
+        }
+
+        public Airport GetAirport()
+        {
+            return airport;
         }
 
     }

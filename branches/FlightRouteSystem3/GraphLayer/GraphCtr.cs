@@ -12,15 +12,16 @@ namespace GraphLayer
 {
     class GraphCtr : IAbstractGraph
     {
+
         private IList<Vertex> _vertices;
         private List<LinkedList<Vertex>> _adjList;
         private int numberOfVertices;
 
         public GraphCtr()
         {
-            _vertices = AddAllVertices();
-           this.numberOfVertices = GetNoOfVertices();
-           Init();
+
+            this.numberOfVertices = GetNoOfVertices();
+            Init();
         }
 
         private void Init()
@@ -48,23 +49,43 @@ namespace GraphLayer
 
         public void AddAllEdges()
         {
-            
+
             foreach (Vertex vertex in _vertices)
             {
-                Vertex startIndex = vertex;
-                foreach (Vertex v in vertex.getFlights())
+
+                foreach (Flight flight in vertex.getFlights())
                 {
-                    
+                    int index = 0;
+                    bool isfound = false;
+                    Vertex startVertex = vertex;
+                    Dictionary<Vertex, Edge> edges = new Dictionary<Vertex, Edge>();
+
+                    while (index < GetNoOfEdges() && !isfound)
+                    {
+                        if ((_vertices[index].GetAirport().airportID == flight.to))
+                        {
+                            Vertex endVertex = _vertices[index];
+                            Edge e = new Edge(flight, startVertex, endVertex);
+                            isfound = true;
+                            edges.Add(endVertex, e);
+                        }
+                        else
+                        {
+                            index++;
+                        }
+                    }
+                    vertex.setEdge(edges);
+
                 }
             }
         }
 
-            
-            //_adjList[startIndex].AddFirst(endVertex);
-            ////if undirected also:
-            ////int endIndex = _vertices.IndexOf(endVertex);
-            ////_adjList[endIndex].AddFirst(startVertex);
-            /// 
+
+        //_adjList[startIndex].AddFirst(endVertex);
+        ////if undirected also:
+        ////int endIndex = _vertices.IndexOf(endVertex);
+        ////_adjList[endIndex].AddFirst(startVertex);
+        /// 
         public bool ContainsVertex(Vertex vertex)
         {
             return _vertices.Contains(vertex);
@@ -124,13 +145,13 @@ namespace GraphLayer
         {
             Init();
         }
-        }
-
-       
-
-     
-
-  
-    
     }
+
+
+
+
+
+
+
+}
 
