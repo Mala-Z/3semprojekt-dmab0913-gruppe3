@@ -10,18 +10,16 @@ using DatabaseLayer;
 
 namespace GraphLayer
 {
-    class GraphCtr : IAbstractGraph
+    public class GraphCtr : IAbstractGraph
     {
 
-        private IList<Vertex> _vertices;
+        private List<Vertex> _vertices;
         private List<LinkedList<Vertex>> _adjList;
         private int numberOfVertices;
 
         public GraphCtr()
         {
-
-            this.numberOfVertices = GetNoOfVertices();
-            Init();
+            _vertices = new List<Vertex>();
         }
 
         private void Init()
@@ -31,19 +29,17 @@ namespace GraphLayer
                 _adjList.Add(new LinkedList<Vertex>());
         }
 
-        public IList<Vertex> AddAllVertices()
+        public void AddAllVertices()
         {
             var db = DBConnection.GetInstance().GetConnection();
-
-            var listVertex = new List<Vertex>();
 
             var list = db.Airports.Select(a => a).ToList();
             foreach (Airport airport in list)
             {
                 Vertex v = new Vertex(airport);
-                listVertex.Add(v);
+                _vertices.Add(v);
             }
-            return listVertex;
+
 
         }
 
@@ -52,31 +48,43 @@ namespace GraphLayer
 
             foreach (Vertex vertex in _vertices)
             {
-
+                Dictionary<Vertex, Edge> edges = new Dictionary<Vertex, Edge>();
                 foreach (Flight flight in vertex.getFlights())
                 {
                     int index = 0;
                     bool isfound = false;
                     Vertex startVertex = vertex;
-                    Dictionary<Vertex, Edge> edges = new Dictionary<Vertex, Edge>();
 
-                    while (index < GetNoOfEdges() && !isfound)
+
+                    while (index < _vertices.Count() && !isfound)
                     {
                         if ((_vertices[index].GetAirport().airportID == flight.to))
                         {
                             Vertex endVertex = _vertices[index];
                             Edge e = new Edge(flight, startVertex, endVertex);
                             isfound = true;
+                            //Vi skal finde en måde at tilføje flere afgange til samme destination
+                            if (edges.ContainsKey(endVertex))
+                            {
+                                index++;
+                            }
+                            else
+                            {
                             edges.Add(endVertex, e);
+                            Console.WriteLine("Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
+                            }
+                            
                         }
                         else
                         {
                             index++;
                         }
                     }
-                    vertex.setEdge(edges);
+
 
                 }
+                vertex.setEdge(edges);
+
             }
         }
 
@@ -133,13 +141,13 @@ namespace GraphLayer
             return _vertices.Count;
         }
 
-        public int GetNoOfEdges()
-        {
-            int count = 0;
-            foreach (LinkedList<Vertex> l in _adjList)
-                count = count + l.Count;
-            return count;//if undirected count/2
-        }
+        //public int GetNoOfEdges()
+        //{
+        //    int count = 0;
+        //    foreach (LinkedList<Vertex> l in _adjList)
+        //        count = count + l.Count;
+        //    return count;//if undirected count/2
+        //}
 
         public void Clear()
         {
