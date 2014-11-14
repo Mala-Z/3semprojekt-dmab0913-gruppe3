@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DatabaseLayer;
+using ControlLayer;
 
 namespace GraphLayer
 {
@@ -39,8 +40,9 @@ namespace GraphLayer
 
         public List<Flight> AddFlights()
         {
-            var db = DBConnection.GetInstance().GetConnection();
-            var list = db.Flights.Where(f => f.from == airport.airportID).Select(f => f).ToList();
+            FlightCtr flightCtr = new FlightCtr();
+
+            var list = flightCtr.GetFlightsFrom(airport);
             return list;
         }
 
@@ -58,6 +60,11 @@ namespace GraphLayer
         public Airport GetAirport()
         {
             return airport;
+        }
+
+        public Dictionary<Vertex, Edge> getEdges()
+        {
+            return edges;
         }
 
     }

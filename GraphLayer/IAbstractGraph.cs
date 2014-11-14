@@ -24,7 +24,7 @@ namespace GraphLayer
         ///adds a vertex to the graph
         ///PRE: vertex is not in the graph
         ///</summary>
-        IList<Vertex> AddAllVertices();
+        void AddAllVertices();
 
         ///<summary>
         ///adds an edge to the (unweighted) graph
@@ -62,12 +62,12 @@ namespace GraphLayer
         ///<summary>
         ///returns the number of vertices
         ///</summary>
-        int GetNoOfVertices();
+       // int GetNoOfVertices();
 
         ///<summary>
         ///returns the number of edges
         ///</summary>
-        int GetNoOfEdges();
+       // int GetNoOfEdges();
 
 
         ///<summary>
