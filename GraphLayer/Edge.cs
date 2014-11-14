@@ -15,11 +15,11 @@ namespace GraphLayer
         private Vertex to;
         private Flight vertexEdge;
 
-        public Edge(Flight flight, Vertex vTo, Vertex vFrom)
+        public Edge(Flight flight, Vertex to, Vertex from)
         {
             vertexEdge = flight;
-            to = vTo;
-            from = vFrom;
+            this.to = to;
+            this.from = from;
         }
 
         public double GetCost()
