@@ -21,5 +21,10 @@ namespace GraphLayer
             to = vTo;
             from = vFrom;
         }
+
+        public double getCost()
+        {
+            return (double)vertexEdge.traveltime;
+        }
     }
 }
