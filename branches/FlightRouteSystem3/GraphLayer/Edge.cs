@@ -22,7 +22,7 @@ namespace GraphLayer
             from = vFrom;
         }
 
-        public double getCost()
+        public double GetCost()
         {
             return (double)vertexEdge.traveltime;
         }
