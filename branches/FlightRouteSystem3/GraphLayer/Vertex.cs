@@ -46,13 +46,13 @@ namespace GraphLayer
             return list;
         }
 
-        public void setFlights(List<Flight> flights)
+        public void SetFlights(List<Flight> flights)
         {
             this.flights = flights;
         }
 
 
-        public List<Flight> getFlights()
+        public List<Flight> GetFlights()
         {
             return flights;
         }
@@ -62,7 +62,7 @@ namespace GraphLayer
             return airport;
         }
 
-        public Dictionary<Vertex, Edge> getEdges()
+        public Dictionary<Vertex, Edge> GetEdges()
         {
             return edges;
         }
