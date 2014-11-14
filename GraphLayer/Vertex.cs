@@ -28,7 +28,7 @@ namespace GraphLayer
         public override bool Equals(object obj)
         {
             Vertex other = (Vertex)obj;
-            return airport.Equals(other.airport);
+            return airport.airportID == other.GetAirport().airportID;
         }
 
 
