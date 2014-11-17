@@ -20,6 +20,7 @@ namespace GraphLayer
         {
             graph = new Graph();
             listOfCost = new List<Vertex>();
+            vertexQueue = new List<Vertex>();
         }
 
         /// <summary>
