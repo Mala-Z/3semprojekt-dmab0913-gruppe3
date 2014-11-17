@@ -24,7 +24,12 @@ namespace GraphLayer
 
         public double GetCost()
         {
-            return (double)vertexEdge.traveltime;
+            double cost = -1;
+            if (vertexEdge != null)
+            {
+                cost = System.Convert.ToDouble(vertexEdge.traveltime);
+            }
+            return cost;
         }
     }
 }
