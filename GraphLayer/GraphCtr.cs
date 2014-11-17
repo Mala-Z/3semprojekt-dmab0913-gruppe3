@@ -49,7 +49,7 @@ namespace GraphLayer
             foreach (Vertex vertex in _vertices)
             {
                 Dictionary<Vertex, Edge> edges = new Dictionary<Vertex, Edge>();
-                foreach (Flight flight in vertex.getFlights())
+                foreach (Flight flight in vertex.GetFlights())
                 {
                     int index = 0;
                     bool isfound = false;
