@@ -18,9 +18,11 @@ namespace TestLayer
             
             Console.WriteLine("Click to add all vertices");
             Dijkstra dijkstra = new Dijkstra();
-            dijkstra.Test(airCtr.GetAirportByID(1), airCtr.GetAirportByID(8), "11/11/2014");
+            foreach (Vertex v in dijkstra.Test(airCtr.GetAirportByID(1), airCtr.GetAirportByID(8), "11/11/2014"))
+            {
+                Console.WriteLine(v.GetAirport().name);
+            }
             Console.ReadLine();
-            graph.AddAllEdges();
             Console.ReadLine();
 
         }
