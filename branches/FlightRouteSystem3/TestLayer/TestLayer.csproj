@@ -48,6 +48,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ControlLayer\ControlLayer.csproj">
+      <Project>{eec37e63-9a3a-478d-ac42-c6998cd8da92}</Project>
+      <Name>ControlLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj">
+      <Project>{7d93996f-93b4-4da0-ba08-4fb6b86b3e7d}</Project>
+      <Name>DatabaseLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GraphLayer\GraphLayer.csproj">
       <Project>{08decfc9-f924-45d4-ab1c-cf1a9b4d970c}</Project>
       <Name>GraphLayer</Name>

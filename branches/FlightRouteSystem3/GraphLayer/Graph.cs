@@ -38,7 +38,7 @@ namespace GraphLayer
 
             foreach (Vertex vertex in _vertices)
             {
-                Dictionary<Vertex, Edge> edges = new Dictionary<Vertex, Edge>();
+                List<Edge> edges = new List<Edge>();
                 foreach (Flight flight in vertex.GetFlights())
                 {
                     int index = 0;
@@ -50,18 +50,12 @@ namespace GraphLayer
                         if ((_vertices[index].GetAirport().airportID == flight.to))
                         {
                             Vertex endVertex = _vertices[index];
-                            Edge e = new Edge(flight, startVertex, endVertex);
+                            Edge edge = new Edge(flight, startVertex, endVertex);
                             isfound = true;
-                            //Vi skal finde en måde at tilføje flere afgange til samme destination
-                            if (edges.ContainsKey(endVertex))
-                            {
-                                index++;
-                            }
-                            else
-                            {
-                            edges.Add(endVertex, e);
+
+                            edges.Add(edge);
                             Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
-                           }
+
                             
                         }
                         else
@@ -72,7 +66,7 @@ namespace GraphLayer
 
 
                 }
-                vertex.setEdge(edges);
+                vertex.setEdges(edges);
 
             }
         }
