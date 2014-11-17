@@ -52,7 +52,7 @@ namespace GraphLayer
         ///<summary>
         ///Returns an Enumerator to the collection of vertices
         ///</summary>
-        ICollection<Vertex> GetVertices();
+        List<Vertex> GetVertices();
 
         ///<summary>
         ///determines whether the graph is empty

@@ -97,7 +97,7 @@ namespace GraphLayer
         //}
 
   
-        public ICollection<Vertex> GetVertices()
+        public List<Vertex> GetVertices()
         {
             return _vertices;
         }
