@@ -40,14 +40,14 @@ namespace GraphLayer
         ///<summary>
         ///determines whether two vertices are adjacent
         ///</summary>
-        bool IsAdjacent(Vertex startVertex, Vertex endVertex);
+        
 
         ///<summary>
         ///Returns a collection containing all vertices adjancent to vertex.
         ///Must be a collection and not just an enumerator
         ///since it should be possible to remove adjacent vertices
         ///</summary>
-        ICollection<Vertex> GetAdjacencies(Vertex vertex);
+ 
 
         ///<summary>
         ///Returns an Enumerator to the collection of vertices
