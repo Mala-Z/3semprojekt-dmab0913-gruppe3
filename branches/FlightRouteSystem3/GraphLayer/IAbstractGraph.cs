@@ -24,7 +24,7 @@ namespace GraphLayer
         ///adds a vertex to the graph
         ///PRE: vertex is not in the graph
         ///</summary>
-        void AddAllVertices();
+        void AddAllVertices(string date);
 
         ///<summary>
         ///adds an edge to the (unweighted) graph

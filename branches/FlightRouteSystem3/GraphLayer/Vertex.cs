@@ -14,15 +14,18 @@ namespace GraphLayer
     public class Vertex
     {
         private Airport airport;
-        private List<Flight> flights;
+        private List<Flight> flightsFromAiport;
         private Dictionary<Vertex, Edge> edges;
+        private string date;
+        private FlightCtr flightCtr;
 
 
-
-        public Vertex(Airport airport)
+        public Vertex(Airport airport, string date)
         {
+            flightCtr = new FlightCtr();
             this.airport = airport;
-            flights = AddFlights();
+            this.date = date;
+            flightsFromAiport = AddFlights();
             edges = new Dictionary<Vertex, Edge>();
         }
 
@@ -40,21 +43,18 @@ namespace GraphLayer
 
         public List<Flight> AddFlights()
         {
-            FlightCtr flightCtr = new FlightCtr();
-
-            var list = flightCtr.GetFlightsFrom(airport);
-            return list;
+            return flightCtr.GetFlightsFrom(airport, date);
         }
 
         public void SetFlights(List<Flight> flights)
         {
-            this.flights = flights;
+            this.flightsFromAiport = flights;
         }
 
 
         public List<Flight> GetFlights()
         {
-            return flights;
+            return flightsFromAiport;
         }
 
         public Airport GetAirport()
