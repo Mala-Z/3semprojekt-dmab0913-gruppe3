@@ -8,18 +8,18 @@ using DatabaseLayer;
 
 namespace GraphLayer
 {
-    class Dijkstra
+    public class Dijkstra
     {
         Graph graph = new Graph();
 
-        private Dictionary<Vertex, double> dist;
+        private List<Vertex> listOfCost;
         //Queue for the vertices to be evaluated
-        private List<Vertex> vertexQueue = new List<Vertex>();
+        private List<Vertex> vertexQueue;   
 
         public Dijkstra()
         {
             graph = new Graph();
-            dist = new Dictionary<Vertex, double>();
+            listOfCost = new List<Vertex>();
         }
 
         /// <summary>
@@ -33,87 +33,66 @@ namespace GraphLayer
 
             Vertex startVertex = graph.GetVertices().Where(v => v.GetAirport().airportID == start.airportID).ToList().First();
 
+            // Set distance to 0 for starting point and the previous node to null (-1) 
+            startVertex.DistanceFromStart = 0;
+
             // Set distance to all vertices to infinity
             for (int i = 0; i < graph.GetVertices().Count; i++)
             {
-                dist[graph.GetVertices()[i]] = Double.PositiveInfinity;
-
+                if (!graph.GetVertices()[i].Equals(startVertex))
+                {
+                    graph.GetVertices()[i].DistanceFromStart = Double.PositiveInfinity;
+                }
                 vertexQueue.Add(graph.GetVertices()[i]);
             }
-
-            // Set distance to 0 for starting point and the previous node to null (-1) 
-            dist[startVertex] = 0;
-            
-            //path[start] = default(Airport);
         }
 
-        private Vertex GetNextVertex()
+        public List<Vertex> RunDijkstra()
         {
-            double min = Double.PositiveInfinity;
-            Vertex vertex = default(Vertex);
-
-            // Search through queue to find the next node having the smallest distance 
-            foreach (Vertex v in vertexQueue)
-            {
-                if (dist[v] <= min)
-                {
-                    min = dist[v];
-                    vertex = v;
-                }
-            }
-
-            vertexQueue.Remove(vertex);
-
-            return vertex;
-        }
-
-        public void RunDijkstra(Airport start, string date)
-        {
-            Initialize(start, date);
+            List<Vertex> costPath = new List<Vertex>();
 
             while (vertexQueue.Count > 0)
             {
-                Vertex from = GetNextVertex();
+                Vertex currentVertex = vertexQueue.OrderByDescending(v => v.DistanceFromStart).ToList().Last();
+                vertexQueue.Remove(currentVertex);
 
-                /* Find the nodes that u connects to and perform relax */
-                for (int vi = 0; vi < vertexQueue.Count; vi++)
+                foreach (Edge edge in currentVertex.GetEdges())
                 {
-                    Vertex to = graph.GetVertices()[vi];
-                    
-                    //TODO Tjek om der er en edge
-                    Edge edge = (Edge)from.GetEdges().Where(x => x.Key.Equals(from) 
-                        && x.Value.To.Equals(to));
-                    /* Check for an edge between u and v */
-                    if (edge.GetCost() > 0)
+                    double cost = currentVertex.DistanceFromStart + edge.GetCost();
+
+                    if (cost < edge.GetCost())
                     {
-                        /* Edge exists, relax the edge */
-                        if (dist[to] > dist[from] + edge.GetCost())
-                        {
-                            dist[to] = dist[from] + edge.GetCost();
-                            //path[to] = from;
-                        }
-                    }
+                        Vertex updatedVertex = edge.To;
+                        updatedVertex.DistanceFromStart = cost;
+                        costPath.Add(updatedVertex);
+                    }//end if
+                }//end foreach
+            }//end while
+
+            return costPath;
+        }
+
+
+        public List<Vertex> Test(Airport start, Airport to, string date)
+        {
+            Initialize(start, date);
+            List<Vertex> dijkstra = RunDijkstra();
+            List<Vertex> shortestPath = new List<Vertex>();
+            Vertex endVertex = graph.GetVertices().Where(v => v.GetAirport().airportID == to.airportID).ToList().First();
+            bool found = false;
+
+            for (int i = 0; i < dijkstra.Count && !found; i++)
+            {
+                shortestPath.Add(dijkstra[i]);
+                if (dijkstra[i].Equals(endVertex))
+                {
+                    found = true;
                 }
             }
-            
+
+            return shortestPath;
         }
 
-        public List<Flight> ShortestPath(Airport from, Airport to)
-        {
-            var result = new List<Flight>();
-            var shortestPath = new List<Flight>();
-
-            while (!EqualityComparer<Airport>.Default.Equals(to, default(Airport)))
-            {
-                shortestPath.Add(to);
-                to = path[to];
-            }
-            shortestPath.Reverse();
-
-            shortestPath.ForEach(result.Add);
-
-            return result;
-        }
 
     }
 }

@@ -15,8 +15,9 @@ namespace GraphLayer
     {
         private Airport airport;
         private List<Flight> flightsFromAiport;
-        private Dictionary<Vertex, Edge> edges;
+        private List<Edge> edges;
         private string date;
+        private double distanceFromStart;
         private FlightCtr flightCtr;
 
 
@@ -26,7 +27,7 @@ namespace GraphLayer
             this.airport = airport;
             this.date = date;
             flightsFromAiport = AddFlights();
-            edges = new Dictionary<Vertex, Edge>();
+            edges = new List<Edge>();
         }
 
         public override bool Equals(object obj)
@@ -36,9 +37,9 @@ namespace GraphLayer
         }
 
 
-        public void setEdge(Dictionary<Vertex, Edge> edge)
+        public void setEdges(List<Edge> edges)
         {
-            edges = edge;
+            this.edges = edges;
         }
 
         public List<Flight> AddFlights()
@@ -62,10 +63,12 @@ namespace GraphLayer
             return airport;
         }
 
-        public Dictionary<Vertex, Edge> GetEdges()
+        public List<Edge> GetEdges()
         {
             return edges;
         }
+
+        public double DistanceFromStart { get; set; }
 
     }
 }
