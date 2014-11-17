@@ -10,12 +10,12 @@ namespace TestLayer
 {
     class Program
     {
-        private static GraphCtr graph = new GraphCtr();
+        private static Graph graph = new Graph();
         static void Main(string[] args)
         {
             Console.WriteLine("Click to add all vertices");
             Console.ReadLine();
-            graph.AddAllVertices("10/10/2015");
+            graph.AddAllVertices("1/11/2014");
             Console.WriteLine("All vertices added");
             Console.WriteLine();
             Console.WriteLine("Click to add all edges");

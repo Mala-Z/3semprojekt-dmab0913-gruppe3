@@ -11,15 +11,14 @@ using DatabaseLayer;
 
 namespace GraphLayer
 {
-    public class GraphCtr : IAbstractGraph
+    public class Graph : IAbstractGraph
     {
         private AirportCtr airportCtr;
 
         private List<Vertex> _vertices;
-       
-        private int numberOfVertices;
 
-        public GraphCtr()
+
+        public Graph()
         {
             airportCtr = new AirportCtr();
             _vertices = new List<Vertex>();
@@ -46,7 +45,6 @@ namespace GraphLayer
                     bool isfound = false;
                     Vertex startVertex = vertex;
 
-
                     while (index < _vertices.Count() && !isfound)
                     {
                         if ((_vertices[index].GetAirport().airportID == flight.to))
@@ -55,15 +53,15 @@ namespace GraphLayer
                             Edge e = new Edge(flight, startVertex, endVertex);
                             isfound = true;
                             //Vi skal finde en måde at tilføje flere afgange til samme destination
-                            //if (edges.ContainsKey(endVertex))
-                            //{
-                            //    index++;
-                            //}
-                            //else
-                            //{
+                            if (edges.ContainsKey(endVertex))
+                            {
+                                index++;
+                            }
+                            else
+                            {
                             edges.Add(endVertex, e);
-                            Console.WriteLine("Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
-                           // }
+                            Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
+                           }
                             
                         }
                         else
