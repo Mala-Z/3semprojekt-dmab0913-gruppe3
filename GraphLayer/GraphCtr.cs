@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
+using ControlLayer;
 using GraphLayer;
 using System.Linq;
 using System.Data.Linq;
@@ -12,6 +13,7 @@ namespace GraphLayer
 {
     public class GraphCtr : IAbstractGraph
     {
+        private AirportCtr airportCtr;
 
         private List<Vertex> _vertices;
        
@@ -19,26 +21,17 @@ namespace GraphLayer
 
         public GraphCtr()
         {
+            airportCtr = new AirportCtr();
             _vertices = new List<Vertex>();
         }
 
-        private void Init()
+        public void AddAllVertices(string date)
         {
-   
-        }
-
-        public void AddAllVertices()
-        {
-            var db = DBConnection.GetInstance().GetConnection();
-
-            var list = db.Airports.Select(a => a).ToList();
-            foreach (Airport airport in list)
+            foreach (Airport airport in airportCtr.GetAllAirports())
             {
-                Vertex v = new Vertex(airport);
+                Vertex v = new Vertex(airport, date);
                 _vertices.Add(v);
             }
-
-
         }
 
         public void AddAllEdges()
@@ -131,7 +124,7 @@ namespace GraphLayer
 
         public void Clear()
         {
-            Init();
+            //Init();
         }
     }
 

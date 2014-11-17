@@ -40,11 +40,11 @@ namespace ControlLayer
         /// Get all Flights flying from a specific Airport
         /// </summary>
         /// <returns>Returns a list of all Flight objects who contains depTime</returns>
-        public List<Flight> GetFlightsFrom(Airport start)
+        public List<Flight> GetFlightsFrom(Airport start, string date)
         {
             var db = DBConnection.GetInstance().GetConnection();
 
-            var flights = db.Flights.Where(x => x.Airport.Equals(start)).OrderBy(x => x.flightID);
+            var flights = db.Flights.Where(x => x.Airport.Equals(start) && x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID);
 
             return flights.ToList();
         }

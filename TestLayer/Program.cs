@@ -15,7 +15,7 @@ namespace TestLayer
         {
             Console.WriteLine("Click to add all vertices");
             Console.ReadLine();
-            graph.AddAllVertices();
+            graph.AddAllVertices("10/10/2015");
             Console.WriteLine("All vertices added");
             Console.WriteLine();
             Console.WriteLine("Click to add all edges");
