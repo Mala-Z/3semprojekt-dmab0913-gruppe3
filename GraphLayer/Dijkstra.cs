@@ -31,7 +31,7 @@ namespace GraphLayer
             graph.AddAllVertices(date);
             graph.AddAllEdges();
 
-            Vertex startVertex = (Vertex) graph.GetVertices().Where(x => x.GetAirport().airportID == start.airportID).Take(1);
+            Vertex startVertex = graph.GetVertices().Where(v => v.GetAirport().airportID == start.airportID).ToList().First();
 
             // Set distance to all vertices to infinity
             for (int i = 0; i < graph.GetVertices().Count; i++)
