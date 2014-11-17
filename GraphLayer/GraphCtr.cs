@@ -14,7 +14,7 @@ namespace GraphLayer
     {
 
         private List<Vertex> _vertices;
-        private List<LinkedList<Vertex>> _adjList;
+       
         private int numberOfVertices;
 
         public GraphCtr()
@@ -24,9 +24,7 @@ namespace GraphLayer
 
         private void Init()
         {
-            _adjList = new List<LinkedList<Vertex>>(numberOfVertices);
-            for (int i = 0; i < numberOfVertices; i++)
-                _adjList.Add(new LinkedList<Vertex>());
+   
         }
 
         public void AddAllVertices()
@@ -64,15 +62,15 @@ namespace GraphLayer
                             Edge e = new Edge(flight, startVertex, endVertex);
                             isfound = true;
                             //Vi skal finde en måde at tilføje flere afgange til samme destination
-                            if (edges.ContainsKey(endVertex))
-                            {
-                                index++;
-                            }
-                            else
-                            {
+                            //if (edges.ContainsKey(endVertex))
+                            //{
+                            //    index++;
+                            //}
+                            //else
+                            //{
                             edges.Add(endVertex, e);
                             Console.WriteLine("Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
-                            }
+                           // }
                             
                         }
                         else
@@ -99,20 +97,7 @@ namespace GraphLayer
             return _vertices.Contains(vertex);
         }
 
-        public bool IsAdjacent(Vertex startVertex, Vertex endVertex)
-        {
-            int vertexIndex = _vertices.IndexOf(startVertex);
-            bool found = false;
-            LinkedListNode<Vertex> cur = _adjList[vertexIndex].First;
-            while (!found && cur != null)
-            {
-                if (cur.Value.Equals(endVertex))
-                    found = true;
-                else
-                    cur = cur.Next;
-            }
-            return found; ;
-        }
+       
 
         //public override IList<Vertex> GetAdjacencies(Vertex vertex)
         //{
@@ -120,12 +105,7 @@ namespace GraphLayer
         //    return new List<Vertex>(_adjList[vertexIndex]);
         //}
 
-        public ICollection<Vertex> GetAdjacencies(Vertex vertex)
-        {
-            int vertexIndex = _vertices.IndexOf(vertex);
-            return _adjList[vertexIndex];
-        }
-
+  
         public ICollection<Vertex> GetVertices()
         {
             return _vertices;
