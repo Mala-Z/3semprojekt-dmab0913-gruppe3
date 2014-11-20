@@ -63,10 +63,10 @@ namespace GraphLayer
                 vertexQueue.Remove(currentVertex);
                 listOfCost.Add(currentVertex);
 
-                //foreach (Vertex vertex in vertexQueue)
-                //{ 
+                foreach (Vertex vertex in vertexQueue)
+                { 
                     //foreach (Edge edge in currentVertex.GetEdges())
-                    foreach (Edge edge in currentVertex.GetEdges())
+                    foreach (Edge edge in vertex.GetEdges())
                     {
                         //if (edge.To.Equals(vertex))
                         //{
@@ -80,7 +80,7 @@ namespace GraphLayer
                                 updatedVertex.PrevVertex = currentVertex;
                                 //listOfCost.Add(updatedVertex);
                             }//end if
-                        //}
+                      }
                         
                     }//end foreach
                 //}

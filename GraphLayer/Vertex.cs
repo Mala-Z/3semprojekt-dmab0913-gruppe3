@@ -18,7 +18,6 @@ namespace GraphLayer
         private List<Edge> edges;
         private string date;
         private FlightCtr flightCtr;
-        private Vertex prevVertex;
 
 
         public Vertex(Airport airport, string date)
