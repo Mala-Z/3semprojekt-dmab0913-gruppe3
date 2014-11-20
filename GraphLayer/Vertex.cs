@@ -76,6 +76,8 @@ namespace GraphLayer
 
         public Vertex PrevVertex { get; set; }
 
+        public Edge EdgeToUse { get; set; }
+
     }
 }
 

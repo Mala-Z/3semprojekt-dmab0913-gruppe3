@@ -12,11 +12,10 @@ namespace GraphLayer
 {
     public class Edge
     {
-        private Flight vertexEdge;
 
         public Edge(Flight flight, Vertex to, Vertex from)
         {
-            vertexEdge = flight;
+            VertexEdge = flight;
             this.To = to;
             this.From = from;
         }
@@ -24,14 +23,15 @@ namespace GraphLayer
         public double GetCost()
         {
             double cost = -1;
-            if (vertexEdge != null)
+            if (VertexEdge != null)
             {
-                cost = System.Convert.ToDouble(vertexEdge.traveltime);
+                cost = System.Convert.ToDouble(VertexEdge.traveltime);
             }
             return cost;
         }
 
         public Vertex From { get; set; }
         public Vertex To { get; set; }
+        public Flight VertexEdge { get; set; }
     }
 }

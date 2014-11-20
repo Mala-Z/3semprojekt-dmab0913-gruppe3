@@ -72,9 +72,10 @@ namespace GraphLayer
                         Vertex updatedVertex = edge.To;
                         updatedVertex.DistanceFromStart = cost;
                         updatedVertex.PrevVertex = currentVertex;
+                        updatedVertex.EdgeToUse = edge;
                         //listOfCost.Add(updatedVertex);
                     }//end if
-                    }
+                 }
                         
 
             }//end while
@@ -98,6 +99,16 @@ namespace GraphLayer
                     }
                 }
             }
+            //bool isFound = false;
+            //for (int i = 0; i < listOfCost.Count && !isFound; i++)
+            //{
+            //    if (listOfCost[i].GetAirport().Equals(from))
+            //    {
+            //        solutionList.Add(listOfCost[i]);
+            //        isFound = true;
+            //    }
+            //}
+            solutionList.Reverse();
             return solutionList;
         }
 
