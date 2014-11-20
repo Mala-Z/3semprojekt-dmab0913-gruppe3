@@ -60,55 +60,27 @@ namespace GraphLayer
             while (vertexQueue.Count > 0)
             {
                 Vertex currentVertex = ShortestDistFromStart();
-                vertexQueue.Remove(currentVertex);
                 listOfCost.Add(currentVertex);
+                vertexQueue.Remove(currentVertex);
 
-                foreach (Vertex vertex in vertexQueue)
-                { 
-                    //foreach (Edge edge in currentVertex.GetEdges())
-                    foreach (Edge edge in vertex.GetEdges())
-                    {
-                        //if (edge.To.Equals(vertex))
-                        //{
-                        double cost = currentVertex.DistanceFromStart + edge.GetCost();
-                       
+                foreach (Edge edge in currentVertex.GetEdges())
+                {
+                    double cost = currentVertex.DistanceFromStart + edge.GetCost();
 
-                            if (cost < edge.To.DistanceFromStart)
-                            { 
-                                Vertex updatedVertex = edge.To;
-                                updatedVertex.DistanceFromStart = cost;
-                                updatedVertex.PrevVertex = currentVertex;
-                                //listOfCost.Add(updatedVertex);
-                            }//end if
-                      }
+                    if (cost < edge.To.DistanceFromStart)
+                    { 
+                        Vertex updatedVertex = edge.To;
+                        updatedVertex.DistanceFromStart = cost;
+                        updatedVertex.PrevVertex = currentVertex;
+                        //listOfCost.Add(updatedVertex);
+                    }//end if
+                    }
                         
-                    }//end foreach
-                //}
 
             }//end while
 
             solutionList = Backtrack(from, to);
             //solutionList = BackTest(updatedVertex, to);
-
-            return solutionList;
-        }
-
-        private List<Vertex> BackTest(Vertex updatedVertex, Airport to)
-        {
-            while (updatedVertex !=null)
-            {
-                solutionList.Add(updatedVertex);
-
-                if (updatedVertex.GetAirport().airportID == to.airportID)
-                {
-                    updatedVertex = null;
-                }
-                else
-                {
-                    updatedVertex = updatedVertex.PrevVertex;
-                }
-                
-            }
 
             return solutionList;
         }
