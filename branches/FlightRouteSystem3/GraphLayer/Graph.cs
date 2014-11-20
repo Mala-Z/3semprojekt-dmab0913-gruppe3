@@ -41,28 +41,20 @@ namespace GraphLayer
                 List<Edge> edges = new List<Edge>();
                 foreach (Flight flight in vertex.GetFlights())
                 {
-                    int index = 0;
-                    bool isfound = false;
+                    bool isFound = false;
                     Vertex startVertex = vertex;
 
-                    while (index < _vertices.Count() && !isfound)
+                    for (int i = 0; i < _vertices.Count && !isFound; i++)
                     {
-                        if ((_vertices[index].GetAirport().airportID == flight.to))
+                        Vertex endVertex = _vertices[i];
+                        if ((endVertex.GetAirport().airportID == flight.to))
                         {
-                            Vertex endVertex = _vertices[index];
                             Edge edge = new Edge(flight, endVertex, startVertex);
-                            isfound = true;
-
                             edges.Add(edge);
-                            Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);                           
-                        }
-                        else
-                        {
-                            index++;
+                            Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
+                            isFound = true;
                         }
                     }
-                    
-
 
                 }
                 vertex.setEdges(edges);
