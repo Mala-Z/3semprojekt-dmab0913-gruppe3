@@ -30,6 +30,11 @@ namespace GraphLayer
             edges = new List<Edge>();
         }
 
+        public Vertex()
+        {
+            
+        }
+
         public override bool Equals(object obj)
         {
             Vertex other = (Vertex)obj;

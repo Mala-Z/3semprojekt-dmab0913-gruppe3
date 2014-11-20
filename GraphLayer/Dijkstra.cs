@@ -56,13 +56,12 @@ namespace GraphLayer
         public List<Vertex> RunDijkstra(Airport from, Airport to, string date)
         {
             Initialize(from, date);
-            Vertex updatedVertex = null;
 
             while (vertexQueue.Count > 0)
             {
                 Vertex currentVertex = ShortestDistFromStart();
                 vertexQueue.Remove(currentVertex);
-                //listOfCost.Add(currentVertex);
+                listOfCost.Add(currentVertex);
 
                 //foreach (Vertex vertex in vertexQueue)
                 //{ 
@@ -72,10 +71,11 @@ namespace GraphLayer
                         //if (edge.To.Equals(vertex))
                         //{
                         double cost = currentVertex.DistanceFromStart + edge.GetCost();
+                       
 
-                            if (cost < edge.GetCost())
+                            if (cost < edge.To.DistanceFromStart)
                             { 
-                                updatedVertex = edge.To;
+                                Vertex updatedVertex = edge.To;
                                 updatedVertex.DistanceFromStart = cost;
                                 updatedVertex.PrevVertex = currentVertex;
                                 //listOfCost.Add(updatedVertex);
@@ -87,8 +87,8 @@ namespace GraphLayer
 
             }//end while
 
-            //solutionList = Backtrack(from, to);
-            solutionList = BackTest(updatedVertex, to);
+            solutionList = Backtrack(from, to);
+            //solutionList = BackTest(updatedVertex, to);
 
             return solutionList;
         }
@@ -132,7 +132,16 @@ namespace GraphLayer
         private Vertex ShortestDistFromStart()
         {
             return vertexQueue.OrderByDescending(v => v.DistanceFromStart).ToList().Last();
-            
+            //Vertex smallestDist = new Vertex();
+            //smallestDist.DistanceFromStart = Double.PositiveInfinity;
+            //foreach (Vertex vertex in vertexQueue)
+            //{
+            //    if (vertex.DistanceFromStart < smallestDist.DistanceFromStart)
+            //    {
+            //        smallestDist = vertex;
+            //    }
+            //}
+            //return smallestDist;
         }
 
 
