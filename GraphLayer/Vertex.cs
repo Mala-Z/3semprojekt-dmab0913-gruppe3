@@ -17,8 +17,8 @@ namespace GraphLayer
         private List<Flight> flightsFromAiport;
         private List<Edge> edges;
         private string date;
-        private double distanceFromStart;
         private FlightCtr flightCtr;
+        private Vertex prevVertex;
 
 
         public Vertex(Airport airport, string date)
@@ -69,6 +69,8 @@ namespace GraphLayer
         }
 
         public double DistanceFromStart { get; set; }
+
+        public Vertex PrevVertex { get; set; }
 
     }
 }

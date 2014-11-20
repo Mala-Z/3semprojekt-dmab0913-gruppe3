@@ -54,41 +54,27 @@ namespace GraphLayer
                             isfound = true;
 
                             edges.Add(edge);
-                            Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
-
-                            
+                            Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);                           
                         }
                         else
                         {
                             index++;
                         }
                     }
+                    
 
 
                 }
                 vertex.setEdges(edges);
 
             }
+            Console.WriteLine("All edges added");
         }
 
-
-        //_adjList[startIndex].AddFirst(endVertex);
-        ////if undirected also:
-        ////int endIndex = _vertices.IndexOf(endVertex);
-        ////_adjList[endIndex].AddFirst(startVertex);
-        /// 
         public bool ContainsVertex(Vertex vertex)
         {
             return _vertices.Contains(vertex);
         }
-
-       
-
-        //public override IList<Vertex> GetAdjacencies(Vertex vertex)
-        //{
-        //    int vertexIndex = _vertices.IndexOf(vertex);
-        //    return new List<Vertex>(_adjList[vertexIndex]);
-        //}
 
   
         public List<Vertex> GetVertices()
