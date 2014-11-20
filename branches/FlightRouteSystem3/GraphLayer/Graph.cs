@@ -50,7 +50,7 @@ namespace GraphLayer
                         if ((_vertices[index].GetAirport().airportID == flight.to))
                         {
                             Vertex endVertex = _vertices[index];
-                            Edge edge = new Edge(flight, startVertex, endVertex);
+                            Edge edge = new Edge(flight, endVertex, startVertex);
                             isfound = true;
 
                             edges.Add(edge);
