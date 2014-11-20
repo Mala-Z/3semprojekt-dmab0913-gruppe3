@@ -57,7 +57,9 @@ namespace ControlLayer
                     cost = edges[key];
                     Console.WriteLine(key[0].name + " til " + key[1].name + " time: " + cost);
                 }
+                Console.WriteLine(key[0].name + " til " + key[1].name + " time: INFINITE");
                 //throw new Exception("Edge not found");
+
             }
 
             return cost;

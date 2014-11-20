@@ -73,7 +73,7 @@ namespace TestDijkstra
         static void Main(string[] args)
         {
             var startAirport = airportCtr.GetAirportByID(1);
-            var endAirport = airportCtr.GetAirportByID(8); //Fejl ved forsøg på id 5, 6, 7 og 8
+            var endAirport = airportCtr.GetAirportByID(4); //Fejl ved forsøg på id 5, 6, 7 og 8
 
             //createTestFlight(11,2014);
             //createTestFlight(12,2014);
