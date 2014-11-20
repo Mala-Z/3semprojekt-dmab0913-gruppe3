@@ -16,9 +16,11 @@ namespace TestLayer
         {
             AirportCtr airCtr = new AirportCtr();
             
-            Console.WriteLine("Click to add all vertices");
+            Console.WriteLine("Click to initialize and run dijkstra");
             Dijkstra dijkstra = new Dijkstra();
             var shortestpath = dijkstra.Test(airCtr.GetAirportByID(1), airCtr.GetAirportByID(8), "17/11/2014");
+            Console.WriteLine("Click to show path");
+            Console.ReadLine();
             foreach (var v in shortestpath)
             {
                 Console.WriteLine(v.GetAirport().name);
