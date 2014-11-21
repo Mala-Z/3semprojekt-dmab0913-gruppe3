@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,25 @@ namespace ControlLayer
         /// 
         /// </summary>
         /// <param name="seats"></param>
-        public void CreateNewAirplane(int seats)
+        public bool CreateNewAirplane(int seats)
         {
+            bool returnValue = true;
             var db = DBConnection.GetInstance().GetConnection();
             var airplane = new Airplane { seats = seats };
             db.Airplanes.InsertOnSubmit(airplane);
             db.SubmitChanges();
+
+            try
+            {
+                db.SubmitChanges();
+                returnValue = true;
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -51,16 +65,28 @@ namespace ControlLayer
         /// </summary>
         /// <param name="id"></param>
         /// <param name="seats"></param>
-        public void UpdateAirplane(int id, int seats)
+        public bool UpdateAirplane(int id, int seats)
         {
+            bool returnValue = true;
             var db = DBConnection.GetInstance().GetConnection();
             var airplane = GetAirplaneByID(id);
 
             if (airplane != null)
             {
                 airplane.seats = seats;
-                db.SubmitChanges();
+
             }
+            try
+            {
+                db.SubmitChanges();
+                returnValue = true;
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -69,22 +95,26 @@ namespace ControlLayer
         /// <param name="id"></param>
         public bool DeleteAirplane(int id)
         {
+            bool returnValue = true;
             var db = DBConnection.GetInstance().GetConnection();
             var airplane = GetAirplaneByID(id);
 
             if (airplane != null)
             {
                 db.Airplanes.DeleteOnSubmit(airplane);
-                db.SubmitChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
+            } //end if
+            return returnValue;
 
         }
 
     }
-
 }
