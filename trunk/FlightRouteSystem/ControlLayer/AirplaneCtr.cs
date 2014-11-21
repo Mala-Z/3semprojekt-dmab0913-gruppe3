@@ -76,16 +76,11 @@ namespace ControlLayer
             {
                 db.Airplanes.DeleteOnSubmit(airplane);
                 db.SubmitChanges();
+                return true;
             }
-
-            if (GetAirplaneByID(id) != null)
-            {
-                return false;
-            }
-
             else
             {
-                return true;
+                return false;
             }
 
         }
