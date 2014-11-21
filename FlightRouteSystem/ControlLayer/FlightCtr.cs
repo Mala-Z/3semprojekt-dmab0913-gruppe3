@@ -45,9 +45,9 @@ namespace ControlLayer
         {
             var db = DBConnection.GetInstance().GetConnection();
 
-            var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID);
+            var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
 
-            return flights.ToList();
+            return flights;
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace ControlLayer
         {
             var db = DBConnection.GetInstance().GetConnection();
 
-            var flights = db.Flights.Where(x => x.Airport.Equals(start) && x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID);
+            var flights = db.Flights.Where(x => x.Airport.Equals(start) && x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
 
-            return flights.ToList();
+            return flights;
         }
 
         /// <summary>
