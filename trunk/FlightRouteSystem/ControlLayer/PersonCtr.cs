@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,9 +83,10 @@ namespace ControlLayer
         /// <param name="birthdate"></param>
         /// <param name="password"></param>
         /// <param name="type"></param>
-        public void UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, 
+        public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, 
                                  string email, string birthdate, string password, int type)
         {
+            bool returnValue = true;
             var db = DBConnection.GetInstance().GetConnection();
 
             var person = GetPersonByID(id);
@@ -101,24 +103,41 @@ namespace ControlLayer
                 person.password = password;
                 person.type = type;
 
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
             }
+            return returnValue;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeletePerson(int id)
+        public bool DeletePerson(int id)
         {
+            bool returnValue = false;
             var db = DBConnection.GetInstance().GetConnection();
             var person = GetPersonByID(id);
             if (person != null)
             {
                 db.Persons.DeleteOnSubmit(person);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                    returnValue = true;
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
             }
+            return returnValue;
         }
-
     }
 }
