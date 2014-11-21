@@ -51,6 +51,7 @@ namespace ControlLayer
             airport.location = location;
 
             db.Airports.InsertOnSubmit(airport);
+            db.SubmitChanges();
         }
 
         /// <summary>
@@ -85,6 +86,7 @@ namespace ControlLayer
             if (airport != null)
             {
                 db.Airports.DeleteOnSubmit(airport);
+                db.SubmitChanges();
             }
         }
 

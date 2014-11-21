@@ -50,6 +50,18 @@ namespace TestLayer
             Console.ReadLine();
 
 
+            //Console.WriteLine("Enter to add Aiport");
+            //Console.ReadLine();
+            //airCtr.CreateNewAirport("Test", "Lemvig");
+            //Console.WriteLine("Enter to update Aiport");
+            //Console.ReadLine();
+            //airCtr.UpdateAirport(9, "Test2", "Aalborg");
+            //Console.WriteLine("Enter to delete Aiport");
+            //Console.ReadLine();
+            //airCtr.DeleteAirport(9);
+            //Console.ReadLine();
+
+
         }
     }
 }
