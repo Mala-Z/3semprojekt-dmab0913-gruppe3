@@ -15,16 +15,15 @@ namespace TestLayer
         static void Main(string[] args)
         {
             AirportCtr airCtr = new AirportCtr();
-            
-            Console.WriteLine("Click to initialize and run dijkstra");
-            Dijkstra dijkstra = new Dijkstra();
-            var shortestpath = dijkstra.Test(airCtr.GetAirportByID(1), airCtr.GetAirportByID(5), "17/11/2014");
-            Console.WriteLine("Click to show path");
+
+            Console.WriteLine("Hit enter torun dijkstra");
             Console.ReadLine();
-            Console.WriteLine("From: " + shortestpath.First().EdgeToUse.From.GetAirport().name + " to " );
+            Dijkstra dijkstra = new Dijkstra();
+            var shortestpath = dijkstra.Test(airCtr.GetAirportByID(1), airCtr.GetAirportByID(7), "17/11/2014");
             foreach (var v in shortestpath)
             {
-                Console.WriteLine(v.GetAirport().name + " to");
+                Console.WriteLine(v.EdgeToUse.VertexEdge.flightID + " from: " + airCtr.GetAirportByID(v.EdgeToUse.VertexEdge.from).name + " to: " + airCtr.GetAirportByID(v.EdgeToUse.VertexEdge.to).name
+                    + " Price: " + v.EdgeToUse.VertexEdge.price + "kr. Traveltime: " + v.EdgeToUse.VertexEdge.traveltime);
             }
             Console.ReadLine();
             Console.ReadLine();
