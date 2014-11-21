@@ -20,12 +20,21 @@ namespace GraphLayer
             this.From = from;
         }
 
-        public double GetCost()
+        public double GetCost(bool usePrice)
         {
             double cost = -1;
+            
             if (VertexEdge != null)
             {
-                cost = System.Convert.ToDouble(VertexEdge.traveltime);
+                if (usePrice)
+                {
+                    cost = System.Convert.ToDouble(VertexEdge.price);
+                }
+                else
+                {
+                    cost = System.Convert.ToDouble(VertexEdge.traveltime);
+                }
+                
             }
             return cost;
         }

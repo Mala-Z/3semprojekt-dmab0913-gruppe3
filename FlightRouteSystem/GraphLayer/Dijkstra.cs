@@ -53,7 +53,7 @@ namespace GraphLayer
             }
         }
 
-        public List<Vertex> RunDijkstra(Airport from, Airport to, string date)
+        public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
             Initialize(from, date);
 
@@ -65,7 +65,7 @@ namespace GraphLayer
 
                 foreach (Edge edge in currentVertex.GetEdges())
                 {
-                    double cost = currentVertex.DistanceFromStart + edge.GetCost();
+                    double cost = currentVertex.DistanceFromStart + edge.GetCost(usePrice);
 
                     if (cost < edge.To.DistanceFromStart)
                     { 
@@ -130,7 +130,7 @@ namespace GraphLayer
 
         public List<Vertex> Test(Airport from, Airport to, string date)
         {
-            List<Vertex> dijkstra = RunDijkstra(from, to, date);
+            List<Vertex> dijkstra = RunDijkstra(from, to, date, true);
 
             return dijkstra;
         }
