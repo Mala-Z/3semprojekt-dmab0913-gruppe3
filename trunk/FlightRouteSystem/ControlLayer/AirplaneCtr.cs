@@ -24,7 +24,7 @@ namespace ControlLayer
         /// 
         /// </summary>
         /// <param name="seats"></param>
-        public void CreateNewAirplanes(int seats)
+        public void CreateNewAirplane(int seats)
         {
             var db = DBConnection.GetInstance().GetConnection();
             var airplane = new Airplane { seats = seats };
