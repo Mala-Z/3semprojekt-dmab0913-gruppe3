@@ -16,7 +16,7 @@ namespace TestLayer
         {
             AirportCtr airCtr = new AirportCtr();
 
-            Console.WriteLine("Hit enter to see from Aalborg to London - fastest traveltime");
+            Console.WriteLine("Hit enter to see from Aalborg to London - fastest traveltime and cheapest price");
             Console.ReadLine();
             Dijkstra dijkstra = new Dijkstra();
             var shortestpath = dijkstra.RunDijkstra(airCtr.GetAirportByID(1), airCtr.GetAirportByID(4), "17/11/2014", false);
@@ -32,9 +32,7 @@ namespace TestLayer
             Console.WriteLine("");
             Console.WriteLine("Total traveltime: " + time);
             Console.WriteLine("Total price: " + price);
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine("Hit enter to see from Aalborg to London -  cheapest price");
-            Console.ReadLine();
+            Console.WriteLine("");
             Dijkstra dijkstra2 = new Dijkstra();
             var shortestpath2 = dijkstra2.RunDijkstra(airCtr.GetAirportByID(1), airCtr.GetAirportByID(4), "17/11/2014", true);
             double time2 = 0;
@@ -50,7 +48,7 @@ namespace TestLayer
             Console.WriteLine("Total traveltime: " + time2);
             Console.WriteLine("Total price: " + price2);
             Console.ReadLine();
-            Console.ReadLine();
+
 
         }
     }
