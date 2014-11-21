@@ -37,5 +37,56 @@ namespace ControlLayer
             return airport;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="location"></param>
+        public void CreateNewAirport(string name, string location)
+        {
+            var db = DBConnection.GetInstance().GetConnection();
+
+            var airport = new Airport();
+            airport.name = name;
+            airport.location = location;
+
+            db.Airports.InsertOnSubmit(airport);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="location"></param>
+        public void UpdateAirport(int id, string name, string location)
+        {
+            var db = DBConnection.GetInstance().GetConnection();
+
+            var airport = GetAirportByID(id);
+
+            if (airport != null)
+            {
+                airport.name = name;
+                airport.location = location;
+
+                db.SubmitChanges();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteAirport(int id)
+        {
+            var db = DBConnection.GetInstance().GetConnection();
+            var airport = GetAirportByID(id);
+            if (airport != null)
+            {
+                db.Airports.DeleteOnSubmit(airport);
+            }
+        }
+
     }
 }
