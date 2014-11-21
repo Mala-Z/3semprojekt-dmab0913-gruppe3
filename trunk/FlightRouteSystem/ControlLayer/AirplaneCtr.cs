@@ -67,7 +67,7 @@ namespace ControlLayer
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteAirplane(int id)
+        public bool DeleteAirplane(int id)
         {
             var db = DBConnection.GetInstance().GetConnection();
             var airplane = GetAirplaneByID(id);
@@ -77,6 +77,17 @@ namespace ControlLayer
                 db.Airplanes.DeleteOnSubmit(airplane);
                 db.SubmitChanges();
             }
+
+            if (GetAirplaneByID(id) != null)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+
         }
 
     }
