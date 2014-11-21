@@ -118,12 +118,8 @@ namespace ControlLayer
                 {
                     returnValue = false;
                 }
-                finally
-                {
-                    
-                }
-                
             }
+
             return returnValue;
         }
 
