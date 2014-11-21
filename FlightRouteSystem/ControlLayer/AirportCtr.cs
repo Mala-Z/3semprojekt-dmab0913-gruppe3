@@ -46,9 +46,7 @@ namespace ControlLayer
         {
             var db = DBConnection.GetInstance().GetConnection();
 
-            var airport = new Airport();
-            airport.name = name;
-            airport.location = location;
+            var airport = new Airport {name = name, location = location};
 
             db.Airports.InsertOnSubmit(airport);
             db.SubmitChanges();
