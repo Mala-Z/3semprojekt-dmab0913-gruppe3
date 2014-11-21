@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,14 +44,24 @@ namespace ControlLayer
         /// </summary>
         /// <param name="totalTime"></param>
         /// <param name="totalPrice"></param>
-        public void CreateNewBooking(string totalTime, double totalPrice)
+        public bool CreateNewBooking(string totalTime, double totalPrice)
         {
+            bool returnValue = true;
             var db = DBConnection.GetInstance().GetConnection();
-
             var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
 
             db.Bookings.InsertOnSubmit(booking);
-            db.SubmitChanges();
+
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -59,10 +70,10 @@ namespace ControlLayer
         /// <param name="id"></param>
         /// <param name="totalTime"></param>
         /// <param name="totalPrice"></param>
-        public void UpdateBooking(int id, string totalTime, double totalPrice)
+        public bool UpdateBooking(int id, string totalTime, double totalPrice)
         {
+            bool returnValue = true;
             var db = DBConnection.GetInstance().GetConnection();
-
             var booking = GetBookingByID(id);
 
             if (booking != null)
@@ -70,23 +81,50 @@ namespace ControlLayer
                 booking.totalTime = totalTime;
                 booking.totalPrice = totalPrice;
 
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
+
             }
+
+            return returnValue;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteBooking(int id)
+        public bool DeleteBooking(int id)
         {
+            bool returnValue = false;
             var db = DBConnection.GetInstance().GetConnection();
             var booking = GetBookingByID(id);
+
             if (booking != null)
             {
                 db.Bookings.DeleteOnSubmit(booking);
-                db.SubmitChanges();
+
+                try
+                {
+                    db.SubmitChanges();
+                    returnValue = true;
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
+                finally
+                {
+                    
+                }
+                
             }
+            return returnValue;
         }
 
     }
