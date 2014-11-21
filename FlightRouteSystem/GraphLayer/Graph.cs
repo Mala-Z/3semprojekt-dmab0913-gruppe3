@@ -51,7 +51,6 @@ namespace GraphLayer
                         {
                             Edge edge = new Edge(flight, endVertex, startVertex);
                             edges.Add(edge);
-                            Console.WriteLine(Convert.ToString(flight.flightID) + " Edge added from " + startVertex.GetAirport().name + " to " + endVertex.GetAirport().name);
                             isFound = true;
                         }
                     }
@@ -60,7 +59,6 @@ namespace GraphLayer
                 vertex.setEdges(edges);
 
             }
-            Console.WriteLine("All edges added");
         }
 
         public bool ContainsVertex(Vertex vertex)
