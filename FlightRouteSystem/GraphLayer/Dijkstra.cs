@@ -73,7 +73,6 @@ namespace GraphLayer
                         updatedVertex.DistanceFromStart = cost;
                         updatedVertex.PrevVertex = currentVertex;
                         updatedVertex.EdgeToUse = edge;
-                        //listOfCost.Add(updatedVertex);
                     }//end if
                  }
                         
@@ -81,7 +80,6 @@ namespace GraphLayer
             }//end while
 
             solutionList = Backtrack(from, to);
-            //solutionList = BackTest(updatedVertex, to);
 
             return solutionList;
         }
@@ -99,15 +97,6 @@ namespace GraphLayer
                     }
                 }
             }
-            //bool isFound = false;
-            //for (int i = 0; i < listOfCost.Count && !isFound; i++)
-            //{
-            //    if (listOfCost[i].GetAirport().Equals(from))
-            //    {
-            //        solutionList.Add(listOfCost[i]);
-            //        isFound = true;
-            //    }
-            //}
             solutionList.Reverse();
             return solutionList;
         }
@@ -115,25 +104,8 @@ namespace GraphLayer
         private Vertex ShortestDistFromStart()
         {
             return vertexQueue.OrderByDescending(v => v.DistanceFromStart).ToList().Last();
-            //Vertex smallestDist = new Vertex();
-            //smallestDist.DistanceFromStart = Double.PositiveInfinity;
-            //foreach (Vertex vertex in vertexQueue)
-            //{
-            //    if (vertex.DistanceFromStart < smallestDist.DistanceFromStart)
-            //    {
-            //        smallestDist = vertex;
-            //    }
-            //}
-            //return smallestDist;
         }
 
-
-        public List<Vertex> Test(Airport from, Airport to, string date)
-        {
-            List<Vertex> dijkstra = RunDijkstra(from, to, date, true);
-
-            return dijkstra;
-        }
 
 
     }
