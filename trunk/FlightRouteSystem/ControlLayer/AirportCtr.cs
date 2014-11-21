@@ -18,9 +18,9 @@ namespace ControlLayer
         {
             var db = DBConnection.GetInstance().GetConnection();
 
-            var airports = db.Airports.OrderBy(x => x.airportID);
+            var airports = db.Airports.OrderBy(x => x.airportID).ToList();
 
-            return airports.ToList();
+            return airports;
         }
 
         /// <summary>
