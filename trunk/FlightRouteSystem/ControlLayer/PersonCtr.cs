@@ -17,7 +17,7 @@ namespace ControlLayer
         /// <returns>Returns a list of all Person objects</returns>
         public List<Person> GetAllPersons()
         {
-            var db = DBConnection.GetInstance().GetConnection();
+            var db = new dmab0913_3DataContext();
 
             var persons = db.Persons.OrderBy(x => x.personID).ToList();
 
@@ -31,7 +31,7 @@ namespace ControlLayer
         /// <returns></returns>
         public Person GetPersonByID(int id)
         {
-            var db = DBConnection.GetInstance().GetConnection();
+            var db = new dmab0913_3DataContext();
 
             var person = db.Persons.SingleOrDefault(a => a.personID == id);
 
@@ -53,7 +53,7 @@ namespace ControlLayer
         public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
                                     string email, string birthdate, string password, int type)
         {
-            var db = DBConnection.GetInstance().GetConnection();
+            var db = new dmab0913_3DataContext();
 
             var person = new Person();
             person.fname = fName;
@@ -87,7 +87,7 @@ namespace ControlLayer
                                  string email, string birthdate, string password, int type)
         {
             bool returnValue = true;
-            var db = DBConnection.GetInstance().GetConnection();
+            var db = new dmab0913_3DataContext();
 
             var person = GetPersonByID(id);
 
@@ -122,7 +122,7 @@ namespace ControlLayer
         public bool DeletePerson(int id)
         {
             bool returnValue = false;
-            var db = DBConnection.GetInstance().GetConnection();
+            var db = new dmab0913_3DataContext();
             var person = GetPersonByID(id);
             if (person != null)
             {

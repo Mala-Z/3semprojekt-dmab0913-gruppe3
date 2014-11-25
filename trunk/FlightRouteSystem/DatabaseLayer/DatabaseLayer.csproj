@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnection.cs" />
     <Compile Include="dmab0913_3.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

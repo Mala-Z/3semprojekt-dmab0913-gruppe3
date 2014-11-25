@@ -88,7 +88,7 @@ namespace GraphLayer
         {
             for (int i = 0; i < listOfCost.Count; i++)
             {
-                if (listOfCost[i].GetAirport().Equals(to))
+                if (listOfCost[i].GetAirport().airportID.Equals(to.airportID))
                 {
                     while (listOfCost[i].PrevVertex != null)
                     {
