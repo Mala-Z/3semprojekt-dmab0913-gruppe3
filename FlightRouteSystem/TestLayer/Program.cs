@@ -23,23 +23,25 @@ namespace TestLayer
             //Console.ReadLine();
 
             #region Multiple threads test
-
+            //Create airports
             Airport AAL = airCtr.GetAirportByID(1);
             Airport LHR = airCtr.GetAirportByID(4);
+            //Create variables to contain list from RunDijkstra()
             IEnumerable<Vertex> shortestPathByPriceList = null;
             IEnumerable<Vertex> shortestPathByTravelTimeList = null;
+            //Create threads that runs RunDijkstra and saves to variables
             var shortestPathByPriceThread = new Thread(() => shortestPathByPriceList = RunDijkstra(AAL, LHR, "17/11/2014", true));
             var shortestPathByTravelTimeThread = new Thread(() => shortestPathByTravelTimeList = RunDijkstra(AAL, LHR, "17/11/2014", false));
+            //Start threads
             shortestPathByPriceThread.Start();
             shortestPathByTravelTimeThread.Start();
-
+            //Join threads
             shortestPathByPriceThread.Join();
             shortestPathByTravelTimeThread.Join();
-            
+            //Print the info from lists
             PrintInfo(shortestPathByPriceList);
             PrintInfo(shortestPathByTravelTimeList);
             Console.ReadLine();
-
             #endregion
 
 
