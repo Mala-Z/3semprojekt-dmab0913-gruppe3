@@ -47,7 +47,7 @@ namespace TestLayer
 
         }
 
-        private static List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
+        private static IEnumerable<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
             AirportCtr airportCtr = new AirportCtr();
             Dijkstra dijkstra = new Dijkstra();
