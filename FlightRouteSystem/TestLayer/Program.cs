@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using DatabaseLayer;
 using GraphLayer;
 using ControlLayer;
 
@@ -20,71 +22,56 @@ namespace TestLayer
             Console.WriteLine("Hit enter to see from Aalborg to London - fastest traveltime and cheapest price");
             //Console.ReadLine();
 
-            Thread shortestPathByPriceThread = new Thread(GetShortestPathByPrice);
-            Thread shortestPathByTravelTimeThread = new Thread(GetShortestPathByTravelTime);
+            #region Multiple threads test
 
+            Airport AAL = airCtr.GetAirportByID(1);
+            Airport LHR = airCtr.GetAirportByID(4);
+            IEnumerable<Vertex> shortestPathByPriceList = null;
+            IEnumerable<Vertex> shortestPathByTravelTimeList = null;
+            var shortestPathByPriceThread = new Thread(() => shortestPathByPriceList = RunDijkstra(AAL, LHR, "17/11/2014", true));
+            var shortestPathByTravelTimeThread = new Thread(() => shortestPathByTravelTimeList = RunDijkstra(AAL, LHR, "17/11/2014", false));
             shortestPathByPriceThread.Start();
             shortestPathByTravelTimeThread.Start();
 
-
-            //Console.WriteLine("Enter to add Aiport");
-            //Console.ReadLine();
-            //airCtr.CreateNewAirport("Test", "Lemvig");
-            //Console.WriteLine("Enter to update Aiport");
-            //Console.ReadLine();
-            //airCtr.UpdateAirport(9, "Test2", "Aalborg");
-            //Console.WriteLine("Enter to delete Aiport");
-            //Console.ReadLine();
-            //airCtr.DeleteAirport(9);
-            //Console.ReadLine();
-
-
-        }
-
-        private static void GetShortestPathByPrice()
-        {
-            AirportCtr airCtr = new AirportCtr();
-            Dijkstra dijkstra2 = new Dijkstra();
-            var shortestpath2 = dijkstra2.RunDijkstra(airCtr.GetAirportByID(1), airCtr.GetAirportByID(4), "17/11/2014", true);
-            double time2 = 0;
-            double price2 = 0;
-            foreach (var v2 in shortestpath2)
-            {
-                Console.WriteLine(v2.EdgeToUse.VertexEdge.flightID + " from: " +
-                                  airCtr.GetAirportByID(v2.EdgeToUse.VertexEdge.@from).name + " to: " +
-                                  airCtr.GetAirportByID(v2.EdgeToUse.VertexEdge.to).name
-                                  + " Price: " + v2.EdgeToUse.VertexEdge.price + "kr. Traveltime: " +
-                                  v2.EdgeToUse.VertexEdge.traveltime);
-                time2 += (double) v2.EdgeToUse.VertexEdge.traveltime;
-                price2 += (double) v2.EdgeToUse.VertexEdge.price;
-            }
-            Console.WriteLine("");
-            Console.WriteLine("Total traveltime: " + time2);
-            Console.WriteLine("Total price: " + price2);
+            shortestPathByPriceThread.Join();
+            shortestPathByTravelTimeThread.Join();
+            
+            PrintInfo(shortestPathByPriceList);
+            PrintInfo(shortestPathByTravelTimeList);
             Console.ReadLine();
+
+            #endregion
+
+
         }
 
-        private static void GetShortestPathByTravelTime()
+        private static List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
-            AirportCtr airCtr = new AirportCtr();
+            AirportCtr airportCtr = new AirportCtr();
             Dijkstra dijkstra = new Dijkstra();
-            var shortestpath = dijkstra.RunDijkstra(airCtr.GetAirportByID(1), airCtr.GetAirportByID(4), "17/11/2014", false);
+
+            var result = dijkstra.RunDijkstra(from, to, date, usePrice);
+
+            return result;
+        }
+
+        private static void PrintInfo(IEnumerable<Vertex> shortestpath)
+        {
+            AirportCtr airportCtr = new AirportCtr();
             double time = 0;
             double price = 0;
+            Console.WriteLine("Travel route:");
             foreach (var v in shortestpath)
             {
                 Console.WriteLine(v.EdgeToUse.VertexEdge.flightID + " from: " +
-                                  airCtr.GetAirportByID(v.EdgeToUse.VertexEdge.@from).name + " to: " +
-                                  airCtr.GetAirportByID(v.EdgeToUse.VertexEdge.to).name
+                                  airportCtr.GetAirportByID(v.EdgeToUse.VertexEdge.@from).name + " to: " +
+                                  airportCtr.GetAirportByID(v.EdgeToUse.VertexEdge.to).name
                                   + " Price: " + v.EdgeToUse.VertexEdge.price + "kr. Traveltime: " +
                                   v.EdgeToUse.VertexEdge.traveltime);
-                time += (double) v.EdgeToUse.VertexEdge.traveltime;
-                price += (double) v.EdgeToUse.VertexEdge.price;
+                time += (double)v.EdgeToUse.VertexEdge.traveltime;
+                price += (double)v.EdgeToUse.VertexEdge.price;
             }
-            Console.WriteLine("");
-            Console.WriteLine("Total traveltime: " + time);
-            Console.WriteLine("Total price: " + price);
-            Console.WriteLine("");
+            Console.WriteLine("Totals - Price: {0}, Traveltime: {1}", price, time);
         }
     }
 }
