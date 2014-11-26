@@ -66,7 +66,7 @@
     <Compile Include="WCFService.svc.cs">
       <DependentUpon>WCFService.svc</DependentUpon>
     </Compile>
-    <Compile Include="WCFService.cs" />
+    <Compile Include="IWCFService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
