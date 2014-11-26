@@ -13,7 +13,6 @@ namespace FlightRouteClient
 {
     public partial class MainWindow : Form
     {
-        //private IFlightService flightService = new FlightServiceClient();
 
         public MainWindow()
         {
@@ -26,11 +25,9 @@ namespace FlightRouteClient
             {
                 var airplanes = flightService.GetAllAirplanes();
 
-                var result = from a in airplanes
-                             orderby a.airplaneID
-                             select a;
+                var result = airplanes.OrderBy(a => a.airplaneID).ToList();
 
-                dgvAirports.DataSource = airplanes;
+                dgvAirports.DataSource = result;
             }
 
 
