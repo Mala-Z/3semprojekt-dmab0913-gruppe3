@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FlightService;
 
 namespace FlightRouteSystem
 {
@@ -32,8 +31,6 @@ namespace FlightRouteSystem
                          //select new { Navn = c.Name, c.Email, Adresse = c.Address, Postnr = c.ZipCode };
 
             dgvPersons.DataSource = result;
-
-
         }
     }
 }
