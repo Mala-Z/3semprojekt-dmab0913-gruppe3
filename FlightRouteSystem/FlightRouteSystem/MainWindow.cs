@@ -14,7 +14,7 @@ namespace FlightRouteSystem
 {
     public partial class MainWindow : Form
     {
-        private IFlightService flightService;
+        private IFlightService flightService = new FlightServiceClient();
 
         public MainWindow()
         {
