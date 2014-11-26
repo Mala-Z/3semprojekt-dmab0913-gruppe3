@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dmab0913_3" Class="dmab0913_3DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dmab0913_3" Class="dmab0913_3DataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=balder.ucn.dk;Initial Catalog=dmab0913_3;User ID=dmab0913_3" SettingsObjectName="DatabaseLayer.Properties.Settings" SettingsPropertyName="dmab0913_3ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="db_owner.Airplane" Member="Airplanes">
     <Type Name="Airplane">
