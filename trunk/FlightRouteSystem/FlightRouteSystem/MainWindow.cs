@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WcfService;
+using FlightService;
 
 namespace FlightRouteSystem
 {
     public partial class MainWindow : Form
     {
-        private IWCFService wcfService;
+        private IFlightService flightService;
 
         public MainWindow()
         {
@@ -24,7 +24,7 @@ namespace FlightRouteSystem
         private void MainWindow_Load(object sender, EventArgs e)
         {
 
-            var airplanes = wcfService.GetAllAirplanes();
+            var airplanes = flightService.GetAllAirplanes();
 
             var result = from a in airplanes
                          orderby a.airplaneID
