@@ -5,21 +5,19 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using DatabaseLayer;
 
 namespace WcfService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+
     [ServiceContract]
-    public interface IService1
+    public interface IWCFService
     {
 
         [OperationContract]
-        string GetData(int value);
+        List<Airplane> GetAllAirplanes();
 
-        [OperationContract]
-        //CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        // TODO: Add your service operations here
     }
 
 
