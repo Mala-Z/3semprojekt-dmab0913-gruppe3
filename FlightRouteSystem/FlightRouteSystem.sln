@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "FlightRouteSystem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLayer", "ControlLayer\ControlLayer.csproj", "{EEC37E63-9A3A-478D-AC42-C6998CD8DA92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{17ED1CA0-4071-4F09-9667-6F70C18C4133}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLayer", "DatabaseLayer\DatabaseLayer.csproj", "{7D93996F-93B4-4DA0-BA08-4FB6B86B3E7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphLayer", "GraphLayer\GraphLayer.csproj", "{08DECFC9-F924-45D4-AB1C-CF1A9B4D970C}"
@@ -33,10 +31,6 @@ Global
 		{EEC37E63-9A3A-478D-AC42-C6998CD8DA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEC37E63-9A3A-478D-AC42-C6998CD8DA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEC37E63-9A3A-478D-AC42-C6998CD8DA92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17ED1CA0-4071-4F09-9667-6F70C18C4133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17ED1CA0-4071-4F09-9667-6F70C18C4133}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17ED1CA0-4071-4F09-9667-6F70C18C4133}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17ED1CA0-4071-4F09-9667-6F70C18C4133}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D93996F-93B4-4DA0-BA08-4FB6B86B3E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D93996F-93B4-4DA0-BA08-4FB6B86B3E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D93996F-93B4-4DA0-BA08-4FB6B86B3E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
