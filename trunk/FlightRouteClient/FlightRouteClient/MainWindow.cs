@@ -30,7 +30,7 @@ namespace FlightRouteClient
                              orderby a.airplaneID
                              select a;
 
-                dgvAirports.DataSource = result;
+                dgvAirports.DataSource = airplanes;
             }
 
 
