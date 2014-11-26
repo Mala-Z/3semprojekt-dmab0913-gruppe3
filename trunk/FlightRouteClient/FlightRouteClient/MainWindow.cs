@@ -25,14 +25,15 @@ namespace FlightRouteClient
             using (FlightServiceClient flightService = new FlightServiceClient())
             {
                 var airplanes = flightService.GetAllAirplanes();
-            }
-            
-            //var result = from a in airplanes
-            //             orderby a.airplaneID
-             //            select a;
-            //select new { Navn = c.Name, c.Email, Adresse = c.Address, Postnr = c.ZipCode };
 
-            //dgvAirports.DataSource = result;
+                var result = from a in airplanes
+                             orderby a.airplaneID
+                             select a;
+
+                dgvAirports.DataSource = result;
+            }
+
+
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
