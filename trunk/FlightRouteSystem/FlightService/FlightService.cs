@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ControlLayer;
+using DatabaseLayer;
 
 namespace FlightService
 {
