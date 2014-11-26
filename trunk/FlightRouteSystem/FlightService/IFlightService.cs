@@ -13,6 +13,74 @@ namespace FlightService
     {
         [OperationContract]
         List<Airplane> GetAllAirplanes();
+
+        [OperationContract]
+        bool CreateNewAirplane(int seats);
+
+        [OperationContract]
+        Airplane GetAirplaneByID(int id);
+
+        [OperationContract]
+        bool UpdateAirplane(int id, int seats);
+
+        [OperationContract]
+        bool DeleteAirplane(int id);
+
+        //Flight
+        [OperationContract]
+        List<Flight> GetAllFlights();
+
+        [OperationContract]
+        Flight GetFlightByID(int id);
+
+        [OperationContract]
+        List<Flight> GetFlightsByDate(string date);
+
+        [OperationContract]
+        List<Flight> GetFlightsFrom(Airport start, string date);
+
+        [OperationContract]
+        void CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+            int to, int airplaneID, int takenSeats);
+
+        [OperationContract]
+        void UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+            int to, int airplaneID, int takenSeats);
+
+        [OperationContract]
+        void DeleteFlight(int id);
+
+        //Airport
+        [OperationContract]
+        Airport GetAirportByID(int id);
+
+        [OperationContract]
+        void CreateNewAirport(string name, string location)
+
+        [OperationContract]
+        void UpdateAirport(int id, string name, string location)
+
+        [OperationContract]
+        void DeleteAirport(int id);
+
+        //Person
+
+        [OperationContract]
+        List<Person> GetAllPersons();
+
+        [OperationContract]
+        Person GetPersonByID(int id);
+
+        [OperationContract]
+        void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
+            string email, string birthdate, string password, int type);
+
+        [OperationContract]
+        bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo,
+            string email, string birthdate, string password, int type);
+
+        [OperationContract]
+        bool DeletePerson(int id);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
