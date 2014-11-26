@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FlightRouteWeb", "http://localhost:52045", "{EC1AA79E-0445-40D1-B61C-717A7142514C}"
 	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "Svn"
+		SccAuxPath = "Svn"
+		SccLocalPath = "Svn"
+		SccProvider = "SubversionScc"
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_52045"
@@ -24,8 +28,16 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FlightRouteWeb", "http://lo
 		SlnRelativePath = "..\..\WebSites\FlightRouteWeb\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+	ProjectSection(SvnOrigin) = preProject
+		@Keys = Enlist
+		Enlist = Required
+	EndProjectSection
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
