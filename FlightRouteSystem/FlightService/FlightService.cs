@@ -18,6 +18,7 @@ namespace FlightService
         private static FlightCtr flightCtr = new FlightCtr();
         private static PersonCtr personCtr = new PersonCtr();
 
+        #region Airplane OperationContracts
         public List<Airplane> GetAllAirplanes()
         {
             return airplaneCtr.GetAllAirplanes();
@@ -43,7 +44,9 @@ namespace FlightService
         {
             return airplaneCtr.DeleteAirplane(id);
         }
+        #endregion
 
+        #region Flight OperationContracts
         public List<Flight> GetAllFlights()
         {
             return flightCtr.GetAllFlights();
@@ -78,7 +81,9 @@ namespace FlightService
         {
             flightCtr.DeleteFlight(id);
         }
+        #endregion
 
+        #region Airport OperationContracts
         public Airport GetAirportByID(int id)
         {
             return airportCtr.GetAirportByID(id);
@@ -98,7 +103,9 @@ namespace FlightService
         {
             airportCtr.DeleteAirport(id);
         }
+        #endregion 
 
+        #region Person OperationContracts
         public List<Person> GetAllPersons()
         {
             return personCtr.GetAllPersons();
@@ -123,5 +130,6 @@ namespace FlightService
         {
             return personCtr.DeletePerson(id);
         }
+        #endregion
     }
 }
