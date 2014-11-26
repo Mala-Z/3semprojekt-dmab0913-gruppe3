@@ -83,6 +83,10 @@
       <Project>{7D93996F-93B4-4DA0-BA08-4FB6B86B3E7D}</Project>
       <Name>DatabaseLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FlightService\FlightService.csproj">
+      <Project>{db46e2f5-67a1-47bd-9105-2e9238b19240}</Project>
+      <Name>FlightService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
