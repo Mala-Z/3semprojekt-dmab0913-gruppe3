@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DatabaseLayer;
+using WcfService;
 
 namespace FlightRouteSystem
 {
     public partial class MainWindow : Form
     {
+        private IWCFService wcfService;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,12 +23,12 @@ namespace FlightRouteSystem
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            dmab0913_3DataContext db = DBConnection.GetInstance().GetConnection();
 
-            var result = from p in db.Persons
-                         where p.gender == "m"
-                         orderby p.fname
-                         select p;
+            var airplanes = wcfService.GetAllAirplanes();
+
+            var result = from a in airplanes
+                         orderby a.airplaneID
+                         select a;
                          //select new { Navn = c.Name, c.Email, Adresse = c.Address, Postnr = c.ZipCode };
 
             dgvPersons.DataSource = result;

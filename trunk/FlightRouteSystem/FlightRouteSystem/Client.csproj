@@ -80,8 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj">
-      <Project>{7d93996f-93b4-4da0-ba08-4fb6b86b3e7d}</Project>
+      <Project>{7D93996F-93B4-4DA0-BA08-4FB6B86B3E7D}</Project>
       <Name>DatabaseLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfService\WcfService.csproj">
+      <Project>{17ed1ca0-4071-4f09-9667-6f70c18c4133}</Project>
+      <Name>WcfService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
