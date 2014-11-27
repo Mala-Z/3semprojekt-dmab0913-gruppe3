@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseLayer;
+using System.Transactions;
 
 
 namespace ControlLayer
@@ -44,23 +45,35 @@ namespace ControlLayer
         /// </summary>
         /// <param name="totalTime"></param>
         /// <param name="totalPrice"></param>
-        public bool CreateNewBooking(string totalTime, double totalPrice)
+        public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
         {
-            bool returnValue = true;
-            var db = new dmab0913_3DataContext();
-            var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
+            bool returnValue = false;
 
-            db.Bookings.InsertOnSubmit(booking);
-
-            try
+            using (var transaction = new TransactionScope())
             {
-                db.SubmitChanges();
-            }
-            catch (SqlException)
-            {
-                returnValue = false;
-            }
+                try
+                {
+                    var db = new dmab0913_3DataContext();
+                    var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
+                    db.Bookings.InsertOnSubmit(booking);
+                    foreach (Flight f in flights)
+                    {
+                        var BookingFlights = new BookingFlight
+                        {
+                            Booking = booking,
+                            Flight = f
+                        };
+                    }
 
+                    db.SubmitChanges();
+                    returnValue = true;
+                    transaction.Complete();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
+            }//end using
             return returnValue;
         }
 
