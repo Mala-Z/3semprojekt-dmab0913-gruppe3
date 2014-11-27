@@ -1,8 +1,8 @@
-﻿<Window x:Class="Client.MainWindow"
+﻿<Window x:Name="Main" x:Class="Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:tabData="clr-namespace:Client.Tabs"
-        Title="FlightRouteSystem" Height="600" Width="800" ResizeMode="NoResize" Icon="air_plane_airport_2.ico">
+        Title="FlightRouteSystem" Height="600" Width="800" ResizeMode="NoResize" Icon="airplane.ico">
     <TabControl HorizontalAlignment="Left" Height="590" Margin="0,0,0,-18" VerticalAlignment="Top" Width="790" BorderThickness="1,1,0,1">
         <TabItem Header="Tab 1">
             <tabData:TabTest1 />
