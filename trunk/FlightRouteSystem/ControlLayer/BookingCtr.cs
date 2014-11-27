@@ -12,14 +12,19 @@ namespace ControlLayer
 {
     public class BookingCtr
     {
+        private dmab0913_3DataContext db;
+
+        public BookingCtr(dmab0913_3DataContext db)
+        {
+            this.db = db;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns>List of bookings/Booking></returns>
         public List<Booking> GetAllBookings()
         {
-            var db = new dmab0913_3DataContext();
-
             var bookings = db.Bookings.OrderBy(x => x.bookingID).ToList();
 
             return bookings;
@@ -33,8 +38,6 @@ namespace ControlLayer
         /// <returns></returns>
         public Booking GetBookingByID(int id)
         {
-            var db = new dmab0913_3DataContext();
-
             var booking = db.Bookings.SingleOrDefault(a => a.bookingID == id);
 
             return booking;
@@ -53,7 +56,7 @@ namespace ControlLayer
             {
                 try
                 {
-                    var db = new dmab0913_3DataContext();
+                    
                     var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
                     db.Bookings.InsertOnSubmit(booking);
                     foreach (Flight f in flights)
@@ -86,7 +89,7 @@ namespace ControlLayer
         public bool UpdateBooking(int id, string totalTime, double totalPrice)
         {
             bool returnValue = true;
-            var db = new dmab0913_3DataContext();
+            
             var booking = GetBookingByID(id);
 
             if (booking != null)
@@ -115,7 +118,7 @@ namespace ControlLayer
         public bool DeleteBooking(int id)
         {
             bool returnValue = false;
-            var db = new dmab0913_3DataContext();
+            
             var booking = GetBookingByID(id);
 
             if (booking != null)
