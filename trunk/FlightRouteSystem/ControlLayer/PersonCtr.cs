@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,19 @@ namespace ControlLayer
 {
     public class PersonCtr
     {
+        private dmab0913_3DataContext db;
+
+        public PersonCtr(dmab0913_3DataContext db)
+        {
+            this.db = db;
+        }
+
         /// <summary>
         /// Get all Persons
         /// </summary>
         /// <returns>Returns a list of all Person objects</returns>
         public List<Person> GetAllPersons()
         {
-            var db = new dmab0913_3DataContext();
-
             var persons = db.Persons.OrderBy(x => x.personID).ToList();
 
             return persons;
@@ -31,8 +37,6 @@ namespace ControlLayer
         /// <returns></returns>
         public Person GetPersonByID(int id)
         {
-            var db = new dmab0913_3DataContext();
-
             var person = db.Persons.SingleOrDefault(a => a.personID == id);
 
             return person;
@@ -53,8 +57,6 @@ namespace ControlLayer
         public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
                                     string email, string birthdate, string password, int type)
         {
-            var db = new dmab0913_3DataContext();
-
             var person = new Person();
             person.fname = fName;
             person.lname = lName;
@@ -87,7 +89,6 @@ namespace ControlLayer
                                  string email, string birthdate, string password, int type)
         {
             bool returnValue = true;
-            var db = new dmab0913_3DataContext();
 
             var person = GetPersonByID(id);
 
@@ -122,7 +123,6 @@ namespace ControlLayer
         public bool DeletePerson(int id)
         {
             bool returnValue = false;
-            var db = new dmab0913_3DataContext();
             var person = GetPersonByID(id);
             if (person != null)
             {
