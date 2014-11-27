@@ -10,13 +10,20 @@ namespace ControlLayer
 {
     public class AirportCtr
     {
+        private dmab0913_3DataContext db;
+
+        public AirportCtr(dmab0913_3DataContext db)
+        {
+            this.db = db;
+        }
+
         /// <summary>
         /// Get all Airports
         /// </summary>
         /// <returns>Returns a list of all Airport objects</returns>
         public List<Airport> GetAllAirports()
         {
-            var db = new dmab0913_3DataContext();
+           
 
             var airports = db.Airports.OrderBy(x => x.airportID).ToList();
 
@@ -30,7 +37,7 @@ namespace ControlLayer
         /// <returns></returns>
         public Airport GetAirportByID(int id)
         {
-            var db = new dmab0913_3DataContext();
+          
 
             var airport = db.Airports.SingleOrDefault(a => a.airportID == id);
 
@@ -44,7 +51,7 @@ namespace ControlLayer
         /// <param name="location"></param>
         public void CreateNewAirport(string name, string location)
         {
-            var db = new dmab0913_3DataContext();
+            
 
             var airport = new Airport {name = name, location = location};
 
@@ -60,7 +67,7 @@ namespace ControlLayer
         /// <param name="location"></param>
         public void UpdateAirport(int id, string name, string location)
         {
-            var db = new dmab0913_3DataContext();
+            
 
             var airport = GetAirportByID(id);
 
@@ -79,7 +86,7 @@ namespace ControlLayer
         /// <param name="id"></param>
         public void DeleteAirport(int id)
         {
-            var db = new dmab0913_3DataContext();
+            
             var airport = GetAirportByID(id);
             if (airport != null)
             {
