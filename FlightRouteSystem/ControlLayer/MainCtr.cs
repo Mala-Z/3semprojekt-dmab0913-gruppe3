@@ -11,7 +11,7 @@ namespace ControlLayer
 {
     public class MainCtr
     {
-        private DataContext db;
+        private dmab0913_3DataContext db;
         public AirplaneCtr AirplaneCtr { get; set; }
         public AirportCtr AirportCtr { get; set; }
         public BookingCtr BookingCtr { get; set; }
