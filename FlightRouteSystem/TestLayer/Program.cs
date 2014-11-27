@@ -17,33 +17,47 @@ namespace TestLayer
         private static Graph graph = new Graph();
         static void Main(string[] args)
         {
-            AirportCtr airCtr = new AirportCtr();
+            //AirportCtr airCtr = new AirportCtr();
 
-            Console.WriteLine("Hit enter to see from Aalborg to London - fastest traveltime and cheapest price");
+            //Console.WriteLine("Hit enter to see from Aalborg to London - fastest traveltime and cheapest price");
+            ////Console.ReadLine();
+
+            //#region Multiple threads test
+            ////Create airports
+            //Airport AAL = airCtr.GetAirportByID(1);
+            //Airport LHR = airCtr.GetAirportByID(4);
+            ////Create variables to contain list from RunDijkstra()
+            //IEnumerable<Vertex> shortestPathByPriceList = null;
+            //IEnumerable<Vertex> shortestPathByTravelTimeList = null;
+            ////Create threads that runs RunDijkstra and saves to variables
+            //var shortestPathByPriceThread = new Thread(() => shortestPathByPriceList = RunDijkstra(AAL, LHR, "17/11/2014", true));
+            //var shortestPathByTravelTimeThread = new Thread(() => shortestPathByTravelTimeList = RunDijkstra(AAL, LHR, "17/11/2014", false));
+            ////Start threads
+            //shortestPathByPriceThread.Start();
+            //shortestPathByTravelTimeThread.Start();
+            ////Join threads
+            //shortestPathByPriceThread.Join();
+            //shortestPathByTravelTimeThread.Join();
+            ////Print the info from lists
+            //PrintInfo(shortestPathByPriceList);
+            //PrintInfo(shortestPathByTravelTimeList);
             //Console.ReadLine();
+            //#endregion
 
-            #region Multiple threads test
-            //Create airports
-            Airport AAL = airCtr.GetAirportByID(1);
-            Airport LHR = airCtr.GetAirportByID(4);
-            //Create variables to contain list from RunDijkstra()
-            IEnumerable<Vertex> shortestPathByPriceList = null;
-            IEnumerable<Vertex> shortestPathByTravelTimeList = null;
-            //Create threads that runs RunDijkstra and saves to variables
-            var shortestPathByPriceThread = new Thread(() => shortestPathByPriceList = RunDijkstra(AAL, LHR, "17/11/2014", true));
-            var shortestPathByTravelTimeThread = new Thread(() => shortestPathByTravelTimeList = RunDijkstra(AAL, LHR, "17/11/2014", false));
-            //Start threads
-            shortestPathByPriceThread.Start();
-            shortestPathByTravelTimeThread.Start();
-            //Join threads
-            shortestPathByPriceThread.Join();
-            shortestPathByTravelTimeThread.Join();
-            //Print the info from lists
-            PrintInfo(shortestPathByPriceList);
-            PrintInfo(shortestPathByTravelTimeList);
-            Console.ReadLine();
-            #endregion
+            var bookingCtr = new BookingCtr();
+            var flightCtr = new FlightCtr();
 
+            Booking booking = bookingCtr.GetBookingByID(1);
+            Flight f = flightCtr.GetFlightByID(10);
+
+            var db = new dmab0913_3DataContext();
+            var bf = new BookingFlight
+            {
+                Booking = booking,
+                Flight = f
+            };
+            db.BookingFlights.InsertOnSubmit(bf);
+            db.SubmitChanges();
 
         }
 
