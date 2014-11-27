@@ -58,16 +58,36 @@ namespace ControlLayer
                 {
                     
                     var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
-                    db.Bookings.InsertOnSubmit(booking);
+
                     foreach (Flight f in flights)
                     {
-                        var BookingFlights = new BookingFlight
+                        if (f.Airplane.seats >= f.takenSeats + passengers.Count)
                         {
-                            Booking = booking,
-                            Flight = f
-                        };
+                            var BookingFlights = new BookingFlight
+                            {
+                                Booking = booking,
+                                Flight = f
+                            };
+                            db.BookingFlights.InsertOnSubmit(BookingFlights);
+                        }
+                        else
+                        {
+                            transaction.Dispose();
+                            returnValue = false;
+                        } 
                     }
 
+                    foreach (Person p in passengers)
+                    {
+                        var BookingPassenger = new BookingPassenger
+                        {
+                            Booking = booking,
+                            Person = p
+                        };
+                        db.BookingPassengers.InsertOnSubmit(BookingPassenger);
+                    }
+
+                    db.Bookings.InsertOnSubmit(booking);
                     db.SubmitChanges();
                     returnValue = true;
                     transaction.Complete();
