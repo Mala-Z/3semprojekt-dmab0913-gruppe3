@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,22 @@ using DatabaseLayer;
 namespace ControlLayer
 {
     public class AirplaneCtr
-    {
+{
+    private dmab0913_3DataContext db;
+
+        public AirplaneCtr(dmab0913_3DataContext db)
+        {
+            this.db = db;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public List<Airplane> GetAllAirplanes()
         {
-            var db = new dmab0913_3DataContext();
+            
             var airplanes = db.Airplanes.OrderBy(x => x.airplaneID).ToList();
             return airplanes;
         }
@@ -28,7 +37,7 @@ namespace ControlLayer
         public bool CreateNewAirplane(int seats)
         {
             bool returnValue = true;
-            var db = new dmab0913_3DataContext();
+           
             var airplane = new Airplane { seats = seats };
             db.Airplanes.InsertOnSubmit(airplane);
             db.SubmitChanges();
@@ -53,7 +62,7 @@ namespace ControlLayer
         /// <returns></returns>
         public Airplane GetAirplaneByID(int id)
         {
-            var db = new dmab0913_3DataContext();
+            
 
             var airplane = db.Airplanes.SingleOrDefault(a => a.airplaneID == id);
 
@@ -68,7 +77,7 @@ namespace ControlLayer
         public bool UpdateAirplane(int id, int seats)
         {
             bool returnValue = true;
-            var db = new dmab0913_3DataContext();
+          
             var airplane = GetAirplaneByID(id);
 
             if (airplane != null)
@@ -96,7 +105,7 @@ namespace ControlLayer
         public bool DeleteAirplane(int id)
         {
             bool returnValue = true;
-            var db = new dmab0913_3DataContext();
+            
             var airplane = GetAirplaneByID(id);
 
             if (airplane != null)
