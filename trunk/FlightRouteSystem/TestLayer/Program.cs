@@ -45,13 +45,15 @@ namespace TestLayer
             //Console.ReadLine();
             //#endregion
 
+            var db = new dmab0913_3DataContext();
+
             var bookingCtr = new BookingCtr();
             var flightCtr = new FlightCtr();
 
             Booking booking = bookingCtr.GetBookingByID(1);
             Flight f = flightCtr.GetFlightByID(10);
 
-            var db = new dmab0913_3DataContext();
+            
             var bf = new BookingFlight
             {
                 Booking = booking,
