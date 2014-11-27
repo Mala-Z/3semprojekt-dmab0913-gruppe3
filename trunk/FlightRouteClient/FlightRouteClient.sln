@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightRouteClient", "FlightRouteClient\FlightRouteClient.csproj", "{4310A077-D7B5-4CE5-AB43-A16C2B92E082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{0D7BA3AD-223C-4200-91AB-78AE0653C552}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -15,10 +15,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4310A077-D7B5-4CE5-AB43-A16C2B92E082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4310A077-D7B5-4CE5-AB43-A16C2B92E082}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4310A077-D7B5-4CE5-AB43-A16C2B92E082}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4310A077-D7B5-4CE5-AB43-A16C2B92E082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D7BA3AD-223C-4200-91AB-78AE0653C552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7BA3AD-223C-4200-91AB-78AE0653C552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7BA3AD-223C-4200-91AB-78AE0653C552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7BA3AD-223C-4200-91AB-78AE0653C552}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
