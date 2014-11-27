@@ -20,7 +20,8 @@ namespace GraphLayer
 
         public Graph()
         {
-            airportCtr = new AirportCtr();
+            var main = new MainCtr();
+            airportCtr = main.AirportCtr;
             _vertices = new List<Vertex>();
         }
 
