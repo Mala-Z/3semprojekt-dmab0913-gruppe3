@@ -92,6 +92,7 @@ namespace ControlLayer
 
             db.Flights.InsertOnSubmit(flight);
             db.SubmitChanges();
+
         }
 
         /// <summary>

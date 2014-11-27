@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -54,7 +55,9 @@ namespace TestLayer
             var bf = new BookingFlight
             {
                 Booking = booking,
+                //bookingID = booking.bookingID,
                 Flight = f
+                //flightID = f.flightID
             };
             db.BookingFlights.InsertOnSubmit(bf);
             db.SubmitChanges();
