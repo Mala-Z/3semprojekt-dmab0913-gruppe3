@@ -9,15 +9,19 @@ using DatabaseLayer;
 namespace ControlLayer
 {
     public class FlightCtr
-    {     
+    {
+        private dmab0913_3DataContext db;
+
+        public FlightCtr(dmab0913_3DataContext db)
+        {
+            this.db = db;
+        }
         /// <summary>
         /// Get all Flights
         /// </summary>
         /// <returns>Returns a list of all Flight objects</returns>
         public List<Flight> GetAllFlights()
         {
-            var db = new dmab0913_3DataContext();
-
             var flights = db.Flights.OrderBy(x => x.flightID).ToList();
 
             return flights;
@@ -30,8 +34,6 @@ namespace ControlLayer
         /// <returns></returns>
         public Flight GetFlightByID(int id)
         {
-            var db = new dmab0913_3DataContext();
-
             var flight = db.Flights.SingleOrDefault(f => f.flightID == id);
 
             return flight;
@@ -43,8 +45,6 @@ namespace ControlLayer
         /// <returns>Returns a list of all Flight objects who contains depTime</returns>
         public List<Flight> GetFlightsByDate(string date)
         {
-            var db = new dmab0913_3DataContext();
-
             var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
 
             return flights;
@@ -56,8 +56,6 @@ namespace ControlLayer
         /// <returns>Returns a list of all Flight objects who contains depTime</returns>
         public List<Flight> GetFlightsFrom(Airport start, string date)
         {
-            var db = new dmab0913_3DataContext();
-
             var flights = db.Flights.Where(x => x.Airport.Equals(start) && x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
 
             return flights;
@@ -77,7 +75,6 @@ namespace ControlLayer
         public void CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats)
         {
-            var db = new dmab0913_3DataContext();
             var flight = new Flight
             {
                 timeOfDeparture = timeOfDepature,
@@ -110,7 +107,6 @@ namespace ControlLayer
         public void UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats)
         {
-            var db = new dmab0913_3DataContext();
             var flight = GetFlightByID(id);
 
             if (flight != null)
@@ -135,7 +131,6 @@ namespace ControlLayer
         /// <param name="id"></param>
         public void DeleteFlight(int id)
         {
-            var db = new dmab0913_3DataContext();
             var flight = GetFlightByID(id);
 
             if (flight != null)
