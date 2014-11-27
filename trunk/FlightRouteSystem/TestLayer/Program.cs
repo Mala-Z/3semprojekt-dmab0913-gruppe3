@@ -45,31 +45,33 @@ namespace TestLayer
             //Console.ReadLine();
             //#endregion
 
-            var db = new dmab0913_3DataContext();
 
-            var main = new MainCtr();
-            var bookingCtr = main.BookingCtr;
-            var flightCtr = main.FlightCtr;
 
-            Booking booking = bookingCtr.GetBookingByID(1);
-            Flight f = flightCtr.GetFlightByID(10);
+            //var main = new MainCtr();
+            //var bookingCtr = main.BookingCtr;
+            //var flightCtr = main.FlightCtr;
+            //var db = main.db;
+
+            //Booking booking = bookingCtr.GetBookingByID(1);
+            //Flight f = flightCtr.GetFlightByID(10);
 
             
-            var bf = new BookingFlight
-            {
-                Booking = booking,
-                //bookingID = booking.bookingID,
-                Flight = f
-                //flightID = f.flightID
-            };
-            db.BookingFlights.InsertOnSubmit(bf);
-            db.SubmitChanges();
+            //var bf = new BookingFlight
+            //{
+            //    Booking = booking,
+            //    //bookingID = booking.bookingID,
+            //    Flight = f
+            //    //flightID = f.flightID
+            //};
+            //db.BookingFlights.InsertOnSubmit(bf);
+            //db.SubmitChanges();
 
         }
 
         private static IEnumerable<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
-            AirportCtr airportCtr = new AirportCtr();
+            var main = new MainCtr();
+            AirportCtr airportCtr = main.AirportCtr;
             Dijkstra dijkstra = new Dijkstra();
 
             var result = dijkstra.RunDijkstra(from, to, date, usePrice);
@@ -79,7 +81,8 @@ namespace TestLayer
 
         private static void PrintInfo(IEnumerable<Vertex> shortestpath)
         {
-            AirportCtr airportCtr = new AirportCtr();
+            var main = new MainCtr();
+            AirportCtr airportCtr = main.AirportCtr;
             double time = 0;
             double price = 0;
             Console.WriteLine("Travel route:");

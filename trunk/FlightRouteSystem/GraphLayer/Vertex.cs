@@ -22,7 +22,8 @@ namespace GraphLayer
 
         public Vertex(Airport airport, string date)
         {
-            flightCtr = new FlightCtr();
+            var main = new MainCtr();
+            flightCtr = main.FlightCtr;
             this.airport = airport;
             this.date = date;
             flightsFromAiport = AddFlights();

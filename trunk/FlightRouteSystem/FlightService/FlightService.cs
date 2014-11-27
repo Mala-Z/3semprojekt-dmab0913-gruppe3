@@ -12,11 +12,12 @@ namespace FlightService
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class FlightService : IFlightService
     {
-        private static AirplaneCtr airplaneCtr = new AirplaneCtr();
-        private static AirportCtr airportCtr = new AirportCtr();
-        private static BookingCtr bookingCtr = new BookingCtr();
-        private static FlightCtr flightCtr = new FlightCtr();
-        private static PersonCtr personCtr = new PersonCtr();
+        private static MainCtr main = new MainCtr();
+        private static AirplaneCtr airplaneCtr = main.AirplaneCtr;
+        private static AirportCtr airportCtr = main.AirportCtr;
+        private static BookingCtr bookingCtr = main.BookingCtr;
+        private static FlightCtr flightCtr = main.FlightCtr;
+        private static PersonCtr personCtr = main.PersonCtr;
 
         #region Airplane OperationContracts
         public List<Airplane> GetAllAirplanes()
