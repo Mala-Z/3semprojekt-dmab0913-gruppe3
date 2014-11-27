@@ -47,8 +47,9 @@ namespace TestLayer
 
             var db = new dmab0913_3DataContext();
 
-            var bookingCtr = new BookingCtr();
-            var flightCtr = new FlightCtr();
+            var main = new MainCtr();
+            var bookingCtr = main.BookingCtr;
+            var flightCtr = main.FlightCtr;
 
             Booking booking = bookingCtr.GetBookingByID(1);
             Flight f = flightCtr.GetFlightByID(10);
