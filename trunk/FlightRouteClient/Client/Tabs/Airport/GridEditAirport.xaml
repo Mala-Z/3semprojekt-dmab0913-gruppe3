@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Client.Tabs.Airport.GridAddAirport"
+﻿<UserControl x:Class="Client.Tabs.Airport.GridEditAirport"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,6 +9,6 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
         <Label Content="Placering:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Button Content="Opret lufthavn" HorizontalAlignment="Left" Margin="174,69,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Rediger lufthavn" HorizontalAlignment="Left" Margin="174,69,0,0" VerticalAlignment="Top" Width="90"/>
     </Grid>
 </UserControl>
