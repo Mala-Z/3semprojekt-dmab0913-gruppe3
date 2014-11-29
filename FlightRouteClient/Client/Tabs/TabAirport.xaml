@@ -1,16 +1,20 @@
-﻿<UserControl x:Class="Client.Tabs.TabAirport"
+﻿<UserControl xmlns:Tabs="clr-namespace:Client.Tabs"  x:Class="Client.Tabs.TabAirport"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Width="790" Height="590">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:airport="clr-namespace:Client.Tabs.Airport"
+             mc:Ignorable="d" d:DesignWidth="300" Width="790" Height="561">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
 
-        <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="524" Width="530"/>
-        
-        <Grid  x:Name="gAirportsLeft" HorizontalAlignment="Left" Height="523" Margin="568,47,0,0" VerticalAlignment="Top" Width="202">
-            
+        <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465"/>
+
+        <Grid  x:Name="gAirportsLeft" HorizontalAlignment="Left" Height="523" Margin="490,47,0,0" VerticalAlignment="Top" Width="290">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="17*"/>
+            </Grid.ColumnDefinitions>
+            <airport:GridAddAirport Grid.ColumnSpan="2" Margin="5,0,5,-39" />
         </Grid>
 
     </Grid>
