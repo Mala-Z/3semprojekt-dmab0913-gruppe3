@@ -13,15 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client.Tabs
+namespace Client.Tabs.Airport
 {
     /// <summary>
-    /// Interaction logic for TabTest1.xaml
-    /// http://www.wpftutorial.net/DataGrid.html
+    /// Interaction logic for TabTest2.xaml
     /// </summary>
-    public partial class TabAirport : UserControl
+    public partial class GridAddAirport : UserControl
     {
-        public TabAirport()
+        public GridAddAirport()
         {
             InitializeComponent();
         }
