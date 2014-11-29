@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client.Tabs
+namespace Client.Tabs.Airport
 {
     /// <summary>
     /// Interaction logic for TabTest2.xaml
     /// </summary>
-    public partial class TabTest2 : UserControl
+    public partial class GridEditAirport : UserControl
     {
-        public TabTest2()
+        public GridEditAirport()
         {
             InitializeComponent();
         }
