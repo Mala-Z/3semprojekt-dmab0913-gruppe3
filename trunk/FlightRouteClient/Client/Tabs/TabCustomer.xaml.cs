@@ -18,9 +18,9 @@ namespace Client.Tabs
     /// <summary>
     /// Interaction logic for TabTest1.xaml
     /// </summary>
-    public partial class TabBooking : UserControl
+    public partial class TabCustomer : UserControl
     {
-        public TabBooking()
+        public TabCustomer()
         {
             InitializeComponent();
         }

@@ -8,10 +8,10 @@
             <tabData:TabBooking />
         </TabItem>
         <TabItem Header="Kunder">
-            <tabData:TabTest2 />
+            <tabData:TabCustomer />
         </TabItem>
         <TabItem Header="Flyforbindelser">
-            
+            <tabData:TabFlight />
         </TabItem>
         <TabItem Header="Fly">
 
