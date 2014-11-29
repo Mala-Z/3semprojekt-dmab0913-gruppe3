@@ -14,10 +14,10 @@
             <tabData:TabFlight />
         </TabItem>
         <TabItem Header="Fly">
-
+            <tabData:TabAirplane />
         </TabItem>
         <TabItem Header="Lufthavne">
-
+            <tabData:TabAirport />
         </TabItem>
     </TabControl>
 </Window>

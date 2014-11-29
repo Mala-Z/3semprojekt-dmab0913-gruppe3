@@ -53,6 +53,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tabs\TabAirport.xaml.cs">
+      <DependentUpon>TabAirport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\TabAirplane.xaml.cs">
+      <DependentUpon>TabAirplane.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tabs\TabCustomer.xaml.cs">
       <DependentUpon>TabCustomer.xaml</DependentUpon>
     </Compile>
@@ -77,6 +83,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tabs\TabAirport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tabs\TabAirplane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Tabs\TabCustomer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
