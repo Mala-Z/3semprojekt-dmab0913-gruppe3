@@ -4,11 +4,20 @@
         xmlns:tabData="clr-namespace:Client.Tabs"
         Title="FlightRouteSystem" Height="600" Width="800" ResizeMode="NoResize" Icon="airplane.ico">
     <TabControl HorizontalAlignment="Left" Height="590" Margin="0,0,0,-18" VerticalAlignment="Top" Width="790" BorderThickness="1,1,0,1">
-        <TabItem Header="Tab 1">
-            <tabData:TabTest1 />
+        <TabItem Header="Booking">
+            <tabData:TabBooking />
         </TabItem>
-        <TabItem Header="Tab 2">
+        <TabItem Header="Kunder">
             <tabData:TabTest2 />
+        </TabItem>
+        <TabItem Header="Flyforbindelser">
+            
+        </TabItem>
+        <TabItem Header="Fly">
+
+        </TabItem>
+        <TabItem Header="Lufthavne">
+
         </TabItem>
     </TabControl>
 </Window>
