@@ -24,15 +24,15 @@ namespace Client.Tabs.Airport
         private FlightServiceClient fService;
         private FlightService.Airport airport;
 
-        public GridEditAirport(Object airport)
+        public GridEditAirport(int airportID)
         {
             InitializeComponent();
             fService = new FlightServiceClient();
-            this.airport = airport;
-            InsertAiportData();
+            this.airport = fService.GetAirportByID(airportID);
+            InsertAirportData();
         }
 
-        private void InsertAiportData()
+        private void InsertAirportData()
         {
             txtName.Text = airport.name;
             txtLocation.Text = airport.location;
