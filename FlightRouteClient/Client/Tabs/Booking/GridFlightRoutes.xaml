@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Client.Tabs.Booking.GridFlightRoutes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Width="730" Height="337">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
+        <Label Content="Hurtigste rute" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dgFastest" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Height="80" Width="730"/>
+    </Grid>
+</UserControl>

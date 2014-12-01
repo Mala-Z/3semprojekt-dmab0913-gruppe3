@@ -8,13 +8,19 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
 
         <Label x:Name="lblChooseCust" Content="Vælg kunde:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbCustomer" HorizontalAlignment="Left" Margin="102,23,0,0" VerticalAlignment="Top" Width="225"/>
+        <ComboBox x:Name="cbCustomer" HorizontalAlignment="Left" Margin="102,23,0,0" VerticalAlignment="Top" Width="261" IsEditable="True"/>
         <Label Content="Rejs fra:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" Margin="102,54,0,0" VerticalAlignment="Top" Width="225" IsEditable="True"/>
-        <Label Content="Rejs til:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.365,-0.592"/>
-        <ComboBox x:Name="cbTo" HorizontalAlignment="Left" Margin="102,85,0,0" VerticalAlignment="Top" Width="225" IsEditable="True"/>
-        <Label Content="Afrejse dato:" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Left" Margin="102,114,0,0" VerticalAlignment="Top" Width="225"/>
+        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" Margin="102,54,0,0" VerticalAlignment="Top" Width="261" IsEditable="True"/>
+        <Label Content="Rejs til:" HorizontalAlignment="Left" Margin="383,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.365,-0.592"/>
+        <ComboBox x:Name="cbTo" HorizontalAlignment="Left" Margin="478,54,0,0" VerticalAlignment="Top" Width="262" IsEditable="True"/>
+        <Label Content="Afrejse dato:" HorizontalAlignment="Left" Margin="383,19,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="478,21,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Content="Antal passengere:" HorizontalAlignment="Left" Margin="593,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNoOfPass" HorizontalAlignment="Left" Height="23" Margin="702,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38"/>
+        <Button x:Name="bFindFlights" Content="Find flyruter" HorizontalAlignment="Left" Margin="638,81,0,0" VerticalAlignment="Top" Width="102" Click="bFindFlights_Click"/>
+        <Grid x:Name="gFlightRoutes" HorizontalAlignment="Left" Height="337" Margin="10,116,0,0" VerticalAlignment="Top" Width="730">
+            <ContentControl x:Name="contentControl" Grid.Row="1"/>
+        </Grid>
 
     </Grid>
 </UserControl>
