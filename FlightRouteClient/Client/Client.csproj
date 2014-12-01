@@ -76,6 +76,12 @@
     <Compile Include="Tabs\Booking\GridFlightRoutes.xaml.cs">
       <DependentUpon>GridFlightRoutes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tabs\Flight\GridAddFlight.xaml.cs">
+      <DependentUpon>GridAddFlight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\Flight\GridEditFlight.xaml.cs">
+      <DependentUpon>GridEditFlight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tabs\Person\GridAddCustomer.xaml.cs">
       <DependentUpon>GridAddCustomer.xaml</DependentUpon>
     </Compile>
@@ -126,6 +132,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Tabs\Booking\GridFlightRoutes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tabs\Flight\GridAddFlight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tabs\Flight\GridEditFlight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

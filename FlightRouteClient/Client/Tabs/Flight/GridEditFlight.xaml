@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Client.Tabs.Flight.GridEditFlight"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
+        <Label Content="Fra:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Til:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="Afgang:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ankomst:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rejsetid:" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
+        <Label Content="Pris:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,153,0,0"/>
+        <Label Content="Fly:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,179,0,0"/>
+        <DatePicker x:Name="DatePickerDeparture" HorizontalAlignment="Left" Margin="129,69,0,0" VerticalAlignment="Top" Width="135"/>
+        <DatePicker x:Name="DatePickerArrival" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="129,98,0,0" Width="135"/>
+        <TextBox x:Name="txtTravelTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Margin="129,127,0,0"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Margin="129,155,0,0"/>
+        <ComboBox x:Name="cbAirplane" HorizontalAlignment="Left" Margin="129,183,0,0" VerticalAlignment="Top" Width="135"/>
+        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,40,0,0" />
+        <ComboBox x:Name="cbTo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,13,0,0" />
+
+    </Grid>
+</UserControl>

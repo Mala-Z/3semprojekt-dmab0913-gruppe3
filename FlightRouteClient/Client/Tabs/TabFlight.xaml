@@ -6,7 +6,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="790" Height="590">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
-        <Label Content="Tab Flight" HorizontalAlignment="Left" Margin="38,21,0,0" VerticalAlignment="Top"/>
+
+        <DataGrid x:Name="dgFlights" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465" SelectionChanged="dgFlights_SelectionChanged" SelectionMode="Single"/>
+
+        <Grid  x:Name="gFlightsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="290">
+            <ContentControl x:Name="contentControl" Grid.Row="1"/>
+        </Grid>
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="20,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465" TextChanged="txtSearch_TextChanged"/>
 
     </Grid>
 </UserControl>
