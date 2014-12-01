@@ -60,6 +60,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Tabs\Airplane\GridAddAirplane.xaml.cs">
+      <DependentUpon>GridAddAirplane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\Airplane\GridEditAirplane.xaml.cs">
+      <DependentUpon>GridEditAirplane.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tabs\Airport\GridAddAirport.xaml.cs">
       <DependentUpon>GridAddAirport.xaml</DependentUpon>
     </Compile>
@@ -93,6 +99,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tabs\Airplane\GridAddAirplane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tabs\Airplane\GridEditAirplane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Tabs\Airport\GridAddAirport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
