@@ -56,6 +56,10 @@ namespace FlightService
         #endregion
 
         #region Airport OperationContracts
+
+        [OperationContract]
+        List<Airport> GetAllAirports();
+
         [OperationContract]
         Airport GetAirportByID(int id);
 
