@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
 using Client.Helpers;
+using Client.Tabs.Booking;
 
 namespace Client.Tabs
 {
@@ -36,6 +37,11 @@ namespace Client.Tabs
             cbCustomer.ItemsSource = ComboBoxItems.CustomerItems();
             cbFrom.ItemsSource = ComboBoxItems.AirportItems();
             cbTo.ItemsSource = ComboBoxItems.AirportItems();
+        }
+
+        private void bFindFlights_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new GridFlightRoutes();
         }
 
         

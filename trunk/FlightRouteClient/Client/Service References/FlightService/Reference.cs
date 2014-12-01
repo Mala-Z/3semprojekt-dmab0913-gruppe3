@@ -834,16 +834,16 @@ namespace Client.FlightService {
         System.Threading.Tasks.Task<Client.FlightService.Person> GetPersonByIDAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPerson", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonResponse")]
-        void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type);
+        void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPerson", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonResponse")]
-        System.Threading.Tasks.Task CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type);
+        System.Threading.Tasks.Task CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdatePerson", ReplyAction="http://tempuri.org/IFlightService/UpdatePersonResponse")]
-        bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type);
+        bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdatePerson", ReplyAction="http://tempuri.org/IFlightService/UpdatePersonResponse")]
-        System.Threading.Tasks.Task<bool> UpdatePersonAsync(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type);
+        System.Threading.Tasks.Task<bool> UpdatePersonAsync(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeletePerson", ReplyAction="http://tempuri.org/IFlightService/DeletePersonResponse")]
         bool DeletePerson(int id);
@@ -1031,20 +1031,20 @@ namespace Client.FlightService {
             return base.Channel.GetPersonByIDAsync(id);
         }
         
-        public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type) {
-            base.Channel.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate, password, type);
+        public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate) {
+            base.Channel.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
         }
         
-        public System.Threading.Tasks.Task CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type) {
-            return base.Channel.CreateNewPersonAsync(fName, lName, gender, address, phoneNo, email, birthdate, password, type);
+        public System.Threading.Tasks.Task CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate) {
+            return base.Channel.CreateNewPersonAsync(fName, lName, gender, address, phoneNo, email, birthdate);
         }
         
-        public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type) {
-            return base.Channel.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate, password, type);
+        public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate) {
+            return base.Channel.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdatePersonAsync(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type) {
-            return base.Channel.UpdatePersonAsync(id, fName, lName, gender, address, phoneNo, email, birthdate, password, type);
+        public System.Threading.Tasks.Task<bool> UpdatePersonAsync(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate) {
+            return base.Channel.UpdatePersonAsync(id, fName, lName, gender, address, phoneNo, email, birthdate);
         }
         
         public bool DeletePerson(int id) {

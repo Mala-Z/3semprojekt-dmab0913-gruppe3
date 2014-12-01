@@ -277,8 +277,6 @@
         <xs:element minOccurs="0" name="phoneNo" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="birthdate" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="type" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -298,8 +296,6 @@
         <xs:element minOccurs="0" name="phoneNo" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="birthdate" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="type" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
