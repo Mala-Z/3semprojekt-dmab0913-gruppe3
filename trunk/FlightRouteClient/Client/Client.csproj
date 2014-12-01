@@ -69,7 +69,7 @@
     <Compile Include="Tabs\TabAirport.xaml.cs">
       <DependentUpon>TabAirport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tabs\Airport\TabAirplane.xaml.cs">
+    <Compile Include="Tabs\TabAirplane.xaml.cs">
       <DependentUpon>TabAirplane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tabs\TabCustomer.xaml.cs">
@@ -105,7 +105,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Tabs\Airport\TabAirplane.xaml">
+    <Page Include="Tabs\TabAirplane.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
