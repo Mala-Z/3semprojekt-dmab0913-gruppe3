@@ -82,11 +82,11 @@ namespace FlightService
 
         [OperationContract]
         void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
-            string email, string birthdate, string password, int type);
+            string email, string birthdate);
 
         [OperationContract]
         bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo,
-            string email, string birthdate, string password, int type);
+            string email, string birthdate);
 
         [OperationContract]
         bool DeletePerson(int id);
