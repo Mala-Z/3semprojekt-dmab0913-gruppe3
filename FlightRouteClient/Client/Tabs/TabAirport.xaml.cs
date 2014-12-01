@@ -59,6 +59,8 @@ namespace Client.Tabs
 
         private void dgAirports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //dgAirports indeholder anonyme objecter. Enten skal vi lave en ny class og caste det anonyme object dertil,
+            //ellers kan vi som her lave det om til en string, og via regular expression hente dets id
             String airportString = dgAirports.SelectedItem.ToString().Trim();
             int airportID = Convert.ToInt32(Regex.Match(airportString, @"\d+").ToString());
             var airport = fService.GetAirportByID(airportID);
