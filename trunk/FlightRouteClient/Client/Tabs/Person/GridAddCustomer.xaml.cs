@@ -36,7 +36,7 @@ namespace Client.Tabs.Customer
         {
             if (txtFName.Text != "" && txtLName.Text != "" && txtGender.Text != "" && txtAddress.Text != "" && txtPhoneNo.Text != "" && txtEmail.Text != "" && txtBirthdate.Text != "")
             {
-                fService.CreateNewPerson(txtFName.Text, txtFName.Text, txtGender.Text, txtAddress.Text, txtPhoneNo.Text, txtEmail.Text, txtBirthdate.Text);
+                fService.CreateNewPerson(txtFName.Text, txtLName.Text, txtGender.Text, txtAddress.Text, txtPhoneNo.Text, txtEmail.Text, txtBirthdate.Text);
 
                 string messageBoxText = "Kunde er blevet opdateret";
                 string caption = "Succes";
