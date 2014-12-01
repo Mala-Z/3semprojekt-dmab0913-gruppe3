@@ -23,18 +23,47 @@ namespace Client.Tabs
     /// </summary>
     public partial class TabAirport : UserControl
     {
+        private FlightServiceClient fService;
+
         public TabAirport()
         {
             InitializeComponent();
-            this.contentControl.Content = new GridAddAirport();
+            contentControl.Content = new GridAddAirport();
 
-            FlightServiceClient fService = new FlightServiceClient();
+            fService = new FlightServiceClient();
 
-            dgAirports = fService.getAllAirports();
+            InitializeGridData();
 
         }
 
+        private void InitializeGridData()
+        {
+            //dgAirports.ItemsSource = fService.GetAllAirports();
 
+            var result = from a in fService.GetAllAirports()
+                        select new { ID = a.airportID, Navn = a.name, Lokation = a.location };
+
+            dgAirports.ItemsSource = result;
+
+        }
+
+        private void tSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var result = from a in fService.GetAllAirports()
+                         where a.name.ToLower().Contains(txtSearch.Text.ToLower()) || a.location.ToLower().Contains(txtSearch.Text.ToLower())
+                         select new { ID = a.airportID, Navn = a.name, Lokation = a.location };
+
+            dgAirports.ItemsSource = result;
+        }
+
+        private void dgAirports_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //FlightService.Airport airport = (FlightService.Airport)dgAirports.SelectedItem;
+            var airport = dgAirports.SelectedItem;
+            contentControl.Content = new GridEditAirport(airport);
+        }
+
+        
 
     }
 }
