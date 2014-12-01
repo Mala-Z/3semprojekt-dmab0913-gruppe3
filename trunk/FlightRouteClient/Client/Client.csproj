@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ComboBoxItems.cs" />
     <Compile Include="Service References\FlightService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
