@@ -44,10 +44,22 @@ namespace Client.Tabs.Airport
             if (txtName.Text != "" && txtLocation.Text != "")
             {
                 fService.UpdateAirport(airport.airportID, txtName.Text, txtLocation.Text);
+
+                string messageBoxText = "Lufthavnen er blevet opdateret";
+                string caption = "Succes";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Information;
+                MessageBox.Show(messageBoxText, caption, button, icon);
+
+                
             }
             else
             {
-                
+                string messageBoxText = "Felterne navn og lokation må ikke være tomme";
+                string caption = "Fejl";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Error;
+                MessageBox.Show(messageBoxText, caption, button, icon);
             }
         } 
 

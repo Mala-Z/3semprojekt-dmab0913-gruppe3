@@ -24,5 +24,12 @@ namespace Client
         {
             InitializeComponent();
         }
+
+        public void getCurrentTab()
+        {
+            TabItem tI = tabControl.SelectedItem as TabItem;
+            
+
+        }
     }
 }
