@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -58,11 +59,10 @@ namespace Client.Tabs
 
         private void dgAirports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string airportID = dgAirports.SelectedItem.
-            label1.Content = airportID;
-            
-
-            //contentControl.Content = new GridEditAirport(airportID);
+            String airportString = dgAirports.SelectedItem.ToString().Trim();
+            int airportID = Convert.ToInt32(Regex.Match(airportString, @"\d+").ToString());
+            var airport = fService.GetAirportByID(airportID);
+            contentControl.Content = new GridEditAirport(airport);
         }
 
         
