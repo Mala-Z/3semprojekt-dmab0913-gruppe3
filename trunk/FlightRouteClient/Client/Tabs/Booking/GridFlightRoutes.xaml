@@ -11,5 +11,6 @@
         <TextBox x:Name="txtFTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
         <Label Content="Total tid:" HorizontalAlignment="Left" Margin="130,116,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtFTotalCost" HorizontalAlignment="Left" Height="23" Margin="191,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
+        <Button x:Name="bChooseFastest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,119,0,0" VerticalAlignment="Top" Width="118"/>
     </Grid>
 </UserControl>
