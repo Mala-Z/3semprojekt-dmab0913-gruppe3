@@ -42,7 +42,7 @@ namespace Client.Tabs
             //dgAirports.ItemsSource = fService.GetAllAirports();
 
             var result = from a in fService.GetAllAirplanes()
-                         select new { ID = a.airplaneID, Navn = a.seats};
+                         select new { ID = a.airplaneID, Sæder = a.seats};
 
             dgAirplanes.ItemsSource = result;
 
