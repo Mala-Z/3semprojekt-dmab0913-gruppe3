@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="300" Width="790" Height="561">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
 
-        <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465" SelectionChanged="dgAirports_SelectionChanged"/>
+        <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465" SelectionChanged="dgAirports_SelectionChanged" SelectionMode="Single"/>
 
         <Grid  x:Name="gAirportsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="290">
             <ContentControl x:Name="contentControl" Grid.Row="1"/>

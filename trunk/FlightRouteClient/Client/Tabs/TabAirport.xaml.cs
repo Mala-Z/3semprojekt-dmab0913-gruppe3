@@ -55,6 +55,10 @@ namespace Client.Tabs
                          select new { ID = a.airportID, Navn = a.name, Lokation = a.location };
 
             dgAirports.ItemsSource = result;
+            
+            //Application.Current.MainWindow 
+
+
         }
 
         private void dgAirports_SelectionChanged(object sender, SelectionChangedEventArgs e)
