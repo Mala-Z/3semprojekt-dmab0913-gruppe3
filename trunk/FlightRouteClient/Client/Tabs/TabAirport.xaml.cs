@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Client.FlightService;
 using Client.Tabs.Airport;
 
 namespace Client.Tabs
@@ -26,6 +27,14 @@ namespace Client.Tabs
         {
             InitializeComponent();
             this.contentControl.Content = new GridAddAirport();
+
+            FlightServiceClient fService = new FlightServiceClient();
+
+            dgAirports = fService.getAllAirports();
+
         }
+
+
+
     }
 }
