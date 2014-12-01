@@ -39,5 +39,19 @@ namespace Client.Helpers
             }
             return items;
         }
+
+        public static List<ComboBoxItem> AirplaneItems()
+        {
+            var items = new List<ComboBoxItem>();
+
+            foreach (var a in fService.GetAllAirplanes())
+            {
+                ComboBoxItem comboBoxItem = new ComboBoxItem();
+                comboBoxItem.Content = a.airplaneID + " seats: " + a.seats;
+                comboBoxItem.Tag = a.airplaneID;
+                items.Add(comboBoxItem);
+            }
+            return items;
+        }
     }
 }
