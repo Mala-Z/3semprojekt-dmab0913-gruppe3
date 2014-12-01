@@ -123,14 +123,14 @@ namespace FlightService
             return personCtr.GetPersonByID(id);
         }
 
-        public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type)
+        public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
         {
-            personCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate, password, type);
+            personCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
         }
 
-        public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate, string password, int type)
+        public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
         {
-            return personCtr.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate, password, type);
+            return personCtr.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate);
         }
 
         public bool DeletePerson(int id)

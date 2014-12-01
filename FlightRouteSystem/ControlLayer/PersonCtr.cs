@@ -55,7 +55,7 @@ namespace ControlLayer
         /// <param name="password"></param>
         /// <param name="type"></param>
         public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
-                                    string email, string birthdate, string password, int type)
+                                    string email, string birthdate)
         {
             var person = new Person();
             person.fname = fName;
@@ -65,8 +65,6 @@ namespace ControlLayer
             person.phoneNo = phoneNo;
             person.email = email;
             person.birthdate = birthdate;
-            person.password = password;
-            person.type = type;
 
             db.Persons.InsertOnSubmit(person);
             db.SubmitChanges();
@@ -86,7 +84,7 @@ namespace ControlLayer
         /// <param name="password"></param>
         /// <param name="type"></param>
         public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, 
-                                 string email, string birthdate, string password, int type)
+                                 string email, string birthdate)
         {
             bool returnValue = true;
 
@@ -101,8 +99,6 @@ namespace ControlLayer
                 person.phoneNo = phoneNo;
                 person.email = email;
                 person.birthdate = birthdate;
-                person.password = password;
-                person.type = type;
 
                 try
                 {
