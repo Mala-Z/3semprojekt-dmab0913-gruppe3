@@ -58,9 +58,11 @@ namespace Client.Tabs
 
         private void dgAirports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //FlightService.Airport airport = (FlightService.Airport)dgAirports.SelectedItem;
-            var airport = dgAirports.SelectedItem;
-            contentControl.Content = new GridEditAirport(airport);
+            string airportID = dgAirports.SelectedItem.
+            label1.Content = airportID;
+            
+
+            //contentControl.Content = new GridEditAirport(airportID);
         }
 
         
