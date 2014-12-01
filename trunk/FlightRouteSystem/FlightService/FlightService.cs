@@ -85,6 +85,12 @@ namespace FlightService
         #endregion
 
         #region Airport OperationContracts
+
+        public List<Airport> GetAllAirports()
+        {
+            return airportCtr.GetAllAirports();
+        }
+
         public Airport GetAirportByID(int id)
         {
             return airportCtr.GetAirportByID(id);
