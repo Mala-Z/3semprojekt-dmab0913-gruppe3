@@ -10,12 +10,7 @@
         <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465"/>
 
         <Grid  x:Name="gAirportsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="290">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="12*"/>
-                <ColumnDefinition Width="17*"/>
-            </Grid.ColumnDefinitions>
             <ContentControl x:Name="contentControl" Grid.Row="1"/>
-           
         </Grid>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="20,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="465"/>
 
