@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Client.Tabs;
 
 namespace Client
 {
@@ -20,16 +21,31 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        public TabAirplane tAirplane { get; set; }
+        public TabAirport tAirport { get; set; }
+        public TabBooking tBooking { get; set; }
+        public TabCustomer tCustomer { get; set; }
+        public TabFlight tFlight { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            InitializeTabs();
         }
 
-        public void getCurrentTab()
+        public void InitializeTabs()
         {
-            TabItem tI = tabControl.SelectedItem as TabItem;
-            
+            tAirplane = new TabAirplane();
+            tAirport = new TabAirport();
+            tBooking = new TabBooking();
+            tCustomer = new TabCustomer();
+            tFlight = new TabFlight();
 
+            contentAirplane.Content = tAirplane;
+            contentAirport.Content = tAirport;
+            contentBooking.Content = tBooking;
+            contentCustomer.Content = tCustomer;
+            contentFlight.Content = tFlight;
         }
     }
 }

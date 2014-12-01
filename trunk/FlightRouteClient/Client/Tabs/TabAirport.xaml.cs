@@ -48,6 +48,11 @@ namespace Client.Tabs
 
         }
 
+        public void updateDataGrid()
+        {
+            InitializeGridData();
+        }
+
         private void tSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             var result = from a in fService.GetAllAirports()
@@ -65,10 +70,14 @@ namespace Client.Tabs
         {
             //dgAirports indeholder anonyme objecter. Enten skal vi lave en ny class og caste det anonyme object dertil,
             //ellers kan vi som her lave det om til en string, og via regular expression hente dets id
-            String airportString = dgAirports.SelectedItem.ToString().Trim();
-            int airportID = Convert.ToInt32(Regex.Match(airportString, @"\d+").ToString());
-            var airport = fService.GetAirportByID(airportID);
-            contentControl.Content = new GridEditAirport(airport);
+            if (dgAirports.SelectedItem != null)
+            {
+                String airportString = dgAirports.SelectedItem.ToString().Trim();
+                int airportID = Convert.ToInt32(Regex.Match(airportString, @"\d+").ToString());
+                var airport = fService.GetAirportByID(airportID);
+                contentControl.Content = new GridEditAirport(airport); 
+            }
+            
         }
 
         
