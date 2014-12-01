@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 
 namespace Client.Tabs
 {
@@ -32,17 +33,11 @@ namespace Client.Tabs
 
         private void InitializeComboboxes()
         {
-            var items = new List<ComboBoxItem>();
-
-            foreach (var a in fService.GetAllAirports())
-            {
-                ComboBoxItem comboBoxItem = new ComboBoxItem();
-                comboBoxItem.Content = a.name + " " + a.location;
-                comboBoxItem.Tag = a.airportID;
-                items.Add(comboBoxItem);
-            }
-
-            cbFrom.ItemsSource = items;
+            cbCustomer.ItemsSource = ComboBoxItems.CustomerItems();
+            cbFrom.ItemsSource = ComboBoxItems.AirportItems();
+            cbTo.ItemsSource = ComboBoxItems.AirportItems();
         }
+
+        
     }
 }

@@ -13,7 +13,9 @@
         <Label x:Name="lblChooseCust" Content="Vælg kunde:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbCustomer" HorizontalAlignment="Left" Margin="102,23,0,0" VerticalAlignment="Top" Width="225"/>
         <Label Content="Rejs fra:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" Margin="66,54,0,0" VerticalAlignment="Top" Width="141" IsEditable="True"/>
+        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" Margin="102,54,0,0" VerticalAlignment="Top" Width="225" IsEditable="True"/>
+        <Label Content="Rejs til:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.365,-0.592"/>
+        <ComboBox x:Name="cbTo" HorizontalAlignment="Left" Margin="102,85,0,0" VerticalAlignment="Top" Width="225" IsEditable="True"/>
 
     </Grid>
 </UserControl>
