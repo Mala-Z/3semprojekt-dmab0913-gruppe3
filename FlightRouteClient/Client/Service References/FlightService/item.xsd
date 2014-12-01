@@ -176,6 +176,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllAirports">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAirportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllAirportsResult" nillable="true" type="q8:ArrayOfAirport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAirportByID">
     <xs:complexType>
       <xs:sequence>
@@ -186,7 +198,7 @@
   <xs:element name="GetAirportByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAirportByIDResult" nillable="true" type="q8:Airport" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAirportByIDResult" nillable="true" type="q9:Airport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -237,7 +249,7 @@
   <xs:element name="GetAllPersonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllPersonsResult" nillable="true" type="q9:ArrayOfPerson" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllPersonsResult" nillable="true" type="q10:ArrayOfPerson" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -251,7 +263,7 @@
   <xs:element name="GetPersonByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetPersonByIDResult" nillable="true" type="q10:Person" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetPersonByIDResult" nillable="true" type="q11:Person" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

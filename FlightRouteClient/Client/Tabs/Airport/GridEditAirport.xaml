@@ -6,8 +6,8 @@
              mc:Ignorable="d" Width="279.552" Height="594.476">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
         <Label Content="Lufthavn navn:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
+        <TextBox x:Name="txtLocation" HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
         <Label Content="Placering:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <Button Content="Rediger lufthavn" HorizontalAlignment="Left" Margin="174,69,0,0" VerticalAlignment="Top" Width="90"/>
     </Grid>

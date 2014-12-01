@@ -791,6 +791,12 @@ namespace Client.FlightService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteFlight", ReplyAction="http://tempuri.org/IFlightService/DeleteFlightResponse")]
         System.Threading.Tasks.Task DeleteFlightAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllAirports", ReplyAction="http://tempuri.org/IFlightService/GetAllAirportsResponse")]
+        Client.FlightService.Airport[] GetAllAirports();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllAirports", ReplyAction="http://tempuri.org/IFlightService/GetAllAirportsResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Airport[]> GetAllAirportsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAirportByID", ReplyAction="http://tempuri.org/IFlightService/GetAirportByIDResponse")]
         Client.FlightService.Airport GetAirportByID(int id);
         
@@ -967,6 +973,14 @@ namespace Client.FlightService {
         
         public System.Threading.Tasks.Task DeleteFlightAsync(int id) {
             return base.Channel.DeleteFlightAsync(id);
+        }
+        
+        public Client.FlightService.Airport[] GetAllAirports() {
+            return base.Channel.GetAllAirports();
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Airport[]> GetAllAirportsAsync() {
+            return base.Channel.GetAllAirportsAsync();
         }
         
         public Client.FlightService.Airport GetAirportByID(int id) {

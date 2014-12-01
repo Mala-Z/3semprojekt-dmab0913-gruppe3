@@ -79,6 +79,12 @@
   <wsdl:message name="IFlightService_DeleteFlight_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFlightResponse" />
   </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllAirports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAirports" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllAirports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAirportsResponse" />
+  </wsdl:message>
   <wsdl:message name="IFlightService_GetAirportByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAirportByID" />
   </wsdl:message>
@@ -181,6 +187,10 @@
     <wsdl:operation name="DeleteFlight">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteFlight" message="tns:IFlightService_DeleteFlight_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteFlightResponse" message="tns:IFlightService_DeleteFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAirports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllAirports" message="tns:IFlightService_GetAllAirports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllAirportsResponse" message="tns:IFlightService_GetAllAirports_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAirportByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAirportByID" message="tns:IFlightService_GetAirportByID_InputMessage" />
@@ -322,6 +332,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteFlight">
       <soap:operation soapAction="http://tempuri.org/IFlightService/DeleteFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAirports">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllAirports" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

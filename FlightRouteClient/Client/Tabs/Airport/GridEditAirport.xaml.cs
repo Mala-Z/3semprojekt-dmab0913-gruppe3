@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Client.FlightService;
 
 namespace Client.Tabs.Airport
 {
@@ -20,9 +21,21 @@ namespace Client.Tabs.Airport
     /// </summary>
     public partial class GridEditAirport : UserControl
     {
-        public GridEditAirport()
+        private FlightServiceClient fService;
+        private FlightService.Airport airport;
+
+        public GridEditAirport(Object airport)
         {
             InitializeComponent();
+            fService = new FlightServiceClient();
+            this.airport = airport;
+            InsertAiportData();
+        }
+
+        private void InsertAiportData()
+        {
+            txtName.Text = airport.name;
+            txtLocation.Text = airport.location;
         }
 
     }

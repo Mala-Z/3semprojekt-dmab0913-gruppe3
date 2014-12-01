@@ -82,6 +82,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Airport" nillable="true" type="tns:Airport" />
+  <xs:complexType name="ArrayOfAirport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Airport" nillable="true" type="tns:Airport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAirport" nillable="true" type="tns:ArrayOfAirport" />
   <xs:complexType name="ArrayOfPerson">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
