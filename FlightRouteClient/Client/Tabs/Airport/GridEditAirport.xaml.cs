@@ -51,7 +51,8 @@ namespace Client.Tabs.Airport
                 MessageBoxImage icon = MessageBoxImage.Information;
                 MessageBox.Show(messageBoxText, caption, button, icon);
 
-                
+                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirport.updateDataGrid();
+               
             }
             else
             {
