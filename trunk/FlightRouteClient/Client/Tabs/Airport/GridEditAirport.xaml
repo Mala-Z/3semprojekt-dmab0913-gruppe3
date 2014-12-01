@@ -9,6 +9,6 @@
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
         <TextBox x:Name="txtLocation" HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
         <Label Content="Placering:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Button Content="Rediger lufthavn" HorizontalAlignment="Left" Margin="174,69,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="bUpdate" Content="Rediger lufthavn" HorizontalAlignment="Left" Margin="174,69,0,0" VerticalAlignment="Top" Width="90" Click="bUpdate_Click"/>
     </Grid>
 </UserControl>

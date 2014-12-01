@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,11 @@ namespace Client.Tabs.Airport
         private FlightServiceClient fService;
         private FlightService.Airport airport;
 
-        public GridEditAirport(int airportID)
+        public GridEditAirport(FlightService.Airport airport)
         {
             InitializeComponent();
             fService = new FlightServiceClient();
-            this.airport = fService.GetAirportByID(airportID);
+            this.airport = airport;
             InsertAirportData();
         }
 
@@ -37,6 +38,18 @@ namespace Client.Tabs.Airport
             txtName.Text = airport.name;
             txtLocation.Text = airport.location;
         }
+
+        private void bUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtName.Text != "" && txtLocation.Text != "")
+            {
+                fService.UpdateAirport(airport.airportID, txtName.Text, txtLocation.Text);
+            }
+            else
+            {
+                
+            }
+        } 
 
     }
 }
