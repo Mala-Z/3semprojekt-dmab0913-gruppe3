@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Client.Tabs.Airplane.GridAddAirplane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Width="279.552" Height="594.476">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
+        <Label Content="Antal Sæder:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSeats" HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135"/>
+        <Button x:Name="bUpdate" Content="Opret Fly" HorizontalAlignment="Left" Margin="174,41,0,0" VerticalAlignment="Top" Width="90" Click="bUpdate_Click"/>
+    </Grid>
+</UserControl>
