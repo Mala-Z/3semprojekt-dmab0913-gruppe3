@@ -34,10 +34,11 @@ namespace ControlLayer
             //string toD = toDate.ToString("dd/MM/yy");
 
             var flights = from f in db.Flights
+                          orderby f.airplaneID descending 
                 //where (f.timeOfArrival >= fromD && f.timeOfArrival <= toD)
-                          where (DateTime.Parse(f.timeOfArrival) >= fromDate && DateTime.Parse(f.timeOfArrival) <= toDate)
+                         // where (DateTime.Parse(f.timeOfArrival) >= fromDate && DateTime.Parse(f.timeOfArrival) <= toDate)
                         select f;
-            return flights.ToList();
+            return flights.Take(50).ToList();
         }
 
         /// <summary>
