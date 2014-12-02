@@ -761,6 +761,12 @@ namespace Client.FlightService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetFlightByID", ReplyAction="http://tempuri.org/IFlightService/GetFlightByIDResponse")]
         System.Threading.Tasks.Task<Client.FlightService.Flight> GetFlightByIDAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllFlightsByDate", ReplyAction="http://tempuri.org/IFlightService/GetAllFlightsByDateResponse")]
+        Client.FlightService.Flight[] GetAllFlightsByDate(System.DateTime fromDate, System.DateTime toDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllFlightsByDate", ReplyAction="http://tempuri.org/IFlightService/GetAllFlightsByDateResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetAllFlightsByDateAsync(System.DateTime fromDate, System.DateTime toDate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetFlightsByDate", ReplyAction="http://tempuri.org/IFlightService/GetFlightsByDateResponse")]
         Client.FlightService.Flight[] GetFlightsByDate(string date);
         
@@ -933,6 +939,14 @@ namespace Client.FlightService {
         
         public System.Threading.Tasks.Task<Client.FlightService.Flight> GetFlightByIDAsync(int id) {
             return base.Channel.GetFlightByIDAsync(id);
+        }
+        
+        public Client.FlightService.Flight[] GetAllFlightsByDate(System.DateTime fromDate, System.DateTime toDate) {
+            return base.Channel.GetAllFlightsByDate(fromDate, toDate);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetAllFlightsByDateAsync(System.DateTime fromDate, System.DateTime toDate) {
+            return base.Channel.GetAllFlightsByDateAsync(fromDate, toDate);
         }
         
         public Client.FlightService.Flight[] GetFlightsByDate(string date) {

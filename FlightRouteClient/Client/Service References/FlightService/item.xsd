@@ -96,6 +96,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllFlightsByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fromDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="toDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllFlightsByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllFlightsByDateResult" nillable="true" type="q5:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetFlightsByDate">
     <xs:complexType>
       <xs:sequence>
@@ -106,14 +121,14 @@
   <xs:element name="GetFlightsByDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsByDateResult" nillable="true" type="q5:ArrayOfFlight" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsByDateResult" nillable="true" type="q6:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetFlightsFrom">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="start" nillable="true" type="q6:Airport" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="start" nillable="true" type="q7:Airport" />
         <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -121,7 +136,7 @@
   <xs:element name="GetFlightsFromResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsFromResult" nillable="true" type="q7:ArrayOfFlight" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsFromResult" nillable="true" type="q8:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -184,7 +199,7 @@
   <xs:element name="GetAllAirportsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllAirportsResult" nillable="true" type="q8:ArrayOfAirport" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllAirportsResult" nillable="true" type="q9:ArrayOfAirport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -198,7 +213,7 @@
   <xs:element name="GetAirportByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAirportByIDResult" nillable="true" type="q9:Airport" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAirportByIDResult" nillable="true" type="q10:Airport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -249,7 +264,7 @@
   <xs:element name="GetAllPersonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllPersonsResult" nillable="true" type="q10:ArrayOfPerson" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllPersonsResult" nillable="true" type="q11:ArrayOfPerson" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -263,7 +278,7 @@
   <xs:element name="GetPersonByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetPersonByIDResult" nillable="true" type="q11:Person" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetPersonByIDResult" nillable="true" type="q12:Person" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -39,15 +39,21 @@ namespace Client.Tabs
 
         private void InitializeGridData()
         {
-            var result = from f in fService.GetAllFlights()
-                         select new { ID = f.flightID, 
-                             Fra = fService.GetAirportByID(f.@from).name, 
-                             Til = fService.GetAirportByID(f.@to).name, 
-                             Afgang = f.timeOfDeparture, 
-                             Ankomst = f.timeOfArrival, 
-                             Rejsetid = f.traveltime, 
-                             Pris = f.price, 
-                             Ledige = fService.GetAirplaneByID((int)f.airplaneID).seats -= f.takenSeats };
+            DateTime fromDate = DateTime.Parse("01/12/2014");
+            DateTime toDate = DateTime.Parse("14/12/2014");
+
+            var result = from f in fService.GetAllFlightsByDate(fromDate, toDate)
+                //var result = from f in fService.GetAllFlights()
+                select new
+                {
+                    ID = f.flightID,
+                    Fra = fService.GetAirportByID(f.@from).name,
+                    Til = fService.GetAirportByID(f.@to).name,
+                    Afgang = f.timeOfDeparture,
+                    Ankomst = f.timeOfArrival,
+                    Rejsetid = f.traveltime,
+                    Pris = f.price,
+                    Ledige = fService.GetAirplaneByID((int)f.airplaneID).seats -= f.takenSeats };
 
             dgFlights.ItemsSource = result;
 
