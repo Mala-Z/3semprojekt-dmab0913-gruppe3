@@ -1,7 +1,8 @@
 ﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
+ using System.Net.Sockets;
+ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseLayer;
@@ -25,6 +26,18 @@ namespace ControlLayer
             var flights = db.Flights.OrderBy(x => x.flightID).ToList();
 
             return flights;
+        }
+
+        public List<Flight> GetAllFlightsByDate(DateTime fromDate, DateTime toDate)
+        {
+            //string fromD = fromDate.ToString("dd/MM/yy");
+            //string toD = toDate.ToString("dd/MM/yy");
+
+            var flights = from f in db.Flights
+                //where (f.timeOfArrival >= fromD && f.timeOfArrival <= toD)
+                          where (DateTime.Parse(f.timeOfArrival) >= fromDate && DateTime.Parse(f.timeOfArrival) <= toDate)
+                        select f;
+            return flights.ToList();
         }
 
         /// <summary>
