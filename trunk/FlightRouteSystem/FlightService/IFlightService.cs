@@ -38,6 +38,9 @@ namespace FlightService
         Flight GetFlightByID(int id);
 
         [OperationContract]
+        List<Flight> GetAllFlightsByDate(DateTime fromDate, DateTime toDate);
+
+        [OperationContract]
         List<Flight> GetFlightsByDate(string date);
 
         [OperationContract]
