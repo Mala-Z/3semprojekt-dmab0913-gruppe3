@@ -44,8 +44,12 @@ namespace Client.Tabs.Flight
 
         private void InsertFlightData()
         {
-            cbFrom.SelectedValue = flight.from.ToString();
-            cbTo.SelectedValue = flight.to.ToString();
+            if (flight.from != null && flight.to != null)
+            {
+                cbFrom.SelectedValue = flight.from.ToString();
+                cbTo.SelectedValue = flight.to.ToString(); 
+            }
+            
             DatePickerDeparture.SelectedDate = DateTime.Parse(flight.timeOfDeparture);
             DatePickerArrival.SelectedDate = DateTime.Parse(flight.timeOfArrival);
             txtTravelTime.Text = flight.traveltime.ToString();
