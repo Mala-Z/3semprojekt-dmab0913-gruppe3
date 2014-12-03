@@ -33,7 +33,7 @@ namespace ControlLayer
             DateTime nextDay = fromDate.AddDays(1);
 
             var flights = from f in db.Flights
-                          where (f.timeOfArrival == fromDate.ToString("dd/MM/yy") || f.timeOfArrival == nextDay.ToString("dd/MM/yy"))
+                          where (f.timeOfArrival == fromDate.ToString("dd/MM/yyyy") || f.timeOfArrival == nextDay.ToString("dd/MM/yyyy"))
                         select f;
             return flights.ToList();
         }
