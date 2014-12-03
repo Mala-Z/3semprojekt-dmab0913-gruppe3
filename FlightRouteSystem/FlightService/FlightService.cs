@@ -53,9 +53,9 @@ namespace FlightService
             return flightCtr.GetAllFlights();
         }
 
-        public List<Flight> GetAllFlightsByDate(DateTime fromDate, DateTime toDate)
+        public List<Flight> GetAllFlightsByDate(DateTime fromDate)
         {
-            return flightCtr.GetAllFlightsByDate(fromDate, toDate);
+            return flightCtr.GetAllFlightsByDate(fromDate);
         }
 
         public Flight GetFlightByID(int id)
