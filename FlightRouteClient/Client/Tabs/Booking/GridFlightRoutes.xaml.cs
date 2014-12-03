@@ -23,12 +23,24 @@ namespace Client.Tabs.Booking
     public partial class GridFlightRoutes : UserControl
     {
         private FlightServiceClient fService;
+        private FlightService.Person customer;
+        private FlightService.Airport fromA;
+        private FlightService.Airport toA;
+        private string date;
+        private int noOfPass;
 
 
-        public GridFlightRoutes()
+        public GridFlightRoutes(FlightService.Person customer, FlightService.Airport fromA, FlightService.Airport toA, string date, int noOfPass)
         {
             InitializeComponent();
             fService = new FlightServiceClient();
+            this.customer = customer;
+            this.fromA = fromA;
+            this.toA = toA;
+            this.date = date;
+            this.noOfPass = noOfPass;
+
+            testLbl.Content = date;
         }
 
 

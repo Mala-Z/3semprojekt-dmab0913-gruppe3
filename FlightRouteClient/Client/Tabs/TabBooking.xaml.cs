@@ -50,14 +50,15 @@ namespace Client.Tabs
                     fService.GetAirportByID(Int32.Parse(((ComboBoxItem) cbFrom.SelectedItem).Tag.ToString()));
                 FlightService.Airport toA =
                     fService.GetAirportByID(Int32.Parse(((ComboBoxItem) cbTo.SelectedItem).Tag.ToString()));
+                int noOfPass = Int32.Parse(txtNoOfPass.Text);
 
                 if (txtNoOfPass.Text != "" && dpDate.SelectedDate != null)
                 {
-                    if (Int32.Parse(txtNoOfPass.Text) >= 1)
+                    if (noOfPass >= 1)
                     {
                         if (fromA.airportID != toA.airportID)
                         {
-                            contentControl.Content = new GridFlightRoutes();
+                            contentControl.Content = new GridFlightRoutes(customer, fromA, toA, dpDate.SelectedDate.ToString(), noOfPass);
                         }
                         else
                         {
