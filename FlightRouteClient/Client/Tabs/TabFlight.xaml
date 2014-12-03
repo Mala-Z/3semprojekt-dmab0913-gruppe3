@@ -12,7 +12,7 @@
         <Grid  x:Name="gFlightsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="290">
             <ContentControl x:Name="contentControl" Grid.Row="1"/>
         </Grid>
-        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="20,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465" TextChanged="txtSearch_TextChanged"/>
+        <DatePicker x:Name="DatePickerFlightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Width="465" SelectedDateChanged="DatePickerFlightGrid_SelectedDateChanged"/>
 
     </Grid>
 </UserControl>
