@@ -106,12 +106,12 @@ namespace FlightService
         #endregion
 
         #region Dijkstra OperationContracts
-        /*
-        public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
-        {
-            return dijkstra.RunDijkstra(from, to, date, usePrice);
-        }
-         */
+        
+        //public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
+        //{
+        //    return dijkstra.RunDijkstra(from, to, date, usePrice);
+        //}
+         
         #endregion
 
         #region Flight OperationContracts
