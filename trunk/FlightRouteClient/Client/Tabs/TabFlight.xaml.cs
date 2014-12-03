@@ -43,10 +43,14 @@ namespace Client.Tabs
         private void InitializeGridData()
         {
             DateTime fromDate = DateTime.Now;
-            Debug.WriteLine(fromDate.ToString());
-            Debug.WriteLine(fromDate.ToShortDateString());
+            var result = GetFlightsToGridByDate(fromDate);
+            dgFlights.ItemsSource = result;
+
+        }
+
+        private IEnumerable<Object> GetFlightsToGridByDate(DateTime fromDate)
+        {
             var result = from f in fService.GetAllFlightsByDate(fromDate)
-                //var result = from f in fService.GetAllFlights()
                 select new
                 {
                     ID = f.flightID,
@@ -56,10 +60,9 @@ namespace Client.Tabs
                     Ankomst = f.timeOfArrival,
                     Rejsetid = f.traveltime,
                     Pris = f.price,
-                    Ledige = fService.GetAirplaneByID((int)f.airplaneID).seats -= f.takenSeats };
-
-            dgFlights.ItemsSource = result;
-
+                    Ledige = fService.GetAirplaneByID((int) f.airplaneID).seats -= f.takenSeats
+                };
+            return result;
         }
 
         public void updateDataGrid()
@@ -67,25 +70,25 @@ namespace Client.Tabs
             InitializeGridData();
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var result = from f in fService.GetAllFlights()
-                         where f.airplaneID.ToString() == txtSearch.Text || fService.GetAirportByID(f.@from).name.ToLower().Contains(txtSearch.Text.ToLower())
-                         select new { ID = f.flightID, 
-                             Fra = fService.GetAirportByID(f.@from).name, 
-                             Til = fService.GetAirportByID(f.@to).name, 
-                             Afgang = f.timeOfDeparture, 
-                             Ankomst = f.timeOfArrival, 
-                             Rejsetid = f.traveltime, 
-                             Pris = f.price, 
-                             Ledige = fService.GetAirplaneByID((int)f.airplaneID).seats -= f.takenSeats };
+        //private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var result = from f in fService.GetAllFlights()
+        //                 where f.airplaneID.ToString() == txtSearch.Text || fService.GetAirportByID(f.@from).name.ToLower().Contains(txtSearch.Text.ToLower())
+        //                 select new { ID = f.flightID, 
+        //                     Fra = fService.GetAirportByID(f.@from).name, 
+        //                     Til = fService.GetAirportByID(f.@to).name, 
+        //                     Afgang = f.timeOfDeparture, 
+        //                     Ankomst = f.timeOfArrival, 
+        //                     Rejsetid = f.traveltime, 
+        //                     Pris = f.price, 
+        //                     Ledige = fService.GetAirplaneByID((int)f.airplaneID).seats -= f.takenSeats };
 
-            dgFlights.ItemsSource = result;
+        //    dgFlights.ItemsSource = result;
             
-            //Application.Current.MainWindow 
+        //    //Application.Current.MainWindow 
 
 
-        }
+        //}
 
         private void dgFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -99,6 +102,15 @@ namespace Client.Tabs
                 contentControl.Content = new GridEditFlight(flight); 
             }
             
+        }
+
+        private void DatePickerFlightGrid_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var date = DatePickerFlightGrid.SelectedDate;
+            if (date != null && date.GetType() == typeof(DateTime))
+            {
+                dgFlights.ItemsSource = GetFlightsToGridByDate(date.Value);
+            }
         }
     }
 }
