@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,13 +36,13 @@ namespace Client.Tabs
 
             fService = new FlightServiceClient();
 
-           // InitializeGridData();
+            InitializeGridData();
 
         }
 
         private void InitializeGridData()
         {
-            DateTime fromDate = DateTime.ParseExact("03/12/2014 01:00", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime fromDate = DateTime.Parse("03/12/2014");
             Debug.WriteLine(fromDate.ToString());
             Debug.WriteLine(fromDate.ToShortDateString());
             var result = from f in fService.GetAllFlightsByDate(fromDate)
