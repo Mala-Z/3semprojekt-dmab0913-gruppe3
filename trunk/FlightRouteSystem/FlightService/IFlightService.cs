@@ -30,6 +30,44 @@ namespace FlightService
         bool DeleteAirplane(int id);
         #endregion
 
+        #region Airport OperationContracts
+
+        [OperationContract]
+        List<Airport> GetAllAirports();
+
+        [OperationContract]
+        Airport GetAirportByID(int id);
+
+        [OperationContract]
+        void CreateNewAirport(string name, string location);
+
+        [OperationContract]
+        void UpdateAirport(int id, string name, string location);
+
+        [OperationContract]
+        void DeleteAirport(int id);
+        #endregion
+
+        #region Booking OperationContracts
+
+        [OperationContract]
+        List<Booking> GetAllBookings();
+
+        [OperationContract]
+        Booking GetBookingByID(int id);
+
+        [OperationContract]
+        bool CreateNewBooking(List<Flight> flights, List<Person> passengers, string totalTime, double totalPrice);
+
+        [OperationContract]
+        bool UpdateBooking(int id, string totalTime, double totalPrice);
+
+        [OperationContract]
+        bool DeleteBooking(int id);
+
+
+        #endregion
+
         #region Flight OperationContracts
         [OperationContract]
         List<Flight> GetAllFlights();
@@ -56,24 +94,6 @@ namespace FlightService
 
         [OperationContract]
         void DeleteFlight(int id);
-        #endregion
-
-        #region Airport OperationContracts
-
-        [OperationContract]
-        List<Airport> GetAllAirports();
-
-        [OperationContract]
-        Airport GetAirportByID(int id);
-
-        [OperationContract]
-        void CreateNewAirport(string name, string location);
-
-        [OperationContract]
-        void UpdateAirport(int id, string name, string location);
-
-        [OperationContract]
-        void DeleteAirport(int id);
         #endregion
 
         #region Person OperationContracts
