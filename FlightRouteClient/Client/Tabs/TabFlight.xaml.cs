@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -39,8 +41,9 @@ namespace Client.Tabs
 
         private void InitializeGridData()
         {
-            DateTime fromDate = DateTime.Parse("03/12/2014");
-
+            DateTime fromDate = DateTime.ParseExact("03/12/2014 01:00", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            Debug.WriteLine(fromDate.ToString());
+            Debug.WriteLine(fromDate.ToShortDateString());
             var result = from f in fService.GetAllFlightsByDate(fromDate)
                 //var result = from f in fService.GetAllFlights()
                 select new
