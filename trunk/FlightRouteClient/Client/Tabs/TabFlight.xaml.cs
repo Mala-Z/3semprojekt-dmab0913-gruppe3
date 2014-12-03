@@ -39,10 +39,9 @@ namespace Client.Tabs
 
         private void InitializeGridData()
         {
-            DateTime fromDate = DateTime.Parse("01/12/2014");
-            DateTime toDate = DateTime.Parse("14/12/2014");
+            DateTime fromDate = DateTime.Parse("03/12/2014");
 
-            var result = from f in fService.GetAllFlightsByDate(fromDate, toDate)
+            var result = from f in fService.GetAllFlightsByDate(fromDate)
                 //var result = from f in fService.GetAllFlights()
                 select new
                 {
