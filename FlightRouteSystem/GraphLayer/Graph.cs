@@ -13,12 +13,11 @@ using DatabaseLayer;
 
 namespace GraphLayer
 {
-    [DataContract]
     public class Graph : IAbstractGraph
     {
-        [DataMember]
+ 
         private AirportCtr airportCtr;
-        [DataMember]
+
         private List<Vertex> _vertices;
 
 
@@ -29,7 +28,6 @@ namespace GraphLayer
             _vertices = new List<Vertex>();
         }
 
-        [OperationContract]
         public void AddAllVertices(string date)
         {
             foreach (Airport airport in airportCtr.GetAllAirports())
@@ -39,7 +37,6 @@ namespace GraphLayer
             }
         }
 
-        [OperationContract]
         public void AddAllEdges()
         {
 
@@ -68,25 +65,21 @@ namespace GraphLayer
             }
         }
 
-        [OperationContract]
         public bool ContainsVertex(Vertex vertex)
         {
             return _vertices.Contains(vertex);
         }
 
-        [OperationContract]
         public List<Vertex> GetVertices()
         {
             return _vertices;
         }
 
-        [OperationContract]
         public bool IsEmpty()
         {
             return _vertices.Count == 0;
         }
 
-        [OperationContract]
         public int GetNoOfVertices()
         {
             return _vertices.Count;
@@ -100,7 +93,7 @@ namespace GraphLayer
         //    return count;//if undirected count/2
         //}
 
-        [OperationContract]
+        
         public void Clear()
         {
             //Init();

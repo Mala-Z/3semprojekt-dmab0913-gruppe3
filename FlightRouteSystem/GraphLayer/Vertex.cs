@@ -44,44 +44,37 @@ namespace GraphLayer
             
         }
 
-        [OperationContract]
         public override bool Equals(object obj)
         {
             Vertex other = (Vertex)obj;
             return airport.airportID == other.GetAirport().airportID;
         }
 
-        [OperationContract]
         public void setEdges(List<Edge> edges)
         {
             this.edges = edges;
         }
 
-        [OperationContract]
         public List<Flight> AddFlights()
         {
             return flightCtr.GetFlightsFrom(airport, date);
         }
 
-        [OperationContract]
         public void SetFlights(List<Flight> flights)
         {
             this.flightsFromAiport = flights;
         }
 
-        [OperationContract]
         public List<Flight> GetFlights()
         {
             return flightsFromAiport;
         }
 
-        [OperationContract]
         public Airport GetAirport()
         {
             return airport;
         }
 
-        [OperationContract]
         public List<Edge> GetEdges()
         {
             return edges;
