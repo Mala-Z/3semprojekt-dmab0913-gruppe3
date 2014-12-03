@@ -451,6 +451,176 @@ namespace Client.FlightService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Booking", Namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class Booking : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int bookingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string totalTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> totalPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.BookingFlight[] BookingFlightsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.BookingPassenger[] BookingPassengersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int bookingID {
+            get {
+                return this.bookingIDField;
+            }
+            set {
+                if ((this.bookingIDField.Equals(value) != true)) {
+                    this.bookingIDField = value;
+                    this.RaisePropertyChanged("bookingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string totalTime {
+            get {
+                return this.totalTimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.totalTimeField, value) != true)) {
+                    this.totalTimeField = value;
+                    this.RaisePropertyChanged("totalTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<double> totalPrice {
+            get {
+                return this.totalPriceField;
+            }
+            set {
+                if ((this.totalPriceField.Equals(value) != true)) {
+                    this.totalPriceField = value;
+                    this.RaisePropertyChanged("totalPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public Client.FlightService.BookingFlight[] BookingFlights {
+            get {
+                return this.BookingFlightsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BookingFlightsField, value) != true)) {
+                    this.BookingFlightsField = value;
+                    this.RaisePropertyChanged("BookingFlights");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public Client.FlightService.BookingPassenger[] BookingPassengers {
+            get {
+                return this.BookingPassengersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BookingPassengersField, value) != true)) {
+                    this.BookingPassengersField = value;
+                    this.RaisePropertyChanged("BookingPassengers");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BookingPassenger", Namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class BookingPassenger : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int bookingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int personIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int bookingID {
+            get {
+                return this.bookingIDField;
+            }
+            set {
+                if ((this.bookingIDField.Equals(value) != true)) {
+                    this.bookingIDField = value;
+                    this.RaisePropertyChanged("bookingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int personID {
+            get {
+                return this.personIDField;
+            }
+            set {
+                if ((this.personIDField.Equals(value) != true)) {
+                    this.personIDField = value;
+                    this.RaisePropertyChanged("personID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer")]
     [System.SerializableAttribute()]
     public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -656,18 +826,36 @@ namespace Client.FlightService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BookingPassenger", Namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Vertex", Namespace="http://schemas.datacontract.org/2004/07/GraphLayer")]
     [System.SerializableAttribute()]
-    public partial class BookingPassenger : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Vertex : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int bookingIDField;
+        private double DistanceFromStartField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int personIDField;
+        private Client.FlightService.Edge EdgeToUseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Vertex PrevVertexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Airport airportField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Edge[] edgesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.FlightCtr flightCtrField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Flight[] flightsFromAiportField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -680,28 +868,212 @@ namespace Client.FlightService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int bookingID {
+        public double DistanceFromStart {
             get {
-                return this.bookingIDField;
+                return this.DistanceFromStartField;
             }
             set {
-                if ((this.bookingIDField.Equals(value) != true)) {
-                    this.bookingIDField = value;
-                    this.RaisePropertyChanged("bookingID");
+                if ((this.DistanceFromStartField.Equals(value) != true)) {
+                    this.DistanceFromStartField = value;
+                    this.RaisePropertyChanged("DistanceFromStart");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int personID {
+        public Client.FlightService.Edge EdgeToUse {
             get {
-                return this.personIDField;
+                return this.EdgeToUseField;
             }
             set {
-                if ((this.personIDField.Equals(value) != true)) {
-                    this.personIDField = value;
-                    this.RaisePropertyChanged("personID");
+                if ((object.ReferenceEquals(this.EdgeToUseField, value) != true)) {
+                    this.EdgeToUseField = value;
+                    this.RaisePropertyChanged("EdgeToUse");
                 }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Vertex PrevVertex {
+            get {
+                return this.PrevVertexField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrevVertexField, value) != true)) {
+                    this.PrevVertexField = value;
+                    this.RaisePropertyChanged("PrevVertex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Airport airport {
+            get {
+                return this.airportField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.airportField, value) != true)) {
+                    this.airportField = value;
+                    this.RaisePropertyChanged("airport");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string date {
+            get {
+                return this.dateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dateField, value) != true)) {
+                    this.dateField = value;
+                    this.RaisePropertyChanged("date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Edge[] edges {
+            get {
+                return this.edgesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.edgesField, value) != true)) {
+                    this.edgesField = value;
+                    this.RaisePropertyChanged("edges");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.FlightCtr flightCtr {
+            get {
+                return this.flightCtrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.flightCtrField, value) != true)) {
+                    this.flightCtrField = value;
+                    this.RaisePropertyChanged("flightCtr");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Flight[] flightsFromAiport {
+            get {
+                return this.flightsFromAiportField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.flightsFromAiportField, value) != true)) {
+                    this.flightsFromAiportField = value;
+                    this.RaisePropertyChanged("flightsFromAiport");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Edge", Namespace="http://schemas.datacontract.org/2004/07/GraphLayer")]
+    [System.SerializableAttribute()]
+    public partial class Edge : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Vertex FromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Vertex ToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.FlightService.Flight VertexEdgeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Vertex From {
+            get {
+                return this.FromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromField, value) != true)) {
+                    this.FromField = value;
+                    this.RaisePropertyChanged("From");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Vertex To {
+            get {
+                return this.ToField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToField, value) != true)) {
+                    this.ToField = value;
+                    this.RaisePropertyChanged("To");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.FlightService.Flight VertexEdge {
+            get {
+                return this.VertexEdgeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VertexEdgeField, value) != true)) {
+                    this.VertexEdgeField = value;
+                    this.RaisePropertyChanged("VertexEdge");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FlightCtr", Namespace="http://schemas.datacontract.org/2004/07/ControlLayer")]
+    [System.SerializableAttribute()]
+    public partial class FlightCtr : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
             }
         }
         
@@ -748,6 +1120,72 @@ namespace Client.FlightService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirplane", ReplyAction="http://tempuri.org/IFlightService/DeleteAirplaneResponse")]
         System.Threading.Tasks.Task<bool> DeleteAirplaneAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllAirports", ReplyAction="http://tempuri.org/IFlightService/GetAllAirportsResponse")]
+        Client.FlightService.Airport[] GetAllAirports();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllAirports", ReplyAction="http://tempuri.org/IFlightService/GetAllAirportsResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Airport[]> GetAllAirportsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAirportByID", ReplyAction="http://tempuri.org/IFlightService/GetAirportByIDResponse")]
+        Client.FlightService.Airport GetAirportByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAirportByID", ReplyAction="http://tempuri.org/IFlightService/GetAirportByIDResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Airport> GetAirportByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewAirport", ReplyAction="http://tempuri.org/IFlightService/CreateNewAirportResponse")]
+        void CreateNewAirport(string name, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewAirport", ReplyAction="http://tempuri.org/IFlightService/CreateNewAirportResponse")]
+        System.Threading.Tasks.Task CreateNewAirportAsync(string name, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateAirport", ReplyAction="http://tempuri.org/IFlightService/UpdateAirportResponse")]
+        void UpdateAirport(int id, string name, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateAirport", ReplyAction="http://tempuri.org/IFlightService/UpdateAirportResponse")]
+        System.Threading.Tasks.Task UpdateAirportAsync(int id, string name, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirport", ReplyAction="http://tempuri.org/IFlightService/DeleteAirportResponse")]
+        void DeleteAirport(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirport", ReplyAction="http://tempuri.org/IFlightService/DeleteAirportResponse")]
+        System.Threading.Tasks.Task DeleteAirportAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllBookings", ReplyAction="http://tempuri.org/IFlightService/GetAllBookingsResponse")]
+        Client.FlightService.Booking[] GetAllBookings();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllBookings", ReplyAction="http://tempuri.org/IFlightService/GetAllBookingsResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Booking[]> GetAllBookingsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetBookingByID", ReplyAction="http://tempuri.org/IFlightService/GetBookingByIDResponse")]
+        Client.FlightService.Booking GetBookingByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetBookingByID", ReplyAction="http://tempuri.org/IFlightService/GetBookingByIDResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Booking> GetBookingByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewBookingResponse")]
+        bool CreateNewBooking(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewBookingResponse")]
+        System.Threading.Tasks.Task<bool> CreateNewBookingAsync(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateBooking", ReplyAction="http://tempuri.org/IFlightService/UpdateBookingResponse")]
+        bool UpdateBooking(int id, string totalTime, double totalPrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateBooking", ReplyAction="http://tempuri.org/IFlightService/UpdateBookingResponse")]
+        System.Threading.Tasks.Task<bool> UpdateBookingAsync(int id, string totalTime, double totalPrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteBooking", ReplyAction="http://tempuri.org/IFlightService/DeleteBookingResponse")]
+        bool DeleteBooking(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteBooking", ReplyAction="http://tempuri.org/IFlightService/DeleteBookingResponse")]
+        System.Threading.Tasks.Task<bool> DeleteBookingAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstra", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraResponse")]
+        Client.FlightService.Vertex[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstra", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Vertex[]> RunDijkstraAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllFlights", ReplyAction="http://tempuri.org/IFlightService/GetAllFlightsResponse")]
         Client.FlightService.Flight[] GetAllFlights();
@@ -796,36 +1234,6 @@ namespace Client.FlightService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteFlight", ReplyAction="http://tempuri.org/IFlightService/DeleteFlightResponse")]
         System.Threading.Tasks.Task DeleteFlightAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllAirports", ReplyAction="http://tempuri.org/IFlightService/GetAllAirportsResponse")]
-        Client.FlightService.Airport[] GetAllAirports();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllAirports", ReplyAction="http://tempuri.org/IFlightService/GetAllAirportsResponse")]
-        System.Threading.Tasks.Task<Client.FlightService.Airport[]> GetAllAirportsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAirportByID", ReplyAction="http://tempuri.org/IFlightService/GetAirportByIDResponse")]
-        Client.FlightService.Airport GetAirportByID(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAirportByID", ReplyAction="http://tempuri.org/IFlightService/GetAirportByIDResponse")]
-        System.Threading.Tasks.Task<Client.FlightService.Airport> GetAirportByIDAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewAirport", ReplyAction="http://tempuri.org/IFlightService/CreateNewAirportResponse")]
-        void CreateNewAirport(string name, string location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewAirport", ReplyAction="http://tempuri.org/IFlightService/CreateNewAirportResponse")]
-        System.Threading.Tasks.Task CreateNewAirportAsync(string name, string location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateAirport", ReplyAction="http://tempuri.org/IFlightService/UpdateAirportResponse")]
-        void UpdateAirport(int id, string name, string location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateAirport", ReplyAction="http://tempuri.org/IFlightService/UpdateAirportResponse")]
-        System.Threading.Tasks.Task UpdateAirportAsync(int id, string name, string location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirport", ReplyAction="http://tempuri.org/IFlightService/DeleteAirportResponse")]
-        void DeleteAirport(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirport", ReplyAction="http://tempuri.org/IFlightService/DeleteAirportResponse")]
-        System.Threading.Tasks.Task DeleteAirportAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllPersons", ReplyAction="http://tempuri.org/IFlightService/GetAllPersonsResponse")]
         Client.FlightService.Person[] GetAllPersons();
@@ -925,6 +1333,94 @@ namespace Client.FlightService {
             return base.Channel.DeleteAirplaneAsync(id);
         }
         
+        public Client.FlightService.Airport[] GetAllAirports() {
+            return base.Channel.GetAllAirports();
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Airport[]> GetAllAirportsAsync() {
+            return base.Channel.GetAllAirportsAsync();
+        }
+        
+        public Client.FlightService.Airport GetAirportByID(int id) {
+            return base.Channel.GetAirportByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Airport> GetAirportByIDAsync(int id) {
+            return base.Channel.GetAirportByIDAsync(id);
+        }
+        
+        public void CreateNewAirport(string name, string location) {
+            base.Channel.CreateNewAirport(name, location);
+        }
+        
+        public System.Threading.Tasks.Task CreateNewAirportAsync(string name, string location) {
+            return base.Channel.CreateNewAirportAsync(name, location);
+        }
+        
+        public void UpdateAirport(int id, string name, string location) {
+            base.Channel.UpdateAirport(id, name, location);
+        }
+        
+        public System.Threading.Tasks.Task UpdateAirportAsync(int id, string name, string location) {
+            return base.Channel.UpdateAirportAsync(id, name, location);
+        }
+        
+        public void DeleteAirport(int id) {
+            base.Channel.DeleteAirport(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAirportAsync(int id) {
+            return base.Channel.DeleteAirportAsync(id);
+        }
+        
+        public Client.FlightService.Booking[] GetAllBookings() {
+            return base.Channel.GetAllBookings();
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Booking[]> GetAllBookingsAsync() {
+            return base.Channel.GetAllBookingsAsync();
+        }
+        
+        public Client.FlightService.Booking GetBookingByID(int id) {
+            return base.Channel.GetBookingByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Booking> GetBookingByIDAsync(int id) {
+            return base.Channel.GetBookingByIDAsync(id);
+        }
+        
+        public bool CreateNewBooking(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice) {
+            return base.Channel.CreateNewBooking(flights, passengers, totalTime, totalPrice);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateNewBookingAsync(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice) {
+            return base.Channel.CreateNewBookingAsync(flights, passengers, totalTime, totalPrice);
+        }
+        
+        public bool UpdateBooking(int id, string totalTime, double totalPrice) {
+            return base.Channel.UpdateBooking(id, totalTime, totalPrice);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateBookingAsync(int id, string totalTime, double totalPrice) {
+            return base.Channel.UpdateBookingAsync(id, totalTime, totalPrice);
+        }
+        
+        public bool DeleteBooking(int id) {
+            return base.Channel.DeleteBooking(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteBookingAsync(int id) {
+            return base.Channel.DeleteBookingAsync(id);
+        }
+        
+        public Client.FlightService.Vertex[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
+            return base.Channel.RunDijkstra(from, to, date, usePrice);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Vertex[]> RunDijkstraAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
+            return base.Channel.RunDijkstraAsync(from, to, date, usePrice);
+        }
+        
         public Client.FlightService.Flight[] GetAllFlights() {
             return base.Channel.GetAllFlights();
         }
@@ -987,46 +1483,6 @@ namespace Client.FlightService {
         
         public System.Threading.Tasks.Task DeleteFlightAsync(int id) {
             return base.Channel.DeleteFlightAsync(id);
-        }
-        
-        public Client.FlightService.Airport[] GetAllAirports() {
-            return base.Channel.GetAllAirports();
-        }
-        
-        public System.Threading.Tasks.Task<Client.FlightService.Airport[]> GetAllAirportsAsync() {
-            return base.Channel.GetAllAirportsAsync();
-        }
-        
-        public Client.FlightService.Airport GetAirportByID(int id) {
-            return base.Channel.GetAirportByID(id);
-        }
-        
-        public System.Threading.Tasks.Task<Client.FlightService.Airport> GetAirportByIDAsync(int id) {
-            return base.Channel.GetAirportByIDAsync(id);
-        }
-        
-        public void CreateNewAirport(string name, string location) {
-            base.Channel.CreateNewAirport(name, location);
-        }
-        
-        public System.Threading.Tasks.Task CreateNewAirportAsync(string name, string location) {
-            return base.Channel.CreateNewAirportAsync(name, location);
-        }
-        
-        public void UpdateAirport(int id, string name, string location) {
-            base.Channel.UpdateAirport(id, name, location);
-        }
-        
-        public System.Threading.Tasks.Task UpdateAirportAsync(int id, string name, string location) {
-            return base.Channel.UpdateAirportAsync(id, name, location);
-        }
-        
-        public void DeleteAirport(int id) {
-            base.Channel.DeleteAirport(id);
-        }
-        
-        public System.Threading.Tasks.Task DeleteAirportAsync(int id) {
-            return base.Channel.DeleteAirportAsync(id);
         }
         
         public Client.FlightService.Person[] GetAllPersons() {

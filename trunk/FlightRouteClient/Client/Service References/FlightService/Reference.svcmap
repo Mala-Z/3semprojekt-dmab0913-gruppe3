@@ -22,11 +22,13 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="FlightService.wsdl" MetadataType="Wsdl" ID="16f8df86-9bc2-473d-b4b6-d21c5a9e9639" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?wsdl" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="93aba80a-f8b1-4a2f-ba41-0647c8f9c77e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd0" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d58d6d1c-a487-4ecc-8680-071d61979581" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd1" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="4d73e07d-dd1d-4620-b776-1743110fb8d6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd3" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ce96931d-bfb1-480b-a74b-034c5a1f80df" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd2" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="c570d36d-0a60-4134-99f1-4db46afd3e03" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?disco" />
+    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="f894353d-fb17-4844-8ddd-8ece15f3aad4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd4" />
+    <MetadataFile FileName="FlightService.wsdl" MetadataType="Wsdl" ID="16f8df86-9bc2-473d-b4b6-d21c5a9e9639" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d58d6d1c-a487-4ecc-8680-071d61979581" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
