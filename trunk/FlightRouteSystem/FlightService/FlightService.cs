@@ -109,7 +109,7 @@ namespace FlightService
 
         public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
-            return dijkstra.RunDijkstra(from, to, date, usePrice);
+            return dijkstra.runDikjstra(from, to, date, usePrice); 
         }
          
         #endregion
