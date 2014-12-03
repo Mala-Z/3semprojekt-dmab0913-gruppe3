@@ -60,6 +60,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BookingFlight" nillable="true" type="tns:BookingFlight" />
+  <xs:complexType name="ArrayOfAirport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Airport" nillable="true" type="tns:Airport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAirport" nillable="true" type="tns:ArrayOfAirport" />
   <xs:complexType name="Airport">
     <xs:sequence>
       <xs:element minOccurs="0" name="airportID" type="xs:int" />
@@ -82,12 +88,47 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Airport" nillable="true" type="tns:Airport" />
-  <xs:complexType name="ArrayOfAirport">
+  <xs:complexType name="ArrayOfBooking">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Airport" nillable="true" type="tns:Airport" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Booking" nillable="true" type="tns:Booking" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfAirport" nillable="true" type="tns:ArrayOfAirport" />
+  <xs:element name="ArrayOfBooking" nillable="true" type="tns:ArrayOfBooking" />
+  <xs:complexType name="Booking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookingID" type="xs:int" />
+      <xs:element minOccurs="0" name="totalTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="totalPrice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BookingFlights" nillable="true" type="tns:ArrayOfBookingFlight">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BookingPassengers" nillable="true" type="tns:ArrayOfBookingPassenger">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Booking" nillable="true" type="tns:Booking" />
+  <xs:complexType name="ArrayOfBookingPassenger">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookingPassenger" nillable="true" type="tns:BookingPassenger" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookingPassenger" nillable="true" type="tns:ArrayOfBookingPassenger" />
+  <xs:complexType name="BookingPassenger">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bookingID" type="xs:int" />
+      <xs:element minOccurs="0" name="personID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookingPassenger" nillable="true" type="tns:BookingPassenger" />
   <xs:complexType name="ArrayOfPerson">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
@@ -116,17 +157,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Person" nillable="true" type="tns:Person" />
-  <xs:complexType name="ArrayOfBookingPassenger">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookingPassenger" nillable="true" type="tns:BookingPassenger" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBookingPassenger" nillable="true" type="tns:ArrayOfBookingPassenger" />
-  <xs:complexType name="BookingPassenger">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="bookingID" type="xs:int" />
-      <xs:element minOccurs="0" name="personID" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="BookingPassenger" nillable="true" type="tns:BookingPassenger" />
 </xs:schema>

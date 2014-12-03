@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GraphLayer" />
   <xs:element name="GetAllAirplanes">
     <xs:complexType>
       <xs:sequence />
@@ -70,6 +71,161 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllAirports">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAirportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllAirportsResult" nillable="true" type="q3:ArrayOfAirport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAirportByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAirportByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAirportByIDResult" nillable="true" type="q4:Airport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewAirport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewAirportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAirport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAirportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAirport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAirportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBookings">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBookingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllBookingsResult" nillable="true" type="q5:ArrayOfBooking" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookingByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookingByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetBookingByIDResult" nillable="true" type="q6:Booking" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="flights" nillable="true" type="q7:ArrayOfFlight" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="passengers" nillable="true" type="q8:ArrayOfPerson" />
+        <xs:element minOccurs="0" name="totalTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalPrice" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateNewBookingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="totalTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalPrice" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateBookingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteBookingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunDijkstra">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="from" nillable="true" type="q9:Airport" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="to" nillable="true" type="q10:Airport" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="usePrice" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunDijkstraResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GraphLayer" minOccurs="0" name="RunDijkstraResult" nillable="true" type="q11:ArrayOfVertex" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAllFlights">
     <xs:complexType>
       <xs:sequence />
@@ -78,7 +234,7 @@
   <xs:element name="GetAllFlightsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllFlightsResult" nillable="true" type="q3:ArrayOfFlight" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllFlightsResult" nillable="true" type="q12:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -92,7 +248,7 @@
   <xs:element name="GetFlightByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightByIDResult" nillable="true" type="q4:Flight" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightByIDResult" nillable="true" type="q13:Flight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -106,7 +262,7 @@
   <xs:element name="GetAllFlightsByDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllFlightsByDateResult" nillable="true" type="q5:ArrayOfFlight" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllFlightsByDateResult" nillable="true" type="q14:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,14 +276,14 @@
   <xs:element name="GetFlightsByDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsByDateResult" nillable="true" type="q6:ArrayOfFlight" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsByDateResult" nillable="true" type="q15:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetFlightsFrom">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="start" nillable="true" type="q7:Airport" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="start" nillable="true" type="q16:Airport" />
         <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -135,7 +291,7 @@
   <xs:element name="GetFlightsFromResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsFromResult" nillable="true" type="q8:ArrayOfFlight" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetFlightsFromResult" nillable="true" type="q17:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -190,71 +346,6 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllAirports">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllAirportsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllAirportsResult" nillable="true" type="q9:ArrayOfAirport" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAirportByID">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAirportByIDResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAirportByIDResult" nillable="true" type="q10:Airport" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateNewAirport">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CreateNewAirportResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateAirport">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateAirportResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteAirport">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteAirportResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetAllPersons">
     <xs:complexType>
       <xs:sequence />
@@ -263,7 +354,7 @@
   <xs:element name="GetAllPersonsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllPersonsResult" nillable="true" type="q11:ArrayOfPerson" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetAllPersonsResult" nillable="true" type="q18:ArrayOfPerson" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -277,7 +368,7 @@
   <xs:element name="GetPersonByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetPersonByIDResult" nillable="true" type="q12:Person" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="GetPersonByIDResult" nillable="true" type="q19:Person" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

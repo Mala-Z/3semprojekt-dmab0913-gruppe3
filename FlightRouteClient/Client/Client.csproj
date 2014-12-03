@@ -208,10 +208,16 @@
     <None Include="Service References\FlightService\Client.FlightService.Airport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\FlightService\Client.FlightService.Booking.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FlightService\Client.FlightService.Flight.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FlightService\Client.FlightService.Person.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FlightService\Client.FlightService.Vertex.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FlightService\FlightService.wsdl" />
@@ -247,6 +253,12 @@
     <None Include="Service References\FlightService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\FlightService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FlightService\item31.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\FlightService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
