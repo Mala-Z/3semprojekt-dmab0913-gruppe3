@@ -20,27 +20,24 @@ namespace GraphLayer
     /// basic graph operations on an unweighted graph are defined in this interface
     /// specification omitted when obvious
     /// </summary>
-    [ServiceContract]
     public interface IAbstractGraph
     {
         ///<summary>
         ///adds a vertex to the graph
         ///PRE: vertex is not in the graph
         ///</summary>
-        [OperationContract]
         void AddAllVertices(string date);
 
         ///<summary>
         ///adds an edge to the (unweighted) graph
         ///PRE (startVertex,endVertex) is not contained in the graph
         ///</summary>
-        [OperationContract]
         void AddAllEdges();
 
         ///<summary>
         ///determines whether a vertex is in the graph
         ///</summary>
-        [OperationContract]
+
         bool ContainsVertex(Vertex vertex);
 
         ///<summary>
@@ -58,13 +55,13 @@ namespace GraphLayer
         ///<summary>
         ///Returns an Enumerator to the collection of vertices
         ///</summary>
-        [OperationContract]
+
         List<Vertex> GetVertices();
 
         ///<summary>
         ///determines whether the graph is empty
         ///</summary>
-       [OperationContract]
+      
         bool IsEmpty();
 
         ///<summary>
@@ -81,7 +78,7 @@ namespace GraphLayer
         ///<summary>
         ///makes the graph empty
         ///</summary>
-       [OperationContract]
+       
         void Clear();
 
 

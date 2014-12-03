@@ -23,7 +23,7 @@ namespace GraphLayer
             this.From = from;
         }
 
-        [OperationContract]
+      
         public double GetCost(bool usePrice)
         {
             double cost = -1;
