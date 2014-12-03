@@ -20,9 +20,6 @@ namespace ControlLayer
         public FlightCtr(dmab0913_3DataContext db)
         {
             this.db = db;
-            CultureInfo ci = new CultureInfo("da-DK");
-            ci.DateTimeFormat.DateSeparator = "/";
-            Thread.CurrentThread.CurrentCulture = ci;
         }
         /// <summary>
         /// Get all Flights
@@ -37,17 +34,14 @@ namespace ControlLayer
 
         public List<Flight> GetAllFlightsByDate(DateTime fromDate)
         {
-            //CultureInfo ci = new CultureInfo("da-DK");
-            //ci.DateTimeFormat.DateSeparator = "/";
-            //Thread.CurrentThread.CurrentCulture = ci;
-            string date1 = fromDate.ToShortDateString();
-            Debug.WriteLine(date1);
+            //string date1 = fromDate.ToString("dd'/'MM'/'yyyy");
+            //Debug.WriteLine(date1);
             DateTime nextDay = fromDate.AddDays(1);
-            string date2 = nextDay.ToString().Substring(0, 10);
-            Debug.WriteLine(date2);
+            //string date2 = nextDay.ToString("dd'/'MM'/'yyyy");
+            //Debug.WriteLine(date2);
 
             var flights = from f in db.Flights
-                          where (f.timeOfArrival == date1 || f.timeOfArrival == date2)
+                          where (f.timeOfArrival.Contains(fromDate.ToShortDateString()) || f.timeOfArrival.Contains(nextDay.ToShortDateString()))
                         select f;
             return flights.ToList();
         }
