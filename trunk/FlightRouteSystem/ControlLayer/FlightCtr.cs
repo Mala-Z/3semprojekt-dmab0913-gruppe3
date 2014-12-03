@@ -28,17 +28,14 @@ namespace ControlLayer
             return flights;
         }
 
-        public List<Flight> GetAllFlightsByDate(DateTime fromDate, DateTime toDate)
+        public List<Flight> GetAllFlightsByDate(DateTime fromDate)
         {
-            //string fromD = fromDate.ToString("dd/MM/yy");
-            //string toD = toDate.ToString("dd/MM/yy");
+            DateTime nextDay = fromDate.AddDays(1);
 
             var flights = from f in db.Flights
-                          orderby f.airplaneID descending 
-                //where (f.timeOfArrival >= fromD && f.timeOfArrival <= toD)
-                         // where (DateTime.Parse(f.timeOfArrival) >= fromDate && DateTime.Parse(f.timeOfArrival) <= toDate)
+                          where (f.timeOfArrival == fromDate.ToString("dd/MM/yy") || f.timeOfArrival == nextDay.ToString("dd/MM/yy"))
                         select f;
-            return flights.Take(50).ToList();
+            return flights.ToList();
         }
 
         /// <summary>
