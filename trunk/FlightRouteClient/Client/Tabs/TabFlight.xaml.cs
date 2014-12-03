@@ -35,7 +35,7 @@ namespace Client.Tabs
 
             fService = new FlightServiceClient();
 
-            InitializeGridData();
+           // InitializeGridData();
 
         }
 
