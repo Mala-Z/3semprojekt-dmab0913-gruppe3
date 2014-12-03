@@ -19,7 +19,7 @@ namespace FlightService
         private static BookingCtr bookingCtr = main.BookingCtr;
         private static FlightCtr flightCtr = main.FlightCtr;
         private static PersonCtr personCtr = main.PersonCtr;
-        private static Dijkstra dijkstra = new Dijkstra();
+        private static DijkstraCtr dijkstra = new DijkstraCtr();
 
         #region Airplane OperationContracts
         public List<Airplane> GetAllAirplanes()
