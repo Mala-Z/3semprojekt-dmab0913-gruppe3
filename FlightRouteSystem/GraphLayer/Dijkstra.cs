@@ -36,6 +36,7 @@ namespace GraphLayer
         /// </summary>
         /// <param name="start">The aiport to fly from</param>
         /// <param name="date">The date to fly from</param>
+        [OperationContract]
         private void Initialize(Airport start, string date)
         {
             graph.AddAllVertices(date);
@@ -59,6 +60,7 @@ namespace GraphLayer
             }
         }
 
+        [OperationContract]
         public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
             Initialize(from, date);
@@ -90,6 +92,7 @@ namespace GraphLayer
             return solutionList;
         }
 
+        [OperationContract]
         private List<Vertex> Backtrack(Airport from, Airport to)
         {
             for (int i = 0; i < listOfCost.Count; i++)
@@ -107,6 +110,7 @@ namespace GraphLayer
             return solutionList;
         }
 
+        [OperationContract]
         private Vertex ShortestDistFromStart()
         {
             return vertexQueue.OrderByDescending(v => v.DistanceFromStart).ToList().Last();
