@@ -47,6 +47,62 @@ namespace FlightService
         }
         #endregion
 
+        #region Airport OperationContracts
+
+        public List<Airport> GetAllAirports()
+        {
+            return airportCtr.GetAllAirports();
+        }
+
+        public Airport GetAirportByID(int id)
+        {
+            return airportCtr.GetAirportByID(id);
+        }
+
+        public void CreateNewAirport(string name, string location)
+        {
+            airportCtr.CreateNewAirport(name, location);
+        }
+
+        public void UpdateAirport(int id, string name, string location)
+        {
+            airportCtr.UpdateAirport(id, name, location);
+        }
+
+        public void DeleteAirport(int id)
+        {
+            airportCtr.DeleteAirport(id);
+        }
+        #endregion 
+
+        #region Booking OperationContracts
+
+        public List<Booking> GetAllBookings()
+        {
+            return bookingCtr.GetAllBookings();
+        }
+
+        public Booking GetBookingByID(int id)
+        {
+            return bookingCtr.GetBookingByID(id);
+        }
+
+        public bool CreateNewBooking(List<Flight> flights, List<Person> passengers, string totalTime, double totalPrice)
+        {
+            return bookingCtr.CreateNewBooking(flights, passengers, totalTime, totalPrice);
+        }
+
+        public bool UpdateBooking(int id, string totalTime, double totalPrice)
+        {
+            return bookingCtr.UpdateBooking(id, totalTime, totalPrice);
+        }
+
+        public bool DeleteBooking(int id)
+        {
+            return bookingCtr.DeleteBooking(id);
+        }
+        #endregion
+
         #region Flight OperationContracts
         public List<Flight> GetAllFlights()
         {
@@ -88,34 +144,6 @@ namespace FlightService
             flightCtr.DeleteFlight(id);
         }
         #endregion
-
-        #region Airport OperationContracts
-
-        public List<Airport> GetAllAirports()
-        {
-            return airportCtr.GetAllAirports();
-        }
-
-        public Airport GetAirportByID(int id)
-        {
-            return airportCtr.GetAirportByID(id);
-        }
-
-        public void CreateNewAirport(string name, string location)
-        {
-            airportCtr.CreateNewAirport(name, location);
-        }
-
-        public void UpdateAirport(int id, string name, string location)
-        {
-            airportCtr.UpdateAirport(id, name, location);
-        }
-
-        public void DeleteAirport(int id)
-        {
-            airportCtr.DeleteAirport(id);
-        }
-        #endregion 
 
         #region Person OperationContracts
         public List<Person> GetAllPersons()
