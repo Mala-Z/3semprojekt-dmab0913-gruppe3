@@ -762,10 +762,10 @@ namespace Client.FlightService {
         System.Threading.Tasks.Task<Client.FlightService.Flight> GetFlightByIDAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllFlightsByDate", ReplyAction="http://tempuri.org/IFlightService/GetAllFlightsByDateResponse")]
-        Client.FlightService.Flight[] GetAllFlightsByDate(System.DateTime fromDate, System.DateTime toDate);
+        Client.FlightService.Flight[] GetAllFlightsByDate(System.DateTime fromDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllFlightsByDate", ReplyAction="http://tempuri.org/IFlightService/GetAllFlightsByDateResponse")]
-        System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetAllFlightsByDateAsync(System.DateTime fromDate, System.DateTime toDate);
+        System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetAllFlightsByDateAsync(System.DateTime fromDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetFlightsByDate", ReplyAction="http://tempuri.org/IFlightService/GetFlightsByDateResponse")]
         Client.FlightService.Flight[] GetFlightsByDate(string date);
@@ -941,12 +941,12 @@ namespace Client.FlightService {
             return base.Channel.GetFlightByIDAsync(id);
         }
         
-        public Client.FlightService.Flight[] GetAllFlightsByDate(System.DateTime fromDate, System.DateTime toDate) {
-            return base.Channel.GetAllFlightsByDate(fromDate, toDate);
+        public Client.FlightService.Flight[] GetAllFlightsByDate(System.DateTime fromDate) {
+            return base.Channel.GetAllFlightsByDate(fromDate);
         }
         
-        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetAllFlightsByDateAsync(System.DateTime fromDate, System.DateTime toDate) {
-            return base.Channel.GetAllFlightsByDateAsync(fromDate, toDate);
+        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetAllFlightsByDateAsync(System.DateTime fromDate) {
+            return base.Channel.GetAllFlightsByDateAsync(fromDate);
         }
         
         public Client.FlightService.Flight[] GetFlightsByDate(string date) {
