@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using DatabaseLayer;
+using GraphLayer;
 
 namespace FlightService
 {
@@ -65,6 +66,12 @@ namespace FlightService
         [OperationContract]
         bool DeleteBooking(int id);
 
+
+        #endregion
+
+        #region Dijkstra OperationContracts
+
+        List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice);
 
         #endregion
 
