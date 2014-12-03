@@ -6,13 +6,15 @@ using System.Collections.Generic;
  using System.Net.Sockets;
  using System.Reflection;
  using System.Runtime.CompilerServices;
-using System.Text;
+ using System.Runtime.Serialization;
+ using System.Text;
  using System.Threading;
  using System.Threading.Tasks;
 using DatabaseLayer;
 
 namespace ControlLayer
 {
+    [DataContract]
     public class FlightCtr
     {
         private dmab0913_3DataContext db;
