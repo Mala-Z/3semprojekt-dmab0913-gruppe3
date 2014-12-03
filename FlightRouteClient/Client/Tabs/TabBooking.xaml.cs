@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,6 +44,7 @@ namespace Client.Tabs
 
         private void bFindFlights_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
                 FlightService.Person customer =
@@ -58,7 +61,7 @@ namespace Client.Tabs
                     {
                         if (fromA.airportID != toA.airportID)
                         {
-                            contentControl.Content = new GridFlightRoutes(customer, fromA, toA, dpDate.SelectedDate.ToString(), noOfPass);
+                            contentControl.Content = new GridFlightRoutes(customer, fromA, toA, dpDate.SelectedDate.ToString().Substring(0,10), noOfPass);
                         }
                         else
                         {

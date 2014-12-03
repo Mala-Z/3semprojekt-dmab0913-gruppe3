@@ -14,7 +14,7 @@
         <Label Content="Rejs til:" HorizontalAlignment="Left" Margin="383,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.365,-0.592"/>
         <ComboBox x:Name="cbTo" HorizontalAlignment="Left" Margin="478,54,0,0" VerticalAlignment="Top" Width="262" IsEditable="True"/>
         <Label Content="Afrejse dato:" HorizontalAlignment="Left" Margin="383,19,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dpDate" HorizontalAlignment="Left" Margin="478,21,0,0" VerticalAlignment="Top" Width="110"/>
+        <DatePicker x:Name="dpDate" HorizontalAlignment="Left" Margin="478,21,0,0" VerticalAlignment="Top" Width="110" FirstDayOfWeek="Monday"/>
         <Label Content="Antal passengere:" HorizontalAlignment="Left" Margin="593,20,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNoOfPass" HorizontalAlignment="Left" Height="23" Margin="702,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38"/>
         <Button x:Name="bFindFlights" Content="Find flyruter" HorizontalAlignment="Left" Margin="638,81,0,0" VerticalAlignment="Top" Width="102" Click="bFindFlights_Click"/>
