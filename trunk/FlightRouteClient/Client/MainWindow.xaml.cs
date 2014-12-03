@@ -31,7 +31,8 @@ namespace Client
 
         public MainWindow()
         {
-            CultureInfo ci = CultureInfo.InvariantCulture;
+            CultureInfo ci = new CultureInfo("da-DK");
+            ci.DateTimeFormat.DateSeparator = "/";
             Thread.CurrentThread.CurrentCulture = ci;
             InitializeComponent();
             InitializeTabs();
