@@ -43,7 +43,7 @@ namespace Client.Tabs
         private void bFindFlights_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem item = (ComboBoxItem) cbCustomer.SelectedItem;
-            int id = (int) item.Content;
+            
           
            
            // FlightService.Person customer = fService.GetPersonByID(1);

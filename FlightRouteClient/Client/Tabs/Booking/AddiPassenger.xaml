@@ -1,0 +1,21 @@
+﻿<Page x:Class="Client.Tabs.Booking.AddiPassenger"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300" Width="750" Height="100"
+      Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"
+	Title="AddiPassenger">
+    
+    <Grid>
+        <Label Content="Passager" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="25,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFornavn"  HorizontalAlignment="Left" Height="23" Margin="93,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="254,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEfternavn"  HorizontalAlignment="Left" Height="23" Margin="344,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="511,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="570,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Page>
