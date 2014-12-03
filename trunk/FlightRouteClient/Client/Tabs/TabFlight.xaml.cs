@@ -42,7 +42,7 @@ namespace Client.Tabs
 
         private void InitializeGridData()
         {
-            DateTime fromDate = DateTime.Parse("03/12/2014");
+            DateTime fromDate = DateTime.Now;
             Debug.WriteLine(fromDate.ToString());
             Debug.WriteLine(fromDate.ToShortDateString());
             var result = from f in fService.GetAllFlightsByDate(fromDate)
