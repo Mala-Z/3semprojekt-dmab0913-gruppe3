@@ -1,10 +1,14 @@
 ﻿ using System;
 using System.Collections.Generic;
-using System.Linq;
+ using System.Diagnostics;
+ using System.Globalization;
+ using System.Linq;
  using System.Net.Sockets;
+ using System.Reflection;
  using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
+ using System.Threading;
+ using System.Threading.Tasks;
 using DatabaseLayer;
 
 namespace ControlLayer
@@ -16,6 +20,9 @@ namespace ControlLayer
         public FlightCtr(dmab0913_3DataContext db)
         {
             this.db = db;
+            CultureInfo ci = new CultureInfo("da-DK");
+            ci.DateTimeFormat.DateSeparator = "/";
+            Thread.CurrentThread.CurrentCulture = ci;
         }
         /// <summary>
         /// Get all Flights
@@ -30,10 +37,17 @@ namespace ControlLayer
 
         public List<Flight> GetAllFlightsByDate(DateTime fromDate)
         {
+            //CultureInfo ci = new CultureInfo("da-DK");
+            //ci.DateTimeFormat.DateSeparator = "/";
+            //Thread.CurrentThread.CurrentCulture = ci;
+            string date1 = fromDate.ToShortDateString();
+            Debug.WriteLine(date1);
             DateTime nextDay = fromDate.AddDays(1);
+            string date2 = nextDay.ToString().Substring(0, 10);
+            Debug.WriteLine(date2);
 
             var flights = from f in db.Flights
-                          where (f.timeOfArrival == fromDate.ToString("dd/MM/yyyy") || f.timeOfArrival == nextDay.ToString("dd/MM/yyyy"))
+                          where (f.timeOfArrival == date1 || f.timeOfArrival == date2)
                         select f;
             return flights.ToList();
         }
