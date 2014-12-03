@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -41,7 +42,13 @@ namespace Client.Tabs
 
         private void bFindFlights_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem item = (ComboBoxItem) cbCustomer.SelectedItem;
+            int id = (int) item.Content;
+          
+           
+           // FlightService.Person customer = fService.GetPersonByID(1);
             contentControl.Content = new GridFlightRoutes();
+            
         }
 
         
