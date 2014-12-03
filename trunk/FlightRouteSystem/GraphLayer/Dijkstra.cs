@@ -4,18 +4,24 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.ServiceModel;
 using DatabaseLayer;
 
 namespace GraphLayer
 {
+    [DataContract]
     public class Dijkstra
     {
         Graph graph = new Graph();
 
+        [DataMember]
         private List<Vertex> listOfCost;
         //Queue for the vertices to be evaluated
+        [DataMember]
         private List<Vertex> vertexQueue;
-        private List<Vertex> solutionList; 
+        [DataMember]
+        private List<Vertex> solutionList;
 
         public Dijkstra()
         {
