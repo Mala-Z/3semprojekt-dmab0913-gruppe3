@@ -71,6 +71,7 @@ namespace FlightService
 
         #region Dijkstra OperationContracts
 
+        [OperationContract]
         List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice);
 
         #endregion
