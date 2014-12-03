@@ -8,17 +8,18 @@ using GraphLayer;
 
 namespace FlightService
 {
-    public class Dijkstra
+    public class DijkstraCtr
     {
-        public Dijkstra()
+        private Dijkstra dijk;
+        public DijkstraCtr()
         {
-            
+            dijk = new Dijkstra();
         }
 
         public List<Vertex> runDikjstra(Airport from, Airport to, string date, bool usePrice)
         {
-            Dijkstra dijk = new Dijkstra();
-            return dijk.runDikjstra(from, to, date, usePrice);
+
+            return dijk.RunDijkstra(from, to, date, usePrice);
         }
         
     }
