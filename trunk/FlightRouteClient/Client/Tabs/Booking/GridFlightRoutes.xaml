@@ -19,5 +19,6 @@
         <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,263,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtCTotalCost" HorizontalAlignment="Left" Height="23" Margin="197,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="41"/>
         <Button x:Name="bChooseCheapest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,269,0,0" VerticalAlignment="Top" Width="118"/>
+        <Label x:Name="testLbl" Content="Label" HorizontalAlignment="Left" Margin="431,142,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
