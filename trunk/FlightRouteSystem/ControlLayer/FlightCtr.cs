@@ -141,7 +141,6 @@ namespace ControlLayer
                 flight.airplaneID = airplaneID;
                 flight.takenSeats = takenSeats;
 
-                db.Flights.InsertOnSubmit(flight);
                 db.SubmitChanges();
             }  
         }
