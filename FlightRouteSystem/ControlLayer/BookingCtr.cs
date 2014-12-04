@@ -44,7 +44,7 @@ namespace ControlLayer
         }
 
         /// <summary>
-        /// 
+        /// http://www.hanselman.com/blog/GettingLINQToSQLAndLINQToEntitiesToUseNOLOCK.aspx
         /// </summary>
         /// <param name="totalTime"></param>
         /// <param name="totalPrice"></param>
