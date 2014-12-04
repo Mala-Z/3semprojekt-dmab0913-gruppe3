@@ -65,31 +65,12 @@ namespace Client.Tabs
             return result;
         }
 
-        public void updateDataGrid()
+        public void UpdateDataGrid()
         {
             InitializeGridData();
         }
 
-        //private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    var result = from f in fService.GetAllFlights()
-        //                 where f.airplaneID.ToString() == txtSearch.Text || fService.GetAirportByID(f.@from).name.ToLower().Contains(txtSearch.Text.ToLower())
-        //                 select new { ID = f.flightID, 
-        //                     Fra = fService.GetAirportByID(f.@from).name, 
-        //                     Til = fService.GetAirportByID(f.@to).name, 
-        //                     Afgang = f.timeOfDeparture, 
-        //                     Ankomst = f.timeOfArrival, 
-        //                     Rejsetid = f.traveltime, 
-        //                     Pris = f.price, 
-        //                     Ledige = fService.GetAirplaneByID((int)f.airplaneID).seats -= f.takenSeats };
-
-        //    dgFlights.ItemsSource = result;
-            
-        //    //Application.Current.MainWindow 
-
-
-        //}
-
+     
         private void dgFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //dgAirports indeholder anonyme objecter. Enten skal vi lave en ny class og caste det anonyme object dertil,

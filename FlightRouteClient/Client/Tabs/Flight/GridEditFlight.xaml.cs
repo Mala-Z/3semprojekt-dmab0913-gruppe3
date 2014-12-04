@@ -29,9 +29,8 @@ namespace Client.Tabs.Flight
         {
             InitializeComponent();
             fService = new FlightServiceClient();
-            InitComboBox();
             this.flight = flight;
-
+            InitComboBox();
         }
 
         private void InitComboBox()
@@ -44,9 +43,9 @@ namespace Client.Tabs.Flight
 
         private void InsertFlightData()
         {
-            if (flight.from != null && flight.to != null)
+            if (flight.from > 0 && flight.to > 0)
             {
-                cbFrom.SelectedValue = flight.from.ToString();
+                cbFrom.SelectedValuePath = flight.from.ToString();
                 cbTo.SelectedValue = flight.to.ToString(); 
             }
             
@@ -55,6 +54,11 @@ namespace Client.Tabs.Flight
             txtTravelTime.Text = flight.traveltime.ToString();
             txtPrice.Text = flight.price.ToString();
             cbAirplane.SelectedValue = flight.airplaneID.ToString();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

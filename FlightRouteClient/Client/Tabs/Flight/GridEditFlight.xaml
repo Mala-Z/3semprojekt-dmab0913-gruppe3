@@ -18,8 +18,9 @@
         <TextBox x:Name="txtTravelTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Margin="129,127,0,0"/>
         <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Margin="129,155,0,0"/>
         <ComboBox x:Name="cbAirplane" HorizontalAlignment="Left" Margin="129,183,0,0" VerticalAlignment="Top" Width="135"/>
-        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,40,0,0" />
-        <ComboBox x:Name="cbTo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,13,0,0" />
+        <ComboBox x:Name="cbTo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,40,0,0" />
+        <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,13,0,0" />
+        <Button x:Name="btnSave" Content="Gem" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,210,0,0" Click="btnSave_Click"/>
 
     </Grid>
 </UserControl>
