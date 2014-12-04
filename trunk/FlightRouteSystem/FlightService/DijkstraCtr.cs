@@ -28,7 +28,16 @@ namespace FlightService
 
             return flights;
         }
-        
+
+        public List<Flight> RunDikjstraCheapest(Airport from, Airport to, string date)
+        {
+            return dijk.RunDijkstra(@from, to, date, true).Select(v => v.EdgeToUse.VertexEdge).ToList();
+        }
+
+        public List<Flight> RunDikjstraFastest(Airport from, Airport to, string date)
+        {
+            return dijk.RunDijkstra(@from, to, date, false).Select(v => v.EdgeToUse.VertexEdge).ToList();
+        }
     }
 
     
