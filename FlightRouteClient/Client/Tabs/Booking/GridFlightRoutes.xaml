@@ -4,20 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Width="730" Height="337">
-    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,-17">
         <Label Content="Hurtigste rute" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dgFastest" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Height="80" Width="730"/>
-        <Label Content="Total tid:" HorizontalAlignment="Left" Margin="0,116,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtFTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
-        <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,116,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtFTotalCost" HorizontalAlignment="Left" Height="23" Margin="191,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
-        <Button x:Name="bChooseFastest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,119,0,0" VerticalAlignment="Top" Width="118"/>
-        <Label Content="Billigste rute" HorizontalAlignment="Left" Margin="0,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.071,-0.328"/>
-        <DataGrid x:Name="dgCheapest" HorizontalAlignment="Left" Margin="0,178,0,0" VerticalAlignment="Top" Height="80" Width="730"/>
-        <Label Content="Total tid:" HorizontalAlignment="Left" Margin="0,263,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,263,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
-        <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,263,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCTotalCost" HorizontalAlignment="Left" Height="23" Margin="197,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="41"/>
-        <Button x:Name="bChooseCheapest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,269,0,0" VerticalAlignment="Top" Width="118"/>
+        <DataGrid x:Name="dgFastest" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Height="102" Width="730"/>
+        <Label Content="Total tid:" HorizontalAlignment="Left" Margin="0,138,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
+        <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,138,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFTotalCost" HorizontalAlignment="Left" Height="23" Margin="191,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
+        <Button x:Name="bChooseFastest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,138,0,0" VerticalAlignment="Top" Width="118"/>
+        <Label Content="Billigste rute" HorizontalAlignment="Left" Margin="0,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.071,-0.328"/>
+        <DataGrid x:Name="dgCheapest" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Height="102" Width="730"/>
+        <Label Content="Total tid:" HorizontalAlignment="Left" Margin="5,306,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
+        <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,306,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCTotalCost" HorizontalAlignment="Left" Height="23" Margin="197,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="41"/>
+        <Button x:Name="bChooseCheapest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,306,0,0" VerticalAlignment="Top" Width="118"/>
     </Grid>
 </UserControl>
