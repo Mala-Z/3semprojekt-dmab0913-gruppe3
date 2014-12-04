@@ -99,15 +99,15 @@ namespace FlightService
         List<Flight> GetFlightsFrom(Airport start, string date);
 
         [OperationContract]
-        void CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+        bool CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats);
 
         [OperationContract]
-        void UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+        bool UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats);
 
         [OperationContract]
-        void DeleteFlight(int id);
+        bool DeleteFlight(int id);
         #endregion
 
         #region Person OperationContracts
