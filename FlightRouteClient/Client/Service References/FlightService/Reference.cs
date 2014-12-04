@@ -824,269 +824,6 @@ namespace Client.FlightService {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Vertex", Namespace="http://schemas.datacontract.org/2004/07/GraphLayer")]
-    [System.SerializableAttribute()]
-    public partial class Vertex : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double DistanceFromStartField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Edge EdgeToUseField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Vertex PrevVertexField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Airport airportField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Edge[] edgesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.FlightCtr flightCtrField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Flight[] flightsFromAiportField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double DistanceFromStart {
-            get {
-                return this.DistanceFromStartField;
-            }
-            set {
-                if ((this.DistanceFromStartField.Equals(value) != true)) {
-                    this.DistanceFromStartField = value;
-                    this.RaisePropertyChanged("DistanceFromStart");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Edge EdgeToUse {
-            get {
-                return this.EdgeToUseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EdgeToUseField, value) != true)) {
-                    this.EdgeToUseField = value;
-                    this.RaisePropertyChanged("EdgeToUse");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Vertex PrevVertex {
-            get {
-                return this.PrevVertexField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PrevVertexField, value) != true)) {
-                    this.PrevVertexField = value;
-                    this.RaisePropertyChanged("PrevVertex");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Airport airport {
-            get {
-                return this.airportField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.airportField, value) != true)) {
-                    this.airportField = value;
-                    this.RaisePropertyChanged("airport");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string date {
-            get {
-                return this.dateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.dateField, value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Edge[] edges {
-            get {
-                return this.edgesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.edgesField, value) != true)) {
-                    this.edgesField = value;
-                    this.RaisePropertyChanged("edges");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.FlightCtr flightCtr {
-            get {
-                return this.flightCtrField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.flightCtrField, value) != true)) {
-                    this.flightCtrField = value;
-                    this.RaisePropertyChanged("flightCtr");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Flight[] flightsFromAiport {
-            get {
-                return this.flightsFromAiportField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.flightsFromAiportField, value) != true)) {
-                    this.flightsFromAiportField = value;
-                    this.RaisePropertyChanged("flightsFromAiport");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Edge", Namespace="http://schemas.datacontract.org/2004/07/GraphLayer")]
-    [System.SerializableAttribute()]
-    public partial class Edge : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Vertex FromField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Vertex ToField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.FlightService.Flight VertexEdgeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Vertex From {
-            get {
-                return this.FromField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromField, value) != true)) {
-                    this.FromField = value;
-                    this.RaisePropertyChanged("From");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Vertex To {
-            get {
-                return this.ToField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToField, value) != true)) {
-                    this.ToField = value;
-                    this.RaisePropertyChanged("To");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.FlightService.Flight VertexEdge {
-            get {
-                return this.VertexEdgeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VertexEdgeField, value) != true)) {
-                    this.VertexEdgeField = value;
-                    this.RaisePropertyChanged("VertexEdge");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FlightCtr", Namespace="http://schemas.datacontract.org/2004/07/ControlLayer")]
-    [System.SerializableAttribute()]
-    public partial class FlightCtr : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FlightService.IFlightService")]
     public interface IFlightService {
@@ -1182,10 +919,22 @@ namespace Client.FlightService {
         System.Threading.Tasks.Task<bool> DeleteBookingAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstra", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraResponse")]
-        Client.FlightService.Vertex[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
+        Client.FlightService.Flight[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstra", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraResponse")]
-        System.Threading.Tasks.Task<Client.FlightService.Vertex[]> RunDijkstraAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
+        System.Threading.Tasks.Task<Client.FlightService.Flight[]> RunDijkstraAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstraCheapest", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraCheapestResponse")]
+        Client.FlightService.Flight[] RunDijkstraCheapest(Client.FlightService.Airport from, Client.FlightService.Airport to, string date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstraCheapest", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraCheapestResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Flight[]> RunDijkstraCheapestAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstraFastest", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraFastestResponse")]
+        Client.FlightService.Flight[] RunDijkstraFastest(Client.FlightService.Airport from, Client.FlightService.Airport to, string date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstraFastest", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraFastestResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Flight[]> RunDijkstraFastestAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllFlights", ReplyAction="http://tempuri.org/IFlightService/GetAllFlightsResponse")]
         Client.FlightService.Flight[] GetAllFlights();
@@ -1413,12 +1162,28 @@ namespace Client.FlightService {
             return base.Channel.DeleteBookingAsync(id);
         }
         
-        public Client.FlightService.Vertex[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
+        public Client.FlightService.Flight[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
             return base.Channel.RunDijkstra(from, to, date, usePrice);
         }
         
-        public System.Threading.Tasks.Task<Client.FlightService.Vertex[]> RunDijkstraAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
+        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> RunDijkstraAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
             return base.Channel.RunDijkstraAsync(from, to, date, usePrice);
+        }
+        
+        public Client.FlightService.Flight[] RunDijkstraCheapest(Client.FlightService.Airport from, Client.FlightService.Airport to, string date) {
+            return base.Channel.RunDijkstraCheapest(from, to, date);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> RunDijkstraCheapestAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date) {
+            return base.Channel.RunDijkstraCheapestAsync(from, to, date);
+        }
+        
+        public Client.FlightService.Flight[] RunDijkstraFastest(Client.FlightService.Airport from, Client.FlightService.Airport to, string date) {
+            return base.Channel.RunDijkstraFastest(from, to, date);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> RunDijkstraFastestAsync(Client.FlightService.Airport from, Client.FlightService.Airport to, string date) {
+            return base.Channel.RunDijkstraFastestAsync(from, to, date);
         }
         
         public Client.FlightService.Flight[] GetAllFlights() {
