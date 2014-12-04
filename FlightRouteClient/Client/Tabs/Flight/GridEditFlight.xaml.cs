@@ -45,15 +45,14 @@ namespace Client.Tabs.Flight
         {
             if (flight.from > 0 && flight.to > 0)
             {
-                cbFrom.SelectedValuePath = flight.from.ToString();
-                cbTo.SelectedValue = flight.to.ToString(); 
+                cbFrom.SelectedIndex = Convert.ToInt32(flight.from -1);
+                cbTo.SelectedIndex = Convert.ToInt32(flight.to -1);
+                DatePickerDeparture.SelectedDate = DateTime.Parse(flight.timeOfDeparture);
+                DatePickerArrival.SelectedDate = DateTime.Parse(flight.timeOfArrival);
+                txtTravelTime.Text = flight.traveltime.ToString();
+                txtPrice.Text = flight.price.ToString();
+                cbAirplane.SelectedIndex = Convert.ToInt32(flight.airplaneID - 1);
             }
-            
-            DatePickerDeparture.SelectedDate = DateTime.Parse(flight.timeOfDeparture);
-            DatePickerArrival.SelectedDate = DateTime.Parse(flight.timeOfArrival);
-            txtTravelTime.Text = flight.traveltime.ToString();
-            txtPrice.Text = flight.price.ToString();
-            cbAirplane.SelectedValue = flight.airplaneID.ToString();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
