@@ -1,5 +1,6 @@
 ﻿ using System;
 using System.Collections.Generic;
+ using System.Data.SqlClient;
  using System.Diagnostics;
  using System.Globalization;
  using System.Linq;
@@ -93,9 +94,10 @@ namespace ControlLayer
         /// <param name="to"></param>
         /// <param name="airplaneID"></param>
         /// <param name="takenSeats"></param>
-        public void CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+        public bool CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats)
         {
+            bool returnValue = true;
             var flight = new Flight
             {
                 timeOfDeparture = timeOfDepature,
@@ -109,8 +111,17 @@ namespace ControlLayer
             };
 
             db.Flights.InsertOnSubmit(flight);
-            db.SubmitChanges();
 
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -125,9 +136,10 @@ namespace ControlLayer
         /// <param name="to"></param>
         /// <param name="airplaneID"></param>
         /// <param name="takenSeats"></param>
-        public void UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
+        public bool UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats)
         {
+            bool returnValue = true;
             var flight = GetFlightByID(id);
 
             if (flight != null)
@@ -141,23 +153,40 @@ namespace ControlLayer
                 flight.airplaneID = airplaneID;
                 flight.takenSeats = takenSeats;
 
-                db.SubmitChanges();
-            }  
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
+            }
+            return returnValue;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteFlight(int id)
+        public bool DeleteFlight(int id)
         {
+            bool returnValue = true;
             var flight = GetFlightByID(id);
 
             if (flight != null)
             {
                 db.Flights.DeleteOnSubmit(flight);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
             }
+            return returnValue;
         }
 
     }
