@@ -111,6 +111,16 @@ namespace FlightService
         {
             return dijkstra.runDikjstra(from, to, date, usePrice); 
         }
+
+        public List<Flight> RunDijkstraCheapest(Airport from, Airport to, string date)
+        {
+            return dijkstra.RunDikjstraCheapest(from, to, date);
+        }
+
+        public List<Flight> RunDijkstraFastest(Airport from, Airport to, string date)
+        {
+            return dijkstra.RunDikjstraFastest(from, to, date);
+        }
          
         #endregion
 
