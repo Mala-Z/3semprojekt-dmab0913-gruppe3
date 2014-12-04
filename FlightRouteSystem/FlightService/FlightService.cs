@@ -20,6 +20,7 @@ namespace FlightService
         private static FlightCtr flightCtr = main.FlightCtr;
         private static PersonCtr personCtr = main.PersonCtr;
         private static DijkstraCtr dijkstra = new DijkstraCtr();
+        private static DijkstraCtr dijkstra2 = new DijkstraCtr();
 
         #region Airplane OperationContracts
         public List<Airplane> GetAllAirplanes()
@@ -119,7 +120,7 @@ namespace FlightService
 
         public List<Flight> RunDijkstraFastest(Airport from, Airport to, string date)
         {
-            return dijkstra.RunDikjstraFastest(from, to, date);
+            return dijkstra2.RunDikjstraFastest(from, to, date);
         }
          
         #endregion
