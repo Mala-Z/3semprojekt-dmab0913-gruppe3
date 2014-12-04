@@ -74,6 +74,12 @@ namespace FlightService
         [OperationContract]
         List<Flight> RunDijkstra(Airport from, Airport to, string date, bool usePrice);
         
+        [OperationContract]
+        List<Flight> RunDijkstraCheapest(Airport from, Airport to, string date)
+
+            [OperationContract]
+        List<Flight> RunDijkstraFastest(Airport from, Airport to, string date)
+
         #endregion
 
         #region Flight OperationContracts
