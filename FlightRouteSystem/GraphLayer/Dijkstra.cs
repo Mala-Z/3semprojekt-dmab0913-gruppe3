@@ -62,6 +62,7 @@ namespace GraphLayer
         
         public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
+            solutionList.Clear();
             Initialize(from, date);
 
             while (vertexQueue.Count > 0)
