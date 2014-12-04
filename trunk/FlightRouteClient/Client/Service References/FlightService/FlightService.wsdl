@@ -5,8 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GraphLayer" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ControlLayer" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IFlightService_GetAllAirplanes_InputMessage">
@@ -104,6 +102,18 @@
   </wsdl:message>
   <wsdl:message name="IFlightService_RunDijkstra_OutputMessage">
     <wsdl:part name="parameters" element="tns:RunDijkstraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraCheapest_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraCheapest" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraCheapest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraCheapestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraFastest_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraFastest" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraFastest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraFastestResponse" />
   </wsdl:message>
   <wsdl:message name="IFlightService_GetAllFlights_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFlights" />
@@ -247,6 +257,14 @@
     <wsdl:operation name="RunDijkstra">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstra" message="tns:IFlightService_RunDijkstra_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraResponse" message="tns:IFlightService_RunDijkstra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraCheapest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraCheapest" message="tns:IFlightService_RunDijkstraCheapest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraCheapestResponse" message="tns:IFlightService_RunDijkstraCheapest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraFastest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraFastest" message="tns:IFlightService_RunDijkstraFastest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraFastestResponse" message="tns:IFlightService_RunDijkstraFastest_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllFlights">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllFlights" message="tns:IFlightService_GetAllFlights_InputMessage" />
@@ -440,6 +458,24 @@
     </wsdl:operation>
     <wsdl:operation name="RunDijkstra">
       <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraCheapest">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstraCheapest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraFastest">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstraFastest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

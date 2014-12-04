@@ -45,7 +45,7 @@ namespace Client.Tabs.Booking
              
         }
 
-        private IEnumerable<FlightService.Vertex> RunDijkstra(FlightService.Airport fromA, FlightService.Airport toA, string date, bool usePrice)
+        private IEnumerable<FlightService.Flight> RunDijkstra(FlightService.Airport fromA, FlightService.Airport toA, string date, bool usePrice)
         {
             var result = fService.RunDijkstra(fromA, toA, date, usePrice);
             return result;
@@ -68,31 +68,33 @@ namespace Client.Tabs.Booking
             //shortestPathByPriceThread.Join();
             //shortestPathByTravelTimeThread.Join();
 
-            var result = from sp in RunDijkstra(fromA, toA, "03-12-2014", false)
+            var result = from f in fService.RunDijkstraFastest(fromA, toA, "03-12-2014")
                          select new
                          {
-                            Fra = sp.EdgeToUse.From.airport.name,
-                            Til = sp.EdgeToUse.To.airport.name,
-                            Afgang = sp.EdgeToUse.VertexEdge.timeOfDeparture,
-                            Ankomst = sp.EdgeToUse.VertexEdge.timeOfArrival,
-                            Rejsetid = sp.EdgeToUse.VertexEdge.traveltime,
-                            Pris = sp.EdgeToUse.VertexEdge.price
+                             Fra = fService.GetAirportByID(f.@from).name,
+                             Til = fService.GetAirportByID(f.@to).name,
+                             Afgang = f.timeOfDeparture,
+                             Ankomst = f.timeOfArrival,
+                             Rejsetid = f.traveltime,
+                             Pris = f.price,
+                             TotalPris = f.price * noOfPass
                          };
 
             dgFastest.ItemsSource = result;
 
-            //var result2 = from sp in RunDijkstra(fromA, toA, "03-12-2014", true)
-            //             select new
-            //             {
-            //                 Fra = sp.EdgeToUse.From.airport.name,
-            //                 Til = sp.EdgeToUse.To.airport.name,
-            //                 Afgang = sp.EdgeToUse.VertexEdge.timeOfDeparture,
-            //                 Ankomst = sp.EdgeToUse.VertexEdge.timeOfArrival,
-            //                 Rejsetid = sp.EdgeToUse.VertexEdge.traveltime,
-            //                 Pris = sp.EdgeToUse.VertexEdge.price
-            //             };
+            var result2 = from f in fService.RunDijkstraCheapest(fromA, toA, "03-12-2014")
+                         select new
+                         {
+                             Fra = fService.GetAirportByID(f.@from).name,
+                             Til = fService.GetAirportByID(f.@to).name,
+                             Afgang = f.timeOfDeparture,
+                             Ankomst = f.timeOfArrival,
+                             Rejsetid = f.traveltime,
+                             Pris = f.price,
+                             TotalPris = f.price * noOfPass
+                         };
 
-            //dgCheapest.ItemsSource = result2;
+            dgCheapest.ItemsSource = result2;
 
         }
 
