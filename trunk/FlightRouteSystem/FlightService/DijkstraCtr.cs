@@ -33,7 +33,15 @@ namespace FlightService
         {
             List<Flight> fList = new List<Flight>();
             fList.Clear();
-            fList = dijk.RunDijkstra(@from, to, date, true).Select(v => v.EdgeToUse.VertexEdge).ToList();
+            //fList = dijk.RunDijkstra(@from, to, date, true).Select(v => v.EdgeToUse.VertexEdge).ToList();
+            foreach (var v in dijk.RunDijkstra(@from, to, date, true))
+            {
+                //Hvis der allerede er en Flight med samme ID i listen
+                if (!fList.Contains(v.EdgeToUse.VertexEdge))
+                {
+                    fList.Add(v.EdgeToUse.VertexEdge);
+                }
+            }
             return fList;
         }
 
@@ -41,7 +49,15 @@ namespace FlightService
         {
             List<Flight> fList = new List<Flight>();
             fList.Clear();
-            fList = dijk.RunDijkstra(@from, to, date, false).Select(v => v.EdgeToUse.VertexEdge).ToList();
+            //fList = dijk.RunDijkstra(@from, to, date, false).Select(v => v.EdgeToUse.VertexEdge).ToList();
+            foreach (var v in dijk.RunDijkstra(@from, to, date, false))
+            {
+                //Hvis der allerede er en Flight med samme ID i listen
+                if (!fList.Contains(v.EdgeToUse.VertexEdge))
+                {
+                    fList.Add(v.EdgeToUse.VertexEdge);
+                }
+            }
             return fList;
         }
     }
