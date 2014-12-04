@@ -67,8 +67,8 @@ namespace Client.Tabs.Booking
             ////Join threads
             //shortestPathByPriceThread.Join();
             //shortestPathByTravelTimeThread.Join();
-
-            var result = from f in fService.RunDijkstraFastest(fromA, toA, "03-12-2014")
+            var fastestsList = fService.RunDijkstraFastest(fromA, toA, "03-12-2014");
+            var result = from f in fastestsList
                          select new
                          {
                              Fra = fService.GetAirportByID(f.@from).name,
@@ -81,8 +81,15 @@ namespace Client.Tabs.Booking
                          };
 
             dgFastest.ItemsSource = result;
+            var fTotalCost = (from f in fastestsList
+                       select f.price*noOfPass).Sum();
+            var fTotalTime = (from f in fastestsList
+                               select f.traveltime).Sum();
+            txtFTotalCost.Text = fTotalCost.ToString();
+            txtFTotalTime.Text = fTotalTime.ToString();
 
-            var result2 = from f in fService.RunDijkstraCheapest(fromA, toA, "03-12-2014")
+            var cheapestList = fService.RunDijkstraCheapest(fromA, toA, "03-12-2014");
+            var result2 = from f in cheapestList
                          select new
                          {
                              Fra = fService.GetAirportByID(f.@from).name,
@@ -95,6 +102,12 @@ namespace Client.Tabs.Booking
                          };
 
             dgCheapest.ItemsSource = result2;
+            var cTotalCost = (from f in cheapestList
+                              select f.price * noOfPass).Sum();
+            var cTotalTime = (from f in cheapestList
+                              select f.traveltime).Sum();
+            txtCTotalCost.Text = cTotalCost.ToString();
+            txtCTotalTime.Text = cTotalTime.ToString();
 
         }
 
