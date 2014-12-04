@@ -342,7 +342,9 @@
   </xs:element>
   <xs:element name="CreateNewFlightResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateNewFlightResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateFlight">
@@ -362,7 +364,9 @@
   </xs:element>
   <xs:element name="UpdateFlightResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateFlightResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteFlight">
@@ -374,7 +378,9 @@
   </xs:element>
   <xs:element name="DeleteFlightResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFlightResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllPersons">

@@ -21,6 +21,7 @@
         <ComboBox x:Name="cbTo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,40,0,0" />
         <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,13,0,0" />
         <Button x:Name="btnSave" Content="Gem" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,210,0,0" Click="btnSave_Click"/>
+        <Label x:Name="lblSuccess" Content="" FontSize="22" Foreground="#00FF00" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.871,9.32" Margin="10,235,0,0" Width="254" Height="55" />
 
     </Grid>
 </UserControl>

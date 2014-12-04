@@ -59,6 +59,8 @@ namespace Client.Tabs.Flight
         {
             double price = 0.0;
             bool stop = false;
+            bool success = false;
+
             try
             {
                 price = System.Convert.ToDouble(txtPrice.Text);
@@ -85,7 +87,7 @@ namespace Client.Tabs.Flight
                 txtPrice.Text != "" &&
                 cbAirplane.SelectedItem != null)
             {
-                fService.UpdateFlight(flight.flightID,
+                success = fService.UpdateFlight(flight.flightID,
                     DatePickerDeparture.SelectedDate.ToString(),
                         DatePickerArrival.SelectedDate.ToString(),
                         System.Convert.ToDouble(txtTravelTime.Text),
@@ -95,6 +97,11 @@ namespace Client.Tabs.Flight
                         Int32.Parse(((ComboBoxItem)cbAirplane.SelectedItem).Tag.ToString()),
                         flight.takenSeats
                         );
+                if (success)
+                {
+                    lblSuccess.Content = "Flyforbindelse opdateret!";
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).tFlight.UpdateDataGrid();   
+                }
             }
             else
             {
