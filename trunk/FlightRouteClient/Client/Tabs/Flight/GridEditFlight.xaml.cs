@@ -57,7 +57,50 @@ namespace Client.Tabs.Flight
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            double price = 0.0;
+            bool stop = false;
+            try
+            {
+                price = System.Convert.ToDouble(txtPrice.Text);
+            }
+            catch (Exception)
+            {
+                MainWindow.ErrorMsg("Pris skal være et tal");
+                stop = true;
+            }
 
+            if (!stop && cbTo.SelectedItem.ToString() == cbFrom.SelectedItem.ToString())
+            {
+                MainWindow.ErrorMsg("Fra og til skal være forskellige!");
+                stop = true;
+            }
+
+
+            if (!stop &&
+                cbTo.SelectedItem != null &&
+                cbFrom.SelectedItem != null &&
+                DatePickerDeparture.SelectedDate.HasValue &&
+                DatePickerArrival.SelectedDate.HasValue &&
+                txtTravelTime.Text != "" &&
+                txtPrice.Text != "" &&
+                cbAirplane.SelectedItem != null)
+            {
+                fService.UpdateFlight(flight.flightID,
+                    DatePickerDeparture.SelectedDate.ToString(),
+                        DatePickerArrival.SelectedDate.ToString(),
+                        System.Convert.ToDouble(txtTravelTime.Text),
+                        price,
+                        Int32.Parse(((ComboBoxItem)cbFrom.SelectedItem).Tag.ToString()),
+                        Int32.Parse(((ComboBoxItem)cbTo.SelectedItem).Tag.ToString()),
+                        Int32.Parse(((ComboBoxItem)cbAirplane.SelectedItem).Tag.ToString()),
+                        flight.takenSeats
+                        );
+            }
+            else
+            {
+                if (!stop)
+                    MainWindow.ErrorMsg("Alle Felter skal udfyldes!");
+            }
         }
     }
 }
