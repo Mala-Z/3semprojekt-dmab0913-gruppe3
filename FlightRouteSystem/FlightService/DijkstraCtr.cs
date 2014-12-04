@@ -16,10 +16,17 @@ namespace FlightService
             dijk = new Dijkstra();
         }
 
-        public List<Vertex> runDikjstra(Airport from, Airport to, string date, bool usePrice)
+        public List<Flight> runDikjstra(Airport from, Airport to, string date, bool usePrice)
         {
 
-            return dijk.RunDijkstra(from, to, date, usePrice);
+            List<Flight> flights = new List<Flight>();
+
+            foreach (var v in dijk.RunDijkstra(from, to, date, usePrice))
+            {
+                flights.Add(v.EdgeToUse.VertexEdge);
+            }
+
+            return flights;
         }
         
     }

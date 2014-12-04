@@ -107,7 +107,7 @@ namespace FlightService
 
         #region Dijkstra OperationContracts
 
-        public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
+        public List<Flight> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
             return dijkstra.runDikjstra(from, to, date, usePrice); 
         }
