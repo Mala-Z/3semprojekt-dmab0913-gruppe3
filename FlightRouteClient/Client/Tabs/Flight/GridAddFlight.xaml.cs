@@ -82,7 +82,11 @@ namespace Client.Tabs.Flight
                     if (success)
                     {
                         ContentControlSuccess.Content = new DisplaySuccess("Flyforbindelse oprettet!");
-                        ((MainWindow)System.Windows.Application.Current.MainWindow).tFlight.UpdateDataGrid();
+                        ((MainWindow)Application.Current.MainWindow).tFlight.UpdateDataGrid();
+                    }
+                    else
+                    {
+                        ContentControlSuccess.Content = new DisplayError("FEJL");
                     }
                 }
             else

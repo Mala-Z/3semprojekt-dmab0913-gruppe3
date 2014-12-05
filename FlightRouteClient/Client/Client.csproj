@@ -55,7 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ActionBar.xaml.cs">
+      <DependentUpon>ActionBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ComboBoxItems.cs" />
+    <Compile Include="Helpers\DisplayError.xaml.cs">
+      <DependentUpon>DisplayError.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DisplaySuccess.xaml.cs">
       <DependentUpon>DisplaySuccess.xaml</DependentUpon>
     </Compile>
@@ -109,6 +115,14 @@
     <Compile Include="Tabs\TabBooking.xaml.cs">
       <DependentUpon>TabBooking.xaml</DependentUpon>
     </Compile>
+    <Page Include="Helpers\ActionBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\DisplayError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Helpers\DisplaySuccess.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
