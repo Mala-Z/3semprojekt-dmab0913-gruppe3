@@ -4,8 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="48" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="18" d:DesignWidth="465">
+        <Grid>
+            <Button Width="19" Height="19" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="427,-1,19,0">
+                <StackPanel >
+                    <Image Source="img/plus.png" HorizontalAlignment="Center" Height="15" VerticalAlignment="Center" Width="15" />
+                </StackPanel>
+            </Button>
+            <Button Width="19" Height="19" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="446,-1,0,0">
+                <StackPanel>
+                    <Image Source="img/trash.png" HorizontalAlignment="Center" Height="15" VerticalAlignment="Center" Width="15" />
+                </StackPanel>
+            </Button>
+        </Grid>
 </UserControl>
