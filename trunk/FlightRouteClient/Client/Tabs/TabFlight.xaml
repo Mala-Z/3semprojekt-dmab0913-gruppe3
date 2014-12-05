@@ -9,8 +9,8 @@
 
         <DataGrid x:Name="dgFlights" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465" SelectionChanged="dgFlights_SelectionChanged" SelectionMode="Single"/>
 
-        <Grid  x:Name="gFlightsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="290">
-            <ContentControl x:Name="contentControl" Grid.Row="1"/>
+        <Grid x:Name="gFlightsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="300">
+            <ContentControl x:Name="contentControl" VerticalAlignment="Top" />
         </Grid>
         <DatePicker x:Name="DatePickerFlightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Width="465" SelectedDateChanged="DatePickerFlightGrid_SelectedDateChanged"/>
 

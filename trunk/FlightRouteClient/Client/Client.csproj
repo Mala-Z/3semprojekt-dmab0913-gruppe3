@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\ComboBoxItems.cs" />
+    <Compile Include="Helpers\DisplaySuccess.xaml.cs">
+      <DependentUpon>DisplaySuccess.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\FlightService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +109,10 @@
     <Compile Include="Tabs\TabBooking.xaml.cs">
       <DependentUpon>TabBooking.xaml</DependentUpon>
     </Compile>
+    <Page Include="Helpers\DisplaySuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -254,6 +261,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Helpers\img\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Helpers\img\error.png" />
+    <Resource Include="Helpers\img\plus.png" />
+    <Resource Include="Helpers\img\minus.png" />
+    <Resource Include="Helpers\img\trash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
