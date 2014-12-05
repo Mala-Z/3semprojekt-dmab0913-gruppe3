@@ -102,6 +102,10 @@ namespace Client.Tabs.Flight
                     ContentControlSuccess.Content = new DisplaySuccess("Flyforbindelse opdateret!");
                     ((MainWindow)System.Windows.Application.Current.MainWindow).tFlight.UpdateDataGrid();   
                 }
+                else
+                {
+                    ContentControlSuccess.Content = new DisplayError("FEJL");
+                }
             }
             else
             {
