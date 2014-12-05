@@ -21,5 +21,6 @@
         <ComboBox x:Name="cbTo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,40,0,0" />
         <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,13,0,0" />
         <Button x:Name="btnCreate" Content="Opret flyforbindelse" HorizontalAlignment="Left" Margin="129,210,0,0" VerticalAlignment="Top" Width="135" Click="btnCreate_Click"/>
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Height="50" Width="254"/>
     </Grid>
 </UserControl>

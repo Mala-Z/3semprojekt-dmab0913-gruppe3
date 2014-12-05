@@ -42,6 +42,8 @@ namespace Client.Tabs.Flight
         {
             double price = 0.0;
             bool stop = false;
+            bool success = false;
+
             try
             {
                  price = System.Convert.ToDouble(txtPrice.Text);
@@ -68,17 +70,20 @@ namespace Client.Tabs.Flight
                 txtPrice.Text != "" &&
                 cbAirplane.SelectedItem != null)
                 {
-                fService.CreateNewFlight(DatePickerDeparture.SelectedDate.ToString(), 
+                success = fService.CreateNewFlight(DatePickerDeparture.SelectedDate.ToString(), 
                         DatePickerArrival.SelectedDate.ToString(), 
-                        System.Convert.ToDouble(txtTravelTime.Text),
+                        Convert.ToDouble(txtTravelTime.Text),
                         price,
                         Int32.Parse(((ComboBoxItem)cbFrom.SelectedItem).Tag.ToString()),
                         Int32.Parse(((ComboBoxItem)cbTo.SelectedItem).Tag.ToString()),
                         Int32.Parse(((ComboBoxItem)cbAirplane.SelectedItem).Tag.ToString()),
                         0
                         );
-                Debug.WriteLine("SelectedValue: {0}", cbFrom.SelectedValue.ToString());
-                Debug.WriteLine("Path: {0}", cbFrom.SelectedValuePath);
+                    if (success)
+                    {
+                        ContentControlSuccess.Content = new DisplaySuccess("Flyforbindelse oprettet!");
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).tFlight.UpdateDataGrid();
+                    }
                 }
             else
             {
