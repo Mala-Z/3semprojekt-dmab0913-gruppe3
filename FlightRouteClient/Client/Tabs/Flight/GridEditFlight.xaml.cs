@@ -99,7 +99,7 @@ namespace Client.Tabs.Flight
                         );
                 if (success)
                 {
-                    lblSuccess.Content = "Flyforbindelse opdateret!";
+                    ContentControlSuccess.Content = new DisplaySuccess("Flyforbindelse opdateret!");
                     ((MainWindow)System.Windows.Application.Current.MainWindow).tFlight.UpdateDataGrid();   
                 }
             }

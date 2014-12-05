@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d" d:DesignWidth="300" Height="330">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
         <Label Content="Fra:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Til:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
@@ -21,7 +20,6 @@
         <ComboBox x:Name="cbTo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,40,0,0" />
         <ComboBox x:Name="cbFrom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,13,0,0" />
         <Button x:Name="btnSave" Content="Gem" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="129,210,0,0" Click="btnSave_Click"/>
-        <Label x:Name="lblSuccess" Content="" FontSize="22" Foreground="#00FF00" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.871,9.32" Margin="10,235,0,0" Width="254" Height="55" />
-
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Height="50" Width="254"/>
     </Grid>
 </UserControl>
