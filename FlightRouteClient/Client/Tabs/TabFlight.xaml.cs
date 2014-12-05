@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 using Client.Tabs.Airport;
 using Client.Tabs.Flight;
 
@@ -33,6 +34,7 @@ namespace Client.Tabs
         {
             InitializeComponent();
             contentControl.Content = new GridAddFlight();
+            ContentControlActionBar.Content = new ActionBar();
 
             fService = new FlightServiceClient();
 
