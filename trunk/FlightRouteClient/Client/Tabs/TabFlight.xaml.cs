@@ -29,20 +29,42 @@ namespace Client.Tabs
     public partial class TabFlight : UserControl
     {
         private FlightServiceClient fService;
+        private GridAddFlight gridAddFlight = new GridAddFlight();
 
         public TabFlight()
         {
             InitializeComponent();
-            contentControl.Content = new GridAddFlight();
-            ContentControlActionBar.Content = new ActionBar();
-
+            contentControl.Content = gridAddFlight;
             fService = new FlightServiceClient();
-
-            InitializeGridData();
-
+            InitGridData();
+            ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
+            ActionBar.AddClick += new RoutedEventHandler(AddClick);
+            ActionBar.DeleteClick += new RoutedEventHandler(DeleteClick);
         }
 
-        private void InitializeGridData()
+        private void DeleteClick(object sender, RoutedEventArgs e)
+        {
+            bool success = false;
+            int flightID = GetSelectedFlightID();
+            var warningBox = MessageBox.Show("Vil du slette flyforbindelsen med ID: " + flightID + "?", "Slet",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            if (warningBox == MessageBoxResult.Yes)
+                success = fService.DeleteFlight(flightID);
+            if (!success)
+                MainWindow.ErrorMsg("Flyforbindelse ikke slettet");
+        }
+
+        private void AddClick(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = gridAddFlight;
+        }
+
+        private void RefreshClick(object sender, RoutedEventArgs e)
+        {
+            InitGridData();
+        }
+
+        private void InitGridData()
         {
             DateTime fromDate = DateTime.Now;
             var result = GetFlightsToGridByDate(fromDate);
@@ -62,29 +84,33 @@ namespace Client.Tabs
                     Ankomst = f.timeOfArrival,
                     Rejsetid = f.traveltime,
                     Pris = f.price,
-                    Ledige = fService.GetAirplaneByID((int) f.airplaneID).seats -= f.takenSeats
+                    Ledige = fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats -= f.takenSeats
                 };
             return result;
         }
 
         public void UpdateDataGrid()
         {
-            InitializeGridData();
+            InitGridData();
         }
 
      
         private void dgFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //dgAirports indeholder anonyme objecter. Enten skal vi lave en ny class og caste det anonyme object dertil,
-            //ellers kan vi som her lave det om til en string, og via regular expression hente dets id
             if (dgFlights.SelectedItem != null)
             {
-                String flightString = dgFlights.SelectedItem.ToString().Trim();
-                int flightID = Convert.ToInt32(Regex.Match(flightString, @"\d+").ToString());
-                var flight = fService.GetFlightByID(flightID);
+                var flight = fService.GetFlightByID(GetSelectedFlightID());
                 contentControl.Content = new GridEditFlight(flight); 
             }
             
+        }
+
+        private int GetSelectedFlightID()
+        {
+            String flightString = dgFlights.SelectedItem.ToString().Trim();
+            //brug regex til at få første digit fra string
+            int flightID = Convert.ToInt32(Regex.Match(flightString, @"\d+").ToString());
+            return flightID;
         }
 
         private void DatePickerFlightGrid_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

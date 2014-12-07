@@ -1,8 +1,9 @@
-﻿<UserControl x:Class="Client.Tabs.TabFlight"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Helpers="clr-namespace:Client.Helpers" x:Class="Client.Tabs.TabFlight" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="790" Height="590">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
@@ -13,7 +14,7 @@
             <ContentControl x:Name="contentControl" VerticalAlignment="Top" />
         </Grid>
         <DatePicker x:Name="DatePickerFlightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Width="465" SelectedDateChanged="DatePickerFlightGrid_SelectedDateChanged"/>
-        <ContentControl x:Name="ContentControlActionBar" Content="asd" HorizontalAlignment="Left" Margin="20,34,0,0" VerticalAlignment="Top" Width="465" Height="22"/>
+        <Helpers:ActionBar x:Name="ActionBar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,34,0,0"/>
 
     </Grid>
 </UserControl>
