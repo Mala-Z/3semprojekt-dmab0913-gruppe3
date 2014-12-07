@@ -52,10 +52,7 @@ namespace Client
 
         public static void ErrorMsg(string msg)
         {
-            string caption = "Fejl";
-            MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Error;
-            MessageBox.Show(msg, caption, button, icon);
+            MessageBox.Show(msg, "Fejl", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
