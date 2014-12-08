@@ -106,7 +106,9 @@
   </xs:element>
   <xs:element name="CreateNewAirportResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateNewAirportResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateAirport">
@@ -120,7 +122,9 @@
   </xs:element>
   <xs:element name="UpdateAirportResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAirportResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteAirport">
@@ -426,7 +430,9 @@
   </xs:element>
   <xs:element name="CreateNewPersonResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateNewPersonResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateNewPersonBooking">
@@ -439,7 +445,9 @@
   </xs:element>
   <xs:element name="CreateNewPersonBookingResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="CreateNewPersonBookingResult" nillable="true" type="q26:Person" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePerson">

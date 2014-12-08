@@ -1003,10 +1003,10 @@ namespace Client.FlightService {
         System.Threading.Tasks.Task<bool> CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPersonBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonBookingResponse")]
-        void CreateNewPersonBooking(string fName, string lName);
+        Client.FlightService.Person CreateNewPersonBooking(string fName, string lName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPersonBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonBookingResponse")]
-        System.Threading.Tasks.Task CreateNewPersonBookingAsync(string fName, string lName);
+        System.Threading.Tasks.Task<Client.FlightService.Person> CreateNewPersonBookingAsync(string fName, string lName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdatePerson", ReplyAction="http://tempuri.org/IFlightService/UpdatePersonResponse")]
         bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
@@ -1280,11 +1280,11 @@ namespace Client.FlightService {
             return base.Channel.CreateNewPersonAsync(fName, lName, gender, address, phoneNo, email, birthdate);
         }
         
-        public void CreateNewPersonBooking(string fName, string lName) {
-            base.Channel.CreateNewPersonBooking(fName, lName);
+        public Client.FlightService.Person CreateNewPersonBooking(string fName, string lName) {
+            return base.Channel.CreateNewPersonBooking(fName, lName);
         }
         
-        public System.Threading.Tasks.Task CreateNewPersonBookingAsync(string fName, string lName) {
+        public System.Threading.Tasks.Task<Client.FlightService.Person> CreateNewPersonBookingAsync(string fName, string lName) {
             return base.Channel.CreateNewPersonBookingAsync(fName, lName);
         }
         
