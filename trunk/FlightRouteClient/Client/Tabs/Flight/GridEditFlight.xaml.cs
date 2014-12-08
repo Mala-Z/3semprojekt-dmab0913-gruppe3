@@ -67,13 +67,13 @@ namespace Client.Tabs.Flight
             }
             catch (Exception)
             {
-                MainWindow.ErrorMsg("Pris skal være et tal");
+                ContentControlSuccess.Content = new DisplaySuccess("Pris skal være et tal!");
                 stop = true;
             }
 
             if (!stop && cbTo.SelectedItem.ToString() == cbFrom.SelectedItem.ToString())
             {
-                MainWindow.ErrorMsg("Fra og til skal være forskellige!");
+                ContentControlSuccess.Content = new DisplayError("Fra og til skal være forskellige!");
                 stop = true;
             }
 
@@ -110,7 +110,7 @@ namespace Client.Tabs.Flight
             else
             {
                 if (!stop)
-                    MainWindow.ErrorMsg("Alle Felter skal udfyldes!");
+                    ContentControlSuccess.Content = new DisplayError("Alle felter skal udfyldes!");
             }
         }
     }

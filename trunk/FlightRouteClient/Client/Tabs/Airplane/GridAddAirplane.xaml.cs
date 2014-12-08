@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 
 namespace Client.Tabs.Airplane
 {
@@ -32,28 +33,30 @@ namespace Client.Tabs.Airplane
         }
 
 
-        private void bUpdate_Click(object sender, RoutedEventArgs e)
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (txtSeats.Text != "")
+            int seats = 0;
+            bool success = false;
+
+            try
             {
-                fService.CreateNewAirplane(Convert.ToInt32(txtSeats.Text));
-
-                string messageBoxText = "Flyet blevet oprettet";
-                string caption = "Succes";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-                MessageBox.Show(messageBoxText, caption, button, icon);
-
-                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirplane.InitGridData();
-               
+                seats = Convert.ToInt32(txtSeats.Text);
             }
-            else
+            catch (Exception)
             {
-                string messageBoxText = "Feltet Antal sæder må ikke være tom";
-                string caption = "Fejl";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Error;
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                ContentControlSuccess.Content = new DisplayError("Sæder skal være et tal!");
+            }
+
+            if (seats > 0)
+            {
+                success = fService.CreateNewAirplane(seats);
+
+                if (success)
+                {
+                    ContentControlSuccess.Content = new DisplaySuccess("Fly er oprettet!");
+                    ((MainWindow)Application.Current.MainWindow).tAirplane.InitGridData();
+                }
+
             }
         } 
 

@@ -53,8 +53,14 @@ namespace Client.Tabs
                 MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             if (warningBox == MessageBoxResult.Yes)
                 success = fService.DeleteFlight(flightID);
-            if (!success)
+            if (success)
+            {
+                UpdateDataGrid();
+            }
+            else
+            {
                 MainWindow.ErrorMsg("Flyforbindelse ikke slettet");
+            }
         }
 
         private void AddClick(object sender, RoutedEventArgs e)
