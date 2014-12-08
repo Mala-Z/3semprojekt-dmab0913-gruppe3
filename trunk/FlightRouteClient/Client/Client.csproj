@@ -59,6 +59,9 @@
       <DependentUpon>ActionBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ComboBoxItems.cs" />
+    <Compile Include="Helpers\ContentTitle.xaml.cs">
+      <DependentUpon>ContentTitle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DisplayError.xaml.cs">
       <DependentUpon>DisplayError.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <DependentUpon>TabBooking.xaml</DependentUpon>
     </Compile>
     <Page Include="Helpers\ActionBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\ContentTitle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

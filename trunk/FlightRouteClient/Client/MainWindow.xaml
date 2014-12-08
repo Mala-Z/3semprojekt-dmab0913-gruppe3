@@ -3,20 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:tabData="clr-namespace:Client.Tabs"
         Title="FlightRouteSystem" Height="600" Width="800" ResizeMode="NoResize" Icon="airplane.ico">
-    <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="590" Margin="0,0,0,-18" VerticalAlignment="Top" Width="790" BorderThickness="1,1,0,1">
-        <TabItem Header="Booking">
+    <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="590" Margin="0,0,0,-18" VerticalAlignment="Top" Width="790" BorderThickness="1,1,0,1" SelectionChanged="TabControl_OnSelectionChanged">
+        <TabItem x:Name="TabItemBooking" Header="Booking">
             <ContentControl x:Name="contentBooking"/>
         </TabItem>
-        <TabItem Header="Kunder">
+        <TabItem x:Name="TabItemCustomer" Header="Kunder">
             <ContentControl x:Name="contentCustomer"/>
         </TabItem>
-        <TabItem Header="Flyforbindelser">
+        <TabItem x:Name="TabItemFlight" Header="Flyforbindelser">
             <ContentControl x:Name="contentFlight"/>
         </TabItem>
-        <TabItem Header="Fly">
+        <TabItem x:Name="TabItemAirplane" Header="Fly">
             <ContentControl x:Name="contentAirplane"/>
         </TabItem>
-        <TabItem Header="Lufthavne">
+        <TabItem x:Name="TabItemAirport" Header="Lufthavne">
             <ContentControl x:Name="contentAirport"/>
         </TabItem>
     </TabControl>
