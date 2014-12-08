@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.Tabs;
+using Client.Tabs.Booking;
 
 namespace Client
 {
@@ -84,5 +85,6 @@ namespace Client
             }   
             
         }
+
     }
 }
