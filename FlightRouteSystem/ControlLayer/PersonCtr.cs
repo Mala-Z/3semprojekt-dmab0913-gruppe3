@@ -82,7 +82,7 @@ namespace ControlLayer
             return returnValue;
         }
 
-        public void CreateNewPersonBooking(string fName, string lName)
+        public Person CreateNewPersonBooking(string fName, string lName)
         {
             var person = new Person();
             person.fname = fName;

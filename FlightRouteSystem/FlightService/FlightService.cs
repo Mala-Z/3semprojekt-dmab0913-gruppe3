@@ -183,9 +183,9 @@ namespace FlightService
             return personCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
         }
 
-        public void CreateNewPersonBooking(string fName, string lName)
+        public Person CreateNewPersonBooking(string fName, string lName)
         {
-            personCtr.CreateNewPersonBooking(fName, lName);
+            return personCtr.CreateNewPersonBooking(fName, lName);
         }
 
         public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
