@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 
 namespace Client.Tabs.Customer
 {
@@ -50,22 +51,13 @@ namespace Client.Tabs.Customer
             {
                 fService.UpdatePerson(person.personID, txtFName.Text, txtLName.Text, txtGender.Text, txtAddress.Text, txtPhoneNo.Text, txtEmail.Text, txtBirthdate.Text);
 
-                string messageBoxText = "Kunde er blevet opdateret";
-                string caption = "Succes";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                ContentControlSuccess.Content = new DisplaySuccess("Kunde er redigeret");
 
                 ((MainWindow)System.Windows.Application.Current.MainWindow).tCustomer.UpdateDataGrid();
-               
             }
             else
             {
-                string messageBoxText = "Felterne fornavn, efternavn, køn, adresse, telefonNr, email, og fødselsdag må ikke være tomme";
-                string caption = "Fejl";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Error;
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                ContentControlSuccess.Content = new DisplayError("Alle felter skal udfyldes!");
             }
         } 
 

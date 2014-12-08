@@ -20,5 +20,6 @@
         <Label Content="Fødselsdag:" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtBirthdate" HorizontalAlignment="Left" Height="23" Margin="129,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135"/>
         <Button x:Name="bCreate" Content="Opret person" HorizontalAlignment="Left" Margin="174,210,0,0" VerticalAlignment="Top" Width="90" Click="bCreate_Click"/>
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Height="50" Width="254"/>
     </Grid>
 </UserControl>
