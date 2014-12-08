@@ -36,11 +36,10 @@ namespace ControlLayer
         /// <param name="seats"></param>
         public bool CreateNewAirplane(int seats)
         {
-            bool returnValue = true;
+            bool returnValue = false;
            
             var airplane = new Airplane { seats = seats };
             db.Airplanes.InsertOnSubmit(airplane);
-            db.SubmitChanges();
 
             try
             {
@@ -62,8 +61,6 @@ namespace ControlLayer
         /// <returns></returns>
         public Airplane GetAirplaneByID(int id)
         {
-            
-
             var airplane = db.Airplanes.SingleOrDefault(a => a.airplaneID == id);
 
             return airplane;
@@ -76,7 +73,7 @@ namespace ControlLayer
         /// <param name="seats"></param>
         public bool UpdateAirplane(int id, int seats)
         {
-            bool returnValue = true;
+            bool returnValue = false;
           
             var airplane = GetAirplaneByID(id);
 

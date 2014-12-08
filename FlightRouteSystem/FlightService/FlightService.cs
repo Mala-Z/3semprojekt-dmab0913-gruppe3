@@ -62,14 +62,14 @@ namespace FlightService
             return airportCtr.GetAirportByID(id);
         }
 
-        public void CreateNewAirport(string name, string location)
+        public bool CreateNewAirport(string name, string location)
         {
-            airportCtr.CreateNewAirport(name, location);
+            return airportCtr.CreateNewAirport(name, location);
         }
 
-        public void UpdateAirport(int id, string name, string location)
+        public bool UpdateAirport(int id, string name, string location)
         {
-            airportCtr.UpdateAirport(id, name, location);
+            return airportCtr.UpdateAirport(id, name, location);
         }
 
         public bool DeleteAirport(int id)
@@ -178,9 +178,9 @@ namespace FlightService
             return personCtr.GetPersonByID(id);
         }
 
-        public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
+        public bool CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
         {
-            personCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
+            return personCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
         }
 
         public void CreateNewPersonBooking(string fName, string lName)

@@ -54,20 +54,32 @@ namespace ControlLayer
         /// <param name="birthdate"></param>
         /// <param name="password"></param>
         /// <param name="type"></param>
-        public void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
+        public bool CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
                                     string email, string birthdate)
         {
-            var person = new Person();
-            person.fname = fName;
-            person.lname = lName;
-            person.gender = gender;
-            person.address = address;
-            person.phoneNo = phoneNo;
-            person.email = email;
-            person.birthdate = birthdate;
+            bool returnValue = true;
+            var person = new Person
+            {
+                fname = fName,
+                lname = lName,
+                gender = gender,
+                address = address,
+                phoneNo = phoneNo,
+                email = email,
+                birthdate = birthdate
+            };
 
             db.Persons.InsertOnSubmit(person);
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+
+            return returnValue;
         }
 
         public void CreateNewPersonBooking(string fName, string lName)
