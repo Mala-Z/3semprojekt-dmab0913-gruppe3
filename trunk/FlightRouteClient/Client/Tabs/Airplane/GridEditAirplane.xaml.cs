@@ -38,19 +38,19 @@ namespace Client.Tabs.Airplane
             txtSeats.Text = airplane.seats.ToString();
         }
 
-        private void bUpdate_Click(object sender, RoutedEventArgs e)
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (txtSeats.Text != "")
             {
                 fService.UpdateAirplane(airplane.airplaneID, Convert.ToInt32(txtSeats.Text));
 
-                string messageBoxText = "Flyet er blevet opdateret";
+                string messageBoxText = "asd";
                 string caption = "Succes";
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Information;
                 MessageBox.Show(messageBoxText, caption, button, icon);
 
-                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirplane.updateDataGrid();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirplane.InitGridData();
                
             }
             else

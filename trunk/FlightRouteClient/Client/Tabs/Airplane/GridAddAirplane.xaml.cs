@@ -44,7 +44,7 @@ namespace Client.Tabs.Airplane
                 MessageBoxImage icon = MessageBoxImage.Information;
                 MessageBox.Show(messageBoxText, caption, button, icon);
 
-                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirplane.updateDataGrid();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirplane.InitGridData();
                
             }
             else

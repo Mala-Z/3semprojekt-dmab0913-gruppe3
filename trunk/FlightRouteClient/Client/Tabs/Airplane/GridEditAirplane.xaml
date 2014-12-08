@@ -7,6 +7,7 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,0,10">
         <Label Content="Antal Sæder:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtSeats" HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="bUpdateAirplane" Content="Opdater fly" HorizontalAlignment="Left" Margin="181,41,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="-0.516,3.197" Click="bUpdate_Click"/>
+        <Button x:Name="bUpdateAirplane" Content="Opdater fly" HorizontalAlignment="Left" Margin="181,41,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="-0.516,3.197" Click="btnUpdate_Click"/>
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Height="50" Width="254"/>
     </Grid>
 </UserControl>
