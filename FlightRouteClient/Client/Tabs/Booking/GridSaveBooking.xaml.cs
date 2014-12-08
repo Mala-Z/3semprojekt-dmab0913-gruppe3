@@ -54,6 +54,10 @@ namespace Client.Tabs.Booking
             {
                 contentControl.Content = new GridAddPassenger(this);
             }
+            else
+            {
+                contentControl.Content = null;
+            }
         }
 
         public void InitializeTxtboxes()
@@ -113,7 +117,12 @@ namespace Client.Tabs.Booking
 
             if (passengerList.Count < noOfPass)
             {
+                contentControl.Content = null;
                 contentControl.Content = new GridAddPassenger(this);
+            }
+            else
+            {
+                contentControl.Content = null;
             }
 
         }
