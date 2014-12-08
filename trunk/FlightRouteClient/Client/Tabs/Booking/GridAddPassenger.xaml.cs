@@ -24,20 +24,24 @@ namespace Client.Tabs.Booking
     public partial class GridAddPassenger : UserControl
     {
         private FlightServiceClient fService;
+        private GridSaveBooking grid;
 
 
-        public GridAddPassenger()
+        public GridAddPassenger(GridSaveBooking grid)
         {
             InitializeComponent();
             fService = new FlightServiceClient();
-             
+            this.grid = grid;
+
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (txtFName.Text != "" && txtLName.Text != "")
             {
-                fService.CreateNewPersonBooking(txtFName.Text, txtLName.Text);
+                var passenger = fService.CreateNewPersonBooking(txtFName.Text, txtLName.Text);
+                grid.AddPassengerToList(passenger);
+
             }
             
         }
