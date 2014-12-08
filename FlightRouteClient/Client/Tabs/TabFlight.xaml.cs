@@ -30,11 +30,14 @@ namespace Client.Tabs
     {
         private FlightServiceClient fService;
         private GridAddFlight gridAddFlight = new GridAddFlight();
+        private ContentTitle addTitle = new ContentTitle("Tilføj ny flyforbindelse");
+        private ContentTitle editTitle = new ContentTitle("Rediger flyforbindelse");
 
         public TabFlight()
         {
             InitializeComponent();
-            contentControl.Content = gridAddFlight;
+            ContentControlTitle.Content = addTitle;
+            ContentControlAddEdit.Content = gridAddFlight;
             fService = new FlightServiceClient();
             InitGridData();
             ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
@@ -56,12 +59,13 @@ namespace Client.Tabs
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            contentControl.Content = gridAddFlight;
+            ContentControlTitle.Content = addTitle;
+            ContentControlAddEdit.Content = gridAddFlight;
         }
 
         private void RefreshClick(object sender, RoutedEventArgs e)
         {
-            InitGridData();
+            UpdateDataGrid();
         }
 
         private void InitGridData()
@@ -91,7 +95,15 @@ namespace Client.Tabs
 
         public void UpdateDataGrid()
         {
-            InitGridData();
+            var date = DatePickerFlightGrid.SelectedDate;
+            if (date != null && date.GetType() == typeof(DateTime))
+            {
+                dgFlights.ItemsSource = GetFlightsToGridByDate(date.Value);
+            }
+            else
+            {
+                InitGridData();
+            }
         }
 
      
@@ -100,7 +112,8 @@ namespace Client.Tabs
             if (dgFlights.SelectedItem != null)
             {
                 var flight = fService.GetFlightByID(GetSelectedFlightID());
-                contentControl.Content = new GridEditFlight(flight); 
+                ContentControlTitle.Content = editTitle;
+                ContentControlAddEdit.Content = new GridEditFlight(flight); 
             }
             
         }

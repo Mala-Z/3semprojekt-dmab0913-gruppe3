@@ -10,11 +10,12 @@
 
         <DataGrid x:Name="dgFlights" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top" Height="462" Width="465" SelectionChanged="dgFlights_SelectionChanged" SelectionMode="Single"/>
 
-        <Grid x:Name="gFlightsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="300">
-            <ContentControl x:Name="contentControl" VerticalAlignment="Top" />
+        <Grid x:Name="gFlightsRight" HorizontalAlignment="Left" Height="532" Margin="490,41,0,0" VerticalAlignment="Top" Width="300">
+            <ContentControl x:Name="ContentControlAddEdit" VerticalAlignment="Top" />
         </Grid>
         <DatePicker x:Name="DatePickerFlightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Width="465" SelectedDateChanged="DatePickerFlightGrid_SelectedDateChanged"/>
         <Helpers:ActionBar x:Name="ActionBar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,34,0,0"/>
+        <ContentControl x:Name="ContentControlTitle" Content="ContentControl" HorizontalAlignment="Left" Margin="490,10,0,0" VerticalAlignment="Top" Height="29" Width="300"/>
 
     </Grid>
 </UserControl>
