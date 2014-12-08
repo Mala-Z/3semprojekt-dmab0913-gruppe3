@@ -65,57 +65,30 @@ namespace Client.Tabs
                         }
                         else
                         {
-                            ErrorMessage(4);
+                            MainWindow.ErrorMsg("Rejs fra og rejs til skal være to forskellige lufthavne");
                         }
                         
                     }
                     else
                     {
-                        ErrorMessage(2);
+                        MainWindow.ErrorMsg("Der skal mindst være 1 passager");
                     }
 
                 }
                 else
                 {
-                    ErrorMessage(1);
+                    MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge");
                 }
             }
             catch (NullReferenceException err)
             {
-                ErrorMessage(1);
+                MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge");
             }
             catch (FormatException err)
             {
-                ErrorMessage(3);
+                MainWindow.ErrorMsg("Antal passager skal være et tal");
             }
             
-        }
-
-        private void ErrorMessage(int errNo)
-        {
-            string messageBoxText = "";
-            switch (errNo)
-            {
-                case 1:
-                    messageBoxText = "Alle felterne skal være udfyldt før du kan søge";
-                    break;
-                case 2:
-                    messageBoxText = "Der skal mindst være 1 passager";
-                    break;
-                case 3:
-                    messageBoxText = "Antal passager skal være et tal";
-                    break;
-                case 4:
-                    messageBoxText = "Rejs fra og rejs til skal være to forskellige lufthavne";
-                    break;
-                default:
-                    messageBoxText = "Alle felterne skal være udfyldt før du kan søge";
-                    break;
-            }
-            string caption = "Fejl";
-            MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Error;
-            MessageBox.Show(messageBoxText, caption, button, icon);
         }
 
         
