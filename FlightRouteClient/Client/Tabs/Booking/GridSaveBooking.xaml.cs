@@ -140,7 +140,9 @@ namespace Client.Tabs.Booking
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            fService.CreateNewBooking(flights, passengerList, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
+            FlightService.Flight[] fl = flights.ToArray();
+            FlightService.Person[] pl = passengerList.ToArray();
+            fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
         }
 
         
