@@ -56,12 +56,13 @@ namespace ControlLayer
             {
                 try
                 {
+                    MainCtr main = new MainCtr();
                     
                     var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
 
                     foreach (Flight f in flights)
                     {
-                        if (f.Airplane.seats >= f.takenSeats + passengers.Count)
+                        if (main.AirplaneCtr.GetAirplaneByID((int)f.airplaneID).seats >= f.takenSeats + passengers.Count)
                         {
                             var BookingFlights = new BookingFlight
                             {
