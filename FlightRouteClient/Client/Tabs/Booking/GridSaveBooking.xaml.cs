@@ -49,6 +49,8 @@ namespace Client.Tabs.Booking
             this.flights = flights;
             InitializeTxtboxes();
             InitializeGridData();
+
+            contentControl.Content = new GridAddPassenger();
         }
 
         public void InitializeTxtboxes()
