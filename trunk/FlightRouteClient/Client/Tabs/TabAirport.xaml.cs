@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 using Client.Tabs.Airport;
 
 namespace Client.Tabs
@@ -25,19 +26,48 @@ namespace Client.Tabs
     public partial class TabAirport : UserControl
     {
         private FlightServiceClient fService;
+        private GridAddAirport gridAddAirport = new GridAddAirport();
+        private ContentTitle addTitle = new ContentTitle("Tilføj ny lufthavn");
+        private ContentTitle editTitle = new ContentTitle("Rediger lufthavn");
 
         public TabAirport()
         {
             InitializeComponent();
-            contentControl.Content = new GridAddAirport();
-
+            ContentControlTitle.Content = addTitle;
+            contentControl.Content = gridAddAirport;
             fService = new FlightServiceClient();
-
-            InitializeGridData();
-
+            InitGridData();
+            ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
+            ActionBar.AddClick += new RoutedEventHandler(AddClick);
+            ActionBar.DeleteClick += new RoutedEventHandler(DeleteClick);
         }
 
-        private void InitializeGridData()
+        private void DeleteClick(object sender, RoutedEventArgs e)
+        {
+            bool success = false;
+            int airportID = GetSelectedAirportID();
+            var warningBox = MessageBox.Show("Vil du slette lufthavnen med ID: " + airportID + "?", "Slet",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            if (warningBox == MessageBoxResult.Yes)
+                success = fService.DeleteAirport(airportID);
+            if (!success)
+                MainWindow.ErrorMsg("Lufthavn ikke slettet");
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).tAirport.UpdateDataGrid();
+        }
+
+        private void AddClick(object sender, RoutedEventArgs e)
+        {
+            ContentControlTitle.Content = addTitle;
+            contentControl.Content = gridAddAirport;
+        }
+
+        private void RefreshClick(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGrid();
+        }
+
+        private void InitGridData()
         {
             //dgAirports.ItemsSource = fService.GetAllAirports();
 
@@ -48,9 +78,9 @@ namespace Client.Tabs
 
         }
 
-        public void updateDataGrid()
+        public void UpdateDataGrid()
         {
-            InitializeGridData();
+            InitGridData();
         }
 
         private void tSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -66,6 +96,14 @@ namespace Client.Tabs
 
         }
 
+        private int GetSelectedAirportID()
+        {
+            String airportString = dgAirports.SelectedItem.ToString().Trim();
+            //brug regex til at få første digit fra string
+            int airportID = Convert.ToInt32(Regex.Match(airportString, @"\d+").ToString());
+            return airportID;
+        }
+
         private void dgAirports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //dgAirports indeholder anonyme objecter. Enten skal vi lave en ny class og caste det anonyme object dertil,
@@ -75,6 +113,7 @@ namespace Client.Tabs
                 String airportString = dgAirports.SelectedItem.ToString().Trim();
                 int airportID = Convert.ToInt32(Regex.Match(airportString, @"\d+").ToString());
                 var airport = fService.GetAirportByID(airportID);
+                ContentControlTitle.Content = editTitle;
                 contentControl.Content = new GridEditAirport(airport); 
             }
             
