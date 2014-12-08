@@ -50,7 +50,10 @@ namespace Client.Tabs.Booking
             InitializeTxtboxes();
             InitializeGridData();
 
-            contentControl.Content = new GridAddPassenger();
+            if (passengerList.Count < noOfPass)
+            {
+                contentControl.Content = new GridAddPassenger(this);
+            }
         }
 
         public void InitializeTxtboxes()
@@ -96,7 +99,24 @@ namespace Client.Tabs.Booking
 
         }
 
-        
+        public void AddPassengerToList(FlightService.Person passenger)
+        {
+            passengerList.Add(passenger);
+            dgPassengers.ItemsSource = null;
+            var result2 = from p in passengerList
+                          select new
+                          {
+                              Fornavn = p.fname,
+                              Efternavn = p.lname
+                          };
+            dgPassengers.ItemsSource = result2;
+
+            if (passengerList.Count < noOfPass)
+            {
+                contentControl.Content = new GridAddPassenger(this);
+            }
+
+        }
 
         
 
