@@ -9,7 +9,7 @@
           <div class="row">
             <div class="span12">
               <h2>Find den bedste flyrute</h2>
-              <input type="text" name="comboravelFrom" placeholder="Rejs fra" class="cform-text" size="10" title="Rejs fra">
+              <input type="text" name="comboTravelFrom" placeholder="Rejs fra" class="cform-text" size="10" title="Rejs fra">
               <input type="text" name="comboTravelTo" placeholder="Rejs til" class="cform-text" size="10" title="Rejs til">
               <input type="text" name="dpTravelDate" placeholder="Dato" class="cform-text" size="10" title="Rejse dato">
               <input type="text" name="comboNoOfPassengers" placeholder="Antal passenger" class="cform-text" size="10" title="">
