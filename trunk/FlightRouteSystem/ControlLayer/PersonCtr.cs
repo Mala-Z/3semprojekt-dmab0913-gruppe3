@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,12 +85,24 @@ namespace ControlLayer
 
         public Person CreateNewPersonBooking(string fName, string lName)
         {
-            var person = new Person();
-            person.fname = fName;
-            person.lname = lName;
+            var person = new Person
+            {
+                fname = fName,
+                lname = lName
+            };
 
             db.Persons.InsertOnSubmit(person);
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                
+                Debug.Write(e.InnerException);
+            }
+            
+            return person;
         }
 
 
