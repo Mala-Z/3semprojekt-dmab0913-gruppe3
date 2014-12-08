@@ -50,6 +50,8 @@ namespace Client.Tabs.Booking
             InitializeTxtboxes();
             InitializeGridData();
 
+            btnCreate.Visibility = Visibility.Hidden;
+
             if (passengerList.Count < noOfPass)
             {
                 contentControl.Content = new GridAddPassenger(this);
@@ -57,7 +59,10 @@ namespace Client.Tabs.Booking
             else
             {
                 contentControl.Content = null;
+                btnCreate.Visibility = Visibility.Visible;
             }
+
+            
         }
 
         public void InitializeTxtboxes()
@@ -123,8 +128,19 @@ namespace Client.Tabs.Booking
             else
             {
                 contentControl.Content = null;
+                btnCreate.Visibility = Visibility.Visible;
             }
 
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) System.Windows.Application.Current.MainWindow).contentBooking.Content = new TabBooking();
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            fService.CreateNewBooking(flights, passengerList, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
         }
 
         

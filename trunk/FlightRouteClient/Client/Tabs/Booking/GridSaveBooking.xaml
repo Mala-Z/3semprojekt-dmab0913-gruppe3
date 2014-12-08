@@ -28,6 +28,8 @@
         <Grid x:Name="gPassengers" HorizontalAlignment="Left" Margin="12,319,0,207" Width="665">
             <ContentControl x:Name="contentControl" Grid.Row="1"/>
         </Grid>
+        <Button x:Name="btnCreate" Content="Opret booking" HorizontalAlignment="Left" Margin="657,415,0,0" VerticalAlignment="Top" Width="85" Click="btnCreate_Click"/>
+        <Button x:Name="btnCancel" Content="Annuler booking" HorizontalAlignment="Left" Margin="536,415,0,0" VerticalAlignment="Top" Width="100" Click="btnCancel_Click"/>
 
 
     </Grid>
