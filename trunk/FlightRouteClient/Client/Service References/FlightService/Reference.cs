@@ -883,10 +883,10 @@ namespace Client.FlightService {
         System.Threading.Tasks.Task UpdateAirportAsync(int id, string name, string location);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirport", ReplyAction="http://tempuri.org/IFlightService/DeleteAirportResponse")]
-        void DeleteAirport(int id);
+        bool DeleteAirport(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteAirport", ReplyAction="http://tempuri.org/IFlightService/DeleteAirportResponse")]
-        System.Threading.Tasks.Task DeleteAirportAsync(int id);
+        System.Threading.Tasks.Task<bool> DeleteAirportAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetAllBookings", ReplyAction="http://tempuri.org/IFlightService/GetAllBookingsResponse")]
         Client.FlightService.Booking[] GetAllBookings();
@@ -1120,11 +1120,11 @@ namespace Client.FlightService {
             return base.Channel.UpdateAirportAsync(id, name, location);
         }
         
-        public void DeleteAirport(int id) {
-            base.Channel.DeleteAirport(id);
+        public bool DeleteAirport(int id) {
+            return base.Channel.DeleteAirport(id);
         }
         
-        public System.Threading.Tasks.Task DeleteAirportAsync(int id) {
+        public System.Threading.Tasks.Task<bool> DeleteAirportAsync(int id) {
             return base.Channel.DeleteAirportAsync(id);
         }
         

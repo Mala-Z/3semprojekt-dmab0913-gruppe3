@@ -106,9 +106,7 @@
   </xs:element>
   <xs:element name="CreateNewAirportResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CreateNewAirportResult" type="xs:boolean" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateAirport">
@@ -122,9 +120,7 @@
   </xs:element>
   <xs:element name="UpdateAirportResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateAirportResult" type="xs:boolean" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteAirport">
@@ -430,9 +426,7 @@
   </xs:element>
   <xs:element name="CreateNewPersonResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CreateNewPersonResult" type="xs:boolean" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateNewPersonBooking">
