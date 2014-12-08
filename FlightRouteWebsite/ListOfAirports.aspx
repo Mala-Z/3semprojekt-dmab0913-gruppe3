@@ -5,31 +5,34 @@
     <section id="portfolio" class="single-page scrollblock">
         <div class="container">
             <h1 id="folio-headline">Liste over lufthavne</h1>
-            <div>
+            <div class="row">
             Her finder du en liste over lufthavne
                 
             <br />
             <br />
 
-            <table class="table-striped">
-                <tr>
-                    <th>Navn</th>
-                    <th>Placering</th>
-                </tr>
+            <table class="table table-striped">
                 <asp:Repeater ID="repAirport" runat="server">
+                    <HeaderTemplate>
+                        <tr>
+                            <th>Navn</th>
+                            <th>Placering</th>
+                        </tr>
+                    </HeaderTemplate>
                     <ItemTemplate>
                         <tr>
                             <td><%#Eval("name") %></td>
                             <td><%#Eval("location") %></td>
                         </tr>
-                        </ItemTemplate>
+                    </ItemTemplate>
                 </asp:Repeater>
 
             </table>
-                </div>
+
+                
         </div>
         <!-- /.row -->
-
+        </div>
         <!-- /.container -->
     </section>
 
