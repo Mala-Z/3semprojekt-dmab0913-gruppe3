@@ -24,8 +24,6 @@ namespace ControlLayer
         /// <returns>Returns a list of all Airport objects</returns>
         public List<Airport> GetAllAirports()
         {
-           
-
             var airports = db.Airports.OrderBy(x => x.airportID).ToList();
 
             return airports;
@@ -38,8 +36,6 @@ namespace ControlLayer
         /// <returns></returns>
         public Airport GetAirportByID(int id)
         {
-          
-
             var airport = db.Airports.SingleOrDefault(a => a.airportID == id);
 
             return airport;
@@ -50,14 +46,22 @@ namespace ControlLayer
         /// </summary>
         /// <param name="name"></param>
         /// <param name="location"></param>
-        public void CreateNewAirport(string name, string location)
+        public bool CreateNewAirport(string name, string location)
         {
-            
-
+            bool returnValue = true;
             var airport = new Airport {name = name, location = location};
 
             db.Airports.InsertOnSubmit(airport);
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -66,10 +70,9 @@ namespace ControlLayer
         /// <param name="id"></param>
         /// <param name="name"></param>
         /// <param name="location"></param>
-        public void UpdateAirport(int id, string name, string location)
+        public bool UpdateAirport(int id, string name, string location)
         {
-            
-
+            bool returnValue = true;
             var airport = GetAirportByID(id);
 
             if (airport != null)
@@ -77,8 +80,16 @@ namespace ControlLayer
                 airport.name = name;
                 airport.location = location;
 
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
             }
+            return returnValue;
         }
 
         /// <summary>
@@ -87,7 +98,7 @@ namespace ControlLayer
         /// <param name="id"></param>
         public bool DeleteAirport(int id)
         {
-            bool returnValue = false;
+            bool returnValue = true;
             var airport = GetAirportByID(id);
             if (airport != null)
             {
@@ -95,7 +106,6 @@ namespace ControlLayer
                 try
                 {
                     db.SubmitChanges();
-                    returnValue = true;
                 }
                 catch (SqlException)
                 {
@@ -103,6 +113,7 @@ namespace ControlLayer
                 }
             }
             return returnValue;
+
         }
     }
 }

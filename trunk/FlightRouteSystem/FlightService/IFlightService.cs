@@ -40,10 +40,10 @@ namespace FlightService
         Airport GetAirportByID(int id);
 
         [OperationContract]
-        void CreateNewAirport(string name, string location);
+        bool CreateNewAirport(string name, string location);
 
         [OperationContract]
-        void UpdateAirport(int id, string name, string location);
+        bool UpdateAirport(int id, string name, string location);
 
         [OperationContract]
         bool DeleteAirport(int id);
@@ -118,7 +118,7 @@ namespace FlightService
         Person GetPersonByID(int id);
 
         [OperationContract]
-        void CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
+        bool CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
             string email, string birthdate);
 
         [OperationContract]
