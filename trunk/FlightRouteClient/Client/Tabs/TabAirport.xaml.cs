@@ -53,7 +53,7 @@ namespace Client.Tabs
             if (!success)
                 MainWindow.ErrorMsg("Lufthavn ikke slettet");
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).tAirport.UpdateDataGrid();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).tAirport.InitGridData();
         }
 
         private void AddClick(object sender, RoutedEventArgs e)
@@ -64,10 +64,10 @@ namespace Client.Tabs
 
         private void RefreshClick(object sender, RoutedEventArgs e)
         {
-            UpdateDataGrid();
+            InitGridData();
         }
 
-        private void InitGridData()
+        public void InitGridData()
         {
             //dgAirports.ItemsSource = fService.GetAllAirports();
 
@@ -76,11 +76,6 @@ namespace Client.Tabs
 
             dgAirports.ItemsSource = result;
 
-        }
-
-        public void UpdateDataGrid()
-        {
-            InitGridData();
         }
 
         private void tSearch_TextChanged(object sender, TextChangedEventArgs e)
