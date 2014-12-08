@@ -72,9 +72,9 @@ namespace FlightService
             airportCtr.UpdateAirport(id, name, location);
         }
 
-        public void DeleteAirport(int id)
+        public bool DeleteAirport(int id)
         {
-            airportCtr.DeleteAirport(id);
+            return airportCtr.DeleteAirport(id);
         }
         #endregion 
 

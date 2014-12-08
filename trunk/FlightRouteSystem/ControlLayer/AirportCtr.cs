@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,16 +85,24 @@ namespace ControlLayer
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteAirport(int id)
+        public bool DeleteAirport(int id)
         {
-            
+            bool returnValue = false;
             var airport = GetAirportByID(id);
             if (airport != null)
             {
                 db.Airports.DeleteOnSubmit(airport);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                    returnValue = true;
+                }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
             }
+            return returnValue;
         }
-
     }
 }
