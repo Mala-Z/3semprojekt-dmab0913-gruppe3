@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 
 namespace Client.Tabs.Airplane
 {
@@ -40,27 +41,30 @@ namespace Client.Tabs.Airplane
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (txtSeats.Text != "")
-            {
-                fService.UpdateAirplane(airplane.airplaneID, Convert.ToInt32(txtSeats.Text));
+            int seats = 0;
+            bool success = false;
 
-                string messageBoxText = "asd";
-                string caption = "Succes";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-                MessageBox.Show(messageBoxText, caption, button, icon);
-
-                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirplane.InitGridData();
-               
-            }
-            else
+            try
             {
-                string messageBoxText = "Feltet Antal Sæder må ikke være tom";
-                string caption = "Fejl";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Error;
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                seats = Convert.ToInt32(txtSeats.Text);
             }
+            catch (Exception)
+            {
+                ContentControlSuccess.Content = new DisplayError("Sæder skal være et tal!");
+            }
+
+            if (seats > 0)
+            {
+                success = fService.UpdateAirplane(airplane.airplaneID, Convert.ToInt32(txtSeats.Text));
+
+                if (success)
+                {
+                    ContentControlSuccess.Content = new DisplaySuccess("Fly er opdateret!");
+                    ((MainWindow)Application.Current.MainWindow).tAirplane.InitGridData();
+                }
+                
+            }
+            
         } 
 
     }

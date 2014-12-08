@@ -50,15 +50,23 @@ namespace Client.Tabs.Flight
             }
             catch (Exception)
             {
-                MainWindow.ErrorMsg("Pris skal være et tal");
+                ContentControlSuccess.Content = new DisplayError("Pris skal være et tal!");
                 stop = true;
             }
 
-            if (!stop && cbTo.SelectedItem.ToString() == cbFrom.SelectedItem.ToString())
+            if (!stop && cbTo.SelectedItem != null && cbFrom != null)
             {
-                MainWindow.ErrorMsg("Fra og til skal være forskellige!");
+                if (!stop && cbTo.SelectedItem.ToString() == cbFrom.SelectedItem.ToString())
+                {
+                    ContentControlSuccess.Content = new DisplayError("Fra og til skal være forskellige!");
+                    stop = true;
+                }
+            }
+            else
+            {
                 stop = true;
             }
+            
             
 
             if (!stop &&
@@ -91,8 +99,8 @@ namespace Client.Tabs.Flight
                 }
             else
             {
-                if(!stop)
-                MainWindow.ErrorMsg("Alle Felter skal udfyldes!");
+                if(stop)
+                    ContentControlSuccess.Content = new DisplayError("Alle felter skal udfyldes!");
             }
         }
 
