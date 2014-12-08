@@ -122,6 +122,9 @@ namespace FlightService
             string email, string birthdate);
 
         [OperationContract]
+        void CreateNewPersonBooking(string fName, string lName);
+
+        [OperationContract]
         bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo,
             string email, string birthdate);
 
