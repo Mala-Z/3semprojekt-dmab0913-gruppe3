@@ -11,7 +11,7 @@
         <DataGrid x:Name="dgCustomers" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top" Height="462" Width="465" SelectionChanged="dgPersons_SelectionChanged" SelectionMode="Single"/>
 
         <Grid  x:Name="gCustomersRight" HorizontalAlignment="Left" Height="532" Margin="490,41,0,0" VerticalAlignment="Top" Width="290">
-            <ContentControl x:Name="contentControl" Grid.Row="1"/>
+            <ContentControl x:Name="contentControl" VerticalAlignment="Top"/>
         </Grid>
         <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465" TextChanged="tSearch_TextChanged"/>
         <helpers:ActionBar x:Name="ActionBar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,34,0,0"/>

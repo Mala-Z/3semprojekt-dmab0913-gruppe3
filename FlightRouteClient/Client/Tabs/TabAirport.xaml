@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:airport="clr-namespace:Client.Tabs.Airport"
-             mc:Ignorable="d" d:DesignWidth="300" Width="790" Height="561">
+             xmlns:helpers="clr-namespace:Client.Helpers"
+             mc:Ignorable="d" d:DesignWidth="300" Width="790" Height="590">
     <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
 
-        <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top" Height="472" Width="465" SelectionChanged="dgAirports_SelectionChanged" SelectionMode="Single"/>
+        <DataGrid x:Name="dgAirports" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top" Height="462" Width="465" SelectionChanged="dgAirports_SelectionChanged" SelectionMode="Single"/>
 
-        <Grid  x:Name="gAirportsRight" HorizontalAlignment="Left" Height="523" Margin="490,48,0,-10" VerticalAlignment="Top" Width="290">
-            <ContentControl x:Name="contentControl" Grid.Row="1"/>
+        <Grid  x:Name="gAirportsRight" HorizontalAlignment="Left" Height="523" Margin="490,41,0,-10" VerticalAlignment="Top" Width="300">
+            <ContentControl x:Name="contentControl" VerticalAlignment="Top" />
         </Grid>
-        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="20,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465" TextChanged="tSearch_TextChanged"/>
-
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465" TextChanged="tSearch_TextChanged"/>
+        <helpers:ActionBar x:Name="ActionBar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,34,0,0"/>
+        <ContentControl x:Name="ContentControlTitle" Content="ContentControl" HorizontalAlignment="Left" Margin="490,10,0,0" VerticalAlignment="Top" Height="29" Width="300"/>
     </Grid>
 </UserControl>
