@@ -53,22 +53,8 @@ namespace Client.Tabs.Booking
 
         private void InitializeGridData()
         {
-            //IEnumerable<Vertex> shortestPathByPriceList = null;
-            //IEnumerable<Vertex> shortestPathByTravelTimeList = null;
-            ////Create threads that runs RunDijkstra and saves to variables
-            //var shortestPathByPriceThread = new Thread(() => shortestPathByPriceList = RunDijkstra(fromA, toA, "03-12-2014", true));
-            //var shortestPathByTravelTimeThread = new Thread(() => shortestPathByTravelTimeList = RunDijkstra(fromA, toA, "03-12-2014", false));
-            ////Start threads
-            //shortestPathByPriceThread.SetApartmentState(ApartmentState.STA);
-            //shortestPathByTravelTimeThread.SetApartmentState(ApartmentState.STA);
-
-            //shortestPathByPriceThread.Start();
-            //shortestPathByTravelTimeThread.Start();
-            ////Join threads
-            //shortestPathByPriceThread.Join();
-            //shortestPathByTravelTimeThread.Join();
             dgFastest.ItemsSource = null;
-            var fastestsList = fService.RunDijkstraFastest(fromA, toA, "03-12-2014");
+            var fastestsList = fService.RunDijkstraFastest(fromA, toA, date);
             var result = from f in fastestsList
                          select new
                          {
@@ -90,7 +76,7 @@ namespace Client.Tabs.Booking
             txtFTotalTime.Text = fTotalTime.ToString();
 
             dgCheapest.ItemsSource = null;
-            var cheapestList = fService.RunDijkstraCheapest(fromA, toA, "03-12-2014");
+            var cheapestList = fService.RunDijkstraCheapest(fromA, toA, date);
             var result2 = from f in cheapestList
                          select new
                          {
@@ -111,6 +97,23 @@ namespace Client.Tabs.Booking
             txtCTotalCost.Text = cTotalCost.ToString();
             txtCTotalTime.Text = cTotalTime.ToString();
 
+        }
+
+        private void bChooseFastest_Click(object sender, RoutedEventArgs e)
+        {
+            var flights = ((List<FlightService.Flight>) dgFastest.ItemsSource);
+            ChooseRoute(flights);
+        }
+
+        private void bChooseCheapest_Click(object sender, RoutedEventArgs e)
+        {
+            var flights = ((List<FlightService.Flight>) dgCheapest.ItemsSource);
+            ChooseRoute(flights);
+        }
+
+        private void ChooseRoute(List<FlightService.Flight> flights)
+        {
+            
         }
 
        
