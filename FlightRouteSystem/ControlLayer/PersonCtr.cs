@@ -154,7 +154,7 @@ namespace ControlLayer
         /// <param name="id"></param>
         public bool DeletePerson(int id)
         {
-            bool returnValue = false;
+            bool returnValue = true;
             var person = GetPersonByID(id);
             if (person != null)
             {
@@ -162,7 +162,6 @@ namespace ControlLayer
                 try
                 {
                     db.SubmitChanges();
-                    returnValue = true;
                 }
                 catch (SqlException)
                 {
