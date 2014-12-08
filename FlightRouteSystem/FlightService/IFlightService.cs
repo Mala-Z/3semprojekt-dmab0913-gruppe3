@@ -46,7 +46,7 @@ namespace FlightService
         void UpdateAirport(int id, string name, string location);
 
         [OperationContract]
-        void DeleteAirport(int id);
+        bool DeleteAirport(int id);
         #endregion
 
         #region Booking OperationContracts
