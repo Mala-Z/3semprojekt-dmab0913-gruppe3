@@ -70,6 +70,17 @@ namespace ControlLayer
             db.SubmitChanges();
         }
 
+        public void CreateNewPersonBooking(string fName, string lName)
+        {
+            var person = new Person();
+            person.fname = fName;
+            person.lname = lName;
+
+            db.Persons.InsertOnSubmit(person);
+            db.SubmitChanges();
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
