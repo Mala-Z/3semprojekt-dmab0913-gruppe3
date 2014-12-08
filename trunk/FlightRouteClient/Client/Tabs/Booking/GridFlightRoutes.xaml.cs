@@ -29,6 +29,8 @@ namespace Client.Tabs.Booking
         private FlightService.Airport toA;
         private string date;
         private int noOfPass;
+        private List<FlightService.Flight> fastestRoute;
+        private List<FlightService.Flight> cheapestRoute;
 
 
         public GridFlightRoutes(FlightService.Person customer, FlightService.Airport fromA, FlightService.Airport toA, string date, int noOfPass)
@@ -55,6 +57,7 @@ namespace Client.Tabs.Booking
         {
             dgFastest.ItemsSource = null;
             var fastestsList = fService.RunDijkstraFastest(fromA, toA, date);
+            fastestRoute = fastestsList.ToList();
             var result = from f in fastestsList
                          select new
                          {
@@ -77,6 +80,7 @@ namespace Client.Tabs.Booking
 
             dgCheapest.ItemsSource = null;
             var cheapestList = fService.RunDijkstraCheapest(fromA, toA, date);
+            cheapestRoute = cheapestList.ToList();
             var result2 = from f in cheapestList
                          select new
                          {
@@ -101,19 +105,18 @@ namespace Client.Tabs.Booking
 
         private void bChooseFastest_Click(object sender, RoutedEventArgs e)
         {
-            var flights = ((List<FlightService.Flight>) dgFastest.ItemsSource);
-            ChooseRoute(flights);
+            ChooseRoute(fastestRoute);
         }
 
         private void bChooseCheapest_Click(object sender, RoutedEventArgs e)
         {
-            var flights = ((List<FlightService.Flight>) dgCheapest.ItemsSource);
-            ChooseRoute(flights);
+            ChooseRoute(cheapestRoute);
         }
 
         private void ChooseRoute(List<FlightService.Flight> flights)
         {
-            
+            ((MainWindow) Application.Current.MainWindow).contentBooking.Content = new GridSaveBooking(customer, fromA,
+                toA, date, noOfPass, flights);
         }
 
        
