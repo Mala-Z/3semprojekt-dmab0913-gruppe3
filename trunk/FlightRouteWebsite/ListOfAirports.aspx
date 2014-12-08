@@ -5,46 +5,31 @@
     <section id="portfolio" class="single-page scrollblock">
         <div class="container">
             <h1 id="folio-headline">Liste over lufthavne</h1>
-            <div class="row">
-                Her finder du en liste over lufthavne
-                <br />
-                <br />
+            <div>
+            Her finder du en liste over lufthavne
+                
+            <br />
+            <br />
 
-                <div class="row">
-                    <asp:Repeater ID="repAirport" runat="server">
-
-                        <HeaderTemplate>
-
-                            <div class="row">
-                                <div class="col-md-6 h4">Navn</div>
-                                <div class="col-md-6 h4">Placering</div>
-
-                            </div>
-                            <!-- /.row -->
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <div class="row" style="background-color: white">
-                                <div class="col-md-6"><%#Eval("name") %></div>
-                                <div class="col-md-6"><%#Eval("location") %></div>
-                            </div>
+            <table class="table-striped">
+                <tr>
+                    <th>Navn</th>
+                    <th>Placering</th>
+                </tr>
+                <asp:Repeater ID="repAirport" runat="server">
+                    <ItemTemplate>
+                        <tr>
+                            <td><%#Eval("name") %></td>
+                            <td><%#Eval("location") %></td>
+                        </tr>
                         </ItemTemplate>
-                        
-                         <AlternatingItemTemplate>
-                            <div class="row">
-                                <div class="col-md-6"><%#Eval("name") %></div>
-                                <div class="col-md-6"><%#Eval("location") %></div>
-                            </div>
-                        </AlternatingItemTemplate>
-                        
-                       
+                </asp:Repeater>
 
-
-                    </asp:Repeater>
+            </table>
                 </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.row -->
         </div>
+        <!-- /.row -->
+
         <!-- /.container -->
     </section>
 
