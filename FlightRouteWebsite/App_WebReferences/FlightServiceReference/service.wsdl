@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FlightService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/DatabaseLayer" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFlightService_GetAllAirplanes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAirplanes" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllAirplanes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAirplanesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewAirplane_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAirplane" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewAirplane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAirplaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAirplaneByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirplaneByID" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAirplaneByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirplaneByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateAirplane_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAirplane" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateAirplane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAirplaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteAirplane_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAirplane" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteAirplane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAirplaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllAirports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAirports" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllAirports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAirportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAirportByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirportByID" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAirportByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirportByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewAirport_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAirport" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewAirport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAirportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateAirport_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAirport" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateAirport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAirportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteAirport_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAirport" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteAirport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAirportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllBookings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookings" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllBookings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetBookingByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingByID" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetBookingByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstra_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstra" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraCheapest_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraCheapest" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraCheapest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraCheapestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraFastest_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraFastest" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_RunDijkstraFastest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunDijkstraFastestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllFlights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFlights" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllFlights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightByID" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllFlightsByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFlightsByDate" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllFlightsByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFlightsByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsByDate" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsFrom_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsFrom" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsFrom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsFromResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewFlight" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFlight" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdateFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFlight" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllPersons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPersons" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetAllPersons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPersonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetPersonByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonByID" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetPersonByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPerson" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdatePerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePerson" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_UpdatePerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeletePerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePerson" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeletePerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePersonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFlightService">
+    <wsdl:operation name="GetAllAirplanes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllAirplanes" message="tns:IFlightService_GetAllAirplanes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllAirplanesResponse" message="tns:IFlightService_GetAllAirplanes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewAirplane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewAirplane" message="tns:IFlightService_CreateNewAirplane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewAirplaneResponse" message="tns:IFlightService_CreateNewAirplane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirplaneByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAirplaneByID" message="tns:IFlightService_GetAirplaneByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAirplaneByIDResponse" message="tns:IFlightService_GetAirplaneByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAirplane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/UpdateAirplane" message="tns:IFlightService_UpdateAirplane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/UpdateAirplaneResponse" message="tns:IFlightService_UpdateAirplane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAirplane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteAirplane" message="tns:IFlightService_DeleteAirplane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteAirplaneResponse" message="tns:IFlightService_DeleteAirplane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAirports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllAirports" message="tns:IFlightService_GetAllAirports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllAirportsResponse" message="tns:IFlightService_GetAllAirports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAirportByID" message="tns:IFlightService_GetAirportByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAirportByIDResponse" message="tns:IFlightService_GetAirportByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewAirport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewAirport" message="tns:IFlightService_CreateNewAirport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewAirportResponse" message="tns:IFlightService_CreateNewAirport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAirport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/UpdateAirport" message="tns:IFlightService_UpdateAirport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/UpdateAirportResponse" message="tns:IFlightService_UpdateAirport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAirport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteAirport" message="tns:IFlightService_DeleteAirport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteAirportResponse" message="tns:IFlightService_DeleteAirport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllBookings" message="tns:IFlightService_GetAllBookings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllBookingsResponse" message="tns:IFlightService_GetAllBookings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetBookingByID" message="tns:IFlightService_GetBookingByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetBookingByIDResponse" message="tns:IFlightService_GetBookingByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewBooking" message="tns:IFlightService_CreateNewBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewBookingResponse" message="tns:IFlightService_CreateNewBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/UpdateBooking" message="tns:IFlightService_UpdateBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/UpdateBookingResponse" message="tns:IFlightService_UpdateBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteBooking" message="tns:IFlightService_DeleteBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteBookingResponse" message="tns:IFlightService_DeleteBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstra" message="tns:IFlightService_RunDijkstra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraResponse" message="tns:IFlightService_RunDijkstra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraCheapest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraCheapest" message="tns:IFlightService_RunDijkstraCheapest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraCheapestResponse" message="tns:IFlightService_RunDijkstraCheapest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraFastest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraFastest" message="tns:IFlightService_RunDijkstraFastest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraFastestResponse" message="tns:IFlightService_RunDijkstraFastest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFlights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllFlights" message="tns:IFlightService_GetAllFlights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllFlightsResponse" message="tns:IFlightService_GetAllFlights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetFlightByID" message="tns:IFlightService_GetFlightByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetFlightByIDResponse" message="tns:IFlightService_GetFlightByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFlightsByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllFlightsByDate" message="tns:IFlightService_GetAllFlightsByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllFlightsByDateResponse" message="tns:IFlightService_GetAllFlightsByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetFlightsByDate" message="tns:IFlightService_GetFlightsByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetFlightsByDateResponse" message="tns:IFlightService_GetFlightsByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsFrom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetFlightsFrom" message="tns:IFlightService_GetFlightsFrom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetFlightsFromResponse" message="tns:IFlightService_GetFlightsFrom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewFlight" message="tns:IFlightService_CreateNewFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewFlightResponse" message="tns:IFlightService_CreateNewFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/UpdateFlight" message="tns:IFlightService_UpdateFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/UpdateFlightResponse" message="tns:IFlightService_UpdateFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteFlight" message="tns:IFlightService_DeleteFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteFlightResponse" message="tns:IFlightService_DeleteFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPersons">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllPersons" message="tns:IFlightService_GetAllPersons_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllPersonsResponse" message="tns:IFlightService_GetAllPersons_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetPersonByID" message="tns:IFlightService_GetPersonByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetPersonByIDResponse" message="tns:IFlightService_GetPersonByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewPerson" message="tns:IFlightService_CreateNewPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonResponse" message="tns:IFlightService_CreateNewPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/UpdatePerson" message="tns:IFlightService_UpdatePerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/UpdatePersonResponse" message="tns:IFlightService_UpdatePerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeletePerson" message="tns:IFlightService_DeletePerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeletePersonResponse" message="tns:IFlightService_DeletePerson_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFlightService" type="tns:IFlightService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllAirplanes">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllAirplanes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewAirplane">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewAirplane" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirplaneByID">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAirplaneByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAirplane">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/UpdateAirplane" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAirplane">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/DeleteAirplane" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAirports">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllAirports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportByID">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAirportByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewAirport">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewAirport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAirport">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/UpdateAirport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAirport">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/DeleteAirport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookings">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllBookings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingByID">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetBookingByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/UpdateBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/DeleteBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstra">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraCheapest">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstraCheapest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDijkstraFastest">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstraFastest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFlights">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightByID">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetFlightByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFlightsByDate">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllFlightsByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsByDate">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetFlightsByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsFrom">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetFlightsFrom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewFlight">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFlight">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/UpdateFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFlight">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/DeleteFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPersons">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllPersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByID">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetPersonByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPerson">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/UpdatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/DeletePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlightService">
+    <wsdl:port name="BasicHttpBinding_IFlightService" binding="tns:BasicHttpBinding_IFlightService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
