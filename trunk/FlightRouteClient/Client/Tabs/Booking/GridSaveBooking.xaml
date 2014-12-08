@@ -23,7 +23,7 @@
         <TextBox x:Name="txtTotalCost" HorizontalAlignment="Left" Height="23" Margin="201,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
 
         <DataGrid x:Name="dgPassengers" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Height="80" Width="732"/>
-        <Label Content="Passegerer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,196,0,0" FontWeight="Bold"/>
+        <Label Content="Passagerer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,196,0,0" FontWeight="Bold"/>
 
         <Grid x:Name="gPassengers" HorizontalAlignment="Left" Margin="12,319,0,207" Width="665">
             <ContentControl x:Name="contentControl" Grid.Row="1"/>
