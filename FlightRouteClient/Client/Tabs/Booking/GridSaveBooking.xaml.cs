@@ -142,7 +142,14 @@ namespace Client.Tabs.Booking
         {
             FlightService.Flight[] fl = flights.ToArray();
             FlightService.Person[] pl = passengerList.ToArray();
-            fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
+            if (fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text)))
+            {
+                //success!!
+            }
+            else
+            {
+                MainWindow.ErrorMsg("Bookingen blev ikke oprettet. En af flyforbindelserne har ikke nok pladser.");
+            }
         }
 
         
