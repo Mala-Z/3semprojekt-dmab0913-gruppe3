@@ -51,53 +51,58 @@ namespace ControlLayer
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
         {
             bool returnValue = false;
-
-            using (var transaction = new TransactionScope())
+            
+            try
             {
-                try
-                {
-                    MainCtr main = new MainCtr();
+                MainCtr main = new MainCtr();
                     
-                    var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice };
+                var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice*passengers.Count };
 
-                    foreach (Flight f in flights)
+                foreach (Flight f in flights)
+                {
+                    if (main.AirplaneCtr.GetAirplaneByID((int)f.airplaneID).seats >= f.takenSeats + passengers.Count)
                     {
-                        if (main.AirplaneCtr.GetAirplaneByID((int)f.airplaneID).seats >= f.takenSeats + passengers.Count)
-                        {
-                            var BookingFlights = new BookingFlight
-                            {
-                                Booking = booking,
-                                Flight = f
-                            };
-                            db.BookingFlights.InsertOnSubmit(BookingFlights);
-                        }
-                        else
-                        {
-                            transaction.Dispose();
-                            returnValue = false;
-                        } 
-                    }
-
-                    foreach (Person p in passengers)
-                    {
-                        var BookingPassenger = new BookingPassenger
+                        var BookingFlights = new BookingFlight
                         {
                             Booking = booking,
-                            Person = p
+                            Flight = f
                         };
-                        db.BookingPassengers.InsertOnSubmit(BookingPassenger);
+                        db.BookingFlights.InsertOnSubmit(BookingFlights);
+                        f.takenSeats += passengers.Count;
                     }
+                    else
+                    {
+                        returnValue = false;
+                    } 
+                }
 
-                    db.Bookings.InsertOnSubmit(booking);
-                    db.SubmitChanges();
-                    returnValue = true;
-                    transaction.Complete();
-                }
-                catch (SqlException)
+                foreach (Person p in passengers)
                 {
-                    returnValue = false;
+                    var BookingPassenger = new BookingPassenger
+                    {
+                        Booking = booking,
+                        Person = p
+                    };
+                    db.BookingPassengers.InsertOnSubmit(BookingPassenger);
                 }
-            }//end using
+
+                db.Bookings.InsertOnSubmit(booking);
+                returnValue = true;
+            }
+            catch (SqlException)
+            {
+                returnValue = false;
+            }
+            catch (Exception)
+            {
+                //trans.Rollback();
+            }
+
+            if (returnValue)
+            {
+                db.SubmitChanges();
+            }
+
             return returnValue;
         }
 
