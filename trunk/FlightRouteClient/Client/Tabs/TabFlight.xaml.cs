@@ -1,30 +1,24 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
-using System.Text;
+using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 using Client.FlightService;
 using Client.Helpers;
-using Client.Tabs.Airport;
 using Client.Tabs.Flight;
 
 namespace Client.Tabs
 {
     /// <summary>
-    /// Interaction logic for TabTest1.xaml
+    /// Interaction logic for TabFlight.xaml
     /// </summary>
     public partial class TabFlight : UserControl
     {
@@ -39,29 +33,44 @@ namespace Client.Tabs
             ContentControlTitle.Content = addTitle;
             ContentControlAddEdit.Content = gridAddFlight;
             fService = new FlightServiceClient();
-            InitGridData();
+            LoadGridData(DateTime.Now);
             ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
             ActionBar.AddClick += new RoutedEventHandler(AddClick);
-            ActionBar.DeleteClick += new RoutedEventHandler(DeleteClick);
+            //ActionBar.DeleteClick += new RoutedEventHandler(DeleteClick);
         }
 
-        private void DeleteClick(object sender, RoutedEventArgs e)
+        private void LoadGridData(DateTime time)
         {
-            bool success = false;
-            int flightID = GetSelectedFlightID();
-            var warningBox = MessageBox.Show("Vil du slette flyforbindelsen med ID: " + flightID + "?", "Slet",
-                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-            if (warningBox == MessageBoxResult.Yes)
-                success = fService.DeleteFlight(flightID);
-            if (success)
+            Debug.WriteLine(Thread.CurrentThread.ManagedThreadId.ToString());
+            Action workAction = () =>
             {
-                UpdateDataGrid();
-            }
-            else
-            {
-                MainWindow.ErrorMsg("Flyforbindelse ikke slettet");
-            }
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += (o, args) => args.Result = GetFlightsToGridByDate(time);
+                worker.RunWorkerCompleted += (o, args) => { dgFlights.ItemsSource = (IEnumerable) args.Result; };
+                worker.RunWorkerAsync();
+            };
+            Debug.WriteLine(Thread.CurrentThread.ManagedThreadId.ToString());
+            dgFlights.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
         }
+
+
+        //private void DeleteClick(object sender, RoutedEventArgs e)
+        //{
+        //    bool success = false;
+        //    int flightID = GetSelectedFlightID();
+        //    var warningBox = MessageBox.Show("Vil du slette flyforbindelsen med ID: " + flightID + "?", "Slet",
+        //        MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+        //    if (warningBox == MessageBoxResult.Yes)
+        //        success = fService.DeleteFlight(flightID);
+        //    if (success)
+        //    {
+        //        UpdateDataGrid();
+        //    }
+        //    else
+        //    {
+        //        MainWindow.ErrorMsg("Flyforbindelse ikke slettet");
+        //    }
+        //}
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
@@ -72,14 +81,6 @@ namespace Client.Tabs
         private void RefreshClick(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-        }
-
-        private void InitGridData()
-        {
-            DateTime fromDate = DateTime.Now;
-            var result = GetFlightsToGridByDate(fromDate);
-            dgFlights.ItemsSource = result;
-
         }
 
         private IEnumerable<Object> GetFlightsToGridByDate(DateTime fromDate)
@@ -102,17 +103,10 @@ namespace Client.Tabs
         public void UpdateDataGrid()
         {
             var date = DatePickerFlightGrid.SelectedDate;
-            if (date != null && date.GetType() == typeof(DateTime))
-            {
-                dgFlights.ItemsSource = GetFlightsToGridByDate(date.Value);
-            }
-            else
-            {
-                InitGridData();
-            }
+            LoadGridData(date != null ? date.Value : DateTime.Now);
         }
 
-     
+
         private void dgFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dgFlights.SelectedItem != null)

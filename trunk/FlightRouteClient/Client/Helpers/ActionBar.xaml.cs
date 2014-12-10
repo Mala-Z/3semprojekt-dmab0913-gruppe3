@@ -35,12 +35,6 @@ namespace Client.Helpers
                 this.RefreshClick(this, e);
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.DeleteClick != null)
-                this.DeleteClick(this, e);
-        }
-
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             if (this.AddClick != null)
