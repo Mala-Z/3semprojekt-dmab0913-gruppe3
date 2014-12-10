@@ -41,7 +41,6 @@ namespace Client.Tabs
 
         private void LoadGridData(DateTime time)
         {
-            Debug.WriteLine(Thread.CurrentThread.ManagedThreadId.ToString());
             Action workAction = () =>
             {
                 BackgroundWorker worker = new BackgroundWorker();
@@ -49,7 +48,6 @@ namespace Client.Tabs
                 worker.RunWorkerCompleted += (o, args) => { dgFlights.ItemsSource = (IEnumerable) args.Result; };
                 worker.RunWorkerAsync();
             };
-            Debug.WriteLine(Thread.CurrentThread.ManagedThreadId.ToString());
             dgFlights.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
         }
 
