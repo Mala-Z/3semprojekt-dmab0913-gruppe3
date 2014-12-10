@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using Client.FlightService;
 
@@ -10,48 +11,41 @@ namespace Client.Helpers
 {
     public static class ComboBoxItems
     {
-        private static FlightServiceClient fService = new FlightServiceClient();
+        private static readonly FlightServiceClient fService = new FlightServiceClient();
 
         public static List<ComboBoxItem> CustomerItems()
         {
-            var items = new List<ComboBoxItem>();
-
-            foreach (var p in fService.GetAllPersons())
+            return fService.GetAllPersons().Select(p => new ComboBoxItem
             {
-                ComboBoxItem comboBoxItem = new ComboBoxItem();
-                comboBoxItem.Content = p.fname + " " + p.lname + ", " + p.address;
-                comboBoxItem.Tag = p.personID;
-                items.Add(comboBoxItem);
-            }
-            return items;
+                Content = p.fname + " " + p.lname + ", " + p.address,
+                Tag = p.personID,
+                Name = "ComboBoxCustomers",
+                HorizontalContentAlignment = HorizontalAlignment.Left,
+                VerticalContentAlignment = VerticalAlignment.Center
+            }).ToList();
         }
 
         public static List<ComboBoxItem> AirportItems()
         {
-            var items = new List<ComboBoxItem>();
-
-            foreach (var a in fService.GetAllAirports())
+            return fService.GetAllAirports().Select(a => new ComboBoxItem
             {
-                ComboBoxItem comboBoxItem = new ComboBoxItem();
-                comboBoxItem.Content = a.name + " " + a.location;
-                comboBoxItem.Tag = a.airportID;
-                items.Add(comboBoxItem);
-            }
-            return items;
+                Content = a.name + " " + a.location,
+                Name = "ComboBoxAirports",
+                Tag = a.airportID,
+                HorizontalContentAlignment = HorizontalAlignment.Left,
+                VerticalContentAlignment = VerticalAlignment.Center
+            }).ToList();
         }
 
         public static List<ComboBoxItem> AirplaneItems()
         {
-            var items = new List<ComboBoxItem>();
-
-            foreach (var a in fService.GetAllAirplanes())
+            return fService.GetAllAirplanes().Select(a => new ComboBoxItem
             {
-                ComboBoxItem comboBoxItem = new ComboBoxItem();
-                comboBoxItem.Content = a.airplaneID + " seats: " + a.seats;
-                comboBoxItem.Tag = a.airplaneID;
-                items.Add(comboBoxItem);
-            }
-            return items;
+                Content = a.airplaneID + " seats: " + a.seats, Tag = a.airplaneID,
+                Name = "ComboBoxAirplanes",
+                HorizontalContentAlignment = HorizontalAlignment.Left,
+                VerticalContentAlignment = VerticalAlignment.Center
+            }).ToList();
         }
     }
 }

@@ -6,20 +6,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="22" d:DesignWidth="465">
-        <Grid>
-        <Button x:Name="btnAdd" Width="22" Height="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="421,0,22,0" Click="btnAdd_Click">
-                <StackPanel >
+     <Grid>
+        <Button x:Name="btnAdd" Height="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="395,0,0,0" Click="btnAdd_Click">
+            <StackPanel Orientation="Horizontal">
                 <Image Source="img/plus.png" HorizontalAlignment="Center" Height="18" VerticalAlignment="Center" Width="18" />
-                </StackPanel>
-            </Button>
-        <Button x:Name="btnDelete" Width="22" Height="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="443,0,0,0" Click="btnDelete_Click">
-                <StackPanel>
-                <Image Source="img/trash.png" HorizontalAlignment="Center" Height="18" VerticalAlignment="Center" Width="18" />
-                </StackPanel>
-            </Button>
-            <Button x:Name="btnRefresh" Width="22" Height="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="399,0,44,0" Click="BtnRefresh_Click">
-            <StackPanel>
+                <TextBlock>Tilføj ny</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnRefresh" Height="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="326,0,70,0" Click="BtnRefresh_Click">
+            <StackPanel Orientation="Horizontal">
                 <Image Source="img/refresh-20.png" HorizontalAlignment="Center" Height="18" VerticalAlignment="Center" Width="18" />
+                <TextBlock>Opdater</TextBlock>
             </StackPanel>
         </Button>
     </Grid>
