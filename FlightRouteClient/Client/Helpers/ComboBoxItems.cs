@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Client.FlightService;
@@ -11,11 +8,11 @@ namespace Client.Helpers
 {
     public static class ComboBoxItems
     {
-        private static readonly FlightServiceClient fService = new FlightServiceClient();
+        private static readonly FlightServiceClient FService = new FlightServiceClient();
 
         public static List<ComboBoxItem> CustomerItems()
         {
-            return fService.GetAllPersons().Select(p => new ComboBoxItem
+            return FService.GetAllPersons().Select(p => new ComboBoxItem
             {
                 Content = p.fname + " " + p.lname + ", " + p.address,
                 Tag = p.personID,
@@ -27,7 +24,7 @@ namespace Client.Helpers
 
         public static List<ComboBoxItem> AirportItems()
         {
-            return fService.GetAllAirports().Select(a => new ComboBoxItem
+            return FService.GetAllAirports().Select(a => new ComboBoxItem
             {
                 Content = a.name + " " + a.location,
                 Name = "ComboBoxAirports",
@@ -39,7 +36,7 @@ namespace Client.Helpers
 
         public static List<ComboBoxItem> AirplaneItems()
         {
-            return fService.GetAllAirplanes().Select(a => new ComboBoxItem
+            return FService.GetAllAirplanes().Select(a => new ComboBoxItem
             {
                 Content = a.airplaneID + " seats: " + a.seats, Tag = a.airplaneID,
                 Name = "ComboBoxAirplanes",

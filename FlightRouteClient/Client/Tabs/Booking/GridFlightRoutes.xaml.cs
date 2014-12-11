@@ -2,107 +2,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Client.FlightService;
 
 namespace Client.Tabs.Booking
 {
-    /// <summary>
-    /// Interaction logic for TabTest2.xaml
-    /// </summary>
     public partial class GridFlightRoutes : UserControl
     {
-        private FlightServiceClient fService;
-        private FlightService.Person customer;
-        private FlightService.Airport fromA;
-        private FlightService.Airport toA;
-        private string date;
-        private int noOfPass;
-        private List<FlightService.Flight> fastestRoute;
-        private List<FlightService.Flight> cheapestRoute;
+        private readonly FlightServiceClient _fService;
+        private readonly FlightService.Person _customer;
+        private readonly FlightService.Airport _from;
+        private readonly FlightService.Airport _to;
+        private readonly string _date;
+        private readonly int _noOfPass;
+        private List<FlightService.Flight> _fastestRoute;
+        private List<FlightService.Flight> _cheapestRoute;
 
 
-        public GridFlightRoutes(FlightService.Person customer, FlightService.Airport fromA, FlightService.Airport toA, string date, int noOfPass)
+        public GridFlightRoutes(FlightService.Person customer, FlightService.Airport @from, FlightService.Airport to, string date, int noOfPass)
         {
             InitializeComponent();
-            fService = new FlightServiceClient();
-            this.customer = customer;
-            this.fromA = fromA;
-            this.toA = toA;
-            this.date = date;
-            this.noOfPass = noOfPass;
+            _fService = new FlightServiceClient();
+            _customer = customer;
+            _from = @from;
+            _to = to;
+            _date = date;
+            _noOfPass = noOfPass;
 
             InitializeGridData();
            
         }
 
-        private IEnumerable<FlightService.Flight> RunDijkstra(FlightService.Airport fromA, FlightService.Airport toA, string date, bool usePrice)
+        private IEnumerable<FlightService.Flight> RunDijkstra(FlightService.Airport @from, FlightService.Airport to, string date, bool usePrice)
         {
-            var result = fService.RunDijkstra(fromA, toA, date, usePrice);
+            var result = _fService.RunDijkstra(@from, to, date, usePrice);
             return result;
         }
 
         private void InitializeGridData()
         {
-            dgFastest.ItemsSource = null;
-            dgCheapest.ItemsSource = null;
-            Action workAction = () =>
+            Action fastestRouteAction = () =>
             {
-                BackgroundWorker worker = new BackgroundWorker();
-                worker.DoWork += (o, args) =>
+                BackgroundWorker fastestRouteWorker = new BackgroundWorker();
+                fastestRouteWorker.DoWork += (o, args) =>
                 {
                     args.Result = GetFastestRoute();
                 };
                 //worker.DoWork(() => GetFastestRoute());
-                worker.RunWorkerCompleted += (o, args) =>
+                fastestRouteWorker.RunWorkerCompleted += (o, args) =>
                 {
                     dgFastest.ItemsSource = (IEnumerable)args.Result;
-                    var fTotalCost = (from f in fastestRoute
-                                      select f.price * noOfPass).Sum();
-                    var fTotalTime = (from f in fastestRoute
+                    var fTotalCost = (from f in _fastestRoute
+                                      select f.price * _noOfPass).Sum();
+                    var fTotalTime = (from f in _fastestRoute
                                       select f.traveltime).Sum();
                     txtFTotalCost.Text = fTotalCost.ToString();
                     txtFTotalTime.Text = fTotalTime.ToString();
 
                 };
-                worker.RunWorkerAsync();
+                fastestRouteWorker.RunWorkerAsync();
             };
-            Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, fastestRouteAction);
 
-            Action workAction2 = () =>
+            Action cheapestRouteAction = () =>
             {
-                BackgroundWorker worker2 = new BackgroundWorker();
-                worker2.DoWork += (o, args) =>
+                BackgroundWorker cheapesRouteWorker = new BackgroundWorker();
+                cheapesRouteWorker.DoWork += (o, args) =>
                 {
                     args.Result = GetCheapestRoute();
                 };
-                worker2.RunWorkerCompleted += (o, args) =>
+                cheapesRouteWorker.RunWorkerCompleted += (o, args) =>
                 {
                     dgCheapest.ItemsSource = (IEnumerable)args.Result;
-                    var cTotalCost = (from f in cheapestRoute
-                                      select f.price * noOfPass).Sum();
-                    var cTotalTime = (from f in cheapestRoute
+                    var cTotalCost = (from f in _cheapestRoute
+                                      select f.price * _noOfPass).Sum();
+                    var cTotalTime = (from f in _cheapestRoute
                                       select f.traveltime).Sum();
                     txtCTotalCost.Text = cTotalCost.ToString();
                     txtCTotalTime.Text = cTotalTime.ToString();
                 };
-                worker2.RunWorkerAsync();
+                cheapesRouteWorker.RunWorkerAsync();
             };
-            Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction2);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, cheapestRouteAction);
 
 
             //if (fastestRoute.Count == 0 && cheapestRoute.Count == 0)
@@ -115,56 +99,54 @@ namespace Client.Tabs.Booking
         private IEnumerable<Object> GetFastestRoute()
         {
             
-            var fastestsList = fService.RunDijkstraFastest(fromA, toA, date);
-            fastestRoute = fastestsList.ToList();
+            var fastestsList = _fService.RunDijkstraFastest(_from, _to, _date);
+            _fastestRoute = fastestsList.ToList();
             var result = from f in fastestsList
                          select new
                          {
-                             Fra = fService.GetAirportByID(f.@from).name,
-                             Til = fService.GetAirportByID(f.@to).name,
+                             Fra = _fService.GetAirportByID(f.@from).name,
+                             Til = _fService.GetAirportByID(f.@to).name,
                              Afgang = f.timeOfDeparture,
                              Ankomst = f.timeOfArrival,
                              Rejsetid = f.traveltime,
                              Pris = f.price,
-                             TotalPris = f.price * noOfPass
+                             TotalPris = f.price * _noOfPass
                          };
             return result;
         }
 
         private IEnumerable<Object> GetCheapestRoute()
         {
-            var cheapestList = fService.RunDijkstraCheapest(fromA, toA, date);
-            cheapestRoute = cheapestList.ToList();
+            var cheapestList = _fService.RunDijkstraCheapest(_from, _to, _date);
+            _cheapestRoute = cheapestList.ToList();
             var result = from f in cheapestList
                           select new
                           {
-                              Fra = fService.GetAirportByID(f.@from).name,
-                              Til = fService.GetAirportByID(f.@to).name,
+                              Fra = _fService.GetAirportByID(f.@from).name,
+                              Til = _fService.GetAirportByID(f.@to).name,
                               Afgang = f.timeOfDeparture,
                               Ankomst = f.timeOfArrival,
                               Rejsetid = f.traveltime,
                               Pris = f.price,
-                              TotalPris = f.price * noOfPass
+                              TotalPris = f.price * _noOfPass
                           };
             return result;
         }
 
-        private void bChooseFastest_Click(object sender, RoutedEventArgs e)
+        private void btnChooseFastest_Click(object sender, RoutedEventArgs e)
         {
-            ChooseRoute(fastestRoute);
+            ChooseRoute(_fastestRoute);
         }
 
-        private void bChooseCheapest_Click(object sender, RoutedEventArgs e)
+        private void btnChooseCheapest_Click(object sender, RoutedEventArgs e)
         {
-            ChooseRoute(cheapestRoute);
+            ChooseRoute(_cheapestRoute);
         }
 
         private void ChooseRoute(List<FlightService.Flight> flights)
         {
-            ((MainWindow) Application.Current.MainWindow).contentBooking.Content = new GridSaveBooking(customer, fromA,
-                toA, date, noOfPass, flights);
+            ((MainWindow) Application.Current.MainWindow).contentBooking.Content = new GridSaveBooking(_customer, _from,
+                _to, _date, _noOfPass, flights);
         }
-
-       
     }
 }

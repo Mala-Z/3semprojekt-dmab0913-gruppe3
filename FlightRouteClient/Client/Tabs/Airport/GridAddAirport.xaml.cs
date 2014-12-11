@@ -1,34 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Client.FlightService;
+using Client.Helpers;
 
 namespace Client.Tabs.Airport
 {
-    /// <summary>
-    /// Interaction logic for TabTest2.xaml
-    /// </summary>
     public partial class GridAddAirport : UserControl
     {
-        private FlightServiceClient fService;
+        private readonly FlightServiceClient _fService;
 
 
         public GridAddAirport()
         {
             InitializeComponent();
-            fService = new FlightServiceClient();
+            _fService = new FlightServiceClient();
         }
 
 
@@ -36,24 +21,22 @@ namespace Client.Tabs.Airport
         {
             if (txtName.Text != "" && txtLocation.Text != "")
             {
-                fService.CreateNewAirport(txtName.Text, txtLocation.Text);
+                bool success = _fService.CreateNewAirport(txtName.Text, txtLocation.Text);
 
-                string messageBoxText = "Lufthavnen er blevet oprettet";
-                string caption = "Succes";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-                MessageBox.Show(messageBoxText, caption, button, icon);
-
-                ((MainWindow)System.Windows.Application.Current.MainWindow).tAirport.InitGridData();
+                if (success)
+                {
+                    ContentControlSuccess.Content = new DisplaySuccess("Lufthavn er oprettet!");
+                    ((MainWindow)Application.Current.MainWindow).TabAirport.InitGridData();
+                }
+                else
+                {
+                    ContentControlSuccess.Content = new DisplayError("FEJL!");
+                }
                
             }
             else
             {
-                string messageBoxText = "Felterne navn og placering må ikke være tomme";
-                string caption = "Fejl";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Error;
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                ContentControlSuccess.Content = new DisplayError("Alle felter skal udfyldes!");
             }
         } 
 

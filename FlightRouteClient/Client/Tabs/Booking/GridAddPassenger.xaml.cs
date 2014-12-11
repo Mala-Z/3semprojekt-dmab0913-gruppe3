@@ -1,37 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Client.FlightService;
 
 namespace Client.Tabs.Booking
 {
-    /// <summary>
-    /// Interaction logic for TabTest2.xaml
-    /// </summary>
     public partial class GridAddPassenger : UserControl
     {
-        private FlightServiceClient fService;
-        private GridSaveBooking grid;
+        private readonly FlightServiceClient _fService;
+        private readonly GridSaveBooking _grid;
 
 
         public GridAddPassenger(GridSaveBooking grid)
         {
             InitializeComponent();
-            fService = new FlightServiceClient();
-            this.grid = grid;
+            _fService = new FlightServiceClient();
+            _grid = grid;
 
         }
         
@@ -39,13 +22,17 @@ namespace Client.Tabs.Booking
         {
             if (txtFName.Text != "" && txtLName.Text != "")
             {
-                var passenger = fService.CreateNewPersonBooking(txtFName.Text, txtLName.Text);
-                grid.AddPassengerToList(passenger);
-                 
+                var passenger = _fService.CreateNewPersonBooking(txtFName.Text, txtLName.Text);
+                if(passenger != null)
+                    _grid.AddPassengerToList(passenger);
+                else
+                {
+                    MainWindow.ErrorMsg("Fejl! passenger er null");
+                }
             }
             else
             {
-                MainWindow.ErrorMsg("Begge felter skal udfyldes");
+                MainWindow.ErrorMsg("Begge felter skal udfyldes!");
             }
             
         }

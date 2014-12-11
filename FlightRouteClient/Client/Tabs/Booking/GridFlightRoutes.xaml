@@ -11,13 +11,13 @@
         <TextBox x:Name="txtFTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
         <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,138,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtFTotalCost" HorizontalAlignment="Left" Height="23" Margin="191,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
-        <Button x:Name="bChooseFastest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,138,0,0" VerticalAlignment="Top" Width="118" Click="bChooseFastest_Click"/>
+        <Button x:Name="btnChooseFastest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,138,0,0" VerticalAlignment="Top" Width="118" Click="btnChooseFastest_Click"/>
         <Label Content="Billigste rute" HorizontalAlignment="Left" Margin="0,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.071,-0.328" FontWeight="Bold"/>
         <DataGrid x:Name="dgCheapest" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Height="102" Width="730"/>
         <Label Content="Total tid:" HorizontalAlignment="Left" Margin="5,306,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtCTotalTime" HorizontalAlignment="Left" Height="23" Margin="61,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
         <Label Content="Total pris:" HorizontalAlignment="Left" Margin="130,306,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtCTotalCost" HorizontalAlignment="Left" Height="23" Margin="197,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="41"/>
-        <Button x:Name="bChooseCheapest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,306,0,0" VerticalAlignment="Top" Width="118" Click="bChooseCheapest_Click"/>
+        <Button x:Name="btnChooseCheapest" Content="Vælg denne rute" HorizontalAlignment="Left" Margin="602,306,0,0" VerticalAlignment="Top" Width="118" Click="btnChooseCheapest_Click"/>
     </Grid>
 </UserControl>

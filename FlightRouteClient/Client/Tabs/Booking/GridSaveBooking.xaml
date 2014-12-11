@@ -29,9 +29,9 @@
             <ContentControl x:Name="contentControl" Grid.Row="1"/>
         </Grid>
         <Button x:Name="btnCreate" Content="Opret booking" HorizontalAlignment="Left" Margin="657,473,0,0" VerticalAlignment="Top" Width="85" Height="50" Click="btnCreate_Click"/>
-        <Button x:Name="btnCancel" Content="Annuler booking" HorizontalAlignment="Left" Margin="541,473,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCancel_Click"/>
+        <Button x:Name="btnCancel" Content="Annuller booking" HorizontalAlignment="Left" Margin="552,473,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCancel_Click"/>
 
-        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="488,473,0,0" Height="50" Width="254"/>
-        <Button x:Name="btnNewBooking" Content="Opret ny booking" HorizontalAlignment="Left" Margin="344,473,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCancel_Click"/>
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="488,404,0,0" Height="50" Width="254"/>
+        <Button x:Name="btnNewBooking" Content="Opret ny booking" HorizontalAlignment="Left" Margin="642,473,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCancel_Click"/>
     </Grid>
 </UserControl>

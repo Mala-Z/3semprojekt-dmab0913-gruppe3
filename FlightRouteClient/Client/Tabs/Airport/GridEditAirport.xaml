@@ -10,5 +10,6 @@
         <TextBox x:Name="txtLocation" HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="135"/>
         <Label Content="Placering:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <Button x:Name="bUpdate" Content="Rediger lufthavn" HorizontalAlignment="Left" Margin="174,69,0,0" VerticalAlignment="Top" Width="90" Click="bUpdate_Click"/>
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,96,0,0" Height="50" Width="254"/>
     </Grid>
 </UserControl>

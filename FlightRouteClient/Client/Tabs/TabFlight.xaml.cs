@@ -2,12 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Principal;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -22,17 +18,17 @@ namespace Client.Tabs
     /// </summary>
     public partial class TabFlight : UserControl
     {
-        private readonly FlightServiceClient fService;
-        private GridAddFlight gridAddFlight = new GridAddFlight();
-        private ContentTitle addTitle = new ContentTitle("Tilføj ny flyforbindelse");
-        private ContentTitle editTitle = new ContentTitle("Rediger flyforbindelse");
+        private readonly FlightServiceClient _fService;
+        private readonly GridAddFlight _gridAddFlight = new GridAddFlight();
+        private readonly ContentTitle _addTitle = new ContentTitle("Tilføj ny flyforbindelse");
+        private readonly ContentTitle _editTitle = new ContentTitle("Rediger flyforbindelse");
 
         public TabFlight()
         {
             InitializeComponent();
-            ContentControlTitle.Content = addTitle;
-            ContentControlAddEdit.Content = gridAddFlight;
-            fService = new FlightServiceClient();
+            ContentControlTitle.Content = _addTitle;
+            ContentControlAddEdit.Content = _gridAddFlight;
+            _fService = new FlightServiceClient();
             LoadGridData(DateTime.Now);
             ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
             ActionBar.AddClick += new RoutedEventHandler(AddClick);
@@ -72,8 +68,8 @@ namespace Client.Tabs
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            ContentControlTitle.Content = addTitle;
-            ContentControlAddEdit.Content = gridAddFlight;
+            ContentControlTitle.Content = _addTitle;
+            ContentControlAddEdit.Content = _gridAddFlight;
         }
 
         private void RefreshClick(object sender, RoutedEventArgs e)
@@ -83,17 +79,17 @@ namespace Client.Tabs
 
         private IEnumerable<Object> GetFlightsToGridByDate(DateTime fromDate)
         {
-            var result = from f in fService.GetAllFlightsByDate(fromDate)
+            var result = from f in _fService.GetAllFlightsByDate(fromDate)
                 select new
                 {
                     ID = f.flightID,
-                    Fra = fService.GetAirportByID(f.@from).name,
-                    Til = fService.GetAirportByID(f.@to).name,
+                    Fra = _fService.GetAirportByID(f.@from).name,
+                    Til = _fService.GetAirportByID(f.@to).name,
                     Afgang = f.timeOfDeparture,
                     Ankomst = f.timeOfArrival,
                     Rejsetid = f.traveltime,
                     Pris = f.price,
-                    Ledige = fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats -= f.takenSeats
+                    Ledige = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats -= f.takenSeats
                 };
             return result;
         }
@@ -109,8 +105,8 @@ namespace Client.Tabs
         {
             if (dgFlights.SelectedItem != null)
             {
-                var flight = fService.GetFlightByID(GetSelectedFlightID());
-                ContentControlTitle.Content = editTitle;
+                var flight = _fService.GetFlightByID(GetSelectedFlightID());
+                ContentControlTitle.Content = _editTitle;
                 ContentControlAddEdit.Content = new GridEditFlight(flight); 
             }
             
