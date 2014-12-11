@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 /// <summary>
 /// Summary description for ComboBoxItems
 /// </summary>
-public class ListItems
+    public class ListItems
     {
         private static readonly FlightServiceClient fService = new FlightServiceClient();
 
@@ -24,7 +24,7 @@ public class ListItems
         }
 
 
-    public static List<ListItem> AirportItems()
+        public static List<ListItem> AirportItems()
         {
             return fService.GetAllAirports().Select(a => new ListItem
             {
@@ -32,5 +32,6 @@ public class ListItems
                 Value = Convert.ToString(a.airportID),      
             }).ToList();
         }
+
 
     }
