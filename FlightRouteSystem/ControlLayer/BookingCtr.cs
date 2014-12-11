@@ -189,11 +189,6 @@ namespace ControlLayer
             return result;
         }
 
-        public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
-        {
-            List<Person> persons = new List<Person>();
-            GetBookingPassenger(bookingId).ToList().ForEach(bp => persons.Add(personCtr.GetPersonByID(bp.personID)));
-            return persons;
-        } 
+        
     }
 }

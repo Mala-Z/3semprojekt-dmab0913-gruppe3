@@ -170,5 +170,13 @@ namespace ControlLayer
             }
             return returnValue;
         }
+
+        public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
+        {
+            BookingCtr bookingCtr = new BookingCtr(db);
+            List<Person> persons = new List<Person>();
+            bookingCtr.GetBookingPassenger(bookingId).ToList().ForEach(bp => persons.Add(GetPersonByID(bp.personID)));
+            return persons;
+        } 
     }
 }
