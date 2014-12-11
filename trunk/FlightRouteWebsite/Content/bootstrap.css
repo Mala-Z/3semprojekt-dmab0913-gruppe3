@@ -195,9 +195,6 @@ a:hover, a:focus {
 .row {
 	margin-left: -20px;
  *zoom: 1;
-    top: -40px;
-    left: -147px;
-    width: 1139px;
 }
 .row:before, .row:after {
 	display: table;
@@ -467,6 +464,7 @@ a:hover, a:focus {
  float: right;
 }
 .container {
+	margin-right: auto;
 	margin-left: auto;
  *zoom: 1;
 }
@@ -817,6 +815,7 @@ select, textarea, input[type=text], input[type=password], input[type=datetime], 
 	border-radius: 4px;
 }
 input, textarea, .uneditable-input {
+	width: 206px;
 }
 textarea {
 	height: auto;
