@@ -115,6 +115,12 @@
   <wsdl:message name="IFlightService_GetPersonsFromBooking_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPersonsFromBookingResponse" />
   </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsFromBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsFromBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsFromBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsFromBookingResponse" />
+  </wsdl:message>
   <wsdl:message name="IFlightService_RunDijkstra_InputMessage">
     <wsdl:part name="parameters" element="tns:RunDijkstra" />
   </wsdl:message>
@@ -289,6 +295,10 @@
     <wsdl:operation name="GetPersonsFromBooking">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetPersonsFromBooking" message="tns:IFlightService_GetPersonsFromBooking_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetPersonsFromBookingResponse" message="tns:IFlightService_GetPersonsFromBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsFromBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetFlightsFromBooking" message="tns:IFlightService_GetFlightsFromBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetFlightsFromBookingResponse" message="tns:IFlightService_GetFlightsFromBooking_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RunDijkstra">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstra" message="tns:IFlightService_RunDijkstra_InputMessage" />
@@ -516,6 +526,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPersonsFromBooking">
       <soap:operation soapAction="http://tempuri.org/IFlightService/GetPersonsFromBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsFromBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetFlightsFromBooking" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

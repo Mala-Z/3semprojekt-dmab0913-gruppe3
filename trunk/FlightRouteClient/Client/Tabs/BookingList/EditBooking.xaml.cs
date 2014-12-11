@@ -26,13 +26,14 @@ namespace Client.Tabs.BookingList
     public partial class EditBooking : UserControl
     {
         private FlightService.Booking booking;
-        private FlightServiceClient fService = new FlightServiceClient();
+        private FlightServiceClient fService = new FlightServiceClient(); 
 
         public EditBooking(FlightService.Booking booking)
         {
             InitializeComponent();
             this.booking = booking;
             LoadBookingPassengerData();
+            LoadBookingFlightData();
         }
 
         private void LoadBookingPassengerData()
@@ -42,6 +43,18 @@ namespace Client.Tabs.BookingList
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += (o, args) => args.Result = GetPassengersToGrid();
                 worker.RunWorkerCompleted += (o, args) => {DataGridCustomers.ItemsSource = (IEnumerable)args.Result; };
+                worker.RunWorkerAsync();
+            };
+            DataGridCustomers.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
+        }
+
+        private void LoadBookingFlightData()
+        {
+            Action workAction = () =>
+            {
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += (o, args) => args.Result = GetFlightsToGrid();
+                worker.RunWorkerCompleted += (o, args) => { DataGridCustomers.ItemsSource = (IEnumerable)args.Result; };
                 worker.RunWorkerAsync();
             };
             DataGridFlights.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
@@ -61,6 +74,20 @@ namespace Client.Tabs.BookingList
                              Email = p.email,
                              Fødselsdato = p.birthdate
 
+                         };
+            return result;
+        }
+
+        private IEnumerable<Object> GetFlightsToGrid()
+        {
+            var result = from f in fService.GetFlightsFromBooking(booking.bookingID)
+                         select new
+                         {
+                             ID = f.flightID,
+                             Fra = f.@from,
+                             Til = f.@to,
+                             Afgang = f.timeOfDeparture,
+                             Ankomst = f.timeOfArrival
                          };
             return result;
         }
