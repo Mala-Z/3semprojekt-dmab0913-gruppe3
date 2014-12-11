@@ -2,19 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Client.FlightService;
 
@@ -54,7 +43,7 @@ namespace Client.Tabs.BookingList
             {
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += (o, args) => args.Result = GetFlightsToGrid();
-                worker.RunWorkerCompleted += (o, args) => { DataGridCustomers.ItemsSource = (IEnumerable)args.Result; };
+                worker.RunWorkerCompleted += (o, args) => { DataGridFlights.ItemsSource = (IEnumerable)args.Result; };
                 worker.RunWorkerAsync();
             };
             DataGridFlights.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
@@ -84,8 +73,8 @@ namespace Client.Tabs.BookingList
                          select new
                          {
                              ID = f.flightID,
-                             Fra = f.@from,
-                             Til = f.@to,
+                             Fra = fService.GetAirportByID(f.@from).name,
+                             Til = fService.GetAirportByID(f.@to).name,
                              Afgang = f.timeOfDeparture,
                              Ankomst = f.timeOfArrival
                          };
