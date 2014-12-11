@@ -19,5 +19,8 @@
         <TabItem x:Name="TabItemAirport" Header="Lufthavne">
             <ContentControl x:Name="contentAirport"/>
         </TabItem>
+        <TabItem x:Name="TabItemBookingList" Header="Bookings">
+            <ContentControl x:Name="contentBookingList" />
+        </TabItem>
     </TabControl>
 </Window>

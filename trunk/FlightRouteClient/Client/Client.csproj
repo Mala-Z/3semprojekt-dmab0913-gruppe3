@@ -85,6 +85,9 @@
     <Compile Include="Tabs\Airport\GridEditAirport.xaml.cs">
       <DependentUpon>GridEditAirport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tabs\BookingList\EditBooking.xaml.cs">
+      <DependentUpon>EditBooking.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tabs\Booking\GridAddPassenger.xaml.cs">
       <DependentUpon>GridAddPassenger.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,9 @@
     </Compile>
     <Compile Include="Tabs\TabAirplane.xaml.cs">
       <DependentUpon>TabAirplane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\TabBookingList.xaml.cs">
+      <DependentUpon>TabBookingList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tabs\TabCustomer.xaml.cs">
       <DependentUpon>TabCustomer.xaml</DependentUpon>
@@ -165,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Tabs\BookingList\EditBooking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tabs\Booking\GridAddPassenger.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -200,6 +210,10 @@
     <Page Include="Tabs\TabAirplane.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tabs\TabBookingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tabs\TabCustomer.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -244,6 +258,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FlightService\Client.FlightService.Booking.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FlightService\Client.FlightService.BookingFlight.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FlightService\Client.FlightService.BookingPassenger.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FlightService\Client.FlightService.Flight.datasource">
