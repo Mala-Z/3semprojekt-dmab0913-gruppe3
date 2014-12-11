@@ -145,7 +145,7 @@ namespace Client.Tabs.Booking
             FlightService.Person[] pl = passengerList.ToArray();
             if (fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text)))
             {
-                ContentControlSuccess.Content = new DisplaySuccess("Booking oprettet!");
+                ContentControlSuccess.Content = new DisplaySuccess("Booking blev oprettet!");
                 btnCreate.Visibility = Visibility.Hidden;
                 btnCancel.Visibility = Visibility.Hidden;
                 btnNewBooking.Visibility = Visibility.Visible;
