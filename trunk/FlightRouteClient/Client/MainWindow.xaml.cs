@@ -33,14 +33,13 @@ namespace Client
 
         public MainWindow()
         {
-            tBooking = new TabBooking();
+            
             try
             {
                 InitializeComponent();
+                tBooking = new TabBooking();
                 contentBooking.Content = tBooking;
                 //InitializeTabs();
-                
-
             }
             catch (EndpointNotFoundException)
             {
