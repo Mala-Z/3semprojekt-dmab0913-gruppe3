@@ -1,33 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using System.ServiceModel;
 using DatabaseLayer;
 
 namespace GraphLayer
 {
     public class Dijkstra
     {
-        Graph graph = new Graph();
-
-
-        private List<Vertex> listOfCost;
+        readonly Graph _graph = new Graph();
+        private readonly List<Vertex> _listOfCost;
         //Queue for the vertices to be evaluated
-
-        private List<Vertex> vertexQueue;
- 
-        private List<Vertex> solutionList;
+        private readonly List<Vertex> _vertexQueue;
+        private List<Vertex> _solutionList;
 
         public Dijkstra()
         {
-            graph = new Graph();
-            listOfCost = new List<Vertex>();
-            vertexQueue = new List<Vertex>();
-            solutionList = new List<Vertex>();
+            _graph = new Graph();
+            _listOfCost = new List<Vertex>();
+            _vertexQueue = new List<Vertex>();
+            _solutionList = new List<Vertex>();
         }
 
         /// <summary>
@@ -35,41 +26,40 @@ namespace GraphLayer
         /// </summary>
         /// <param name="start">The aiport to fly from</param>
         /// <param name="date">The date to fly from</param>
-        
         private void Initialize(Airport start, string date)
         {
-            graph.AddAllVertices(date);
-            graph.AddAllEdges();
+            _graph.AddAllVertices(date);
+            _graph.AddAllEdges();
 
-            Vertex startVertex = graph.GetVertices().Where(v => v.GetAirport().airportID == start.airportID).ToList().First();
+            Vertex startVertex = _graph.GetVertices().Where(v => v.GetAirport().airportID == start.airportID).ToList().First();
 
             // Set distance to 0 for starting point and the previous node to null (-1) 
             startVertex.DistanceFromStart = 0;
             startVertex.PrevVertex = null;
 
             // Set distance to all vertices to infinity
-            for (int i = 0; i < graph.GetVertices().Count; i++)
+            for (int i = 0; i < _graph.GetVertices().Count; i++)
             {
-                if (!graph.GetVertices()[i].Equals(startVertex))
+                if (!_graph.GetVertices()[i].Equals(startVertex))
                 {
-                    graph.GetVertices()[i].DistanceFromStart = Double.PositiveInfinity;
-                    graph.GetVertices()[i].PrevVertex = null;
+                    _graph.GetVertices()[i].DistanceFromStart = Double.PositiveInfinity;
+                    _graph.GetVertices()[i].PrevVertex = null;
                 }
-                vertexQueue.Add(graph.GetVertices()[i]);
+                _vertexQueue.Add(_graph.GetVertices()[i]);
             }
         }
 
         
         public List<Vertex> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
-            solutionList.Clear();
+            _solutionList.Clear();
             Initialize(from, date);
 
-            while (vertexQueue.Count > 0)
+            while (_vertexQueue.Count > 0)
             {
                 Vertex currentVertex = ShortestDistFromStart();
-                listOfCost.Add(currentVertex);
-                vertexQueue.Remove(currentVertex);
+                _listOfCost.Add(currentVertex);
+                _vertexQueue.Remove(currentVertex);
 
                 foreach (Edge edge in currentVertex.GetEdges())
                 {
@@ -87,36 +77,32 @@ namespace GraphLayer
 
             }//end while
 
-            solutionList = Backtrack(from, to);
-
-            return solutionList;
+            _solutionList = Backtrack(from, to);
+            return _solutionList;
         }
 
        
         private List<Vertex> Backtrack(Airport from, Airport to)
         {
-            for (int i = 0; i < listOfCost.Count; i++)
+            for (int i = 0; i < _listOfCost.Count; i++)
             {
-                if (listOfCost[i].GetAirport().airportID.Equals(to.airportID))
+                if (_listOfCost[i].GetAirport().airportID.Equals(to.airportID))
                 {
-                    while (listOfCost[i].PrevVertex != null)
+                    while (_listOfCost[i].PrevVertex != null)
                     {
-                        solutionList.Add(listOfCost[i]);
-                        listOfCost[i] = listOfCost[i].PrevVertex;
+                        _solutionList.Add(_listOfCost[i]);
+                        _listOfCost[i] = _listOfCost[i].PrevVertex;
                     }
                 }
             }
-            solutionList.Reverse();
-            return solutionList;
+            _solutionList.Reverse();
+            return _solutionList;
         }
 
         
         private Vertex ShortestDistFromStart()
         {
-            return vertexQueue.OrderByDescending(v => v.DistanceFromStart).ToList().Last();
+            return _vertexQueue.OrderByDescending(v => v.DistanceFromStart).ToList().Last();
         }
-
-
-
     }
 }

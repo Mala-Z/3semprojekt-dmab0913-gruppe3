@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ServiceModel;
-using System.Text;
-using DatabaseLayer;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 
 namespace GraphLayer
 {	//  FEN 2005.02.16

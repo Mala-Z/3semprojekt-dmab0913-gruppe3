@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DatabaseLayer;
 using GraphLayer;
 
@@ -10,18 +6,18 @@ namespace FlightService
 {
     public class DijkstraCtr
     {
-        private Dijkstra dijk;
+        private readonly Dijkstra _dijkstra;
         public DijkstraCtr()
         {
-            dijk = new Dijkstra();
+            _dijkstra = new Dijkstra();
         }
 
-        public List<Flight> runDikjstra(Airport from, Airport to, string date, bool usePrice)
+        public List<Flight> Run(Airport from, Airport to, string date, bool usePrice)
         {
 
             List<Flight> flights = new List<Flight>();
 
-            foreach (var v in dijk.RunDijkstra(from, to, date, usePrice))
+            foreach (var v in _dijkstra.RunDijkstra(from, to, date, usePrice))
             {
                 flights.Add(v.EdgeToUse.VertexEdge);
             }
@@ -33,8 +29,7 @@ namespace FlightService
         {
             List<Flight> fList = new List<Flight>();
             fList.Clear();
-            //fList = dijk.RunDijkstra(@from, to, date, true).Select(v => v.EdgeToUse.VertexEdge).ToList();
-            foreach (var v in dijk.RunDijkstra(@from, to, date, true))
+            foreach (var v in _dijkstra.RunDijkstra(@from, to, date, true))
             {
                 //Hvis der allerede er en Flight med samme ID i listen
                 if (!fList.Contains(v.EdgeToUse.VertexEdge))
@@ -48,9 +43,7 @@ namespace FlightService
         public List<Flight> RunDikjstraFastest(Airport from, Airport to, string date)
         {
             List<Flight> fList = new List<Flight>();
-            fList.Clear();
-            //fList = dijk.RunDijkstra(@from, to, date, false).Select(v => v.EdgeToUse.VertexEdge).ToList();
-            foreach (var v in dijk.RunDijkstra(@from, to, date, false))
+            foreach (var v in _dijkstra.RunDijkstra(@from, to, date, false))
             {
                 //Hvis der allerede er en Flight med samme ID i listen
                 if (!fList.Contains(v.EdgeToUse.VertexEdge))
@@ -61,6 +54,4 @@ namespace FlightService
             return fList;
         }
     }
-
-    
 }

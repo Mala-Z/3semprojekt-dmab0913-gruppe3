@@ -1,38 +1,33 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
+﻿using System.Collections.Generic;
 using DatabaseLayer;
 using ControlLayer;
-using System.Runtime.Serialization;
 
 namespace GraphLayer
 {
     /// <summary>
     /// Represents a vertex in a graph
     /// </summary>
-
- 
     public class Vertex
     {
 
-        private Airport airport;
-        private List<Flight> flightsFromAiport;
-        private List<Edge> edges;
-        private string date;
-        private FlightCtr flightCtr;
+        private readonly Airport _airport;
+        private List<Flight> _flightsFromAiport;
+        private List<Edge> _edges;
+        private readonly string _date;
+        private readonly FlightCtr _flightCtr;
+        public double DistanceFromStart { get; set; }
+        public Vertex PrevVertex { get; set; }
+        public Edge EdgeToUse { get; set; }
 
 
         public Vertex(Airport airport, string date)
         {
             var main = new MainCtr();
-            flightCtr = main.FlightCtr;
-            this.airport = airport;
-            this.date = date;
-            flightsFromAiport = AddFlights();
-            edges = new List<Edge>();
+            _flightCtr = main.FlightCtr;
+            _airport = airport;
+            _date = date;
+            _flightsFromAiport = AddFlights();
+            _edges = new List<Edge>();
         }
 
         public Vertex()
@@ -43,43 +38,38 @@ namespace GraphLayer
         public override bool Equals(object obj)
         {
             Vertex other = (Vertex)obj;
-            return airport.airportID == other.GetAirport().airportID;
+            return _airport.airportID == other.GetAirport().airportID;
         }
 
-        public void setEdges(List<Edge> edges)
+        public void SetEdges(List<Edge> edges)
         {
-            this.edges = edges;
+            _edges = edges;
         }
 
         public List<Flight> AddFlights()
         {
-            return flightCtr.GetFlightsFrom(airport, date);
+            return _flightCtr.GetFlightsFrom(_airport, _date);
         }
 
         public void SetFlights(List<Flight> flights)
         {
-            this.flightsFromAiport = flights;
+            _flightsFromAiport = flights;
         }
 
         public List<Flight> GetFlights()
         {
-            return flightsFromAiport;
+            return _flightsFromAiport;
         }
 
         public Airport GetAirport()
         {
-            return airport;
+            return _airport;
         }
 
         public List<Edge> GetEdges()
         {
-            return edges;
+            return _edges;
         }
-
-        public double DistanceFromStart { get; set; }
-        public Vertex PrevVertex { get; set; }
-        public Edge EdgeToUse { get; set; }
-
     }
 }
 

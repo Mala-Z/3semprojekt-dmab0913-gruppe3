@@ -1,47 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DatabaseLayer;
-using System.Transactions;
 
 
 namespace ControlLayer
 {
     public class BookingCtr
     {
-        private dmab0913_3DataContext db;
-        private PersonCtr personCtr;
+        private readonly dmab0913_3DataContext _db;
 
         public BookingCtr(dmab0913_3DataContext db)
         {
-            this.db = db;
-            personCtr = new PersonCtr(db);
+            _db = db;
         }
 
         /// <summary>
-        /// 
+        /// GetAllBookings
         /// </summary>
         /// <returns>List of bookings/Booking></returns>
         public List<Booking> GetAllBookings()
         {
-            var bookings = db.Bookings.OrderBy(x => x.bookingID).ToList();
-
+            var bookings = _db.Bookings.OrderBy(x => x.bookingID).ToList();
             return bookings;
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public Booking GetBookingByID(int id)
         {
-            var booking = db.Bookings.SingleOrDefault(a => a.bookingID == id);
+            var booking = _db.Bookings.SingleOrDefault(a => a.bookingID == id);
 
             return booking;
         }
@@ -57,20 +44,20 @@ namespace ControlLayer
             
             try
             {
-                MainCtr main = new MainCtr();
+                MainCtr mainCtr = new MainCtr();
                     
                 var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice*passengers.Count };
 
                 foreach (Flight f in flights)
                 {
-                    if (main.AirplaneCtr.GetAirplaneByID((int)f.airplaneID).seats >= f.takenSeats + passengers.Count)
+                    if (mainCtr.AirplaneCtr.GetAirplaneByID((int)f.airplaneID).seats >= f.takenSeats + passengers.Count)
                     {
-                        var BookingFlights = new BookingFlight
+                        var bookingFlights = new BookingFlight
                         {
                             Booking = booking,
                             Flight = f
                         };
-                        db.BookingFlights.InsertOnSubmit(BookingFlights);
+                        _db.BookingFlights.InsertOnSubmit(bookingFlights);
                         f.takenSeats += passengers.Count;
                     }
                     else
@@ -81,16 +68,16 @@ namespace ControlLayer
 
                 foreach (Person p in passengers)
                 {
-                    db.Persons.InsertOnSubmit(p);
-                    var BookingPassenger = new BookingPassenger
+                    _db.Persons.InsertOnSubmit(p);
+                    var bookingPassenger = new BookingPassenger
                     {
                         Booking = booking,
                         Person = p
                     };
-                    db.BookingPassengers.InsertOnSubmit(BookingPassenger);
+                    _db.BookingPassengers.InsertOnSubmit(bookingPassenger);
                 }
 
-                db.Bookings.InsertOnSubmit(booking);
+                _db.Bookings.InsertOnSubmit(booking);
  
             }
             catch (SqlException)
@@ -106,7 +93,7 @@ namespace ControlLayer
             {
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                 }
                 catch (Exception)
                 {
@@ -118,16 +105,9 @@ namespace ControlLayer
             return returnValue;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="totalTime"></param>
-        /// <param name="totalPrice"></param>
         public bool UpdateBooking(int id, string totalTime, double totalPrice)
         {
             bool returnValue = true;
-            
             var booking = GetBookingByID(id);
 
             if (booking != null)
@@ -137,35 +117,29 @@ namespace ControlLayer
 
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                 }
                 catch (SqlException)
                 {
                     returnValue = false;
                 }
-
             }
 
             return returnValue;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
         public bool DeleteBooking(int id)
         {
             bool returnValue = false;
-            
             var booking = GetBookingByID(id);
 
             if (booking != null)
             {
-                db.Bookings.DeleteOnSubmit(booking);
+                _db.Bookings.DeleteOnSubmit(booking);
 
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                     returnValue = true;
                 }
                 catch (SqlException)
@@ -179,16 +153,14 @@ namespace ControlLayer
 
         public IEnumerable<BookingPassenger> GetBookingPassenger(int bookingId)
         {
-            var result = db.BookingPassengers.Where(bp => bp.bookingID == bookingId).OrderBy(bp => bp.personID);
+            var result = _db.BookingPassengers.Where(bp => bp.bookingID == bookingId).OrderBy(bp => bp.personID);
             return result;
         }
 
         public IEnumerable<BookingFlight> GetBookingFlights(int bookingId)
         {
-            var result = db.BookingFlights.Where(bf => bf.bookingID == bookingId).OrderBy(bf => bf.flightID);
+            var result = _db.BookingFlights.Where(bf => bf.bookingID == bookingId).OrderBy(bf => bf.flightID);
             return result;
         }
-
-        
     }
 }

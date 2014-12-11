@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq;
-using System.Linq;
-using System.Data.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DatabaseLayer;
+﻿using DatabaseLayer;
 
 namespace ControlLayer
 {
     public class MainCtr
     {
-        public dmab0913_3DataContext db { get; set; }
         public AirplaneCtr AirplaneCtr { get; set; }
         public AirportCtr AirportCtr { get; set; }
         public BookingCtr BookingCtr { get; set; }
@@ -20,13 +12,12 @@ namespace ControlLayer
 
         public MainCtr()
         {
-            this.db = new dmab0913_3DataContext();
-            this.AirplaneCtr = new AirplaneCtr(db);
-            this.AirportCtr = new AirportCtr(db);
-            this.BookingCtr = new BookingCtr(db);
-            this.FlightCtr = new FlightCtr(db);
-            this.PersonCtr = new PersonCtr(db);
+            var db = new dmab0913_3DataContext();
+            AirplaneCtr = new AirplaneCtr(db);
+            AirportCtr = new AirportCtr(db);
+            BookingCtr = new BookingCtr(db);
+            FlightCtr = new FlightCtr(db);
+            PersonCtr = new PersonCtr(db);
         }
-
     }
 }

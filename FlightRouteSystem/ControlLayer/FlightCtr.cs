@@ -1,28 +1,20 @@
 ﻿ using System;
-using System.Collections.Generic;
+ using System.Collections.Generic;
  using System.Data.SqlClient;
- using System.Diagnostics;
- using System.Globalization;
  using System.Linq;
- using System.Net.Sockets;
- using System.Reflection;
- using System.Runtime.CompilerServices;
  using System.Runtime.Serialization;
- using System.Text;
- using System.Threading;
- using System.Threading.Tasks;
-using DatabaseLayer;
+ using DatabaseLayer;
 
 namespace ControlLayer
 {
     [DataContract]
     public class FlightCtr
     {
-        private dmab0913_3DataContext db;
+        private readonly dmab0913_3DataContext _db;
 
         public FlightCtr(dmab0913_3DataContext db)
         {
-            this.db = db;
+            _db = db;
         }
         /// <summary>
         /// Get all Flights
@@ -30,34 +22,23 @@ namespace ControlLayer
         /// <returns>Returns a list of all Flight objects</returns>
         public List<Flight> GetAllFlights()
         {
-            var flights = db.Flights.OrderBy(x => x.flightID).ToList();
+            var flights = _db.Flights.OrderBy(x => x.flightID).ToList();
 
             return flights;
         }
 
         public List<Flight> GetAllFlightsByDate(DateTime fromDate)
         {
-            //string date1 = fromDate.ToString("dd'/'MM'/'yyyy");
-            //Debug.WriteLine(date1);
             DateTime nextDay = fromDate.AddDays(1);
-            //string date2 = nextDay.ToString("dd'/'MM'/'yyyy");
-            //Debug.WriteLine(date2);
-
-            var flights = from f in db.Flights
+            var flights = from f in _db.Flights
                           where (f.timeOfArrival.Contains(fromDate.ToShortDateString()) || f.timeOfArrival.Contains(nextDay.ToShortDateString()))
-                        select f;
+                          select f;
             return flights.ToList();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public Flight GetFlightByID(int id)
         {
-            var flight = db.Flights.SingleOrDefault(f => f.flightID == id);
-
+            var flight = _db.Flights.SingleOrDefault(f => f.flightID == id);
             return flight;
         }
 
@@ -67,8 +48,7 @@ namespace ControlLayer
         /// <returns>Returns a list of all Flight objects who contains depTime</returns>
         public List<Flight> GetFlightsByDate(string date)
         {
-            var flights = db.Flights.Where(x => x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
-
+            var flights = _db.Flights.Where(x => x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
             return flights;
         }
 
@@ -78,22 +58,10 @@ namespace ControlLayer
         /// <returns>Returns a list of all Flight objects who contains depTime</returns>
         public List<Flight> GetFlightsFrom(Airport start, string date)
         {
-            var flights = db.Flights.Where(x => x.Airport.Equals(start) && x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
-
+            var flights = _db.Flights.Where(x => x.Airport.Equals(start) && x.timeOfDeparture.Contains(date)).OrderBy(x => x.flightID).ToList();
             return flights;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="timeOfDepature"></param>
-        /// <param name="timeOfArrival"></param>
-        /// <param name="travelTime"></param>
-        /// <param name="price"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="airplaneID"></param>
-        /// <param name="takenSeats"></param>
         public bool CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats)
         {
@@ -110,11 +78,11 @@ namespace ControlLayer
                 takenSeats = takenSeats
             };
 
-            db.Flights.InsertOnSubmit(flight);
+            _db.Flights.InsertOnSubmit(flight);
 
             try
             {
-                db.SubmitChanges();
+                _db.SubmitChanges();
             }
             catch (SqlException)
             {
@@ -124,18 +92,6 @@ namespace ControlLayer
             return returnValue;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="timeOfDepature"></param>
-        /// <param name="timeOfArrival"></param>
-        /// <param name="travelTime"></param>
-        /// <param name="price"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="airplaneID"></param>
-        /// <param name="takenSeats"></param>
         public bool UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from,
             int to, int airplaneID, int takenSeats)
         {
@@ -155,7 +111,7 @@ namespace ControlLayer
 
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                 }
                 catch (SqlException)
                 {
@@ -165,10 +121,6 @@ namespace ControlLayer
             return returnValue;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
         public bool DeleteFlight(int id)
         {
             bool returnValue = true;
@@ -176,10 +128,10 @@ namespace ControlLayer
 
             if (flight != null)
             {
-                db.Flights.DeleteOnSubmit(flight);
+                _db.Flights.DeleteOnSubmit(flight);
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                 }
                 catch (SqlException)
                 {
@@ -191,9 +143,9 @@ namespace ControlLayer
 
         public IEnumerable<Flight> GetFlightsFromBooking(int bookingId)
         {
-            BookingCtr bookingCtr = new BookingCtr(db);
+            MainCtr mainCtr = new MainCtr();
             List<Flight> flights = new List<Flight>();
-            bookingCtr.GetBookingFlights(bookingId).ToList().ForEach(bf => flights.Add(GetFlightByID(bf.flightID)));
+            mainCtr.BookingCtr.GetBookingFlights(bookingId).ToList().ForEach(bf => flights.Add(GetFlightByID(bf.flightID)));
             return flights;
         }
 

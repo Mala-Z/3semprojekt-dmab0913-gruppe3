@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.ServiceModel;
-using System.Text;
+﻿using System.Collections.Generic;
 using ControlLayer;
-using GraphLayer;
-using System.Linq;
-using System.Data.Linq;
-using System.Runtime.Serialization;
 using DatabaseLayer;
 
 
@@ -16,21 +8,21 @@ namespace GraphLayer
     public class Graph : IAbstractGraph
     {
  
-        private AirportCtr airportCtr;
+        private readonly AirportCtr _airportCtr;
 
-        private List<Vertex> _vertices;
+        private readonly List<Vertex> _vertices;
 
 
         public Graph()
         {
             var main = new MainCtr();
-            airportCtr = main.AirportCtr;
+            _airportCtr = main.AirportCtr;
             _vertices = new List<Vertex>();
         }
 
         public void AddAllVertices(string date)
         {
-            foreach (Airport airport in airportCtr.GetAllAirports())
+            foreach (Airport airport in _airportCtr.GetAllAirports())
             {
                 Vertex v = new Vertex(airport, date);
                 _vertices.Add(v);
@@ -39,7 +31,6 @@ namespace GraphLayer
 
         public void AddAllEdges()
         {
-
             foreach (Vertex vertex in _vertices)
             {
                 List<Edge> edges = new List<Edge>();
@@ -60,8 +51,7 @@ namespace GraphLayer
                     }
 
                 }
-                vertex.setEdges(edges);
-
+                vertex.SetEdges(edges);
             }
         }
 
@@ -85,26 +75,11 @@ namespace GraphLayer
             return _vertices.Count;
         }
 
-        //public int GetNoOfEdges()
-        //{
-        //    int count = 0;
-        //    foreach (LinkedList<Vertex> l in _adjList)
-        //        count = count + l.Count;
-        //    return count;//if undirected count/2
-        //}
-
-        
         public void Clear()
         {
-            //Init();
+            throw new System.NotImplementedException();
         }
+
     }
-
-
-
-
-
-
-
 }
 

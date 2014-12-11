@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DatabaseLayer;
 
 
@@ -13,11 +8,11 @@ namespace ControlLayer
 {
     public class PersonCtr
     {
-        private dmab0913_3DataContext db;
+        private readonly dmab0913_3DataContext _db;
 
         public PersonCtr(dmab0913_3DataContext db)
         {
-            this.db = db;
+            _db = db;
         }
 
         /// <summary>
@@ -26,35 +21,16 @@ namespace ControlLayer
         /// <returns>Returns a list of all Person objects</returns>
         public List<Person> GetAllPersons()
         {
-            var persons = db.Persons.OrderBy(x => x.personID).ToList();
-
+            var persons = _db.Persons.OrderBy(x => x.personID).ToList();
             return persons;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public Person GetPersonByID(int id)
         {
-            var person = db.Persons.SingleOrDefault(a => a.personID == id);
-
+            var person = _db.Persons.SingleOrDefault(a => a.personID == id);
             return person;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="fName"></param>
-        /// <param name="lName"></param>
-        /// <param name="gender"></param>
-        /// <param name="address"></param>
-        /// <param name="phoneNo"></param>
-        /// <param name="email"></param>
-        /// <param name="birthdate"></param>
-        /// <param name="password"></param>
-        /// <param name="type"></param>
         public bool CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo,
                                     string email, string birthdate)
         {
@@ -70,10 +46,11 @@ namespace ControlLayer
                 birthdate = birthdate
             };
 
-            db.Persons.InsertOnSubmit(person);
+            _db.Persons.InsertOnSubmit(person);
+
             try
             {
-                db.SubmitChanges();
+                _db.SubmitChanges();
             }
             catch (SqlException)
             {
@@ -90,40 +67,14 @@ namespace ControlLayer
                 fname = fName,
                 lname = lName
             };
-
-            //db.Persons.InsertOnSubmit(person);
-            //try
-            //{
-            //    db.SubmitChanges();
-            //}
-            //catch (Exception e)
-            //{
-                
-            //    Debug.Write(e.InnerException);
-            //}
-            
+           
             return person;
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="fName"></param>
-        /// <param name="lName"></param>
-        /// <param name="gender"></param>
-        /// <param name="address"></param>
-        /// <param name="phoneNo"></param>
-        /// <param name="email"></param>
-        /// <param name="birthdate"></param>
-        /// <param name="password"></param>
-        /// <param name="type"></param>
         public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, 
                                  string email, string birthdate)
         {
             bool returnValue = true;
-
             var person = GetPersonByID(id);
 
             if (person != null)
@@ -138,44 +89,42 @@ namespace ControlLayer
 
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                 }
                 catch (SqlException)
                 {
                     returnValue = false;
                 }
             }
+
             return returnValue;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
         public bool DeletePerson(int id)
         {
             bool returnValue = true;
             var person = GetPersonByID(id);
             if (person != null)
             {
-                db.Persons.DeleteOnSubmit(person);
+                _db.Persons.DeleteOnSubmit(person);
                 try
                 {
-                    db.SubmitChanges();
+                    _db.SubmitChanges();
                 }
                 catch (SqlException)
                 {
                     returnValue = false;
                 }
             }
+
             return returnValue;
         }
 
         public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
         {
-            BookingCtr bookingCtr = new BookingCtr(db);
+            MainCtr mainCtr = new MainCtr();
             List<Person> persons = new List<Person>();
-            bookingCtr.GetBookingPassenger(bookingId).ToList().ForEach(bp => persons.Add(GetPersonByID(bp.personID)));
+            mainCtr.BookingCtr.GetBookingPassenger(bookingId).ToList().ForEach(bp => persons.Add(GetPersonByID(bp.personID)));
             return persons;
         } 
     }
