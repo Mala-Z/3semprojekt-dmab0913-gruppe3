@@ -12,7 +12,10 @@ public partial class _Default : Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        comboboxSource();
+        if (!Page.IsPostBack)
+        {
+            comboboxSource();
+        }
     }
 
     public void comboboxSource()
@@ -47,7 +50,7 @@ public partial class _Default : Page
                     string DateString = dateBox.SelectedDate.ToString();
                     string NoOfPassengers = noOfPass.ToString();
 
-                    Response.Redirect("~/SearchResult.aspx?fromA=AirportFromID&toA=AirportToID&date=DateString&noOfPass=NoOfPassengers");
+                    Response.Redirect("~/SearchResult.aspx?fromA="+ AirportFromID +"&toA="+AirportToID+"&date="+DateString+"&noOfPass=" +NoOfPassengers);
                 }
 
             }
