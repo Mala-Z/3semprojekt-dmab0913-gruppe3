@@ -10,19 +10,21 @@ using Client.FlightService;
 namespace Client.Tabs.BookingList
 {
     /// <summary>
-    /// Interaction logic for EditBooking.xaml
+    /// Interaction logic for ShowBooking.xaml
     /// </summary>
-    public partial class EditBooking : UserControl
+    public partial class ShowBooking : UserControl
     {
         private readonly FlightService.Booking _booking;
         private readonly FlightServiceClient _fService = new FlightServiceClient(); 
 
-        public EditBooking(FlightService.Booking booking)
+        public ShowBooking(FlightService.Booking booking)
         {
             InitializeComponent();
-            this._booking = booking;
+            _booking = booking;
             LoadBookingPassengerData();
             LoadBookingFlightData();
+            txtTraveltime.Text = _booking.totalTime;
+            txtPrice.Text = _booking.totalPrice.ToString();
         }
 
         private void LoadBookingPassengerData()
