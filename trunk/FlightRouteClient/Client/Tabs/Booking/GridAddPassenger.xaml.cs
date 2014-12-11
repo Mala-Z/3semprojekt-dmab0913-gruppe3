@@ -43,6 +43,10 @@ namespace Client.Tabs.Booking
                 grid.AddPassengerToList(passenger);
 
             }
+            else
+            {
+                MainWindow.ErrorMsg("Begge felter skal udfyldes");
+            }
             
         }
 
