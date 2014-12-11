@@ -104,6 +104,21 @@ namespace FlightService
         {
             return bookingCtr.DeleteBooking(id);
         }
+
+        public IEnumerable<BookingPassenger> GetBookingPassengers(int bookingId)
+        {
+            return bookingCtr.GetBookingPassenger(bookingId);
+        }
+
+        public IEnumerable<BookingFlight> GetBookingFlights(int bookingId)
+        {
+            return bookingCtr.GetBookingFlights(bookingId);
+        }
+
+        public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
+        {
+            return bookingCtr.GetPersonsFromBooking(bookingId);
+        } 
         #endregion
 
         #region Dijkstra OperationContracts

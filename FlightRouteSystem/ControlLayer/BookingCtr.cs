@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,12 @@ namespace ControlLayer
     public class BookingCtr
     {
         private dmab0913_3DataContext db;
+        private PersonCtr personCtr;
 
         public BookingCtr(dmab0913_3DataContext db)
         {
             this.db = db;
+            personCtr = new PersonCtr(db);
         }
 
         /// <summary>
@@ -174,5 +177,23 @@ namespace ControlLayer
             return returnValue;
         }
 
+        public IEnumerable<BookingPassenger> GetBookingPassenger(int bookingId)
+        {
+            var result = db.BookingPassengers.Where(bp => bp.bookingID == bookingId).OrderBy(bp => bp.personID);
+            return result;
+        }
+
+        public IEnumerable<BookingFlight> GetBookingFlights(int bookingId)
+        {
+            var result = db.BookingFlights.Where(bf => bf.bookingID == bookingId).OrderBy(bf => bf.flightID);
+            return result;
+        }
+
+        public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
+        {
+            List<Person> persons = new List<Person>();
+            GetBookingPassenger(bookingId).ToList().ForEach(bp => persons.Add(personCtr.GetPersonByID(bp.personID)));
+            return persons;
+        } 
     }
 }
