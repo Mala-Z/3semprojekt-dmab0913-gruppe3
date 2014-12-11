@@ -50,7 +50,7 @@ namespace ControlLayer
         /// <param name="totalPrice"></param>
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
         {
-            bool returnValue = false;
+            bool returnValue = true;
             
             try
             {
@@ -87,7 +87,7 @@ namespace ControlLayer
                 }
 
                 db.Bookings.InsertOnSubmit(booking);
-                returnValue = true;
+ 
             }
             catch (SqlException)
             {
@@ -95,7 +95,7 @@ namespace ControlLayer
             }
             catch (Exception)
             {
-                //trans.Rollback();
+                returnValue = false;
             }
 
             if (returnValue)
