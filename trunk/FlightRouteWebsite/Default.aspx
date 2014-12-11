@@ -9,10 +9,10 @@
                 <div class="row">
                     <div class="span12">
                         <h2>Find den bedste flyrute</h2>
-                        <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:DropDownList ID="airportFrom" runat="server">
                         </asp:DropDownList>
 
-                        <asp:DropDownList ID="DropDownList2" runat="server">
+                        <asp:DropDownList ID="airportTo" runat="server">
                         </asp:DropDownList>
                         <input type="date" id="date" name="date" Height="20px" Width="80px" />
                         <asp:TextBox ID="noOfPassengers" runat="server" Height="30px" Width="80px"></asp:TextBox>

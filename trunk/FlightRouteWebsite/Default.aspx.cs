@@ -9,6 +9,14 @@ public partial class _Default : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        comboboxSource();
+    }
 
+    public void comboboxSource()
+    {
+        airportFrom.DataSource = ListItems.AirportItems();
+        airportTo.DataSource = ListItems.AirportItems();
+        airportFrom.DataBind();
+        airportTo.DataBind();
     }
 }
