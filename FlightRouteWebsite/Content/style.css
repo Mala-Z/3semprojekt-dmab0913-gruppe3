@@ -304,14 +304,15 @@ ul#menu-main > li > a:hover {
 	font-family: 'Patua One', cursive;
 	color: #fff;
 	width: 100px;
-	height: 2.9em;
-	font-size: 1.3125em; /* 21px */
+	height: 30px;
+	font-size: 15px; /* 21px */
 	padding:0.5em;
 	letter-spacing: 0.05em;
 	margin: 0;
 	border: 0;
 	text-transform: none;
-	background: #f0bf00 !important;
+    text-align: ;
+	background: gray !important;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
