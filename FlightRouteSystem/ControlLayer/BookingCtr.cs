@@ -100,7 +100,15 @@ namespace ControlLayer
 
             if (returnValue)
             {
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception)
+                {
+                    returnValue = false;
+                }
+                
             }
 
             return returnValue;
