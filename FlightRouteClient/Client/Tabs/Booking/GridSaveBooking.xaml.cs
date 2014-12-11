@@ -51,6 +51,7 @@ namespace Client.Tabs.Booking
             InitializeGridData();
 
             btnCreate.Visibility = Visibility.Hidden;
+            btnNewBooking.Visibility = Visibility.Hidden;
 
             if (passengerList.Count < noOfPass)
             {
@@ -144,7 +145,10 @@ namespace Client.Tabs.Booking
             FlightService.Person[] pl = passengerList.ToArray();
             if (fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text)))
             {
-                //success!!
+                ContentControlSuccess.Content = new DisplaySuccess("Booking oprettet!");
+                btnCreate.Visibility = Visibility.Hidden;
+                btnCancel.Visibility = Visibility.Hidden;
+                btnNewBooking.Visibility = Visibility.Visible;
             }
             else
             {

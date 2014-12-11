@@ -15,7 +15,7 @@
         <TextBox x:Name="txtTo" HorizontalAlignment="Left" Height="23" Margin="243,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtDate" HorizontalAlignment="Left" Height="23" Margin="451,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Valgt rute rute" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,37,0,0" FontWeight="Bold"/>
+        <Label Content="Valgt rute" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,37,0,0" FontWeight="Bold"/>
         <DataGrid x:Name="dgChosen" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="102" Width="732"/>
         <Label Content="Total tid:" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtTotalTime" HorizontalAlignment="Left" Height="23" Margin="71,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
@@ -28,9 +28,10 @@
         <Grid x:Name="gPassengers" HorizontalAlignment="Left" Margin="12,319,0,207" Width="665">
             <ContentControl x:Name="contentControl" Grid.Row="1"/>
         </Grid>
-        <Button x:Name="btnCreate" Content="Opret booking" HorizontalAlignment="Left" Margin="657,415,0,0" VerticalAlignment="Top" Width="85" Click="btnCreate_Click"/>
-        <Button x:Name="btnCancel" Content="Annuler booking" HorizontalAlignment="Left" Margin="536,415,0,0" VerticalAlignment="Top" Width="100" Click="btnCancel_Click"/>
+        <Button x:Name="btnCreate" Content="Opret booking" HorizontalAlignment="Left" Margin="657,473,0,0" VerticalAlignment="Top" Width="85" Height="50" Click="btnCreate_Click"/>
+        <Button x:Name="btnCancel" Content="Annuler booking" HorizontalAlignment="Left" Margin="541,473,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCancel_Click"/>
 
-
+        <ContentControl x:Name="ContentControlSuccess" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="488,473,0,0" Height="50" Width="254"/>
+        <Button x:Name="btnNewBooking" Content="Opret ny booking" HorizontalAlignment="Left" Margin="344,473,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCancel_Click"/>
     </Grid>
 </UserControl>

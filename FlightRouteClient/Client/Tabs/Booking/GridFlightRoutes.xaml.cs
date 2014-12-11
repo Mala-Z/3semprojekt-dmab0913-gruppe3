@@ -41,10 +41,9 @@ namespace Client.Tabs.Booking
             this.fromA = fromA;
             this.toA = toA;
             this.date = date;
-            this.noOfPass = noOfPass;
 
             InitializeGridData();
-             
+           
         }
 
         private IEnumerable<FlightService.Flight> RunDijkstra(FlightService.Airport fromA, FlightService.Airport toA, string date, bool usePrice)
@@ -100,6 +99,11 @@ namespace Client.Tabs.Booking
                               select f.traveltime).Sum();
             txtCTotalCost.Text = cTotalCost.ToString();
             txtCTotalTime.Text = cTotalTime.ToString();
+
+            if (fastestRoute.Count == 0 && cheapestRoute.Count == 0)
+            {
+                MainWindow.ErrorMsg("Der er ingen ledige flyruter denne dag");
+            }
 
         }
 

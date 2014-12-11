@@ -33,6 +33,9 @@ namespace Client.Tabs
             InitializeComponent();
             fService = new FlightServiceClient();
             InitializeComboboxes();
+            dpDate.SelectedDate = DateTime.Now;
+            dpDate.DisplayDateStart = DateTime.Now;
+            dpDate.DisplayDateEnd = new DateTime(2015, 2, 28);
         }
 
         private void InitializeComboboxes()
@@ -61,7 +64,7 @@ namespace Client.Tabs
                     {
                         if (fromA.airportID != toA.airportID)
                         {
-                            contentControl.Content = new GridFlightRoutes(customer, fromA, toA, dpDate.SelectedDate.ToString().Substring(0,10), noOfPass);
+                            contentControl.Content = new GridFlightRoutes(customer, fromA, toA, dpDate.SelectedDate.ToString().Substring(0, 10), noOfPass);
                         }
                         else
                         {
@@ -79,10 +82,12 @@ namespace Client.Tabs
                 {
                     MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge");
                 }
+
+                
             }
             catch (NullReferenceException err)
             {
-                MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge");
+                MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge " + err);
             }
             catch (FormatException err)
             {
