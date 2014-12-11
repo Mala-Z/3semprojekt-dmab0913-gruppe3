@@ -189,5 +189,13 @@ namespace ControlLayer
             return returnValue;
         }
 
+        public IEnumerable<Flight> GetFlightsFromBooking(int bookingId)
+        {
+            BookingCtr bookingCtr = new BookingCtr(db);
+            List<Flight> flights = new List<Flight>();
+            bookingCtr.GetBookingFlights(bookingId).ToList().ForEach(bf => flights.Add(GetFlightByID(bf.flightID)));
+            return flights;
+        }
+
     }
 }

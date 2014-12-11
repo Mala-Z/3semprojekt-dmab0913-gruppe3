@@ -117,7 +117,12 @@ namespace FlightService
 
         public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
         {
-            return bookingCtr.GetPersonsFromBooking(bookingId);
+            return personCtr.GetPersonsFromBooking(bookingId);
+        }
+
+        public IEnumerable<Flight> GetFlightsFromBooking(int bookingId)
+        {
+            return flightCtr.GetFlightsFromBooking(bookingId);
         } 
         #endregion
 

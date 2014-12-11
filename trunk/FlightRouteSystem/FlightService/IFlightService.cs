@@ -75,6 +75,9 @@ namespace FlightService
         [OperationContract]
         IEnumerable<Person> GetPersonsFromBooking(int bookingId);
 
+        [OperationContract]
+        IEnumerable<Flight> GetFlightsFromBooking(int bookingId);
+
 
             #endregion
 
