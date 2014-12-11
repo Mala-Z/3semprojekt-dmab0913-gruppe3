@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Data.Linq;
-using System.Runtime.Serialization;
-using DatabaseLayer;
+﻿using DatabaseLayer;
 
 namespace GraphLayer
 {
     public class Edge
     {
-
         public Edge(Flight flight, Vertex to, Vertex from)
         {
             VertexEdge = flight;
-            this.To = to;
-            this.From = from;
+            To = to;
+            From = from;
         }
-
-      
+        
         public double GetCost(bool usePrice)
         {
             double cost = -1;

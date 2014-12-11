@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Data.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using DatabaseLayer;
 using GraphLayer;
 using ControlLayer;
@@ -15,7 +9,7 @@ namespace TestLayer
 {
     class Program
     {
-        private static Graph graph = new Graph();
+        private static Graph _graph = new Graph();
         static void Main(string[] args)
         {
             //AirportCtr airCtr = new AirportCtr();
@@ -23,7 +17,7 @@ namespace TestLayer
             //Console.WriteLine("Hit enter to see from Aalborg to London - fastest traveltime and cheapest price");
             ////Console.ReadLine();
 
-            //#region Multiple threads test
+            #region Multiple threads test
             ////Create airports
             //Airport AAL = airCtr.GetAirportByID(1);
             //Airport LHR = airCtr.GetAirportByID(4);
@@ -43,7 +37,7 @@ namespace TestLayer
             //PrintInfo(shortestPathByPriceList);
             //PrintInfo(shortestPathByTravelTimeList);
             //Console.ReadLine();
-            //#endregion
+            #endregion
 
 
 

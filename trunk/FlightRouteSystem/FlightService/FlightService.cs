@@ -1,52 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using ControlLayer;
 using DatabaseLayer;
-using GraphLayer;
 
 namespace FlightService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class FlightService : IFlightService
     {
-        private static MainCtr main = new MainCtr();
-        private static AirplaneCtr airplaneCtr = main.AirplaneCtr;
-        private static AirportCtr airportCtr = main.AirportCtr;
-        private static BookingCtr bookingCtr = main.BookingCtr;
-        private static FlightCtr flightCtr = main.FlightCtr;
-        private static PersonCtr personCtr = main.PersonCtr;
-        private static DijkstraCtr dijkstra = new DijkstraCtr();
-        private static DijkstraCtr dijkstra2 = new DijkstraCtr();
+        private static readonly MainCtr Main = new MainCtr();
+        private static readonly AirplaneCtr AirplaneCtr = Main.AirplaneCtr;
+        private static readonly AirportCtr AirportCtr = Main.AirportCtr;
+        private static readonly BookingCtr BookingCtr = Main.BookingCtr;
+        private static readonly FlightCtr FlightCtr = Main.FlightCtr;
+        private static readonly PersonCtr PersonCtr = Main.PersonCtr;
+        private static readonly DijkstraCtr Dijkstra = new DijkstraCtr();
+        private static readonly DijkstraCtr Dijkstra2 = new DijkstraCtr();
 
         #region Airplane OperationContracts
         public List<Airplane> GetAllAirplanes()
         {
-            return airplaneCtr.GetAllAirplanes();
+            return AirplaneCtr.GetAllAirplanes();
         }
 
 
         public bool CreateNewAirplane(int seats)
         {
-            return airplaneCtr.CreateNewAirplane(seats);
+            return AirplaneCtr.CreateNewAirplane(seats);
         }
 
         public Airplane GetAirplaneByID(int id)
         {
-            return airplaneCtr.GetAirplaneByID(id);
+            return AirplaneCtr.GetAirplaneByID(id);
         }
 
         public bool UpdateAirplane(int id, int seats)
         {
-            return airplaneCtr.UpdateAirplane(id, seats);
+            return AirplaneCtr.UpdateAirplane(id, seats);
         }
 
         public bool DeleteAirplane(int id)
         {
-            return airplaneCtr.DeleteAirplane(id);
+            return AirplaneCtr.DeleteAirplane(id);
         }
         #endregion
 
@@ -54,27 +48,27 @@ namespace FlightService
 
         public List<Airport> GetAllAirports()
         {
-            return airportCtr.GetAllAirports();
+            return AirportCtr.GetAllAirports();
         }
 
         public Airport GetAirportByID(int id)
         {
-            return airportCtr.GetAirportByID(id);
+            return AirportCtr.GetAirportByID(id);
         }
 
         public bool CreateNewAirport(string name, string location)
         {
-            return airportCtr.CreateNewAirport(name, location);
+            return AirportCtr.CreateNewAirport(name, location);
         }
 
         public bool UpdateAirport(int id, string name, string location)
         {
-            return airportCtr.UpdateAirport(id, name, location);
+            return AirportCtr.UpdateAirport(id, name, location);
         }
 
         public bool DeleteAirport(int id)
         {
-            return airportCtr.DeleteAirport(id);
+            return AirportCtr.DeleteAirport(id);
         }
         #endregion 
 
@@ -82,47 +76,47 @@ namespace FlightService
 
         public List<Booking> GetAllBookings()
         {
-            return bookingCtr.GetAllBookings();
+            return BookingCtr.GetAllBookings();
         }
 
         public Booking GetBookingByID(int id)
         {
-            return bookingCtr.GetBookingByID(id);
+            return BookingCtr.GetBookingByID(id);
         }
 
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers, string totalTime, double totalPrice)
         {
-            return bookingCtr.CreateNewBooking(flights, passengers, totalTime, totalPrice);
+            return BookingCtr.CreateNewBooking(flights, passengers, totalTime, totalPrice);
         }
 
         public bool UpdateBooking(int id, string totalTime, double totalPrice)
         {
-            return bookingCtr.UpdateBooking(id, totalTime, totalPrice);
+            return BookingCtr.UpdateBooking(id, totalTime, totalPrice);
         }
 
         public bool DeleteBooking(int id)
         {
-            return bookingCtr.DeleteBooking(id);
+            return BookingCtr.DeleteBooking(id);
         }
 
         public IEnumerable<BookingPassenger> GetBookingPassengers(int bookingId)
         {
-            return bookingCtr.GetBookingPassenger(bookingId);
+            return BookingCtr.GetBookingPassenger(bookingId);
         }
 
         public IEnumerable<BookingFlight> GetBookingFlights(int bookingId)
         {
-            return bookingCtr.GetBookingFlights(bookingId);
+            return BookingCtr.GetBookingFlights(bookingId);
         }
 
         public IEnumerable<Person> GetPersonsFromBooking(int bookingId)
         {
-            return personCtr.GetPersonsFromBooking(bookingId);
+            return PersonCtr.GetPersonsFromBooking(bookingId);
         }
 
         public IEnumerable<Flight> GetFlightsFromBooking(int bookingId)
         {
-            return flightCtr.GetFlightsFromBooking(bookingId);
+            return FlightCtr.GetFlightsFromBooking(bookingId);
         } 
         #endregion
 
@@ -130,17 +124,17 @@ namespace FlightService
 
         public List<Flight> RunDijkstra(Airport from, Airport to, string date, bool usePrice)
         {
-            return dijkstra.runDikjstra(from, to, date, usePrice); 
+            return Dijkstra.Run(from, to, date, usePrice); 
         }
 
         public List<Flight> RunDijkstraCheapest(Airport from, Airport to, string date)
         {
-            return dijkstra.RunDikjstraCheapest(from, to, date);
+            return Dijkstra.RunDikjstraCheapest(from, to, date);
         }
 
         public List<Flight> RunDijkstraFastest(Airport from, Airport to, string date)
         {
-            return dijkstra2.RunDikjstraFastest(from, to, date);
+            return Dijkstra2.RunDikjstraFastest(from, to, date);
         }
          
         #endregion
@@ -148,74 +142,74 @@ namespace FlightService
         #region Flight OperationContracts
         public List<Flight> GetAllFlights()
         {
-            return flightCtr.GetAllFlights();
+            return FlightCtr.GetAllFlights();
         }
 
         public List<Flight> GetAllFlightsByDate(DateTime fromDate)
         {
-            return flightCtr.GetAllFlightsByDate(fromDate);
+            return FlightCtr.GetAllFlightsByDate(fromDate);
         }
 
         public Flight GetFlightByID(int id)
         {
-            return flightCtr.GetFlightByID(id);
+            return FlightCtr.GetFlightByID(id);
         }
 
         public List<Flight> GetFlightsByDate(string date)
         {
-            return flightCtr.GetFlightsByDate(date);
+            return FlightCtr.GetFlightsByDate(date);
         }
 
         public List<Flight> GetFlightsFrom(Airport start, string date)
         {
-            return flightCtr.GetFlightsFrom(start, date);
+            return FlightCtr.GetFlightsFrom(start, date);
         }
 
         public bool CreateNewFlight(string timeOfDepature, string timeOfArrival, double travelTime, double price, int from, int to, int airplaneID, int takenSeats)
         {
-            return flightCtr.CreateNewFlight(timeOfDepature, timeOfArrival, travelTime, price, from, to, airplaneID, takenSeats);
+            return FlightCtr.CreateNewFlight(timeOfDepature, timeOfArrival, travelTime, price, from, to, airplaneID, takenSeats);
         }
 
         public bool UpdateFlight(int id, string timeOfDepature, string timeOfArrival, double travelTime, double price, int from, int to, int airplaneID, int takenSeats)
         {
-            return flightCtr.UpdateFlight(id, timeOfDepature, timeOfArrival, travelTime, price, from, to, airplaneID, takenSeats);
+            return FlightCtr.UpdateFlight(id, timeOfDepature, timeOfArrival, travelTime, price, from, to, airplaneID, takenSeats);
         }
 
         public bool DeleteFlight(int id)
         {
-            return flightCtr.DeleteFlight(id);
+            return FlightCtr.DeleteFlight(id);
         }
         #endregion
 
         #region Person OperationContracts
         public List<Person> GetAllPersons()
         {
-            return personCtr.GetAllPersons();
+            return PersonCtr.GetAllPersons();
         }
 
         public Person GetPersonByID(int id)
         {
-            return personCtr.GetPersonByID(id);
+            return PersonCtr.GetPersonByID(id);
         }
 
         public bool CreateNewPerson(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
         {
-            return personCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
+            return PersonCtr.CreateNewPerson(fName, lName, gender, address, phoneNo, email, birthdate);
         }
 
         public Person CreateNewPersonBooking(string fName, string lName)
         {
-            return personCtr.CreateNewPersonBooking(fName, lName);
+            return PersonCtr.CreateNewPersonBooking(fName, lName);
         }
 
         public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
         {
-            return personCtr.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate);
+            return PersonCtr.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate);
         }
 
         public bool DeletePerson(int id)
         {
-            return personCtr.DeletePerson(id);
+            return PersonCtr.DeletePerson(id);
         }
         #endregion
     }
