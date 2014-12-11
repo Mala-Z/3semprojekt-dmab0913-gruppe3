@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Client.FlightService;
 
 namespace Client.Tabs.Booking
@@ -41,6 +44,7 @@ namespace Client.Tabs.Booking
             this.fromA = fromA;
             this.toA = toA;
             this.date = date;
+            this.noOfPass = noOfPass;
 
             InitializeGridData();
            
@@ -55,6 +59,62 @@ namespace Client.Tabs.Booking
         private void InitializeGridData()
         {
             dgFastest.ItemsSource = null;
+            dgCheapest.ItemsSource = null;
+            Action workAction = () =>
+            {
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += (o, args) =>
+                {
+                    args.Result = GetFastestRoute();
+                };
+                //worker.DoWork(() => GetFastestRoute());
+                worker.RunWorkerCompleted += (o, args) =>
+                {
+                    dgFastest.ItemsSource = (IEnumerable)args.Result;
+                    var fTotalCost = (from f in fastestRoute
+                                      select f.price * noOfPass).Sum();
+                    var fTotalTime = (from f in fastestRoute
+                                      select f.traveltime).Sum();
+                    txtFTotalCost.Text = fTotalCost.ToString();
+                    txtFTotalTime.Text = fTotalTime.ToString();
+
+                };
+                worker.RunWorkerAsync();
+            };
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
+
+            Action workAction2 = () =>
+            {
+                BackgroundWorker worker2 = new BackgroundWorker();
+                worker2.DoWork += (o, args) =>
+                {
+                    args.Result = GetCheapestRoute();
+                };
+                worker2.RunWorkerCompleted += (o, args) =>
+                {
+                    dgCheapest.ItemsSource = (IEnumerable)args.Result;
+                    var cTotalCost = (from f in cheapestRoute
+                                      select f.price * noOfPass).Sum();
+                    var cTotalTime = (from f in cheapestRoute
+                                      select f.traveltime).Sum();
+                    txtCTotalCost.Text = cTotalCost.ToString();
+                    txtCTotalTime.Text = cTotalTime.ToString();
+                };
+                worker2.RunWorkerAsync();
+            };
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction2);
+
+
+            //if (fastestRoute.Count == 0 && cheapestRoute.Count == 0)
+            //{
+            //    MainWindow.ErrorMsg("Der er ingen ledige flyruter denne dag");
+            //}
+
+        }
+
+        private IEnumerable<Object> GetFastestRoute()
+        {
+            
             var fastestsList = fService.RunDijkstraFastest(fromA, toA, date);
             fastestRoute = fastestsList.ToList();
             var result = from f in fastestsList
@@ -68,43 +128,25 @@ namespace Client.Tabs.Booking
                              Pris = f.price,
                              TotalPris = f.price * noOfPass
                          };
+            return result;
+        }
 
-            dgFastest.ItemsSource = result;
-            var fTotalCost = (from f in fastestsList
-                       select f.price*noOfPass).Sum();
-            var fTotalTime = (from f in fastestsList
-                               select f.traveltime).Sum();
-            txtFTotalCost.Text = fTotalCost.ToString();
-            txtFTotalTime.Text = fTotalTime.ToString();
-
-            dgCheapest.ItemsSource = null;
+        private IEnumerable<Object> GetCheapestRoute()
+        {
             var cheapestList = fService.RunDijkstraCheapest(fromA, toA, date);
             cheapestRoute = cheapestList.ToList();
-            var result2 = from f in cheapestList
-                         select new
-                         {
-                             Fra = fService.GetAirportByID(f.@from).name,
-                             Til = fService.GetAirportByID(f.@to).name,
-                             Afgang = f.timeOfDeparture,
-                             Ankomst = f.timeOfArrival,
-                             Rejsetid = f.traveltime,
-                             Pris = f.price,
-                             TotalPris = f.price * noOfPass
-                         };
-            
-            dgCheapest.ItemsSource = result2;
-            var cTotalCost = (from f in cheapestList
-                              select f.price * noOfPass).Sum();
-            var cTotalTime = (from f in cheapestList
-                              select f.traveltime).Sum();
-            txtCTotalCost.Text = cTotalCost.ToString();
-            txtCTotalTime.Text = cTotalTime.ToString();
-
-            if (fastestRoute.Count == 0 && cheapestRoute.Count == 0)
-            {
-                MainWindow.ErrorMsg("Der er ingen ledige flyruter denne dag");
-            }
-
+            var result = from f in cheapestList
+                          select new
+                          {
+                              Fra = fService.GetAirportByID(f.@from).name,
+                              Til = fService.GetAirportByID(f.@to).name,
+                              Afgang = f.timeOfDeparture,
+                              Ankomst = f.timeOfArrival,
+                              Rejsetid = f.traveltime,
+                              Pris = f.price,
+                              TotalPris = f.price * noOfPass
+                          };
+            return result;
         }
 
         private void bChooseFastest_Click(object sender, RoutedEventArgs e)
