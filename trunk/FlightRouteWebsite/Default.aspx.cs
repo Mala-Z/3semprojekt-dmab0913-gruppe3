@@ -9,6 +9,7 @@ using FlightServiceReference;
 
 public partial class _Default : Page
 {
+    private static readonly FlightServiceClient fService = new FlightServiceClient();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,8 +21,18 @@ public partial class _Default : Page
 
     public void comboboxSource()
     {
-        airportFrom.DataSource = ListItems.AirportItems();
-        airportTo.DataSource = ListItems.AirportItems();
+        //airportFrom.DataSource = ListItems.AirportItems();
+        //airportTo.DataSource = ListItems.AirportItems();
+        
+
+        foreach (var a in fService.GetAllAirports())
+        {
+            string text = a.name + " " + a.location;
+            string value = a.airportID.ToString();
+
+            airportFrom.Items.Add(new ListItem(text, value));
+            airportTo.Items.Add(new ListItem(text, value));
+        }
         airportFrom.DataBind();
         airportTo.DataBind();
     }
