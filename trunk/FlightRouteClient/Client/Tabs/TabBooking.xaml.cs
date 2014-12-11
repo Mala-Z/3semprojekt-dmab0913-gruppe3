@@ -87,7 +87,7 @@ namespace Client.Tabs
             }
             catch (NullReferenceException err)
             {
-                MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge " + err);
+                MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge ");
             }
             catch (FormatException err)
             {
