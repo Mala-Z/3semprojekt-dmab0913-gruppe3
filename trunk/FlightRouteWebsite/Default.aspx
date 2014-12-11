@@ -15,7 +15,7 @@
                         <asp:DropDownList ID="DropDownList2" runat="server">
                         </asp:DropDownList>
                         <input type="date" id="date" name="date" Height="20px" Width="80px" />
-                        <asp:TextBox ID="TextBox1" runat="server" Height="20px" Width="80px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Height="30px" Width="80px"></asp:TextBox>
                         <input type="submit" value="Søg" class="cform-submit">
                     </div>
                 </div>
