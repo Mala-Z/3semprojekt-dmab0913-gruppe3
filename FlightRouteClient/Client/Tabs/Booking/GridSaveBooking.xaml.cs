@@ -17,7 +17,6 @@ namespace Client.Tabs.Booking
         private readonly int _noOfPass;
         private readonly List<FlightService.Flight> _flights;
         private readonly List<FlightService.Person> _passengerList;
-        private bool _isPassengersAdded;
 
         public GridSaveBooking(FlightService.Person customer, FlightService.Airport @from, FlightService.Airport to, string date, int noOfPass, List<FlightService.Flight> flights)
         {
@@ -107,7 +106,6 @@ namespace Client.Tabs.Booking
             else
             {
                 contentControl.Content = null;
-                _isPassengersAdded = true;
                 ContentControlSuccess.Content = null;
             }
 
@@ -120,7 +118,7 @@ namespace Client.Tabs.Booking
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (_isPassengersAdded) 
+            if (_passengerList.Count == _noOfPass) 
             { 
                 FlightService.Flight[] fl = _flights.ToArray();
                 FlightService.Person[] pl = _passengerList.ToArray();
