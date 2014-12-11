@@ -22,7 +22,7 @@ namespace Client.Tabs
     /// </summary>
     public partial class TabFlight : UserControl
     {
-        private FlightServiceClient fService;
+        private readonly FlightServiceClient fService;
         private GridAddFlight gridAddFlight = new GridAddFlight();
         private ContentTitle addTitle = new ContentTitle("Tilføj ny flyforbindelse");
         private ContentTitle editTitle = new ContentTitle("Rediger flyforbindelse");

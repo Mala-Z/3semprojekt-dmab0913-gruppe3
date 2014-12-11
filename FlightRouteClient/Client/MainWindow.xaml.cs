@@ -30,6 +30,7 @@ namespace Client
         public TabBooking tBooking;
         public TabCustomer tCustomer;
         public TabFlight tFlight;
+        public TabBookingList tBookingList;
 
         public MainWindow()
         {
@@ -93,8 +94,19 @@ namespace Client
                 if (tFlight == null)
                     tFlight = new TabFlight();
                 contentFlight.Content = tFlight;
-            }   
+            }
+            if (TabItemBookingList.IsSelected)
+            {
+                if (tBookingList == null)
+                    tBookingList = new TabBookingList();
+                contentBookingList.Content = tBookingList;
+            }
             
+        }
+
+        public void SwitchToBookingTab()
+        {
+            TabItemBooking.IsSelected = true;
         }
 
     }

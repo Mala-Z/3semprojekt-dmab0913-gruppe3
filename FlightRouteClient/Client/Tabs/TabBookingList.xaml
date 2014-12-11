@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Client.Tabs.TabBookingList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:Client.Helpers"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="790" Height="590">
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+
+        <DataGrid x:Name="dgBookings" HorizontalAlignment="Left" Margin="20,56,0,0" VerticalAlignment="Top" Height="462" Width="465" SelectionChanged="DgBookings_OnSelectionChanged" SelectionMode="Single"/>
+
+        <Grid x:Name="gBookingsRight" HorizontalAlignment="Left" Height="532" Margin="490,41,0,0" VerticalAlignment="Top" Width="300">
+            <ContentControl x:Name="ContentControlAddEdit" VerticalAlignment="Top" />
+        </Grid>
+        <DatePicker x:Name="DatePickerBookingsGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Width="465" SelectedDateChanged="DatePickerBookingsGrid_OnSelectedDateChanged"/>
+        <helpers:ActionBar x:Name="ActionBar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,34,0,0"/>
+        <ContentControl x:Name="ContentControlTitle" HorizontalAlignment="Left" Margin="490,10,0,0" VerticalAlignment="Top" Height="29" Width="300"/>
+
+    </Grid>
+</UserControl>
