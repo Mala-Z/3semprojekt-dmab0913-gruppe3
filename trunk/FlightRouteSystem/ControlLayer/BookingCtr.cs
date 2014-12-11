@@ -78,6 +78,7 @@ namespace ControlLayer
 
                 foreach (Person p in passengers)
                 {
+                    db.Persons.InsertOnSubmit(p);
                     var BookingPassenger = new BookingPassenger
                     {
                         Booking = booking,

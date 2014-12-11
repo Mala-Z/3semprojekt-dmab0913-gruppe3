@@ -91,16 +91,16 @@ namespace ControlLayer
                 lname = lName
             };
 
-            db.Persons.InsertOnSubmit(person);
-            try
-            {
-                db.SubmitChanges();
-            }
-            catch (Exception e)
-            {
+            //db.Persons.InsertOnSubmit(person);
+            //try
+            //{
+            //    db.SubmitChanges();
+            //}
+            //catch (Exception e)
+            //{
                 
-                Debug.Write(e.InnerException);
-            }
+            //    Debug.Write(e.InnerException);
+            //}
             
             return person;
         }
