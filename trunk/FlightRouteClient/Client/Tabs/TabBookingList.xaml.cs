@@ -18,7 +18,7 @@ namespace Client.Tabs
     public partial class TabBookingList : UserControl
     {
         private readonly FlightServiceClient _fService;
-        private ContentTitle _editTitle;
+        private ContentTitle _title;
 
         public TabBookingList()
         {
@@ -71,9 +71,9 @@ namespace Client.Tabs
         {
             if (dgBookings.SelectedItem != null)
             {
-                _editTitle = new ContentTitle("Rediger booking");
-                ContentControlTitle.Content = _editTitle;
-                ContentControlAddEdit.Content = new EditBooking(_fService.GetBookingByID(GetSelectedBookingID()));
+                _title = new ContentTitle("Vis booking");
+                ContentControlTitle.Content = _title;
+                ContentControlAddEdit.Content = new ShowBooking(_fService.GetBookingByID(GetSelectedBookingID()));
             }
         }
 
