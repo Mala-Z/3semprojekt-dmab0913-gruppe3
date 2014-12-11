@@ -41,7 +41,7 @@ namespace Client.Tabs.Booking
             {
                 var passenger = fService.CreateNewPersonBooking(txtFName.Text, txtLName.Text);
                 grid.AddPassengerToList(passenger);
-
+                 
             }
             else
             {
