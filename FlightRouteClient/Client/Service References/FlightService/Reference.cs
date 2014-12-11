@@ -936,6 +936,12 @@ namespace Client.FlightService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetPersonsFromBooking", ReplyAction="http://tempuri.org/IFlightService/GetPersonsFromBookingResponse")]
         System.Threading.Tasks.Task<Client.FlightService.Person[]> GetPersonsFromBookingAsync(int bookingId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetFlightsFromBooking", ReplyAction="http://tempuri.org/IFlightService/GetFlightsFromBookingResponse")]
+        Client.FlightService.Flight[] GetFlightsFromBooking(int bookingId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/GetFlightsFromBooking", ReplyAction="http://tempuri.org/IFlightService/GetFlightsFromBookingResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetFlightsFromBookingAsync(int bookingId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/RunDijkstra", ReplyAction="http://tempuri.org/IFlightService/RunDijkstraResponse")]
         Client.FlightService.Flight[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice);
         
@@ -1208,6 +1214,14 @@ namespace Client.FlightService {
         
         public System.Threading.Tasks.Task<Client.FlightService.Person[]> GetPersonsFromBookingAsync(int bookingId) {
             return base.Channel.GetPersonsFromBookingAsync(bookingId);
+        }
+        
+        public Client.FlightService.Flight[] GetFlightsFromBooking(int bookingId) {
+            return base.Channel.GetFlightsFromBooking(bookingId);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Flight[]> GetFlightsFromBookingAsync(int bookingId) {
+            return base.Channel.GetFlightsFromBookingAsync(bookingId);
         }
         
         public Client.FlightService.Flight[] RunDijkstra(Client.FlightService.Airport from, Client.FlightService.Airport to, string date, bool usePrice) {
