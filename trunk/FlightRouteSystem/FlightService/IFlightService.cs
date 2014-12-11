@@ -66,8 +66,17 @@ namespace FlightService
         [OperationContract]
         bool DeleteBooking(int id);
 
+        [OperationContract]
+        IEnumerable<BookingPassenger> GetBookingPassengers(int bookingId);
 
-        #endregion
+        [OperationContract]
+        IEnumerable<BookingFlight> GetBookingFlights(int bookingId);
+
+        [OperationContract]
+        IEnumerable<Person> GetPersonsFromBooking(int bookingId);
+
+
+            #endregion
 
         #region Dijkstra OperationContracts
 
