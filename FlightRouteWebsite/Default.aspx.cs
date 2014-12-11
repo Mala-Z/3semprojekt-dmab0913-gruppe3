@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -26,28 +27,27 @@ public partial class _Default : Page
     {
         FlightServiceClient flightService = new FlightServiceClient();
 
-
-
-
-        FlightServiceReference.Airport fromA =
-            flightService.GetAirportByID(Int32.Parse(((ListItem)airportFrom.SelectedItem).Value));
-        FlightServiceReference.Airport toA =
-            flightService.GetAirportByID(Int32.Parse(((ListItem)airportTo.SelectedItem).Value));
+        string fromAs = airportFrom.SelectedItem.Value;
+        string toAs = airportTo.SelectedItem.Value;
         int noOfPass = Int32.Parse(txtNoOfPassengers.Text);
 
         if (txtNoOfPassengers.Text != "" && dateBox.SelectedDate != null)
         {
             if (noOfPass >= 1)
             {
-                if (fromA.airportID != toA.airportID)
+                if (fromAs.Equals(toAs))
+                {
+                    TextBox1.Visible = true;
+                }
+                else
                 {
 
-                    hidAirportFromID.Value = fromA.airportID.ToString();
-                    hidAirportToID.Value = toA.airportID.ToString();
-                    hidDateString.Value = dateBox.SelectedDate.ToString();
-                    hidNoOfPassengers.Value = noOfPass.ToString();
-                    Response.Redirect(
-                        "~/SearchResult.aspx?fromA=hidAirportFromID.Value&toA=hidAirportToID.Value&date=hidDateString.Value&noOfPass=hidNoOfPassengers.Value");
+                    string AirportFromID = fromAs;
+                    string AirportToID = toAs;
+                    string DateString = dateBox.SelectedDate.ToString();
+                    string NoOfPassengers = noOfPass.ToString();
+
+                    Response.Redirect("~/SearchResult.aspx?fromA=AirportFromID&toA=AirportToID&date=DateString&noOfPass=NoOfPassengers");
                 }
 
             }
