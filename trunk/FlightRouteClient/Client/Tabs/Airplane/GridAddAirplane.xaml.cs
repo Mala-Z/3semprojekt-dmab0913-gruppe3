@@ -1,42 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Client.FlightService;
 using Client.Helpers;
 
 namespace Client.Tabs.Airplane
 {
-    /// <summary>
-    /// Interaction logic for TabTest2.xaml
-    /// </summary>
     public partial class GridAddAirplane : UserControl
     {
-        private FlightServiceClient fService;
-
+        private readonly FlightServiceClient _fService;
 
         public GridAddAirplane()
         {
             InitializeComponent();
-            fService = new FlightServiceClient();
+            _fService = new FlightServiceClient();
         }
 
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             int seats = 0;
-            bool success = false;
 
             try
             {
@@ -49,14 +32,13 @@ namespace Client.Tabs.Airplane
 
             if (seats > 0)
             {
-                success = fService.CreateNewAirplane(seats);
+                bool success = _fService.CreateNewAirplane(seats);
 
                 if (success)
                 {
                     ContentControlSuccess.Content = new DisplaySuccess("Fly er oprettet!");
-                    ((MainWindow)Application.Current.MainWindow).tAirplane.InitGridData();
+                    ((MainWindow)Application.Current.MainWindow).TabAirplane.InitGridData();
                 }
-
             }
         } 
 

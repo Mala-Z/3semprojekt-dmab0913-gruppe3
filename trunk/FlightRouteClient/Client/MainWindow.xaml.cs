@@ -1,22 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Client.Tabs;
-using Client.Tabs.Booking;
 
 namespace Client
 {
@@ -25,12 +10,12 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        public TabAirplane tAirplane;
-        public TabAirport tAirport;
-        public TabBooking tBooking;
-        public TabCustomer tCustomer;
-        public TabFlight tFlight;
-        public TabBookingList tBookingList;
+        public TabAirplane TabAirplane;
+        public TabAirport TabAirport;
+        public TabBooking TabBooking;
+        public TabCustomer TabCustomer;
+        public TabFlight TabFlight;
+        public TabBookingList TabBookingList;
 
         public MainWindow()
         {
@@ -38,30 +23,14 @@ namespace Client
             try
             {
                 InitializeComponent();
-                tBooking = new TabBooking();
-                contentBooking.Content = tBooking;
-                //InitializeTabs();
+                TabBooking = new TabBooking();
+                contentBooking.Content = TabBooking;
             }
             catch (EndpointNotFoundException)
             {
                 ErrorMsg("Serveren blev ikke fundet. Tjek om FlightRouteSystem WCF service er startet");
             }
             
-        }
-
-        public void InitializeTabs()
-        {
-            tAirplane = new TabAirplane();
-            tAirport = new TabAirport();
-            tBooking = new TabBooking();
-            tCustomer = new TabCustomer();
-            tFlight = new TabFlight();
-
-            contentAirplane.Content = tAirplane;
-            contentAirport.Content = tAirport;
-            contentBooking.Content = tBooking;
-            contentCustomer.Content = tCustomer;
-            contentFlight.Content = tFlight;
         }
 
         public static void ErrorMsg(string msg)
@@ -73,35 +42,34 @@ namespace Client
         {
             if (TabItemAirplane.IsSelected)
             {
-                if (tAirplane == null)
-                    tAirplane = new TabAirplane();
-                contentAirplane.Content = tAirplane;
+                if (TabAirplane == null)
+                    TabAirplane = new TabAirplane();
+                contentAirplane.Content = TabAirplane;
             }
             if (TabItemAirport.IsSelected)
             {
-                if (tAirport == null)
-                    tAirport = new TabAirport();
-                contentAirport.Content = tAirport;
+                if (TabAirport == null)
+                    TabAirport = new TabAirport();
+                contentAirport.Content = TabAirport;
             }
             if (TabItemCustomer.IsSelected)
             {
-                if (tCustomer == null)
-                    tCustomer = new TabCustomer();
-                contentCustomer.Content = tCustomer;
+                if (TabCustomer == null)
+                    TabCustomer = new TabCustomer();
+                contentCustomer.Content = TabCustomer;
             }
             if (TabItemFlight.IsSelected)
             {
-                if (tFlight == null)
-                    tFlight = new TabFlight();
-                contentFlight.Content = tFlight;
+                if (TabFlight == null)
+                    TabFlight = new TabFlight();
+                contentFlight.Content = TabFlight;
             }
             if (TabItemBookingList.IsSelected)
             {
-                if (tBookingList == null)
-                    tBookingList = new TabBookingList();
-                contentBookingList.Content = tBookingList;
+                if (TabBookingList == null)
+                    TabBookingList = new TabBookingList();
+                contentBookingList.Content = TabBookingList;
             }
-            
         }
 
         public void SwitchToBookingTab()

@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Client.FlightService;
 using Client.Helpers;
 
@@ -22,14 +11,14 @@ namespace Client.Tabs.Flight
     /// </summary>
     public partial class GridEditFlight : UserControl
     {
-        private FlightServiceClient fService;
-        private FlightService.Flight flight;
+        private readonly FlightServiceClient _fService;
+        private readonly FlightService.Flight _flight;
 
         public GridEditFlight(FlightService.Flight flight)
         {
             InitializeComponent();
-            fService = new FlightServiceClient();
-            this.flight = flight;
+            _fService = new FlightServiceClient();
+            _flight = flight;
             InitComboBox();
         }
 
@@ -43,15 +32,15 @@ namespace Client.Tabs.Flight
 
         private void InsertFlightData()
         {
-            if (flight.from > 0 && flight.to > 0)
+            if (_flight.from > 0 && _flight.to > 0)
             {
-                cbFrom.SelectedIndex = Convert.ToInt32(flight.from -1);
-                cbTo.SelectedIndex = Convert.ToInt32(flight.to -1);
-                DatePickerDeparture.SelectedDate = DateTime.Parse(flight.timeOfDeparture);
-                DatePickerArrival.SelectedDate = DateTime.Parse(flight.timeOfArrival);
-                txtTravelTime.Text = flight.traveltime.ToString();
-                txtPrice.Text = flight.price.ToString();
-                cbAirplane.SelectedIndex = Convert.ToInt32(flight.airplaneID - 1);
+                cbFrom.SelectedIndex = Convert.ToInt32(_flight.from -1);
+                cbTo.SelectedIndex = Convert.ToInt32(_flight.to -1);
+                DatePickerDeparture.SelectedDate = DateTime.Parse(_flight.timeOfDeparture);
+                DatePickerArrival.SelectedDate = DateTime.Parse(_flight.timeOfArrival);
+                txtTravelTime.Text = _flight.traveltime.ToString();
+                txtPrice.Text = _flight.price.ToString();
+                cbAirplane.SelectedIndex = Convert.ToInt32(_flight.airplaneID - 1);
             }
         }
 
@@ -59,7 +48,6 @@ namespace Client.Tabs.Flight
         {
             double price = 0.0;
             bool stop = false;
-            bool success = false;
 
             try
             {
@@ -87,20 +75,20 @@ namespace Client.Tabs.Flight
                 txtPrice.Text != "" &&
                 cbAirplane.SelectedItem != null)
             {
-                success = fService.UpdateFlight(flight.flightID,
+                bool success = _fService.UpdateFlight(_flight.flightID,
                     DatePickerDeparture.SelectedDate.ToString(),
-                        DatePickerArrival.SelectedDate.ToString(),
-                        System.Convert.ToDouble(txtTravelTime.Text),
-                        price,
-                        Int32.Parse(((ComboBoxItem)cbFrom.SelectedItem).Tag.ToString()),
-                        Int32.Parse(((ComboBoxItem)cbTo.SelectedItem).Tag.ToString()),
-                        Int32.Parse(((ComboBoxItem)cbAirplane.SelectedItem).Tag.ToString()),
-                        flight.takenSeats
-                        );
+                    DatePickerArrival.SelectedDate.ToString(),
+                    System.Convert.ToDouble(txtTravelTime.Text),
+                    price,
+                    Int32.Parse(((ComboBoxItem)cbFrom.SelectedItem).Tag.ToString()),
+                    Int32.Parse(((ComboBoxItem)cbTo.SelectedItem).Tag.ToString()),
+                    Int32.Parse(((ComboBoxItem)cbAirplane.SelectedItem).Tag.ToString()),
+                    _flight.takenSeats
+                    );
                 if (success)
                 {
                     ContentControlSuccess.Content = new DisplaySuccess("Flyforbindelse opdateret!");
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).tFlight.UpdateDataGrid();   
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).TabFlight.UpdateDataGrid();   
                 }
                 else
                 {

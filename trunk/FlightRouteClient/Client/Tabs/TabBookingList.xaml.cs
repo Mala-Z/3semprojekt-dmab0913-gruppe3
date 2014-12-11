@@ -1,21 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Client.FlightService;
 using Client.Helpers;
@@ -28,13 +17,13 @@ namespace Client.Tabs
     /// </summary>
     public partial class TabBookingList : UserControl
     {
-        private readonly FlightServiceClient fService;
-        private ContentTitle editTitle;
+        private readonly FlightServiceClient _fService;
+        private ContentTitle _editTitle;
 
         public TabBookingList()
         {
             InitializeComponent();
-            fService = new FlightServiceClient();
+            _fService = new FlightServiceClient();
             LoadGridData();
             ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
             ActionBar.AddClick += new RoutedEventHandler(AddClick);
@@ -57,13 +46,13 @@ namespace Client.Tabs
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += (o, args) =>
                 {
-                    args.Result = fService.GetAllBookings().Select(b => new
+                    args.Result = _fService.GetAllBookings().Select(b => new
                     {
                         ID = b.bookingID,
                         Tid = b.totalTime,
                         Pris = b.totalPrice,
-                        Personer = fService.GetBookingPassengers(b.bookingID).ToList().Count,
-                        Flyforbindelser = fService.GetBookingFlights(b.bookingID).ToList().Count
+                        Personer = _fService.GetBookingPassengers(b.bookingID).ToList().Count,
+                        Flyforbindelser = _fService.GetBookingFlights(b.bookingID).ToList().Count
                     });
 
                 };
@@ -82,9 +71,9 @@ namespace Client.Tabs
         {
             if (dgBookings.SelectedItem != null)
             {
-                editTitle = new ContentTitle("Rediger booking");
-                ContentControlTitle.Content = editTitle;
-                ContentControlAddEdit.Content = new EditBooking(fService.GetBookingByID(GetSelectedBookingID()));
+                _editTitle = new ContentTitle("Rediger booking");
+                ContentControlTitle.Content = _editTitle;
+                ContentControlAddEdit.Content = new EditBooking(_fService.GetBookingByID(GetSelectedBookingID()));
             }
         }
 

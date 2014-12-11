@@ -14,13 +14,13 @@ namespace Client.Tabs.BookingList
     /// </summary>
     public partial class EditBooking : UserControl
     {
-        private FlightService.Booking booking;
-        private FlightServiceClient fService = new FlightServiceClient(); 
+        private readonly FlightService.Booking _booking;
+        private readonly FlightServiceClient _fService = new FlightServiceClient(); 
 
         public EditBooking(FlightService.Booking booking)
         {
             InitializeComponent();
-            this.booking = booking;
+            this._booking = booking;
             LoadBookingPassengerData();
             LoadBookingFlightData();
         }
@@ -51,7 +51,7 @@ namespace Client.Tabs.BookingList
 
         private IEnumerable<Object> GetPassengersToGrid()
         {
-            var result = from p in fService.GetPersonsFromBooking(booking.bookingID)
+            var result = from p in _fService.GetPersonsFromBooking(_booking.bookingID)
                          select new
                          {
                              ID = p.personID,
@@ -69,12 +69,12 @@ namespace Client.Tabs.BookingList
 
         private IEnumerable<Object> GetFlightsToGrid()
         {
-            var result = from f in fService.GetFlightsFromBooking(booking.bookingID)
+            var result = from f in _fService.GetFlightsFromBooking(_booking.bookingID)
                          select new
                          {
                              ID = f.flightID,
-                             Fra = fService.GetAirportByID(f.@from).name,
-                             Til = fService.GetAirportByID(f.@to).name,
+                             Fra = _fService.GetAirportByID(f.@from).name,
+                             Til = _fService.GetAirportByID(f.@to).name,
                              Afgang = f.timeOfDeparture,
                              Ankomst = f.timeOfArrival
                          };
