@@ -11,7 +11,6 @@ using DatabaseLayer;
 
 namespace GraphLayer
 {
-    [DataContract]
     public class Edge
     {
 
@@ -42,11 +41,8 @@ namespace GraphLayer
             return cost;
         }
 
-        [DataMember]
         public Vertex From { get; set; }
-        [DataMember]
         public Vertex To { get; set; }
-        [DataMember]
         public Flight VertexEdge { get; set; }
     }
 }
