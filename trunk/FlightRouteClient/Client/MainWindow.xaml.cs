@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,15 +27,25 @@ namespace Client
     {
         public TabAirplane tAirplane;
         public TabAirport tAirport;
-        public TabBooking tBooking = new TabBooking();
+        public TabBooking tBooking;
         public TabCustomer tCustomer;
         public TabFlight tFlight;
 
         public MainWindow()
         {
-            InitializeComponent();
-            contentBooking.Content = tBooking;
-            //InitializeTabs();
+            try
+            {
+                InitializeComponent();
+                contentBooking.Content = tBooking;
+                //InitializeTabs();
+                tBooking = new TabBooking();
+
+            }
+            catch (EndpointNotFoundException)
+            {
+                ErrorMsg("Serveren blev ikke fundet. Tjek om FlightRouteSystem WCF service er startet");
+            }
+            
         }
 
         public void InitializeTabs()
