@@ -1,6 +1,27 @@
 ﻿<%@ Page Title="Forside" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<%@ Register Assembly="obout_Calendar2_Net" Namespace="OboutInc.Calendar2" TagPrefix="obout" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    
+    <script type="text/javascript">
+        var datefield = document.createElement("input")
+        datefield.setAttribute("type", "date")
+        if (datefield.type != "date") { //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+            document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+        }
+    </script>
+ 
+<script>
+    if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+        jQuery(function ($) { //on document.ready
+            $('#birthday').datepicker();
+        })
+    }
+</script>
+
 
     <div id="headerwrap">
         <header class="clearfix">
@@ -14,9 +35,14 @@
 
                         <asp:DropDownList ID="airportTo" runat="server">
                         </asp:DropDownList>
-                        <input type="date" id="date" name="date" Height="20px" Width="80px" />
-                        <asp:TextBox ID="noOfPassengers" runat="server" Height="30px" Width="80px"></asp:TextBox>
-                        <input type="submit" value="Søg" class="cform-submit">
+                        <obout:Calendar ID="dateBox" runat="server" DatePickerMode="True"></obout:Calendar>
+                        <asp:TextBox ID="txtNoOfPassengers" runat="server" Height="30px" Width="120px" Font-Size="13px">Antal Passagerer</asp:TextBox>
+                        &nbsp;<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Søg" />
+                        <asp:HiddenField ID="hidAirportFromID" Value='<hidAirportFromID>' runat="server"/>
+                        <asp:HiddenField ID="hidAirportToID" Value='<hidAirportToID>' runat="server"/>
+                        <asp:HiddenField ID="hidDateString" Value='<hidDateString>' runat="server"/>
+                        <asp:HiddenField ID="hidNoOfPassengers" Value='<hidNoOfPassengers>' runat="server"/>
+                        
                     </div>
                 </div>
                 <div class="row">
