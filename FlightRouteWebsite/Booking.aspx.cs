@@ -21,6 +21,8 @@ public partial class Booking : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            h2RestPass.Visible = false;
+
             if (Session["fromA"] != null && Session["toA"] != null && Session["date"] != null &&
                 Session["noOfPass"] != null && Session["route"] != null)
             {
@@ -30,12 +32,9 @@ public partial class Booking : System.Web.UI.Page
                 _noOfPass = (int)Session["noOfPass"];
                 _route = (List<FlightServiceReference.Flight>)Session["route"];
 
-                if (_noOfPass == 0)
+                if (_noOfPass != 0)
                 {
-                    h2RestPass.Visible = false;
-                }
-                else
-                {
+                    h2RestPass.Visible = true;
                     initializePassengers(_noOfPass);
                 }
             }
