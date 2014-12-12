@@ -34,8 +34,8 @@
         </table>
         <div class="span10">
         <p>
-          <b>Samlet pris: 1000 kr.</b> <br />
-          <b>Samlet flyvetid: 5,5 time</b>
+          <b>Samlet pris: <asp:Label ID="lblCTotalCost" runat="server" Text="Label"></asp:Label> </b><br/>
+          <b>Samlet flyvetid: <asp:Label ID="lblCTotalTime" runat="server" Text="Label"></asp:Label> </b>
         </p> 
         </div>
         <div class="span2">
@@ -71,8 +71,8 @@
         </table>
         <div class="span10">
         <p>
-          <b>Samlet pris: 1000 kr.</b> <br />
-          <b>Samlet flyvetid: 5,5 time</b>
+          <b>Samlet pris: <asp:Label ID="lblFTotalCost" runat="server" Text="Label"></asp:Label> </b><br/>
+          <b>Samlet flyvetid: <asp:Label ID="lblFTotalTime" runat="server" Text="Label"></asp:Label> </b>
         </p> 
         </div>
         <div class="span2">
