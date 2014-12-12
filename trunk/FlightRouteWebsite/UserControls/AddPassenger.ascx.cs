@@ -11,4 +11,14 @@ public partial class UserControls_AddPassenger : System.Web.UI.UserControl
     {
         
     }
+
+    public string GetFName()
+    {
+        return txtFName.Text;
+    }
+
+    public string GetLName()
+    {
+        return txtLName.Text;
+    }
 }
