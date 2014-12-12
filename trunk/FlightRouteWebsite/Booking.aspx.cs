@@ -23,14 +23,16 @@ public partial class Booking : System.Web.UI.Page
         {
             h2RestPass.Visible = false;
 
-            if (Session["fromA"] != null && Session["toA"] != null && Session["date"] != null &&
-                Session["noOfPass"] != null && Session["route"] != null)
+            var app = AppSession.BHelper;
+
+            if (AppSession.BHelper.fromA != null && AppSession.BHelper.toA != null && AppSession.BHelper.date !=null && AppSession.BHelper.noOfPass !=null 
+                && AppSession.BHelper.route.Count != 0)
             {
-                _fromA = (FlightServiceReference.Airport)Session["fromA"];
-                _toA = (FlightServiceReference.Airport)Session["toA"];
-                _date = (string)Session["date"];
-                _noOfPass = (int)Session["noOfPass"];
-                _route = (List<FlightServiceReference.Flight>)Session["route"];
+                _fromA = AppSession.BHelper.fromA;
+                _toA = AppSession.BHelper.toA;
+                _date = AppSession.BHelper.date;
+                _noOfPass = AppSession.BHelper.noOfPass;
+                _route = AppSession.BHelper.route;
 
                 if (_noOfPass != 0)
                 {
