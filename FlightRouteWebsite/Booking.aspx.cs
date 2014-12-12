@@ -23,7 +23,7 @@ public partial class Booking : System.Web.UI.Page
         {
             _fromA = (FlightServiceReference.Airport) Session["fromA"];
             _toA = (FlightServiceReference.Airport)Session["toA"];
-            _date = Session["date"].ToString();
+            _date = (string)Session["date"];
             _noOfPass = (int)Session["noOfPass"];
             _route = (List<FlightServiceReference.Flight>)Session["route"];
 
