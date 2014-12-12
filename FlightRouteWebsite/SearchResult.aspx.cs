@@ -83,20 +83,35 @@ public partial class SearchResult : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Session["fromA"] = airportFrom;
-        Session["toA"] = airportTo;
-        Session["date"] = date;
-        Session["noOfPass"] = noOfPassengers;
-        Session["route"] = fListFast;
+        int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
+        int toID = Convert.ToInt32(Request.QueryString["toA"]);
+        date = Request.QueryString["date"];
+        noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+        airportFrom = fservice.GetAirportByID(fromID);
+        airportTo = fservice.GetAirportByID(toID);
+        var fFast = fservice.RunDijkstraFastest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
+        AppSession.BHelper.fromA = airportFrom;
+        AppSession.BHelper.toA = airportTo;
+        AppSession.BHelper.date = date;
+        AppSession.BHelper.noOfPass = noOfPassengers;
+        AppSession.BHelper.route = fFast;
         Response.Redirect("~/Booking.aspx");
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        Session["fromA"] = airportFrom;
-        Session["toA"] = airportTo;
-        Session["date"] = date;
-        Session["noOfPass"] = noOfPassengers;
-        Session["route"] = fListPrice;
+        int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
+        int toID = Convert.ToInt32(Request.QueryString["toA"]);
+        date = Request.QueryString["date"];
+        noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+        airportFrom = fservice.GetAirportByID(fromID);
+        airportTo = fservice.GetAirportByID(toID);
+        var fPrice = fservice.RunDijkstraCheapest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
+
+        AppSession.BHelper.fromA = airportFrom;
+        AppSession.BHelper.toA = airportTo;
+        AppSession.BHelper.date = date;
+        AppSession.BHelper.noOfPass = noOfPassengers;
+        AppSession.BHelper.route = fPrice;
         Response.Redirect("~/Booking.aspx");
     }
 }
