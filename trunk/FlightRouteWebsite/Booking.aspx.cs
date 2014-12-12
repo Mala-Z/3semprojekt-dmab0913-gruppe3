@@ -30,16 +30,13 @@ public partial class Booking : System.Web.UI.Page
                 _noOfPass = (int)Session["noOfPass"];
                 _route = (List<FlightServiceReference.Flight>)Session["route"];
 
-
-                int noOfPass = 0;
-
-                if (noOfPass == 0)
+                if (_noOfPass == 0)
                 {
                     h2RestPass.Visible = false;
                 }
                 else
                 {
-                    initializePassengers(noOfPass);
+                    initializePassengers(_noOfPass);
                 }
             }
             
