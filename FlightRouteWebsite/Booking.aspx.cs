@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 public partial class Booking : System.Web.UI.Page
 {
 
+    private List<UserControls_AddPassenger> _restPassList = new List<UserControls_AddPassenger>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -32,6 +34,7 @@ public partial class Booking : System.Web.UI.Page
         {
             ASP.usercontrols_addpassenger_ascx addPass = (ASP.usercontrols_addpassenger_ascx)LoadControl("~/UserControls/AddPassenger.ascx");
             otherPassengers.Controls.Add(addPass);
+            _restPassList.Add(addPass);
         }
         
     }
