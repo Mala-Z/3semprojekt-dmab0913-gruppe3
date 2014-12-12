@@ -48,7 +48,7 @@ public partial class Booking : System.Web.UI.Page
     {
         for (int i = 0; i < noOfPass-1; i++)
         {
-            ASP.usercontrols_addpassenger_ascx addPass = (ASP.usercontrols_addpassenger_ascx)LoadControl("~/UserControls/AddPassenger.ascx");
+            var addPass = (ASP.usercontrols_addpassenger_ascx)LoadControl("~/UserControls/AddPassenger.ascx");
             otherPassengers.Controls.Add(addPass);
             _restPassList.Add(addPass);
         }
