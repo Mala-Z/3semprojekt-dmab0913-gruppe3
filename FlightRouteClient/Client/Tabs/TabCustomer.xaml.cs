@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using Client.FlightService;
 using Client.Tabs.Customer;
 using Client.Helpers;
@@ -22,7 +25,7 @@ namespace Client.Tabs
             contentControl.Content = _gridAddCustomer;
             ContentControlTitle.Content = _addTitle;
             _fService = new FlightServiceClient();
-            InitGridData();
+            LoadGridData();
             ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
             ActionBar.AddClick += new RoutedEventHandler(AddClick);
             //ActionBar.DeleteClick += new RoutedEventHandler(DeleteClick);
@@ -53,17 +56,32 @@ namespace Client.Tabs
             UpdateDataGrid();
         }
 
-        private void InitGridData()
+        private void LoadGridData()
         {
-            var result = from p in _fService.GetAllPersons()
-                        select new { ID = p.personID, Navn = p.fname, Efternavn = p.lname, Køn = p.gender, Adresse = p.address, 
-                                     TelefonNr = p.phoneNo, Email = p.email, Fødselsdag = p.birthdate };
-            dgCustomers.ItemsSource = result;
+            Action workAction = () =>
+            {
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += (o, args) => args.Result = from p in _fService.GetAllPersons()
+                                                            select new
+                                                            {
+                                                                ID = p.personID,
+                                                                Navn = p.fname,
+                                                                Efternavn = p.lname,
+                                                                Køn = p.gender,
+                                                                Adresse = p.address,
+                                                                TelefonNr = p.phoneNo,
+                                                                Email = p.email,
+                                                                Fødselsdag = p.birthdate
+                                                            }; 
+                worker.RunWorkerCompleted += (o, args) => { dgCustomers.ItemsSource = (IEnumerable)args.Result; };
+                worker.RunWorkerAsync();
+            };
+            dgCustomers.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
         }
 
         public void UpdateDataGrid()
         {
-            InitGridData();
+            LoadGridData();
         }
 
         private void tSearch_TextChanged(object sender, TextChangedEventArgs e)

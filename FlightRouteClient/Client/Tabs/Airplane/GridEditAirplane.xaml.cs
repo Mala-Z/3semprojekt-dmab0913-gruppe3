@@ -44,7 +44,7 @@ namespace Client.Tabs.Airplane
                 if (success)
                 {
                     ContentControlSuccess.Content = new DisplaySuccess("Fly er opdateret!");
-                    ((MainWindow)Application.Current.MainWindow).TabAirplane.InitGridData();
+                    ((MainWindow)Application.Current.MainWindow).TabAirplane.LoadGridData();
                 }
             }
         } 

@@ -37,7 +37,7 @@ namespace Client.Tabs.Airplane
                 if (success)
                 {
                     ContentControlSuccess.Content = new DisplaySuccess("Fly er oprettet!");
-                    ((MainWindow)Application.Current.MainWindow).TabAirplane.InitGridData();
+                    ((MainWindow)Application.Current.MainWindow).TabAirplane.LoadGridData();
                 }
             }
         } 

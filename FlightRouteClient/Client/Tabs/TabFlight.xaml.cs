@@ -41,12 +41,11 @@ namespace Client.Tabs
             {
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += (o, args) => args.Result = GetFlightsToGridByDate(time);
-                worker.RunWorkerCompleted += (o, args) => { dgFlights.ItemsSource = (IEnumerable) args.Result; };
+                worker.RunWorkerCompleted += (o, args) => dgFlights.ItemsSource = (IEnumerable) args.Result;
                 worker.RunWorkerAsync();
             };
             dgFlights.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
         }
-
 
         //private void DeleteClick(object sender, RoutedEventArgs e)
         //{
@@ -109,7 +108,6 @@ namespace Client.Tabs
                 ContentControlTitle.Content = _editTitle;
                 ContentControlAddEdit.Content = new GridEditFlight(flight); 
             }
-            
         }
 
         private int GetSelectedFlightID()
@@ -122,11 +120,7 @@ namespace Client.Tabs
 
         private void DatePickerFlightGrid_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var date = DatePickerFlightGrid.SelectedDate;
-            if (date != null && date.GetType() == typeof(DateTime))
-            {
-                dgFlights.ItemsSource = GetFlightsToGridByDate(date.Value);
-            }
+            UpdateDataGrid();
         }
     }
 }
