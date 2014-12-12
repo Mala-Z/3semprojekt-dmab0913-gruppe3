@@ -49,24 +49,24 @@
        <div class="cform" id="theme-form">
             <div class="row">
                 <div class="span4"> <span class="fName">
-                <input type="text" name="txtFName" placeholder="Fornavn" class="cform-text" size="50" >
+                <asp:TextBox ID="txtFName" runat="server" placeholder="Fornavn" class="cform-text" size="50"></asp:TextBox>
                 </span> </div>
                 <div class="span4"> <span class="lName">
-                <input type="text" name="txtLName" placeholder="Efternavn" class="cform-text" size="50" >
+                <asp:TextBox ID="txtLName" runat="server" placeholder="Efternavn" class="cform-text" size="50"></asp:TextBox>
                 </span> </div>
                 <div class="span4"> <span class="address">
-                <input type="text" name="txtAddress" placeholder="Adresse" class="cform-text" size="50" >
+                <asp:TextBox ID="txtAddress" runat="server" placeholder="Adresse" class="cform-text" size="50"></asp:TextBox>
                 </span> </div>
             </div>
             <div class="row">
                 <div class="span4"> <span class="gender">
-                <input type="text" name="txtGender" placeholder="Køn" class="cform-text" size="50" >
+                <asp:TextBox ID="txtGender" runat="server" placeholder="Køn" class="cform-text" size="50"></asp:TextBox>
                 </span> </div>
                 <div class="span4"> <span class="email">
-                <input type="text" name="txtEmail" placeholder="Email" class="cform-text" size="50" >
+                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" class="cform-text" size="50"></asp:TextBox>
                 </span> </div>
                 <div class="span4"> <span class="phoneNo">
-                <input type="text" name="txtPhoneNo" placeholder="Telefon nr." class="cform-text" size="50">
+                <asp:TextBox ID="txtPhoneNo" runat="server" placeholder="Telefon nr" class="cform-text" size="50"></asp:TextBox>
                 </span> </div>
             </div>
             
