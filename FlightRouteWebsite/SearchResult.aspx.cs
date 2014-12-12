@@ -25,6 +25,12 @@ public partial class SearchResult : System.Web.UI.Page
                 Airport airportFrom = fservice.GetAirportByID(fromID);
                 Airport airportTo = fservice.GetAirportByID(toID);
 
+                airportFrom = (FlightServiceReference.Airport)Session["fromA"];
+                airportTo = (FlightServiceReference.Airport)Session["toA"];
+                date = Session["date"].ToString();
+                noOfPassengers = (int)Session["noOfPass"];
+                
+
                 if (airportFrom != null && airportTo != null)
                 {
                     CheapestRoute(airportFrom, airportTo, date);
@@ -45,6 +51,8 @@ public partial class SearchResult : System.Web.UI.Page
         List<Flight> fListPrice = new List<Flight>();
         fListPrice = fPrice;
 
+        fListPrice = (List<FlightServiceReference.Flight>)Session["route"];
+
         var cTotalCost = (from f in fListPrice
                           select f.price * noOfPassengers).Sum();
         lblCTotalCost.Text = cTotalCost.ToString();
@@ -62,6 +70,8 @@ public partial class SearchResult : System.Web.UI.Page
         List<Flight> fListFast = new List<Flight>();
         fListFast = fFast;
 
+        fListFast = (List<FlightServiceReference.Flight>)Session["route"];
+
         var fTotalCost = (from f in fListFast
                           select f.price * noOfPassengers).Sum();
         lblFTotalCost.Text = fTotalCost.ToString();
@@ -71,5 +81,13 @@ public partial class SearchResult : System.Web.UI.Page
 
         repFastest.DataSource = fListFast;
         repFastest.DataBind();
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
     }
 }

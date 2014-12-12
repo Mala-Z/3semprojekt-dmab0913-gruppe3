@@ -55,7 +55,6 @@ public partial class _Default : Page
                 }
                 else
                 {
-
                     string AirportFromID = fromAs;
                     string AirportToID = toAs;
                     string DateString = dateBox.SelectedDate.ToString();
