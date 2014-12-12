@@ -40,7 +40,7 @@
         </div>
         <div class="span2">
         <p>
-          &nbsp;<asp:Button ID="Button1" runat="server" Text="Button" />
+          &nbsp;<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </p>
         </div>
         
@@ -77,7 +77,7 @@
         </div>
         <div class="span2">
         <p>
-          &nbsp;<asp:Button ID="Button2" runat="server" Text="Button" />
+          &nbsp;<asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
         </p>
         </div>
         
