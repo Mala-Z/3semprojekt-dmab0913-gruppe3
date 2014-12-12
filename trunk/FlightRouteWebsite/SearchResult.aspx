@@ -21,12 +21,12 @@
             <asp:Repeater ID="repCheapest" runat="server">
                 <ItemTemplate>
                     <tr>
-            <td><%# DataBinder.Eval(Container.DataItem, "fListPrice.to.name") %></td>
-            <td><%#Eval("location") %></td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
+            <td><%#Eval("from") %></td>
+            <td><%#Eval( "to") %></td>
+            <td><%#Eval( "timeOfDeparture") %></td>
+            <td><%#Eval( "timeOfArrival") %></td>
+            <td><%#Eval( "traveltime") %></td>
+            <td><%#Eval( "price") %></td>
           </tr>
                 </ItemTemplate>
             </asp:Repeater>
@@ -57,12 +57,12 @@
             <asp:Repeater ID="repFastest" runat="server">
                 <ItemTemplate>
                     <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
+            <td><%#Eval("from") %></td>
+            <td><%#Eval( "to") %></td>
+            <td><%#Eval( "timeOfDeparture") %></td>
+            <td><%#Eval( "timeOfArrival") %></td>
+            <td><%#Eval( "traveltime") %></td>
+            <td><%#Eval( "price") %></td>
           </tr>
                 </ItemTemplate>
             </asp:Repeater>
