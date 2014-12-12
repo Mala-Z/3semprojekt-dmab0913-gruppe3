@@ -1,5 +1,6 @@
 ﻿using DatabaseLayer;
 
+
 namespace ControlLayer
 {
     public class MainCtr
@@ -9,6 +10,7 @@ namespace ControlLayer
         public BookingCtr BookingCtr { get; set; }
         public FlightCtr FlightCtr { get; set; }
         public PersonCtr PersonCtr { get; set; }
+        
 
         public MainCtr()
         {

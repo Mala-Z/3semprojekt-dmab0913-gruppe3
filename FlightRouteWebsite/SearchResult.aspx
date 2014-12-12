@@ -17,8 +17,10 @@
             <th>Flyvetid</th>
             <th>Pris</th>
           </tr>
-
-          <tr>
+            
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <tr>
             <td>Aalborg</td>
             <td>London</td>
             <td>01/01/2015 12:00</td>
@@ -26,6 +28,9 @@
             <td>1,5 timer</td>
             <td>450 kr</td>
           </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+          
           <tr>
             <td>Aalborg</td>
             <td>London</td>

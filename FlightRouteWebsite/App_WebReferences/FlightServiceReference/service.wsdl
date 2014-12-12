@@ -97,6 +97,30 @@
   <wsdl:message name="IFlightService_DeleteBooking_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
   </wsdl:message>
+  <wsdl:message name="IFlightService_GetBookingPassengers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingPassengers" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetBookingPassengers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingPassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetBookingFlights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingFlights" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetBookingFlights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetPersonsFromBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonsFromBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetPersonsFromBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonsFromBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsFromBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsFromBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_GetFlightsFromBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsFromBookingResponse" />
+  </wsdl:message>
   <wsdl:message name="IFlightService_RunDijkstra_InputMessage">
     <wsdl:part name="parameters" element="tns:RunDijkstra" />
   </wsdl:message>
@@ -181,6 +205,12 @@
   <wsdl:message name="IFlightService_CreateNewPerson_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewPersonResponse" />
   </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewPersonBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPersonBooking" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewPersonBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPersonBookingResponse" />
+  </wsdl:message>
   <wsdl:message name="IFlightService_UpdatePerson_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePerson" />
   </wsdl:message>
@@ -254,6 +284,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteBooking" message="tns:IFlightService_DeleteBooking_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteBookingResponse" message="tns:IFlightService_DeleteBooking_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetBookingPassengers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetBookingPassengers" message="tns:IFlightService_GetBookingPassengers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetBookingPassengersResponse" message="tns:IFlightService_GetBookingPassengers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingFlights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetBookingFlights" message="tns:IFlightService_GetBookingFlights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetBookingFlightsResponse" message="tns:IFlightService_GetBookingFlights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonsFromBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetPersonsFromBooking" message="tns:IFlightService_GetPersonsFromBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetPersonsFromBookingResponse" message="tns:IFlightService_GetPersonsFromBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsFromBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetFlightsFromBooking" message="tns:IFlightService_GetFlightsFromBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetFlightsFromBookingResponse" message="tns:IFlightService_GetFlightsFromBooking_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RunDijkstra">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/RunDijkstra" message="tns:IFlightService_RunDijkstra_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/RunDijkstraResponse" message="tns:IFlightService_RunDijkstra_OutputMessage" />
@@ -309,6 +355,10 @@
     <wsdl:operation name="CreateNewPerson">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewPerson" message="tns:IFlightService_CreateNewPerson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonResponse" message="tns:IFlightService_CreateNewPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPersonBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonBooking" message="tns:IFlightService_CreateNewPersonBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonBookingResponse" message="tns:IFlightService_CreateNewPersonBooking_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePerson">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/UpdatePerson" message="tns:IFlightService_UpdatePerson_InputMessage" />
@@ -456,6 +506,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBookingPassengers">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetBookingPassengers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingFlights">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetBookingFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonsFromBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetPersonsFromBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightsFromBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetFlightsFromBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RunDijkstra">
       <soap:operation soapAction="http://tempuri.org/IFlightService/RunDijkstra" style="document" />
       <wsdl:input>
@@ -575,6 +661,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateNewPerson">
       <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPersonBooking">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewPersonBooking" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
