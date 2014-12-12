@@ -73,11 +73,11 @@
                 </span> </div>
             </div>
             
-           <h2 id="h2restPass" runat="server">Resterende passagerer</h2>
+           <h2 id="h2RestPass" runat="server">Resterende passagerer</h2>
            <asp:PlaceHolder runat="server" ID="otherPassengers" />
 
             <div>
-                <asp:Button ID="btnBook" runat="server" Text="Bestil" class="cform-submit pull-left" />
+                <asp:Button ID="btnBook" runat="server" Text="Bestil" OnClick="btnBook_Click" class="cform-submit pull-left" />
             </div>
         </div>
 

@@ -16,7 +16,7 @@ public partial class Booking : System.Web.UI.Page
 
             if (noOfPass == 0)
             {
-                h2restPass.Visible = false;
+                h2RestPass.Visible = false;
             }
             else
             {
@@ -34,5 +34,9 @@ public partial class Booking : System.Web.UI.Page
             otherPassengers.Controls.Add(addPass);
         }
         
+    }
+
+    protected void btnBook_Click(object sender, EventArgs e)
+    {
     }
 }
