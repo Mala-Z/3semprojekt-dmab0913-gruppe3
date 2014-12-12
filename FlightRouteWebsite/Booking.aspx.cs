@@ -4,16 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using FlightServiceReference;
 
 public partial class Booking : System.Web.UI.Page
 {
 
     private List<UserControls_AddPassenger> _restPassList = new List<UserControls_AddPassenger>();
+    private FlightServiceReference.Airport _fromA;
+    private FlightServiceReference.Airport _toA;
+    private string _date;
+    private int _noOfPass;
+    private List<FlightServiceReference.Flight> _route = new List<FlightServiceReference.Flight>();
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
+            _fromA = (FlightServiceReference.Airport) Session["fromA"];
+            _toA = (FlightServiceReference.Airport)Session["toA"];
+            _date = Session["date"].ToString();
+            _noOfPass = (int)Session["noOfPass"];
+            _route = (List<FlightServiceReference.Flight>)Session["route"];
+
+
             int noOfPass = 0;
 
             if (noOfPass == 0)
