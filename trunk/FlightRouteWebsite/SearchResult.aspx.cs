@@ -14,7 +14,7 @@ public partial class SearchResult : System.Web.UI.Page
     {
         {
            CheapestRoute();
-            FastestRoute();
+           //FastestRoute();
         }
     }
 
@@ -27,7 +27,9 @@ public partial class SearchResult : System.Web.UI.Page
         Airport airportFrom = fservice.GetAirportByID(fromID);
         Airport airportTo = fservice.GetAirportByID(toID);
 
+        var fPrice = fservice.RunDijkstraCheapest(airportFrom, airportTo, date).ToList();
         List<Flight> fListPrice = new List<Flight>();
-        fListPrice = fservice.RunDijkstraCheapest(airportFrom, airportTo, date);
+        fListPrice = fPrice;
+
     }
 }
