@@ -40,7 +40,7 @@
         </div>
         <div class="span2">
         <p>
-          <input type="submit" value="Vælg" class="cform-submit">
+          &nbsp;<asp:Button ID="Button1" runat="server" Text="Button" />
         </p>
         </div>
         
@@ -77,7 +77,7 @@
         </div>
         <div class="span2">
         <p>
-          <input type="submit" value="Vælg" class="cform-submit">
+          &nbsp;<asp:Button ID="Button2" runat="server" Text="Button" />
         </p>
         </div>
         
