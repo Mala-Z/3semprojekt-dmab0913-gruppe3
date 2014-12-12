@@ -52,7 +52,7 @@ namespace Client.Tabs
                         }
                         else
                         {
-                            MainWindow.ErrorMsg("Rejs fra og rejs til skal være to forskellige lufthavne");
+                            MainWindow.ErrorMsg("Fra og til skal være forskellige lufthavne");
                         }
                         
                     }
@@ -64,18 +64,18 @@ namespace Client.Tabs
                 }
                 else
                 {
-                    MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge");
+                    MainWindow.ErrorMsg("Alle felter skal være udfyldt før du kan søge");
                 }
 
                 
             }
             catch (NullReferenceException err)
             {
-                MainWindow.ErrorMsg("Alle felterne skal være udfyldt før du kan søge ");
+                MainWindow.ErrorMsg("Alle felter skal være udfyldt før du kan søge");
             }
             catch (FormatException err)
             {
-                MainWindow.ErrorMsg("Antal passager skal være et tal");
+                MainWindow.ErrorMsg("Antal passagerer skal være et tal");
             }
         }
     }
