@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Booking.aspx.cs" Inherits="Booking" %>
 
+<%@ register src="~/UserControls/AddPassenger.ascx" tagprefix="uc1" tagname="AddPassenger" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     
     <section id="portfolio" class="single-page scrollblock">
@@ -71,25 +74,10 @@
             </div>
             
            <h2>Resterende passagerer</h2>
-           <div class="row">
-                <div class="span4"> <span class="fName">
-                <input type="text" name="txtFName2" placeholder="Fornavn" class="cform-text" size="50" >
-                </span> </div>
-                <div class="span4"> <span class="lName">
-                <input type="text" name="txtLName2" placeholder="Efternavn" class="cform-text" size="50" >
-                </span> </div>
-            </div>
-           <div class="row">
-                <div class="span4"> <span class="fName">
-                <input type="text" name="txtFName3" placeholder="Fornavn" class="cform-text" size="50" >
-                </span> </div>
-                <div class="span4"> <span class="lName">
-                <input type="text" name="txtLName3" placeholder="Efternavn" class="cform-text" size="50" >
-                </span> </div>
-            </div>
+           <uc1:AddPassenger runat="server" id="AddPassenger" />
 
             <div>
-                <input type="submit" value="Bestil" class="cform-submit pull-left">
+                <asp:Button ID="btnBook" runat="server" Text="Bestil" class="cform-submit pull-left" />
             </div>
         </div>
 
