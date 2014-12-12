@@ -87,8 +87,7 @@ public partial class SearchResult : System.Web.UI.Page
         Session["toA"] = airportTo;
         Session["date"] = date;
         Session["noOfPass"] = noOfPassengers;
-        Session["route"] = fListPrice;
-
+        Session["route"] = fListFast;
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
@@ -96,6 +95,6 @@ public partial class SearchResult : System.Web.UI.Page
         Session["toA"] = airportTo;
         Session["date"] = date;
         Session["noOfPass"] = noOfPassengers;
-        Session["route"] = fListFast;
+        Session["route"] = fListPrice;
     }
 }
