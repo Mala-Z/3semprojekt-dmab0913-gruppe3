@@ -6,7 +6,7 @@
       <div class="container">
         <h1 id="folio-headline">Bestilling</h1>
         <div class="row">
-        <p>Du har valgt følgende flyrute fra <b>Aalborg</b> til <b>New York</b> d, <b>01.01.2015</b></p>
+        <p>Du har valgt følgende flyrute fra <b>Aalborg</b> til <b>New York</b> d, <b>01.01.2015</b> for <b>3</b> passagerer</p>
         <table class="table table-striped" >
           <tr>
             <th>Fra</th>
@@ -36,16 +36,6 @@
             <td>450 kr</td>
               <td>450 kr</td>
           </tr>
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-              <td>450 kr</td>
-          </tr>
-
         </table>
         <p>
           <b>Samlet pris: 1000 kr.</b> <br />
@@ -57,7 +47,6 @@
 
        <h2>Køber information</h2>
        <div class="cform" id="theme-form">
-
             <div class="row">
                 <div class="span4"> <span class="fName">
                 <input type="text" name="txtFName" placeholder="Fornavn" class="cform-text" size="50" >
@@ -81,6 +70,24 @@
                 </span> </div>
             </div>
             
+           <h2>Resterende passagerer</h2>
+           <div class="row">
+                <div class="span4"> <span class="fName">
+                <input type="text" name="txtFName2" placeholder="Fornavn" class="cform-text" size="50" >
+                </span> </div>
+                <div class="span4"> <span class="lName">
+                <input type="text" name="txtLName2" placeholder="Efternavn" class="cform-text" size="50" >
+                </span> </div>
+            </div>
+           <div class="row">
+                <div class="span4"> <span class="fName">
+                <input type="text" name="txtFName3" placeholder="Fornavn" class="cform-text" size="50" >
+                </span> </div>
+                <div class="span4"> <span class="lName">
+                <input type="text" name="txtLName3" placeholder="Efternavn" class="cform-text" size="50" >
+                </span> </div>
+            </div>
+
             <div>
                 <input type="submit" value="Bestil" class="cform-submit pull-left">
             </div>
