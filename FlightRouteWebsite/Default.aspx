@@ -38,7 +38,7 @@
 
                         <obout:Calendar ID="dateBox" runat="server" DatePickerMode="True" DateFormat="dd-MM-yyyy" TextBoxId="txtDate"></obout:Calendar>
                         <asp:TextBox ID="txtDate" runat="server" Height="30px" Width="120px" Font-Size="13px"></asp:TextBox>
-                        <asp:TextBox ID="txtNoOfPassengers" runat="server" Height="30px" Width="120px" Font-Size="13px">Antal Passagerer</asp:TextBox>
+                        <asp:TextBox ID="txtNoOfPassengers" runat="server" Height="30px" Width="120px" Font-Size="13px" placeholder="Antal Passagerer"></asp:TextBox>
                         &nbsp;<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Søg" />
                         <asp:TextBox ID="TextBox1" runat="server" Visible="false">BINGO!</asp:TextBox>
                     </div>
