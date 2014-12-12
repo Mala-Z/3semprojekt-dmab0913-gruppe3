@@ -88,6 +88,7 @@ public partial class SearchResult : System.Web.UI.Page
         Session["date"] = date;
         Session["noOfPass"] = noOfPassengers;
         Session["route"] = fListFast;
+        Response.Redirect("~/Booking.aspx");
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
@@ -96,5 +97,6 @@ public partial class SearchResult : System.Web.UI.Page
         Session["date"] = date;
         Session["noOfPass"] = noOfPassengers;
         Session["route"] = fListPrice;
+        Response.Redirect("~/Booking.aspx");
     }
 }
