@@ -41,8 +41,8 @@ public partial class _Default : Page
     {
         FlightServiceClient flightService = new FlightServiceClient();
 
-        string fromAs = airportFrom.SelectedItem.Value;
-        string toAs = airportTo.SelectedItem.Value;
+        string fromAs = airportFrom.SelectedValue;
+        string toAs = airportTo.SelectedValue;
         int noOfPass = Int32.Parse(txtNoOfPassengers.Text);
 
         if (txtNoOfPassengers.Text != "" && dateBox.SelectedDate != null)
