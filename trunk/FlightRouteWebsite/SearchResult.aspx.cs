@@ -31,5 +31,26 @@ public partial class SearchResult : System.Web.UI.Page
         List<Flight> fListPrice = new List<Flight>();
         fListPrice = fPrice;
 
+        repCheapest.DataSource = fListPrice;
+        repCheapest.DataBind();
+
+    }
+
+    public void FastestRoute()
+    {
+        int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
+        int toID = Convert.ToInt32(Request.QueryString["toA"]);
+        string date = Request.QueryString["date"];
+        int noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+        Airport airportFrom = fservice.GetAirportByID(fromID);
+        Airport airportTo = fservice.GetAirportByID(toID);
+
+        var fFast = fservice.RunDijkstraFastest(airportFrom, airportTo, date).ToList();
+        List<Flight> fListFast = new List<Flight>();
+        fListFast = fFast;
+
+        repFastest.DataSource = fListFast;
+        repFastest.DataBind();
+
     }
 }

@@ -18,11 +18,11 @@
             <th>Pris</th>
           </tr>
             
-            <asp:Repeater ID="Repeater1" runat="server">
+            <asp:Repeater ID="repCheapest" runat="server">
                 <ItemTemplate>
                     <tr>
-            <td>Aalborg</td>
-            <td>London</td>
+            <td><%# DataBinder.Eval(Container.DataItem, "fListPrice.to.name") %></td>
+            <td><%#Eval("location") %></td>
             <td>01/01/2015 12:00</td>
             <td>01/01/2015 13:30</td>
             <td>1,5 timer</td>
@@ -31,23 +31,6 @@
                 </ItemTemplate>
             </asp:Repeater>
           
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-          </tr>
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-          </tr>
-
         </table>
         <div class="span10">
         <p>
@@ -71,8 +54,9 @@
             <th>Flyvetid</th>
             <th>Pris</th>
           </tr>
-
-          <tr>
+            <asp:Repeater ID="repFastest" runat="server">
+                <ItemTemplate>
+                    <tr>
             <td>Aalborg</td>
             <td>London</td>
             <td>01/01/2015 12:00</td>
@@ -80,22 +64,9 @@
             <td>1,5 timer</td>
             <td>450 kr</td>
           </tr>
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-          </tr>
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-          </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+          
 
         </table>
         <div class="span10">
