@@ -17,8 +17,19 @@ public partial class SearchResult : System.Web.UI.Page
             if (Request.QueryString["fromA"] != null && Request.QueryString["toA"] != null && Request.QueryString["date"] != null
                 && Request.QueryString["noOfPass"] != null)
             {
-                CheapestRoute();
-                FastestRoute();
+                int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
+                int toID = Convert.ToInt32(Request.QueryString["toA"]);
+                string date = Request.QueryString["date"];
+                int noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+                Airport airportFrom = fservice.GetAirportByID(fromID);
+                Airport airportTo = fservice.GetAirportByID(toID);
+
+                if (airportFrom != null && airportTo != null)
+                {
+                    CheapestRoute(airportFrom, airportTo, date);
+                    FastestRoute(airportFrom, airportTo, date);
+                }
+                
             }
             else
             {
@@ -27,39 +38,23 @@ public partial class SearchResult : System.Web.UI.Page
         }
     }
 
-    public void CheapestRoute()
+    public void CheapestRoute(FlightServiceReference.Airport airportFrom, FlightServiceReference.Airport airportTo, string date)
     {
-        int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
-        int toID = Convert.ToInt32(Request.QueryString["toA"]);
-        string date = Request.QueryString["date"];
-        int noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
-        Airport airportFrom = fservice.GetAirportByID(fromID);
-        Airport airportTo = fservice.GetAirportByID(toID);
-
         var fPrice = fservice.RunDijkstraCheapest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
         List<Flight> fListPrice = new List<Flight>();
         fListPrice = fPrice;
 
         repCheapest.DataSource = fListPrice;
         repCheapest.DataBind();
-
     }
 
-    public void FastestRoute()
+    public void FastestRoute(FlightServiceReference.Airport airportFrom, FlightServiceReference.Airport airportTo, string date)
     {
-        int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
-        int toID = Convert.ToInt32(Request.QueryString["toA"]);
-        string date = Request.QueryString["date"];
-        int noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
-        Airport airportFrom = fservice.GetAirportByID(fromID);
-        Airport airportTo = fservice.GetAirportByID(toID);
-
         var fFast = fservice.RunDijkstraFastest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
         List<Flight> fListFast = new List<Flight>();
         fListFast = fFast;
 
         repFastest.DataSource = fListFast;
         repFastest.DataBind();
-
     }
 }
