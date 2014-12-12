@@ -73,8 +73,8 @@
                 </span> </div>
             </div>
             
-           <h2>Resterende passagerer</h2>
-           <uc1:AddPassenger runat="server" id="AddPassenger" />
+           <h2 id="h2restPass" runat="server">Resterende passagerer</h2>
+           <asp:PlaceHolder runat="server" ID="otherPassengers" />
 
             <div>
                 <asp:Button ID="btnBook" runat="server" Text="Bestil" class="cform-submit pull-left" />
