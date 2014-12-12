@@ -59,25 +59,25 @@
        <div class="cform" id="theme-form">
 
             <div class="row">
-                <div class="span4"> <span class="your-name">
-                <input type="text" name="your-name" placeholder="Fornavn" class="cform-text" size="40" title="your name">
+                <div class="span4"> <span class="fName">
+                <input type="text" name="txtFName" placeholder="Fornavn" class="cform-text" size="50" >
                 </span> </div>
-                <div class="span4"> <span class="your-email">
-                <input type="text" name="your-email" placeholder="Efternavn" class="cform-text" size="40" title="your email">
+                <div class="span4"> <span class="lName">
+                <input type="text" name="txtLName" placeholder="Efternavn" class="cform-text" size="50" >
                 </span> </div>
-                <div class="span4"> <span class="your-name">
-                <input type="text" name="your-name" placeholder="Adresse" class="cform-text" size="40" title="your name">
+                <div class="span4"> <span class="address">
+                <input type="text" name="txtAddress" placeholder="Adresse" class="cform-text" size="50" >
                 </span> </div>
             </div>
             <div class="row">
-                <div class="span4"> <span class="your-email">
-                <input type="text" name="your-email" placeholder="Køn" class="cform-text" size="40" title="your email">
+                <div class="span4"> <span class="gender">
+                <input type="text" name="txtGender" placeholder="Køn" class="cform-text" size="50" >
                 </span> </div>
-                <div class="span4"> <span class="company">
-                <input type="text" name="company" placeholder="Email" class="cform-text" size="40" title="company">
+                <div class="span4"> <span class="email">
+                <input type="text" name="txtEmail" placeholder="Email" class="cform-text" size="50" >
                 </span> </div>
-                <div class="span4"> <span class="website">
-                <input type="text" name="website" placeholder="Telefon nr." class="cform-text" size="40" title="website">
+                <div class="span4"> <span class="phoneNo">
+                <input type="text" name="txtPhoneNo" placeholder="Telefon nr." class="cform-text" size="50">
                 </span> </div>
             </div>
             
