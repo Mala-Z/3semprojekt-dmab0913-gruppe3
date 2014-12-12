@@ -21,23 +21,28 @@ public partial class Booking : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            _fromA = (FlightServiceReference.Airport) Session["fromA"];
-            _toA = (FlightServiceReference.Airport)Session["toA"];
-            _date = (string)Session["date"];
-            _noOfPass = (int)Session["noOfPass"];
-            _route = (List<FlightServiceReference.Flight>)Session["route"];
-
-
-            int noOfPass = 0;
-
-            if (noOfPass == 0)
+            if (Session["fromA"] != null && Session["toA"] != null && Session["date"] != null &&
+                Session["noOfPass"] != null && Session["route"] != null)
             {
-                h2RestPass.Visible = false;
+                _fromA = (FlightServiceReference.Airport)Session["fromA"];
+                _toA = (FlightServiceReference.Airport)Session["toA"];
+                _date = (string)Session["date"];
+                _noOfPass = (int)Session["noOfPass"];
+                _route = (List<FlightServiceReference.Flight>)Session["route"];
+
+
+                int noOfPass = 0;
+
+                if (noOfPass == 0)
+                {
+                    h2RestPass.Visible = false;
+                }
+                else
+                {
+                    initializePassengers(noOfPass);
+                }
             }
-            else
-            {
-                initializePassengers(noOfPass); 
-            }
+            
             
         }
     }
