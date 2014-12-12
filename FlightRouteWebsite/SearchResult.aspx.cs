@@ -10,6 +10,7 @@ using FlightServiceReference;
 public partial class SearchResult : System.Web.UI.Page
 {
     private FlightServiceClient fservice = new FlightServiceClient();
+    private int noOfPassengers;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -20,7 +21,7 @@ public partial class SearchResult : System.Web.UI.Page
                 int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
                 int toID = Convert.ToInt32(Request.QueryString["toA"]);
                 string date = Request.QueryString["date"];
-                int noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+                noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
                 Airport airportFrom = fservice.GetAirportByID(fromID);
                 Airport airportTo = fservice.GetAirportByID(toID);
 
@@ -44,6 +45,13 @@ public partial class SearchResult : System.Web.UI.Page
         List<Flight> fListPrice = new List<Flight>();
         fListPrice = fPrice;
 
+        var cTotalCost = (from f in fListPrice
+                          select f.price * noOfPassengers).Sum();
+        lblCTotalCost.Text = cTotalCost.ToString();
+        var cTotalTime = (from f in fListPrice
+                          select f.traveltime).Sum();
+        lblCTotalTime.Text = cTotalTime.ToString();
+
         repCheapest.DataSource = fListPrice;
         repCheapest.DataBind();
     }
@@ -53,6 +61,13 @@ public partial class SearchResult : System.Web.UI.Page
         var fFast = fservice.RunDijkstraFastest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
         List<Flight> fListFast = new List<Flight>();
         fListFast = fFast;
+
+        var fTotalCost = (from f in fListFast
+                          select f.price * noOfPassengers).Sum();
+        lblFTotalCost.Text = fTotalCost.ToString();
+        var fTotalTime = (from f in fListFast
+                          select f.traveltime).Sum();
+        lblFTotalTime.Text = fTotalTime.ToString();
 
         repFastest.DataSource = fListFast;
         repFastest.DataBind();
