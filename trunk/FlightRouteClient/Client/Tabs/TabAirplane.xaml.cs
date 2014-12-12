@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using Client.FlightService;
 using Client.Helpers;
 using Client.Tabs.Airplane;
@@ -22,7 +25,7 @@ namespace Client.Tabs
             ContentControlTitle.Content = _addTitle;
             ContentControlAddEdit.Content = _gridAddAirplane;
             _fService = new FlightServiceClient();
-            InitGridData();
+            LoadGridData();
             ActionBar.RefreshClick += new RoutedEventHandler(RefreshClick);
             ActionBar.AddClick += new RoutedEventHandler(AddClick);
             //ActionBar.DeleteClick += new RoutedEventHandler(DeleteClick);
@@ -39,7 +42,7 @@ namespace Client.Tabs
         //        success = _fService.DeleteFlight(airplaneId);
         //    if (success)
         //    {
-        //        InitGridData();
+        //        LoadGridData();
         //    }
         //    else
         //    {
@@ -55,16 +58,21 @@ namespace Client.Tabs
 
         private void RefreshClick(object sender, RoutedEventArgs e)
         {
-            InitGridData();
+            LoadGridData();
         }
 
-        public void InitGridData()
+        public void LoadGridData()
         {
-            var result = from a in _fService.GetAllAirplanes()
-                         select new { ID = a.airplaneID, Sæder = a.seats};
-
-            dgAirplanes.ItemsSource = result;
-
+            Action workAction = () =>
+            {
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += (o, args) => {
+                    args.Result = from a in _fService.GetAllAirplanes()
+                                  select new { ID = a.airplaneID, Sæder = a.seats};}; 
+                worker.RunWorkerCompleted += (o, args) => { dgAirplanes.ItemsSource = (IEnumerable)args.Result; };
+                worker.RunWorkerAsync();
+            };
+            dgAirplanes.Dispatcher.BeginInvoke(DispatcherPriority.Background, workAction);
         }
 
         private void tSearch_TextChanged(object sender, TextChangedEventArgs e)

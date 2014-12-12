@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using Client.FlightService;
 using Client.Helpers;
 
@@ -33,7 +37,7 @@ namespace Client.Tabs.Flight
 
             try
             {
-                 price = System.Convert.ToDouble(txtPrice.Text);
+                 price = Convert.ToDouble(txtPrice.Text);
             }
             catch (Exception)
             {
@@ -54,8 +58,6 @@ namespace Client.Tabs.Flight
                 stop = true;
             }
             
-            
-
             if (!stop &&
                 cbTo.SelectedItem != null &&
                 cbFrom.SelectedItem != null && 
