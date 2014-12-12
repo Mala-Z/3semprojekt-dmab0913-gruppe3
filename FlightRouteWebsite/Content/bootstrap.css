@@ -815,7 +815,7 @@ select, textarea, input[type=text], input[type=password], input[type=datetime], 
 	border-radius: 4px;
 }
 input, textarea, .uneditable-input {
-	width: 206px;
+	width: 300px;
 }
 textarea {
 	height: auto;
