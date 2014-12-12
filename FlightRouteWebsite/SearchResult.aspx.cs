@@ -50,7 +50,7 @@ public partial class SearchResult : System.Web.UI.Page
        
         fListPrice = fPrice;
         
-        fListPrice = (List<FlightServiceReference.Flight>)Session["route"];
+       
 
         var cTotalCost = (from f in fListPrice
                           select f.price * noOfPassengers).Sum();
@@ -69,7 +69,7 @@ public partial class SearchResult : System.Web.UI.Page
         
         fListFast = fFast;
 
-        fListFast = (List<FlightServiceReference.Flight>)Session["route"];
+        
 
         var fTotalCost = (from f in fListFast
                           select f.price * noOfPassengers).Sum();
