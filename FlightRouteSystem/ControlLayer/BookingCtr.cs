@@ -30,28 +30,21 @@ namespace ControlLayer
         public Booking GetBookingByID(int id)
         {
             var booking = _db.Bookings.SingleOrDefault(a => a.bookingID == id);
-
             return booking;
         }
 
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
         {
             bool returnValue = true;
+
+            MainCtr mainCtr = new MainCtr();
+            //Opret booking. Skal submittes til db så den får ID!
+            var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
+            _db.Bookings.InsertOnSubmit(booking);
             
             try
             {
-                MainCtr mainCtr = new MainCtr();
-                //Opret booking. Skal submittes til db så den får ID!
-                var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
-                _db.Bookings.InsertOnSubmit(booking);
-                try
-                {
-                    _db.SubmitChanges();
-                }
-                catch (Exception)
-                {
-                    returnValue = false;
-                }
+                _db.SubmitChanges();
 
                 foreach (Flight f in flights)
                 {
@@ -79,14 +72,7 @@ namespace ControlLayer
                     if (p.personID == 0)
                     {
                         _db.Persons.InsertOnSubmit(p);
-                        try
-                        {
-                            _db.SubmitChanges();
-                        }
-                        catch (Exception e)
-                        {
-                            returnValue = false;
-                        }
+                        _db.SubmitChanges();
                     }
 
                     var bookingPassenger = new BookingPassenger
@@ -96,7 +82,6 @@ namespace ControlLayer
                     };
                     _db.BookingPassengers.InsertOnSubmit(bookingPassenger);
                 }
- 
             }
             catch (SqlException)
             {
@@ -119,7 +104,6 @@ namespace ControlLayer
                 }
                 
             }
-
             return returnValue;
         }
 
