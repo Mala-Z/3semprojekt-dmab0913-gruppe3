@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using DatabaseLayer;
 
@@ -33,11 +34,6 @@ namespace ControlLayer
             return booking;
         }
 
-        /// <summary>
-        /// http://www.hanselman.com/blog/GettingLINQToSQLAndLINQToEntitiesToUseNOLOCK.aspx
-        /// </summary>
-        /// <param name="totalTime"></param>
-        /// <param name="totalPrice"></param>
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
         {
             bool returnValue = true;
@@ -45,17 +41,28 @@ namespace ControlLayer
             try
             {
                 MainCtr mainCtr = new MainCtr();
-                    
-                var booking = new Booking { totalTime = totalTime, totalPrice = totalPrice*passengers.Count };
+                //Opret booking. Skal submittes til db så den får ID!
+                var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
+                _db.Bookings.InsertOnSubmit(booking);
+                try
+                {
+                    _db.SubmitChanges();
+                }
+                catch (Exception)
+                {
+                    returnValue = false;
+                }
 
                 foreach (Flight f in flights)
                 {
-                    if (mainCtr.AirplaneCtr.GetAirplaneByID((int)f.airplaneID).seats >= f.takenSeats + passengers.Count)
+                    //Hvis der er plads på flyet
+                    if (mainCtr.AirplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + passengers.Count)
                     {
+                        //Opret ny BookingFlight
                         var bookingFlights = new BookingFlight
                         {
-                            Booking = booking,
-                            Flight = f
+                            bookingID = booking.bookingID,
+                            flightID = f.flightID
                         };
                         _db.BookingFlights.InsertOnSubmit(bookingFlights);
                         f.takenSeats += passengers.Count;
@@ -68,16 +75,27 @@ namespace ControlLayer
 
                 foreach (Person p in passengers)
                 {
-                    _db.Persons.InsertOnSubmit(p);
+                    //Hvis personID er 0 er det en person der ikke er oprettet i db og derfor ikke har et ID endnu
+                    if (p.personID == 0)
+                    {
+                        _db.Persons.InsertOnSubmit(p);
+                        try
+                        {
+                            _db.SubmitChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            returnValue = false;
+                        }
+                    }
+
                     var bookingPassenger = new BookingPassenger
                     {
-                        Booking = booking,
-                        Person = p
+                        bookingID = booking.bookingID,
+                        personID = p.personID
                     };
                     _db.BookingPassengers.InsertOnSubmit(bookingPassenger);
                 }
-
-                _db.Bookings.InsertOnSubmit(booking);
  
             }
             catch (SqlException)
