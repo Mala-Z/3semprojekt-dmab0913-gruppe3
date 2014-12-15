@@ -81,6 +81,11 @@ public partial class SearchResult : System.Web.UI.Page
         repFastest.DataBind();
     }
 
+    public string getAirportName(int id)
+    {
+        return new FlightServiceClient().GetAirportByID(id).name;
+    }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         int fromID = Convert.ToInt32(Request.QueryString["fromA"]);

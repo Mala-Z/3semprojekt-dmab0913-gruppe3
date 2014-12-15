@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SearchResult.aspx.cs" Inherits="SearchResult" %>
+﻿<%@ Page Title="Søgeresultater" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SearchResult.aspx.cs" Inherits="SearchResult" %>
 
 <%@ Register Assembly="EO.Web" Namespace="EO.Web" TagPrefix="eo" %>
 
@@ -23,8 +23,8 @@
             <asp:Repeater ID="repCheapest" runat="server">
                 <ItemTemplate>
                     <tr>
-            <td><%#Eval("from") %></td>
-            <td><%#Eval( "to") %></td>
+            <td><%#getAirportName((int)Eval("from"))%></td>
+            <td><%#getAirportName((int)Eval("to"))%></td>
             <td><%#Eval( "timeOfDeparture") %></td>
             <td><%#Eval( "timeOfArrival") %></td>
             <td><%#Eval( "traveltime") %></td>
@@ -59,8 +59,8 @@
             <asp:Repeater ID="repFastest" runat="server">
                 <ItemTemplate>
                     <tr>
-            <td><%#Eval("from") %></td>
-            <td><%#Eval( "to") %></td>
+            <td><%#getAirportName((int)Eval("from"))%></td>
+            <td><%#getAirportName((int)Eval("to"))%></td>
             <td><%#Eval( "timeOfDeparture") %></td>
             <td><%#Eval( "timeOfArrival") %></td>
             <td><%#Eval( "traveltime") %></td>
