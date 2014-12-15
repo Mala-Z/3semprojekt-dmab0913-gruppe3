@@ -202,6 +202,12 @@ namespace FlightService
             return PersonCtr.CreateNewPersonBooking(fName, lName);
         }
 
+        public Person CreateNewPersonBookingFull(string fName, string lName, string gender, string address,
+            string phoneNo, string email)
+        {
+            return PersonCtr.CreateNewPersonBookingFull(fName, lName, gender, address, phoneNo, email);
+        }
+
         public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate)
         {
             return PersonCtr.UpdatePerson(id, fName, lName, gender, address, phoneNo, email, birthdate);

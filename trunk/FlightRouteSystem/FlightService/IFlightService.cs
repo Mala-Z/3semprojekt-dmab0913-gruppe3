@@ -129,6 +129,10 @@ namespace FlightService
             string email, string birthdate);
 
         [OperationContract]
+        Person CreateNewPersonBookingFull(string fName, string lName, string gender, string address,
+            string phoneNo, string email);
+
+        [OperationContract]
         Person CreateNewPersonBooking(string fName, string lName);
 
         [OperationContract]

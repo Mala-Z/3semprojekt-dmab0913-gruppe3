@@ -71,6 +71,25 @@ namespace ControlLayer
             return person;
         }
 
+        public Person CreateNewPersonBookingFull(string fName, string lName, string gender, string address, string phoneNo,
+                                    string email)
+        {
+            var person = new Person
+            {
+                fname = fName,
+                lname = lName,
+                gender = gender,
+                address = address,
+                phoneNo = phoneNo,
+                email = email,
+            };
+
+            _db.Persons.InsertOnSubmit(person);
+
+            return person;
+        }
+
+
         public bool UpdatePerson(int id, string fName, string lName, string gender, string address, string phoneNo, 
                                  string email, string birthdate)
         {
