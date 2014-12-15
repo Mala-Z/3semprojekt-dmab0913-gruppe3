@@ -112,18 +112,6 @@ namespace ControlLayer
 
             }
 
-            //if (returnValue)
-            //{
-            //    try
-            //    {
-            //        _db.SubmitChanges();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        returnValue = false;
-            //    }
-                
-            //}
             return returnValue;
         }
 
