@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using FlightServiceReference;
@@ -26,13 +27,14 @@ public partial class Booking : System.Web.UI.Page
 
             var app = AppSession.BHelper;
 
-            if (AppSession.BHelper.fromA != null && AppSession.BHelper.toA != null && AppSession.BHelper.date !=null && AppSession.BHelper.noOfPass !=null 
+            if (AppSession.BHelper.fromA != null && AppSession.BHelper.toA != null && AppSession.BHelper.date != null &&
+                AppSession.BHelper.noOfPass != null
                 && AppSession.BHelper.route.Count != 0)
             {
                 _fromA = AppSession.BHelper.fromA;
                 _toA = AppSession.BHelper.toA;
                 _date = AppSession.BHelper.date;
-                _noOfPass = AppSession.BHelper.noOfPass;
+                //_noOfPass = AppSession.BHelper.noOfPass;
                 _route = AppSession.BHelper.route;
 
                 _fromA1.InnerText = AppSession.BHelper.fromA.name;
@@ -41,14 +43,22 @@ public partial class Booking : System.Web.UI.Page
                 _noOfPass1.InnerText = AppSession.BHelper.noOfPass.ToString();
 
 
-                if (_noOfPass != 0)
-                {
-                    h2RestPass.Visible = true;
-                    initializePassengers(_noOfPass);
-                }
+                //if (_noOfPass != 0)
+                //{
+                //    h2RestPass.Visible = true;
+                //    initializePassengers(_noOfPass);
+                //}
             }
-            
-            
+            else
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+
+
+        }
+        else
+        {
+            Response.Redirect("~/Default.aspx");
         }
     }
 
@@ -87,5 +97,59 @@ public partial class Booking : System.Web.UI.Page
 
     protected void btnBook_Click(object sender, EventArgs e)
     {
+        bool extraPassResult = true;
+        var passList = new List<FlightServiceReference.Person>();
+        var fService = new FlightServiceClient();
+        if (txtFName != null && txtLName != null && txtAddress != null && txtEmail != null && txtPhoneNo != null)
+        {
+
+            //foreach (Control ctl in otherPassengers.Controls)
+            //{
+            //    if (ctl is UserControls_AddPassenger)
+            //    {
+            //        UserControls_AddPassenger p = (UserControls_AddPassenger) ctl;
+            //        if (p.GetFName() != null && p.GetLName() != null)
+            //        {
+            //            passList.Add(fService.CreateNewPersonBooking(p.GetFName(), p.GetLName()));
+            //        }
+            //        else
+            //        {
+            //            //TODO Fejl besked, det må ikke være null
+            //            extraPassResult = false;
+            //        }
+
+            //    }
+            //}
+
+            if (extraPassResult)
+            {
+                passList.Add(fService.CreateNewPersonBookingFull(txtFName.Text, txtLName.Text, ddlGender.SelectedValue,
+                    txtAddress.Text,
+                    txtPhoneNo.Text, txtEmail.Text));
+                var route = AppSession.BHelper.route;
+
+                FlightServiceReference.Flight[] fl = route.ToArray();
+                FlightServiceReference.Person[] pl = passList.ToArray();
+                string totalTime = (from f in route
+                    select f.price*AppSession.BHelper.noOfPass).Sum().ToString();
+                double totalCost = Double.Parse((from f in AppSession.BHelper.route
+                    select f.traveltime).Sum().ToString());
+
+                if (fService.CreateNewBooking(fl, pl, totalTime, totalCost))
+                {
+                    Response.Redirect("~/BookingSuccess.aspx");
+                }
+                else
+                {
+                    //Fejl
+                }
+            }
+            else
+            {
+                //fejl
+            }
+
+        }
     }
+
 }

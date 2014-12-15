@@ -205,6 +205,12 @@
   <wsdl:message name="IFlightService_CreateNewPerson_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewPersonResponse" />
   </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewPersonBookingFull_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPersonBookingFull" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_CreateNewPersonBookingFull_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPersonBookingFullResponse" />
+  </wsdl:message>
   <wsdl:message name="IFlightService_CreateNewPersonBooking_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewPersonBooking" />
   </wsdl:message>
@@ -355,6 +361,10 @@
     <wsdl:operation name="CreateNewPerson">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewPerson" message="tns:IFlightService_CreateNewPerson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonResponse" message="tns:IFlightService_CreateNewPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPersonBookingFull">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonBookingFull" message="tns:IFlightService_CreateNewPersonBookingFull_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonBookingFullResponse" message="tns:IFlightService_CreateNewPersonBookingFull_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateNewPersonBooking">
       <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/CreateNewPersonBooking" message="tns:IFlightService_CreateNewPersonBooking_InputMessage" />
@@ -661,6 +671,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateNewPerson">
       <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPersonBookingFull">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/CreateNewPersonBookingFull" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
