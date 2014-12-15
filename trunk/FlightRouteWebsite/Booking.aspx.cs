@@ -27,8 +27,7 @@ public partial class Booking : System.Web.UI.Page
 
             var app = AppSession.BHelper;
 
-            if (AppSession.BHelper.fromA != null && AppSession.BHelper.toA != null && AppSession.BHelper.date != null &&
-                AppSession.BHelper.noOfPass != null
+            if (AppSession.BHelper.fromA != null && AppSession.BHelper.toA != null && AppSession.BHelper.date != null
                 && AppSession.BHelper.route.Count != 0)
             {
                 _fromA = AppSession.BHelper.fromA;
