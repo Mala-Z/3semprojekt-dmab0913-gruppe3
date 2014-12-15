@@ -87,9 +87,9 @@ namespace FlightService
         }
 
         [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
-        public bool CreateNewBooking(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice)
+        public bool CreateNewBooking(int[] flightIDs, List<Person> persons, string totalTime, double totalPrice)
         {
-            return BookingCtr.CreateNewBooking(flightIDs, personIDs, totalTime, totalPrice);
+            return BookingCtr.CreateNewBooking(flightIDs, persons, totalTime, totalPrice);
         }
 
         public bool UpdateBooking(int id, string totalTime, double totalPrice)
