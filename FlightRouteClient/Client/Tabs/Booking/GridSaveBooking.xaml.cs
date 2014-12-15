@@ -120,13 +120,13 @@ namespace Client.Tabs.Booking
             if (_passengerList.Count == _noOfPass)
             {
                 var flightIDs = _flights.Select(f => f.flightID).ToArray();
-                var personIDs = _passengerList.Select(p => p.personID).ToArray();
+                var persons = _passengerList.ToArray();
                 bool result = false;
 
                 
                     try
                     {
-                        result = _fService.CreateNewBooking(flightIDs, personIDs, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
+                        result = _fService.CreateNewBooking(flightIDs, persons, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
                     }
                     catch (Exception ex)
                     {
