@@ -7,4 +7,6 @@
     <div class="span4"> <span class="lName">
     <asp:TextBox ID="txtLName" runat="server" placeholder="Efternavn" class="cform-text" size="50"></asp:TextBox>
     </span> </div>
+   
+ 
 </div>
