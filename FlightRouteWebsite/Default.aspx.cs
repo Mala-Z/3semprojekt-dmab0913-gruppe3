@@ -23,7 +23,7 @@ public partial class _Default : Page
     {
         //airportFrom.DataSource = ListItems.AirportItems();
         //airportTo.DataSource = ListItems.AirportItems();
-        
+
 
         foreach (var a in fService.GetAllAirports())
         {
@@ -39,32 +39,42 @@ public partial class _Default : Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        FlightServiceClient flightService = new FlightServiceClient();
-
-        string fromAs = airportFrom.SelectedValue;
-        string toAs = airportTo.SelectedValue;
-        int noOfPass = Int32.Parse(txtNoOfPassengers.Text);
-
-        if (txtNoOfPassengers.Text != "" && dateBox.SelectedDate != null)
+        try
         {
-            if (noOfPass >= 1)
+            FlightServiceClient flightService = new FlightServiceClient();
+
+            string fromAs = airportFrom.SelectedValue;
+            string toAs = airportTo.SelectedValue;
+            int noOfPass = Int32.Parse(txtNoOfPassengers.Text);
+
+            if (txtNoOfPassengers.Text != "" && dateBox.SelectedDate != null)
             {
-                if (fromAs.Equals(toAs))
+                if (noOfPass >= 1)
                 {
-                    TextBox1.Visible = true;
-                }
-                else
-                {
-                    string AirportFromID = fromAs;
-                    string AirportToID = toAs;
-                    string DateString = dateBox.SelectedDate.ToString().Substring(0,10);
-                    string NoOfPassengers = noOfPass.ToString();
+                    if (fromAs != toAs)
+                    {
+                        string AirportFromID = fromAs;
+                        string AirportToID = toAs;
+                        string DateString = dateBox.SelectedDate.ToString().Substring(0, 10);
+                        string NoOfPassengers = noOfPass.ToString();
 
-                    Response.Redirect("~/SearchResult.aspx?fromA="+ AirportFromID +"&toA="+AirportToID+"&date="+DateString+"&noOfPass=" +NoOfPassengers);
+                        Response.Redirect("~/SearchResult.aspx?fromA=" + AirportFromID + "&toA=" + AirportToID + "&date=" +
+                                          DateString + "&noOfPass=" + NoOfPassengers);
+                    }
+                    else
+                    {
+                       
+                    }
                 }
-
             }
+        }
 
+        catch (NullReferenceException err)
+        {
+
+        }
+        catch (FormatException err)
+        {
 
         }
     }
