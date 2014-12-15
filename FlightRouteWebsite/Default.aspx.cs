@@ -63,7 +63,8 @@ public partial class _Default : Page
                     }
                     else
                     {
-                       
+                        CompareValidator1.Text = "Luftehavne må ikke være ens";
+
                     }
                 }
             }
