@@ -18,32 +18,28 @@
             <th>Lander d.</th>
             <th>Flyvetid</th>
             <th>Pris</th>
-              <th>Samlet pris</th>
           </tr>
 
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-              <td>450 kr</td>
+          <asp:Repeater ID="repRoute" runat="server">
+                <ItemTemplate>
+                    <tr>
+            <td><%#Eval("from") %></td>
+            <td><%#Eval( "to") %></td>
+            <td><%#Eval( "timeOfDeparture") %></td>
+            <td><%#Eval( "timeOfArrival") %></td>
+            <td><%#Eval( "traveltime") %></td>
+            <td><%#Eval( "price") %></td>
           </tr>
-          <tr>
-            <td>Aalborg</td>
-            <td>London</td>
-            <td>01/01/2015 12:00</td>
-            <td>01/01/2015 13:30</td>
-            <td>1,5 timer</td>
-            <td>450 kr</td>
-              <td>450 kr</td>
-          </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+          
         </table>
+        <div class="span10">
         <p>
-          <b>Samlet pris: 1000 kr.</b> <br />
-          <b>Samlet flyvetid: 5,5 time</b>
+          <b>Samlet pris: <asp:Label ID="lblCTotalCost" runat="server" Text="Label"></asp:Label> </b><br/>
+          <b>Samlet flyvetid: <asp:Label ID="lblCTotalTime" runat="server" Text="Label"></asp:Label> </b>
         </p> 
+        </div>
 
 
         <p>Antal personer</p>

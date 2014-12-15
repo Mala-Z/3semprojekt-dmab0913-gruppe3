@@ -81,6 +81,7 @@ public partial class SearchResult : System.Web.UI.Page
         repFastest.DataSource = fListFast;
         repFastest.DataBind();
     }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
