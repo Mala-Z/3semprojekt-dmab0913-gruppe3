@@ -65,9 +65,11 @@ public partial class Booking : System.Web.UI.Page
 
 
 
-        var cTotalCost = (from f in fRoute
-                          select f.price * AppSession.BHelper.noOfPass).Sum();
-        lblCTotalCost.Text = cTotalCost.ToString();
+        //var cTotalCost = (from f in fRoute
+        //                  select f.price * AppSession.BHelper.noOfPass).Sum();
+        string totalCost = (from f in AppSession.BHelper.route
+                            select f.price).Sum().ToString();
+        lblCTotalCost.Text = totalCost.ToString();
         var cTotalTime = (from f in AppSession.BHelper.route
                           select f.traveltime).Sum();
         lblCTotalTime.Text = cTotalTime.ToString();
@@ -126,12 +128,12 @@ public partial class Booking : System.Web.UI.Page
 
                 FlightServiceReference.Flight[] fl = route.ToArray();
                 FlightServiceReference.Person[] pl = passList.ToArray();
-                string totalTime = (from f in route
-                    select f.price).ToString();
-                double totalCost = Double.Parse((from f in AppSession.BHelper.route
-                    select f.traveltime).Sum().ToString());
+                string totalCost = (from f in route
+                                    select f.price).Sum().ToString();
+                string totalTime = (from f in AppSession.BHelper.route
+                    select f.traveltime).Sum().ToString();
 
-                if (fService.CreateNewBooking(fl, pl, totalTime, totalCost))
+                if (fService.CreateNewBooking(fl, pl, totalTime, Double.Parse(totalCost)))
                 {
                     Response.Redirect("~/BookingSuccess.aspx");
                 }
