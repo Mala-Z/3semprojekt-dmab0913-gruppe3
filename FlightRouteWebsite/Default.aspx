@@ -44,7 +44,7 @@
                     </div> 
                 </div>
                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Lufthavne må ikke være ens" Text="*" ForeColor="red" InitialValue="" Operator="NotEqual" ControlToValidate="airportFrom" ControlToCompare="airportTo" Display="None"></asp:CompareValidator>
-                        <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Du skal mindst vælge 1 passager" Text="*" ForeColor="red" InitialValue="" MinimumValue="1" MaximumValue="200" ControlToValidate="txtNoOfPassengers" Display="None"></asp:RangeValidator>
+                        <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Du skal mindst vælge 1 passager og det skal være et tal" Text="*" ForeColor="red" InitialValue="" MinimumValue="1" MaximumValue="200" ControlToValidate="txtNoOfPassengers" Display="None"></asp:RangeValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Indtast antal passagerer" ForeColor="red" ControlToValidate="txtNoOfPassengers" Text="*" InitialValue="" Display="None"></asp:RequiredFieldValidator>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Vælg en dato" ForeColor="red" ControlToValidate="txtDate" Text="*" InitialValue="" Display="None"></asp:RequiredFieldValidator>
                 <asp:ValidationSummary ID="ValidationSummary1"  ForeColor="red" runat="server" HeaderText="Du skal indsætte følgende værdier:" DisplayMode="List" EnableClientScript="True" />
