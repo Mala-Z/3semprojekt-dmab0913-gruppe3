@@ -57,7 +57,7 @@ public partial class _Default : Page
                 {
                     string AirportFromID = fromAs;
                     string AirportToID = toAs;
-                    string DateString = dateBox.SelectedDate.ToString();
+                    string DateString = dateBox.SelectedDate.ToString().Substring(0,10);
                     string NoOfPassengers = noOfPass.ToString();
 
                     Response.Redirect("~/SearchResult.aspx?fromA="+ AirportFromID +"&toA="+AirportToID+"&date="+DateString+"&noOfPass=" +NoOfPassengers);

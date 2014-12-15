@@ -9,7 +9,7 @@
       <div class="container">
         <h1 id="folio-headline">Bestilling</h1>
         <div class="row">
-        <p>Du har valgt følgende flyrute fra <b>Aalborg</b> til <b>New York</b> d, <b>01.01.2015</b> for <b>3</b> passagerer</p>
+        <p>Du har valgt følgende flyrute fra <b runat="server" id="_fromA1"></b> til <b runat="server" id="_toA1"></b> d, <b runat="server" id="_date1"></b> for <b runat="server" id="_noOfPass1"></b></p>
         <table class="table table-striped" >
           <tr>
             <th>Fra</th>

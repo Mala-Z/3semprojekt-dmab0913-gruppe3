@@ -25,7 +25,7 @@ public partial class SearchResult : System.Web.UI.Page
             {
                 int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
                 int toID = Convert.ToInt32(Request.QueryString["toA"]);
-                date = Request.QueryString["date"];
+                date = Request.QueryString["date"].Substring(0,10);
                 noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
                 airportFrom = fservice.GetAirportByID(fromID);
                 airportTo = fservice.GetAirportByID(toID);
@@ -93,7 +93,7 @@ public partial class SearchResult : System.Web.UI.Page
         var fFast = fservice.RunDijkstraFastest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
         AppSession.BHelper.fromA = airportFrom;
         AppSession.BHelper.toA = airportTo;
-        AppSession.BHelper.date = date;
+        AppSession.BHelper.date = date.Substring(0,10);
         AppSession.BHelper.noOfPass = noOfPassengers;
         AppSession.BHelper.route = fFast;
         Response.Redirect("~/Booking.aspx");
@@ -110,7 +110,7 @@ public partial class SearchResult : System.Web.UI.Page
 
         AppSession.BHelper.fromA = airportFrom;
         AppSession.BHelper.toA = airportTo;
-        AppSession.BHelper.date = date;
+        AppSession.BHelper.date = date.Substring(0,10);
         AppSession.BHelper.noOfPass = noOfPassengers;
         AppSession.BHelper.route = fPrice;
         Response.Redirect("~/Booking.aspx");
