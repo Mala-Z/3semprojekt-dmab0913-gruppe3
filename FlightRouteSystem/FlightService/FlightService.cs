@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using ControlLayer;
 using DatabaseLayer;
 
 namespace FlightService
 {
+    [ServiceBehavior(TransactionIsolationLevel = System.Transactions.IsolationLevel.Serializable, TransactionTimeout = "00:00:30")]
     public class FlightService : IFlightService
     {
         private static readonly MainCtr Main = new MainCtr();
@@ -84,6 +86,7 @@ namespace FlightService
             return BookingCtr.GetBookingByID(id);
         }
 
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers, string totalTime, double totalPrice)
         {
             return BookingCtr.CreateNewBooking(flights, passengers, totalTime, totalPrice);

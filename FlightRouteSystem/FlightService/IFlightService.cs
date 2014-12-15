@@ -53,6 +53,7 @@ namespace FlightService
         Booking GetBookingByID(int id);
 
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         bool CreateNewBooking(List<Flight> flights, List<Person> passengers, string totalTime, double totalPrice);
 
         [OperationContract]

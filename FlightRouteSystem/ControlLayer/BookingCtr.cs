@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Transactions;
 using DatabaseLayer;
 
 
@@ -36,8 +37,9 @@ namespace ControlLayer
         public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
         {
             bool returnValue = true;
+            AirplaneCtr airplaneCtr = new AirplaneCtr(_db);
+            FlightCtr flightCtr = new FlightCtr(_db);
 
-            MainCtr mainCtr = new MainCtr();
             //Opret booking. Skal submittes til db så den får ID!
             var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
             _db.Bookings.InsertOnSubmit(booking);
@@ -45,26 +47,6 @@ namespace ControlLayer
             try
             {
                 _db.SubmitChanges();
-
-                foreach (Flight f in flights)
-                {
-                    //Hvis der er plads på flyet
-                    if (mainCtr.AirplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + passengers.Count)
-                    {
-                        //Opret ny BookingFlight
-                        var bookingFlights = new BookingFlight
-                        {
-                            bookingID = booking.bookingID,
-                            flightID = f.flightID
-                        };
-                        _db.BookingFlights.InsertOnSubmit(bookingFlights);
-                        f.takenSeats += passengers.Count;
-                    }
-                    else
-                    {
-                        returnValue = false;
-                    } 
-                }
 
                 foreach (Person p in passengers)
                 {
@@ -82,6 +64,33 @@ namespace ControlLayer
                     };
                     _db.BookingPassengers.InsertOnSubmit(bookingPassenger);
                 }
+
+                
+                foreach (Flight f in flights)
+                {
+                    //Hvis der er plads på flyet
+                    if (airplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + passengers.Count)
+                    {
+                        //Opret ny BookingFlight
+                        var bookingFlights = new BookingFlight
+                        {
+                            bookingID = booking.bookingID,
+                            flightID = f.flightID
+                        };
+                        _db.BookingFlights.InsertOnSubmit(bookingFlights);
+                        f.takenSeats += passengers.Count;
+                        flightCtr.UpdateFlight(f.flightID, f.timeOfDeparture, f.timeOfArrival, Convert.ToDouble(f.traveltime), Convert.ToDouble(f.price) ,f.from,
+                            f.to, Convert.ToInt32(f.airplaneID), f.takenSeats);
+                    }
+                    else
+                    {
+                        returnValue = false;
+                    } 
+                }
+
+                if (returnValue)
+                    _db.SubmitChanges();
+                
             }
             catch (SqlException)
             {
@@ -92,18 +101,18 @@ namespace ControlLayer
                 returnValue = false;
             }
 
-            if (returnValue)
-            {
-                try
-                {
-                    _db.SubmitChanges();
-                }
-                catch (Exception)
-                {
-                    returnValue = false;
-                }
+            //if (returnValue)
+            //{
+            //    try
+            //    {
+            //        _db.SubmitChanges();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        returnValue = false;
+            //    }
                 
-            }
+            //}
             return returnValue;
         }
 
