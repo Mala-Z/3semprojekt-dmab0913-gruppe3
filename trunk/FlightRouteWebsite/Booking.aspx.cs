@@ -80,6 +80,11 @@ public partial class Booking : System.Web.UI.Page
         
     }
 
+    public string getAirportName(int id)
+    {
+        return new FlightServiceClient().GetAirportByID(id).name;
+    }
+
     protected void btnBook_Click(object sender, EventArgs e)
     {
     }
