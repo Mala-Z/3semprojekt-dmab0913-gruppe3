@@ -21,6 +21,7 @@ public partial class Booking : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            TableRoute();
             h2RestPass.Visible = false;
 
             var app = AppSession.BHelper;
@@ -43,6 +44,23 @@ public partial class Booking : System.Web.UI.Page
             
             
         }
+    }
+
+    private void TableRoute()
+    {
+        
+        List<Flight> fRoute = AppSession.BHelper.route;
+
+
+
+        var cTotalCost = (from f in fRoute
+                          select f.price * AppSession.BHelper.noOfPass).Sum();
+        lblCTotalCost.Text = cTotalCost.ToString();
+        var cTotalTime = (from f in AppSession.BHelper.route
+                          select f.traveltime).Sum();
+        lblCTotalTime.Text = cTotalTime.ToString();
+        repRoute.DataSource = AppSession.BHelper.route;
+        repRoute.DataBind();
     }
 
     private void initializePassengers(int noOfPass)
