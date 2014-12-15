@@ -34,17 +34,15 @@ namespace ControlLayer
             return booking;
         }
 
-        public bool CreateNewBooking(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice)
+        public bool CreateNewBooking(int[] flightIDs, List<Person> persons, string totalTime, double totalPrice)
         {
             bool returnValue = true;
             AirplaneCtr airplaneCtr = new AirplaneCtr(_db);
-            FlightCtr flightCtr = new FlightCtr(_db);
             
             using (var transScope = new TransactionScope())
             {
                 //Lav lister med personer og flights fra arrays med id
                 var flights = flightIDs.Select(id => _db.Flights.SingleOrDefault(flight => flight.flightID == id)).ToList();
-                var persons = personIDs.Select(id => _db.Persons.SingleOrDefault(person => person.personID == id)).ToList();
                 //Opret booking. Skal submittes til db så den får ID!
                 var booking = new Booking { totalPrice = totalPrice * persons.Count, totalTime = totalTime };
                 _db.Bookings.InsertOnSubmit(booking);
@@ -85,8 +83,6 @@ namespace ControlLayer
                             };
                             _db.BookingFlights.InsertOnSubmit(bookingFlights);
                             f.takenSeats += persons.Count;
-                            //flightCtr.UpdateFlight(f.flightID, f.timeOfDeparture, f.timeOfArrival, Convert.ToDouble(f.traveltime), Convert.ToDouble(f.price), f.from,
-                            //    f.to, Convert.ToInt32(f.airplaneID), f.takenSeats);
                         }
                         else
                         {
