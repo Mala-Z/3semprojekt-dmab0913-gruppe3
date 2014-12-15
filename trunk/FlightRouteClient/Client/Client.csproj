@@ -294,6 +294,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\FlightService\FlightService11.wsdl" />
+    <None Include="Service References\FlightService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\FlightService\item3.xsd">
       <SubType>Designer</SubType>
     </None>

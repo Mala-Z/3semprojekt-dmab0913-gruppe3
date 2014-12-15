@@ -117,16 +117,16 @@ namespace Client.Tabs.Booking
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (_passengerList.Count == _noOfPass) 
-            { 
-                FlightService.Flight[] fl = _flights.ToArray();
-                FlightService.Person[] pl = _passengerList.ToArray();
+            if (_passengerList.Count == _noOfPass)
+            {
+                var flightIDs = _flights.Select(f => f.flightID).ToArray();
+                var personIDs = _passengerList.Select(p => p.personID).ToArray();
                 bool result = false;
 
                 
                     try
                     {
-                        result = _fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
+                        result = _fService.CreateNewBooking(flightIDs, personIDs, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
                     }
                     catch (Exception ex)
                     {
