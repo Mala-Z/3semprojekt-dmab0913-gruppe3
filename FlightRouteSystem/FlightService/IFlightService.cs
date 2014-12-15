@@ -54,7 +54,7 @@ namespace FlightService
 
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)]
-        bool CreateNewBooking(List<Flight> flights, List<Person> passengers, string totalTime, double totalPrice);
+        bool CreateNewBooking(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice);
 
         [OperationContract]
         bool UpdateBooking(int id, string totalTime, double totalPrice);

@@ -34,23 +34,27 @@ namespace ControlLayer
             return booking;
         }
 
-        public bool CreateNewBooking(List<Flight> flights, List<Person> passengers,  string totalTime, double totalPrice)
+        public bool CreateNewBooking(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice)
         {
             bool returnValue = true;
             AirplaneCtr airplaneCtr = new AirplaneCtr(_db);
             FlightCtr flightCtr = new FlightCtr(_db);
-
-            //Opret booking. Skal submittes til db så den får ID!
+            
             using (var transScope = new TransactionScope())
             {
-                var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
+                //Lav lister med personer og flights fra arrays med id
+                var flights = flightIDs.Select(id => _db.Flights.SingleOrDefault(flight => flight.flightID == id)).ToList();
+                var persons = personIDs.Select(id => _db.Persons.SingleOrDefault(person => person.personID == id)).ToList();
+                //Opret booking. Skal submittes til db så den får ID!
+                var booking = new Booking { totalPrice = totalPrice * persons.Count, totalTime = totalTime };
                 _db.Bookings.InsertOnSubmit(booking);
-                    
+                
+
                 try
                 {
                     _db.SubmitChanges();
 
-                    foreach (Person p in passengers)
+                    foreach (Person p in persons)
                     {
                         //Hvis personID er 0 er det en person der ikke er oprettet i db og derfor ikke har et ID endnu
                         if (p.personID == 0)
@@ -71,7 +75,7 @@ namespace ControlLayer
                     foreach (Flight f in flights)
                     {
                         //Hvis der er plads på flyet
-                        if (airplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + passengers.Count)
+                        if (airplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + persons.Count)
                         {
                             //Opret ny BookingFlight
                             var bookingFlights = new BookingFlight
@@ -80,9 +84,9 @@ namespace ControlLayer
                                 flightID = f.flightID
                             };
                             _db.BookingFlights.InsertOnSubmit(bookingFlights);
-                            f.takenSeats += passengers.Count;
-                            flightCtr.UpdateFlight(f.flightID, f.timeOfDeparture, f.timeOfArrival, Convert.ToDouble(f.traveltime), Convert.ToDouble(f.price), f.from,
-                                f.to, Convert.ToInt32(f.airplaneID), f.takenSeats);
+                            f.takenSeats += persons.Count;
+                            //flightCtr.UpdateFlight(f.flightID, f.timeOfDeparture, f.timeOfArrival, Convert.ToDouble(f.traveltime), Convert.ToDouble(f.price), f.from,
+                            //    f.to, Convert.ToInt32(f.airplaneID), f.takenSeats);
                         }
                         else
                         {
