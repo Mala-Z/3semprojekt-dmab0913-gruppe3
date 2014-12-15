@@ -902,10 +902,10 @@ namespace Client.FlightService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewBookingResponse")]
         [System.ServiceModel.TransactionFlowAttribute(System.ServiceModel.TransactionFlowOption.Allowed)]
-        bool CreateNewBooking(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice);
+        bool CreateNewBooking(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewBookingResponse")]
-        System.Threading.Tasks.Task<bool> CreateNewBookingAsync(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice);
+        System.Threading.Tasks.Task<bool> CreateNewBookingAsync(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/UpdateBooking", ReplyAction="http://tempuri.org/IFlightService/UpdateBookingResponse")]
         bool UpdateBooking(int id, string totalTime, double totalPrice);
@@ -1026,6 +1026,12 @@ namespace Client.FlightService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPerson", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonResponse")]
         System.Threading.Tasks.Task<bool> CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPersonBookingFull", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonBookingFullResponse")]
+        Client.FlightService.Person CreateNewPersonBookingFull(string fName, string lName, string gender, string address, string phoneNo, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPersonBookingFull", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonBookingFullResponse")]
+        System.Threading.Tasks.Task<Client.FlightService.Person> CreateNewPersonBookingFullAsync(string fName, string lName, string gender, string address, string phoneNo, string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewPersonBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewPersonBookingResponse")]
         Client.FlightService.Person CreateNewPersonBooking(string fName, string lName);
@@ -1169,12 +1175,12 @@ namespace Client.FlightService {
             return base.Channel.GetBookingByIDAsync(id);
         }
         
-        public bool CreateNewBooking(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice) {
-            return base.Channel.CreateNewBooking(flights, passengers, totalTime, totalPrice);
+        public bool CreateNewBooking(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice) {
+            return base.Channel.CreateNewBooking(flightIDs, personIDs, totalTime, totalPrice);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateNewBookingAsync(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice) {
-            return base.Channel.CreateNewBookingAsync(flights, passengers, totalTime, totalPrice);
+        public System.Threading.Tasks.Task<bool> CreateNewBookingAsync(int[] flightIDs, int[] personIDs, string totalTime, double totalPrice) {
+            return base.Channel.CreateNewBookingAsync(flightIDs, personIDs, totalTime, totalPrice);
         }
         
         public bool UpdateBooking(int id, string totalTime, double totalPrice) {
@@ -1335,6 +1341,14 @@ namespace Client.FlightService {
         
         public System.Threading.Tasks.Task<bool> CreateNewPersonAsync(string fName, string lName, string gender, string address, string phoneNo, string email, string birthdate) {
             return base.Channel.CreateNewPersonAsync(fName, lName, gender, address, phoneNo, email, birthdate);
+        }
+        
+        public Client.FlightService.Person CreateNewPersonBookingFull(string fName, string lName, string gender, string address, string phoneNo, string email) {
+            return base.Channel.CreateNewPersonBookingFull(fName, lName, gender, address, phoneNo, email);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FlightService.Person> CreateNewPersonBookingFullAsync(string fName, string lName, string gender, string address, string phoneNo, string email) {
+            return base.Channel.CreateNewPersonBookingFullAsync(fName, lName, gender, address, phoneNo, email);
         }
         
         public Client.FlightService.Person CreateNewPersonBooking(string fName, string lName) {

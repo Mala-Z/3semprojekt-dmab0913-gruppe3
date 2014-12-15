@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost:9999/FlightService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="039362b1-3864-404b-9230-64440c5c04e1" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd2" />
     <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="6e080c8f-b95b-4e72-90e2-d12eb439e213" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd0" />
-    <MetadataFile FileName="FlightService11.wsdl" MetadataType="Wsdl" ID="6a9dec9e-71ab-44ed-a983-6de2e4096300" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?wsdl" />
     <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="5eb8f51c-fe36-497b-be17-9503ea1187bb" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?disco" />
+    <MetadataFile FileName="FlightService11.wsdl" MetadataType="Wsdl" ID="6a9dec9e-71ab-44ed-a983-6de2e4096300" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="34ae96cb-27b8-44e7-be8e-fc5ab34268bf" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd3" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="039362b1-3864-404b-9230-64440c5c04e1" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd2" />
     <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="7f9596ee-6072-4046-881d-c651175ce659" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd1" />
   </Metadata>
   <Extensions>
