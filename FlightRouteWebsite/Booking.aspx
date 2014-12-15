@@ -79,7 +79,11 @@
                 <asp:Button ID="btnBook" runat="server" Text="Bestil" OnClick="btnBook_Click" class="cform-submit pull-left" />
             </div>
         </div>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator2"  runat="server" ErrorMessage="Skriv et fornavn" ForeColor="red" Text="*" ControlToValidate="txtFName" InitialValue="" Display="None"></asp:RequiredFieldValidator>
+            
+
+
+        </div>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator2"  runat="server" ErrorMessage="Skriv et fornavn" ForeColor="red" Text="*" ControlToValidate="txtFName" InitialValue="" Display="None"></asp:RequiredFieldValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Skriv et efternavn" ForeColor="red" Text="*" ControlToValidate="txtLName" InitialValue="" Display="None"></asp:RequiredFieldValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator3"  runat="server" ErrorMessage="Skriv en adresse" ForeColor="red" Text="*" ControlToValidate="txtAddress" InitialValue="" Display="None"></asp:RequiredFieldValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator4"  runat="server" ErrorMessage="Skriv en email" ForeColor="red" Text="*" ControlToValidate="txtEmail" InitialValue="" Display="None"></asp:RequiredFieldValidator>
@@ -87,9 +91,6 @@
             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Skriv et gyldigt telefonum nummer" ControlToValidate="txtPhoneNo" ValidationExpression="^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$"></asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Skriv en gyldig email" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
              <asp:ValidationSummary ID="ValidationSummary1"  ForeColor="red" runat="server" HeaderText="Du skal indsætte følgende værdier:" DisplayMode="List" EnableClientScript="True" />
-
-
-        </div>
         <!-- /.row -->
       </div>
       <!-- /.container -->
