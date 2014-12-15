@@ -10,7 +10,7 @@ using FlightServiceReference;
 public partial class SearchResult : System.Web.UI.Page
 {
     private FlightServiceClient fservice = new FlightServiceClient();
-    private int noOfPassengers;
+    //private int noOfPassengers;
     private Airport airportFrom;
     private Airport airportTo;
     private String date;
@@ -20,13 +20,12 @@ public partial class SearchResult : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Request.QueryString["fromA"] != null && Request.QueryString["toA"] != null && Request.QueryString["date"] != null
-                && Request.QueryString["noOfPass"] != null)
+            if (Request.QueryString["fromA"] != null && Request.QueryString["toA"] != null && Request.QueryString["date"] != null)
             {
                 int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
                 int toID = Convert.ToInt32(Request.QueryString["toA"]);
                 date = Request.QueryString["date"].Substring(0,10);
-                noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+                //noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
                 airportFrom = fservice.GetAirportByID(fromID);
                 airportTo = fservice.GetAirportByID(toID);
 
@@ -53,7 +52,7 @@ public partial class SearchResult : System.Web.UI.Page
        
 
         var cTotalCost = (from f in fListPrice
-                          select f.price * noOfPassengers).Sum();
+                          select f.price).Sum();
         lblCTotalCost.Text = cTotalCost.ToString();
         var cTotalTime = (from f in fListPrice
                           select f.traveltime).Sum();
@@ -72,7 +71,7 @@ public partial class SearchResult : System.Web.UI.Page
         
 
         var fTotalCost = (from f in fListFast
-                          select f.price * noOfPassengers).Sum();
+                          select f.price).Sum();
         lblFTotalCost.Text = fTotalCost.ToString();
         var fTotalTime = (from f in fListFast
                           select f.traveltime).Sum();
@@ -87,14 +86,14 @@ public partial class SearchResult : System.Web.UI.Page
         int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
         int toID = Convert.ToInt32(Request.QueryString["toA"]);
         date = Request.QueryString["date"];
-        noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+        //noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
         airportFrom = fservice.GetAirportByID(fromID);
         airportTo = fservice.GetAirportByID(toID);
         var fFast = fservice.RunDijkstraFastest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
         AppSession.BHelper.fromA = airportFrom;
         AppSession.BHelper.toA = airportTo;
         AppSession.BHelper.date = date.Substring(0,10);
-        AppSession.BHelper.noOfPass = noOfPassengers;
+        //AppSession.BHelper.noOfPass = noOfPassengers;
         AppSession.BHelper.route = fFast;
         Response.Redirect("~/Booking.aspx");
     }
@@ -103,7 +102,7 @@ public partial class SearchResult : System.Web.UI.Page
         int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
         int toID = Convert.ToInt32(Request.QueryString["toA"]);
         date = Request.QueryString["date"];
-        noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
+        //noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
         airportFrom = fservice.GetAirportByID(fromID);
         airportTo = fservice.GetAirportByID(toID);
         var fPrice = fservice.RunDijkstraCheapest(airportFrom, airportTo, date.Substring(0, 10)).ToList();
@@ -111,7 +110,7 @@ public partial class SearchResult : System.Web.UI.Page
         AppSession.BHelper.fromA = airportFrom;
         AppSession.BHelper.toA = airportTo;
         AppSession.BHelper.date = date.Substring(0,10);
-        AppSession.BHelper.noOfPass = noOfPassengers;
+        //AppSession.BHelper.noOfPass = noOfPassengers;
         AppSession.BHelper.route = fPrice;
         Response.Redirect("~/Booking.aspx");
     }
