@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Booking.aspx.cs" Inherits="Booking" %>
+<%@ Import Namespace="FlightServiceReference" %>
 
 <%@ register src="~/UserControls/AddPassenger.ascx" tagprefix="uc1" tagname="AddPassenger" %>
 
@@ -23,8 +24,8 @@
           <asp:Repeater ID="repRoute" runat="server">
                 <ItemTemplate>
                     <tr>
-            <td><%#Eval("from") %></td>
-            <td><%#Eval( "to") %></td>
+            <td><%#getAirportName((int)Eval("from"))%></td>
+            <td><%#getAirportName((int)Eval("to"))%></td>
             <td><%#Eval( "timeOfDeparture") %></td>
             <td><%#Eval( "timeOfArrival") %></td>
             <td><%#Eval( "traveltime") %></td>
