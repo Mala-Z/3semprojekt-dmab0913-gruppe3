@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Booking.aspx.cs" Inherits="Booking" %>
+﻿<%@ Page Title="Bestilling" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Booking.aspx.cs" Inherits="Booking" %>
 <%@ Import Namespace="FlightServiceReference" %>
 
 <%@ register src="~/UserControls/AddPassenger.ascx" tagprefix="uc1" tagname="AddPassenger" %>
@@ -12,38 +12,37 @@
         <div class="row">
         <p>Du har valgt følgende flyrute fra <b runat="server" id="_fromA1"></b> til <b runat="server" id="_toA1"></b> d, <b runat="server" id="_date1"></b> for <b runat="server" id="_noOfPass1"></b></p>
         <table class="table table-striped" >
-          <tr>
-            <th>Fra</th>
-            <th>Til</th>
-            <th>Flyver d.</th>
-            <th>Lander d.</th>
-            <th>Flyvetid</th>
-            <th>Pris</th>
-          </tr>
-
           <asp:Repeater ID="repRoute" runat="server">
-                <ItemTemplate>
-                    <tr>
-            <td><%#getAirportName((int)Eval("from"))%></td>
-            <td><%#getAirportName((int)Eval("to"))%></td>
-            <td><%#Eval( "timeOfDeparture") %></td>
-            <td><%#Eval( "timeOfArrival") %></td>
-            <td><%#Eval( "traveltime") %></td>
-            <td><%#Eval( "price") %></td>
-          </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-          
+              <HeaderTemplate>
+                  <tr>
+                    <th>Fra</th>
+                    <th>Til</th>
+                    <th>Flyver d.</th>
+                    <th>Lander d.</th>
+                    <th>Flyvetid</th>
+                    <th>Pris</th>
+                  </tr>
+              </HeaderTemplate>
+              <ItemTemplate>
+                <tr>
+                    <td><%#getAirportName((int)Eval("from"))%></td>
+                    <td><%#getAirportName((int)Eval("to"))%></td>
+                    <td><%#Eval( "timeOfDeparture") %></td>
+                    <td><%#Eval( "timeOfArrival") %></td>
+                    <td><%#Eval( "traveltime") %></td>
+                    <td><%#Eval( "price") %></td>
+                </tr>
+              </ItemTemplate>
+          </asp:Repeater>
         </table>
-        <div class="span10">
+
+        <div class="span12">
         <p>
           <b>Samlet pris: <asp:Label ID="lblCTotalCost" runat="server" Text="Label"></asp:Label> </b><br/>
           <b>Samlet flyvetid: <asp:Label ID="lblCTotalTime" runat="server" Text="Label"></asp:Label> </b>
         </p> 
         </div>
 
-
-        <p>Antal personer</p>
 
        <h2>Køber information</h2>
        <div class="cform" id="theme-form">
@@ -60,7 +59,10 @@
             </div>
             <div class="row">
                 <div class="span4"> <span class="gender">
-                <asp:TextBox ID="txtGender" runat="server" placeholder="Køn" class="cform-text" size="50"></asp:TextBox>
+                <asp:DropDownList ID="ddlGender" runat="server">
+                    <asp:ListItem Value="m">Mand</asp:ListItem>
+                    <asp:ListItem Value="f">Kvinde</asp:ListItem>
+                </asp:DropDownList>
                 </span> </div>
                 <div class="span4"> <span class="email">
                 <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" class="cform-text" size="50"></asp:TextBox>

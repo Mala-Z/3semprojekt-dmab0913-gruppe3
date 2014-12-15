@@ -491,6 +491,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateNewPersonBookingFull">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phoneNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewPersonBookingFullResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="CreateNewPersonBookingFullResult" nillable="true" type="q30:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateNewPersonBooking">
     <xs:complexType>
       <xs:sequence>
@@ -502,7 +521,7 @@
   <xs:element name="CreateNewPersonBookingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="CreateNewPersonBookingResult" nillable="true" type="q30:Person" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/DatabaseLayer" minOccurs="0" name="CreateNewPersonBookingResult" nillable="true" type="q31:Person" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
