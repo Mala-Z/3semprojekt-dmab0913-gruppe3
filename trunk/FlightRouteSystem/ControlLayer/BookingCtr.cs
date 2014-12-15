@@ -41,64 +41,75 @@ namespace ControlLayer
             FlightCtr flightCtr = new FlightCtr(_db);
 
             //Opret booking. Skal submittes til db så den får ID!
-            var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
-            _db.Bookings.InsertOnSubmit(booking);
-            
-            try
+            using (var transScope = new TransactionScope())
             {
-                _db.SubmitChanges();
-
-                foreach (Person p in passengers)
+                var booking = new Booking { totalPrice = totalPrice * passengers.Count, totalTime = totalTime };
+                _db.Bookings.InsertOnSubmit(booking);
+                    
+                try
                 {
-                    //Hvis personID er 0 er det en person der ikke er oprettet i db og derfor ikke har et ID endnu
-                    if (p.personID == 0)
-                    {
-                        _db.Persons.InsertOnSubmit(p);
-                        _db.SubmitChanges();
-                    }
+                    _db.SubmitChanges();
 
-                    var bookingPassenger = new BookingPassenger
+                    foreach (Person p in passengers)
                     {
-                        bookingID = booking.bookingID,
-                        personID = p.personID
-                    };
-                    _db.BookingPassengers.InsertOnSubmit(bookingPassenger);
-                }
+                        //Hvis personID er 0 er det en person der ikke er oprettet i db og derfor ikke har et ID endnu
+                        if (p.personID == 0)
+                        {
+                            _db.Persons.InsertOnSubmit(p);
+                            _db.SubmitChanges();
+                        }
 
-                
-                foreach (Flight f in flights)
-                {
-                    //Hvis der er plads på flyet
-                    if (airplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + passengers.Count)
-                    {
-                        //Opret ny BookingFlight
-                        var bookingFlights = new BookingFlight
+                        var bookingPassenger = new BookingPassenger
                         {
                             bookingID = booking.bookingID,
-                            flightID = f.flightID
+                            personID = p.personID
                         };
-                        _db.BookingFlights.InsertOnSubmit(bookingFlights);
-                        f.takenSeats += passengers.Count;
-                        flightCtr.UpdateFlight(f.flightID, f.timeOfDeparture, f.timeOfArrival, Convert.ToDouble(f.traveltime), Convert.ToDouble(f.price) ,f.from,
-                            f.to, Convert.ToInt32(f.airplaneID), f.takenSeats);
+                        _db.BookingPassengers.InsertOnSubmit(bookingPassenger);
+                    }
+
+
+                    foreach (Flight f in flights)
+                    {
+                        //Hvis der er plads på flyet
+                        if (airplaneCtr.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats >= f.takenSeats + passengers.Count)
+                        {
+                            //Opret ny BookingFlight
+                            var bookingFlights = new BookingFlight
+                            {
+                                bookingID = booking.bookingID,
+                                flightID = f.flightID
+                            };
+                            _db.BookingFlights.InsertOnSubmit(bookingFlights);
+                            f.takenSeats += passengers.Count;
+                            flightCtr.UpdateFlight(f.flightID, f.timeOfDeparture, f.timeOfArrival, Convert.ToDouble(f.traveltime), Convert.ToDouble(f.price), f.from,
+                                f.to, Convert.ToInt32(f.airplaneID), f.takenSeats);
+                        }
+                        else
+                        {
+                            returnValue = false;
+                        }
+                    }
+
+                    if (returnValue)
+                    {
+                        _db.SubmitChanges();
+                        transScope.Complete();
                     }
                     else
                     {
-                        returnValue = false;
-                    } 
+                        Transaction.Current.Rollback();
+                    }
+                        
                 }
+                catch (SqlException)
+                {
+                    returnValue = false;
+                }
+                catch (Exception)
+                {
+                    returnValue = false;
+                } 
 
-                if (returnValue)
-                    _db.SubmitChanges();
-                
-            }
-            catch (SqlException)
-            {
-                returnValue = false;
-            }
-            catch (Exception)
-            {
-                returnValue = false;
             }
 
             //if (returnValue)
