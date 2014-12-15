@@ -55,10 +55,7 @@ public partial class Booking : System.Web.UI.Page
 
 
         }
-        else
-        {
-            Response.Redirect("~/Default.aspx");
-        }
+       
     }
 
     private void TableRoute()
@@ -130,7 +127,7 @@ public partial class Booking : System.Web.UI.Page
                 FlightServiceReference.Flight[] fl = route.ToArray();
                 FlightServiceReference.Person[] pl = passList.ToArray();
                 string totalTime = (from f in route
-                    select f.price*AppSession.BHelper.noOfPass).Sum().ToString();
+                    select f.price).ToString();
                 double totalCost = Double.Parse((from f in AppSession.BHelper.route
                     select f.traveltime).Sum().ToString());
 

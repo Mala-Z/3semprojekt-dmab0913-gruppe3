@@ -42,10 +42,6 @@ public partial class SearchResult : System.Web.UI.Page
                 Response.Redirect("~/Default.aspx");
             }
         }
-        else
-        {
-            Response.Redirect("~/Default.aspx");
-        }
     }
 
     public void CheapestRoute(FlightServiceReference.Airport airportFrom, FlightServiceReference.Airport airportTo, string date)
