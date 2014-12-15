@@ -58,34 +58,31 @@ namespace Client.Tabs.Booking
 
         public void InitializeGridData()
         {
-            var result = from f in _flights
-                         select new
-                         {
-                             Fra = _fService.GetAirportByID(f.@from).name,
-                             Til = _fService.GetAirportByID(f.@to).name,
-                             Afgang = f.timeOfDeparture,
-                             Ankomst = f.timeOfArrival,
-                             Rejsetid = f.traveltime,
-                             Pris = f.price,
-                             TotalPris = f.price * _noOfPass
-                         };
+            var result = _flights.Select(f => new
+            {
+                Fra = _fService.GetAirportByID(f.@from).name,
+                Til = _fService.GetAirportByID(f.@to).name,
+                Afgang = f.timeOfDeparture,
+                Ankomst = f.timeOfArrival,
+                Rejsetid = f.traveltime,
+                Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
+                Pris = f.price,
+                TotalPris = f.price*_noOfPass
+            });
             dgChosen.ItemsSource = result;
 
-            var fTotalCost = (from f in _flights
-                              select f.price * _noOfPass).Sum();
+            var fTotalCost = (_flights.Select(f => f.price*_noOfPass)).Sum();
 
-            var fTotalTime = (from f in _flights
-                              select f.traveltime).Sum();
+            var fTotalTime = (_flights.Select(f => f.traveltime)).Sum();
 
             txtTotalCost.Text = fTotalCost.ToString();
             txtTotalTime.Text = fTotalTime.ToString();
 
-            var passengers = from p in _passengerList
-                select new
-                {
-                    Fornavn = p.fname,
-                    Efternavn = p.lname
-                };
+            var passengers = _passengerList.Select(p => new
+            {
+                Fornavn = p.fname,
+                Efternavn = p.lname
+            });
             dgPassengers.ItemsSource = passengers;
 
         }
