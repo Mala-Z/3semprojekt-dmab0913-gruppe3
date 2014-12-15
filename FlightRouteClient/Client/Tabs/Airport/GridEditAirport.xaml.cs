@@ -36,7 +36,7 @@ namespace Client.Tabs.Airport
                 if (success)
                 {
                     ContentControlSuccess.Content = new DisplaySuccess("Lufthavn er opdateret!");
-                    ((MainWindow)Application.Current.MainWindow).TabAirport.InitGridData();
+                    ((MainWindow)Application.Current.MainWindow).TabAirport.LoadGridData();
                 }
                 else
                 {
