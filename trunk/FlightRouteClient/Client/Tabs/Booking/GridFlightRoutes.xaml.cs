@@ -47,11 +47,7 @@ namespace Client.Tabs.Booking
             Action fastestRouteAction = () =>
             {
                 BackgroundWorker fastestRouteWorker = new BackgroundWorker();
-                fastestRouteWorker.DoWork += (o, args) =>
-                {
-                    args.Result = GetFastestRoute();
-                };
-                //worker.DoWork(() => GetFastestRoute());
+                fastestRouteWorker.DoWork += (o, args) => args.Result = GetFastestRoute();
                 fastestRouteWorker.RunWorkerCompleted += (o, args) =>
                 {
                     dgFastest.ItemsSource = (IEnumerable)args.Result;
@@ -70,10 +66,7 @@ namespace Client.Tabs.Booking
             Action cheapestRouteAction = () =>
             {
                 BackgroundWorker cheapesRouteWorker = new BackgroundWorker();
-                cheapesRouteWorker.DoWork += (o, args) =>
-                {
-                    args.Result = GetCheapestRoute();
-                };
+                cheapesRouteWorker.DoWork += (o, args) => args.Result = GetCheapestRoute();
                 cheapesRouteWorker.RunWorkerCompleted += (o, args) =>
                 {
                     dgCheapest.ItemsSource = (IEnumerable)args.Result;
@@ -109,6 +102,7 @@ namespace Client.Tabs.Booking
                              Afgang = f.timeOfDeparture,
                              Ankomst = f.timeOfArrival,
                              Rejsetid = f.traveltime,
+                             Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
                              Pris = f.price,
                              TotalPris = f.price * _noOfPass
                          };
@@ -127,6 +121,7 @@ namespace Client.Tabs.Booking
                               Afgang = f.timeOfDeparture,
                               Ankomst = f.timeOfArrival,
                               Rejsetid = f.traveltime,
+                              Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
                               Pris = f.price,
                               TotalPris = f.price * _noOfPass
                           };
