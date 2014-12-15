@@ -94,18 +94,17 @@ namespace Client.Tabs.Booking
             
             var fastestsList = _fService.RunDijkstraFastest(_from, _to, _date);
             _fastestRoute = fastestsList.ToList();
-            var result = from f in fastestsList
-                         select new
-                         {
-                             Fra = _fService.GetAirportByID(f.@from).name,
-                             Til = _fService.GetAirportByID(f.@to).name,
-                             Afgang = f.timeOfDeparture,
-                             Ankomst = f.timeOfArrival,
-                             Rejsetid = f.traveltime,
-                             Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
-                             Pris = f.price,
-                             TotalPris = f.price * _noOfPass
-                         };
+            var result = fastestsList.Select(f => new
+            {
+                Fra = _fService.GetAirportByID(f.@from).name,
+                Til = _fService.GetAirportByID(f.@to).name,
+                Afgang = f.timeOfDeparture,
+                Ankomst = f.timeOfArrival,
+                Rejsetid = f.traveltime,
+                Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
+                Pris = f.price,
+                TotalPris = f.price*_noOfPass
+            });
             return result;
         }
 
@@ -113,18 +112,17 @@ namespace Client.Tabs.Booking
         {
             var cheapestList = _fService.RunDijkstraCheapest(_from, _to, _date);
             _cheapestRoute = cheapestList.ToList();
-            var result = from f in cheapestList
-                          select new
-                          {
-                              Fra = _fService.GetAirportByID(f.@from).name,
-                              Til = _fService.GetAirportByID(f.@to).name,
-                              Afgang = f.timeOfDeparture,
-                              Ankomst = f.timeOfArrival,
-                              Rejsetid = f.traveltime,
-                              Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
-                              Pris = f.price,
-                              TotalPris = f.price * _noOfPass
-                          };
+            var result = cheapestList.Select(f => new
+            {
+                Fra = _fService.GetAirportByID(f.@from).name,
+                Til = _fService.GetAirportByID(f.@to).name,
+                Afgang = f.timeOfDeparture,
+                Ankomst = f.timeOfArrival,
+                Rejsetid = f.traveltime,
+                Ledige_Pladser = _fService.GetAirplaneByID(Convert.ToInt32(f.airplaneID)).seats - f.takenSeats,
+                Pris = f.price,
+                TotalPris = f.price*_noOfPass
+            });
             return result;
         }
 
