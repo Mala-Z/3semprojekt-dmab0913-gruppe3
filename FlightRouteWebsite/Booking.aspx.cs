@@ -35,6 +35,12 @@ public partial class Booking : System.Web.UI.Page
                 _noOfPass = AppSession.BHelper.noOfPass;
                 _route = AppSession.BHelper.route;
 
+                _fromA1.InnerText = AppSession.BHelper.fromA.name;
+                _toA1.InnerText = AppSession.BHelper.toA.name;
+                _date1.InnerText = AppSession.BHelper.date;
+                _noOfPass1.InnerText = AppSession.BHelper.noOfPass.ToString();
+
+
                 if (_noOfPass != 0)
                 {
                     h2RestPass.Visible = true;
