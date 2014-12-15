@@ -84,8 +84,6 @@ namespace ControlLayer
                 email = email,
             };
 
-            _db.Persons.InsertOnSubmit(person);
-
             return person;
         }
 
