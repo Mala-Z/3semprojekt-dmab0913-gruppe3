@@ -20,11 +20,12 @@ public partial class SearchResult : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Request.QueryString["fromA"] != null && Request.QueryString["toA"] != null && Request.QueryString["date"] != null)
+            if (Request.QueryString["fromA"] != null && Request.QueryString["toA"] != null &&
+                Request.QueryString["date"] != null)
             {
                 int fromID = Convert.ToInt32(Request.QueryString["fromA"]);
                 int toID = Convert.ToInt32(Request.QueryString["toA"]);
-                date = Request.QueryString["date"].Substring(0,10);
+                date = Request.QueryString["date"].Substring(0, 10);
                 //noOfPassengers = Convert.ToInt32(Request.QueryString["noOfPass"]);
                 airportFrom = fservice.GetAirportByID(fromID);
                 airportTo = fservice.GetAirportByID(toID);
@@ -34,12 +35,16 @@ public partial class SearchResult : System.Web.UI.Page
                     CheapestRoute(airportFrom, airportTo, date);
                     FastestRoute(airportFrom, airportTo, date);
                 }
-                
+
             }
             else
             {
-                //Gået direkte til siden uden QueryString
-            }          
+                Response.Redirect("~/Default.aspx");
+            }
+        }
+        else
+        {
+            Response.Redirect("~/Default.aspx");
         }
     }
 
