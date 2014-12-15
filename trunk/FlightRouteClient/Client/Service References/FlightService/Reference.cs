@@ -901,6 +901,7 @@ namespace Client.FlightService {
         System.Threading.Tasks.Task<Client.FlightService.Booking> GetBookingByIDAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewBookingResponse")]
+        [System.ServiceModel.TransactionFlowAttribute(System.ServiceModel.TransactionFlowOption.Allowed)]
         bool CreateNewBooking(Client.FlightService.Flight[] flights, Client.FlightService.Person[] passengers, string totalTime, double totalPrice);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/CreateNewBooking", ReplyAction="http://tempuri.org/IFlightService/CreateNewBookingResponse")]
