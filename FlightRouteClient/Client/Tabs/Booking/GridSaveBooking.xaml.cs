@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Transactions;
 using System.Windows;
 using System.Windows.Controls;
 using Client.FlightService;
@@ -122,7 +124,19 @@ namespace Client.Tabs.Booking
             { 
                 FlightService.Flight[] fl = _flights.ToArray();
                 FlightService.Person[] pl = _passengerList.ToArray();
-                if (_fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text)))
+                bool result = false;
+
+                
+                    try
+                    {
+                        result = _fService.CreateNewBooking(fl, pl, txtTotalTime.Text, Double.Parse(txtTotalCost.Text));
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                    }
+                    
+                if (result)
                 {
                     ContentControlSuccess.Content = new DisplaySuccess("Booking blev oprettet!");
                     btnCreate.Visibility = Visibility.Hidden;
