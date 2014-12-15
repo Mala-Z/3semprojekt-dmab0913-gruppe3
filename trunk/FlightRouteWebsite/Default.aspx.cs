@@ -45,29 +45,25 @@ public partial class _Default : Page
 
             string fromAs = airportFrom.SelectedValue;
             string toAs = airportTo.SelectedValue;
-            int noOfPass = Int32.Parse(txtNoOfPassengers.Text);
+            //int noOfPass = Int32.Parse(txtNoOfPassengers.Text);
 
-            if (txtNoOfPassengers.Text != "" && dateBox.SelectedDate != null)
+            if (dateBox.SelectedDate != null)
             {
-                if (noOfPass >= 1)
-                {
                     if (fromAs != toAs)
                     {
                         string AirportFromID = fromAs;
                         string AirportToID = toAs;
                         string DateString = dateBox.SelectedDate.ToString().Substring(0, 10);
-                        string NoOfPassengers = noOfPass.ToString();
+                        //string NoOfPassengers = noOfPass.ToString();
 
                         Response.Redirect("~/SearchResult.aspx?fromA=" + AirportFromID + "&toA=" + AirportToID + "&date=" +
-                                          DateString + "&noOfPass=" + NoOfPassengers);
+                                          DateString);
                     }
                     else
                     {
                         CompareValidator1.Text = "Luftehavne må ikke være ens";
-
                     }
                 }
-            }
         }
 
         catch (NullReferenceException err)
