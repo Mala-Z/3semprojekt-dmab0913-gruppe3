@@ -126,8 +126,8 @@ public partial class Booking : System.Web.UI.Page
                     txtPhoneNo.Text, txtEmail.Text));
                 var route = AppSession.BHelper.route;
 
-                FlightServiceReference.Flight[] fl = route.ToArray();
-                FlightServiceReference.Person[] pl = passList.ToArray();
+                var fl = route.Select(f => f.flightID).ToArray();
+                var pl = passList.ToArray();
                 string totalCost = (from f in route
                                     select f.price).Sum().ToString();
                 string totalTime = (from f in AppSession.BHelper.route
