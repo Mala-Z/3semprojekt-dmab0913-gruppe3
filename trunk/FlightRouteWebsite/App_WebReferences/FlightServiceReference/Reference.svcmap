@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f6d47bef-fd0b-43ff-b8eb-f253b074781d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8e51df9d-f522-48fe-a280-bab5a6fa3183" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:9999/FlightService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="0a7cdcbc-bed7-4121-a545-64ff77858fa0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="94f70319-a831-44fe-8b3a-78a673892310" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d261dcbd-c266-4c76-992b-fa76eacb3d87" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/mex" />
-    <MetadataFile FileName="DatabaseLayer.xsd" MetadataType="Schema" ID="83202887-e85c-41c0-b832-bb1b47627fc2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/FlightService/FlightService/mex" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="0db9af3c-fa45-4b45-aef3-02ce6b52057f" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="c8328a09-cfe8-45b4-8992-089658771f16" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?disco" />
+    <MetadataFile FileName="FlightService.wsdl" MetadataType="Wsdl" ID="985141be-ae53-41b6-921f-3c3652f80675" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="93b1e138-b70d-48e4-b0d1-b59b22800359" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd3" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3104752a-a73e-4d92-a4f1-47f1a713a290" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="d72c292b-a8b3-4969-9f9c-4ad364cb6241" SourceId="1" SourceUrl="http://localhost:9999/FlightService/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
