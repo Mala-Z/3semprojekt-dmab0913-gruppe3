@@ -38,18 +38,16 @@ namespace ControlLayer
         {
             bool returnValue = true;
             AirplaneCtr airplaneCtr = new AirplaneCtr(_db);
-            
+            //Lav lister med personer og flights fra arrays med id
+            var flights = flightIDs.Select(id => _db.Flights.SingleOrDefault(flight => flight.flightID == id)).ToList();
+            //Opret booking. Skal submittes til db så den får ID fra IDENTITY!
+            var booking = new Booking { totalPrice = totalPrice * persons.Count, totalTime = totalTime };
+
             using (var transScope = new TransactionScope())
             {
-                //Lav lister med personer og flights fra arrays med id
-                var flights = flightIDs.Select(id => _db.Flights.SingleOrDefault(flight => flight.flightID == id)).ToList();
-                //Opret booking. Skal submittes til db så den får ID!
-                var booking = new Booking { totalPrice = totalPrice * persons.Count, totalTime = totalTime };
-                _db.Bookings.InsertOnSubmit(booking);
-                
-
                 try
                 {
+                    _db.Bookings.InsertOnSubmit(booking);
                     _db.SubmitChanges();
 
                     foreach (Person p in persons)
