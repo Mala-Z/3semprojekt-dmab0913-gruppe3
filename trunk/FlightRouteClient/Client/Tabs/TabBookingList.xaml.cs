@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -64,7 +65,8 @@ namespace Client.Tabs
 
         private void DatePickerBookingsGrid_OnSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine("Ikke implementeret");
+            //TODO
         }
 
         private void DgBookings_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
